@@ -11,4 +11,4 @@ memcheck:
 
 .PHONY: clean
 clean:
-	rm lib/sintatico.tab.h src/lex.yy.c src/sintatico.tab.c tradutor
+	rm -f lib/sintatico.tab.h src/lex.yy.c src/sintatico.tab.c tradutor logfile.out

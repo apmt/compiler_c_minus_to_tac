@@ -1,28 +1,23 @@
 Requisitos:
 
 $ sudo apt-get install flex
-$ sudo apt-get install valgring
+$ sudo apt-get install bison
+$ sudo apt-get install valgrind
 
 Compilar (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
 
-$ bison -d src/sintatico.y
-$ flex -o src/lex.yy.c src/lexico.l
-$ gcc -g -Wall src/sintatico.tab.c -o tradutor
-
-**gcc sintatico.tab.c lex.yy.c -lfl
-
-// $ gcc -g -Wall src/lex.yy.c -o tradutor
+$ make
 
 Executar testes (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
 
-Teste correto_teste_1.c:
-$ ./tradutor < tests/correto_teste_1.c
+    Rodar todos testes sintaticos:
+    $ make run
 
-Teste correto_teste_2.c:
-$ valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < tests/correto_teste_2.c
+    Rodar teste específico:
+    $ ./tradutor < tests/sintatico/<nome do teste>
 
-Teste errado_teste_1.c:
-$ valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < tests/errado_teste_1.c
+    Rodar com o valgrind em todos os testes (gera o arquivo de saida logfile.out):
+    $ make memcheck
 
-Teste errado_teste_2.c:
-$ valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < tests/errado_teste_2.c
+    Limpar arquivos:
+    $ make clean

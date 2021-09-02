@@ -14,78 +14,9 @@
     #define RED "\e[0;31m"
     #define GRN "\e[0;32m"
     #define reset "\e[0m"
+
     int coluna = 1;
     int erros = 0;
-    int contador_de_identificador = 0;
-    int contador_de_escopo = 0;
-    int indicador_de_escopo = 0;
-    
-    typedef struct t_celula {
-        int linha;
-        int escopo;
-        char identificador[63];
-        struct t_celula *prox;
-    } t_celula;
-
-    typedef struct t_tabela {
-        struct t_celula *inicio;
-        struct t_celula *fim;
-    } t_tabela;
-
-    t_tabela tabela_de_simbolos;
-
-    t_tabela criaTabela() {
-        t_tabela tabela;
-        tabela.inicio = (t_celula*)malloc(sizeof(t_celula));
-        tabela.inicio->prox = NULL;
-        tabela.fim = tabela.inicio;
-        return tabela;
-    }
-
-    void destroiTabela() {
-        t_celula *aux = tabela_de_simbolos.inicio;
-        t_celula *prox;
-        while(aux->prox != NULL) {
-            prox = aux->prox;
-            free(aux);
-            aux = prox;
-        }
-        free(aux);
-        tabela_de_simbolos.inicio = NULL;
-        tabela_de_simbolos.fim = NULL;
-    }
-
-    void push_celula(char *identificador) {
-        t_celula *aux = tabela_de_simbolos.inicio;
-         while(aux->prox != NULL) {
-            aux = aux->prox;
-            if(strcmp(identificador, aux->identificador) == 0 && indicador_de_escopo == aux->escopo) {
-                return;
-            }
-        }
-
-        t_celula *celula = (t_celula*) malloc(sizeof(t_celula));
-        celula->linha = contador_de_identificador;
-        celula->escopo = indicador_de_escopo;
-        strcpy(celula->identificador,identificador);
-        celula->prox = NULL;
-
-        tabela_de_simbolos.fim->prox = celula;
-        tabela_de_simbolos.fim = celula;
-
-        contador_de_identificador++;
-    }
-
-    void mostra_tabela() {
-        t_celula *aux = tabela_de_simbolos.inicio;
-        printf("---------------------------------------------------\n");
-        printf("\tTabela de simbolos\n");
-        printf("---------------------------------------------------\n");
-        while(aux->prox != NULL) {
-            aux = aux->prox;
-            printf("%d\t| %s\t| escopo: %d\n", aux->linha, aux->identificador, aux->escopo);
-        }
-    }
 
 %}
 
@@ -136,9 +67,6 @@ ESPACO          [ \t\v\f\r]
 "write"         { printf("<WRITE>"); coluna += yyleng; return WRITE;}
 "writeln"       { printf("<WRITELN>"); coluna += yyleng; return WRITELN;}
 
-    /* Palavra chave MAIN */
-"main"          { printf("<MAIN>"); coluna += yyleng; return MAIN;}
-
     /* Controle de fluxo */
 "return"        { printf("<RETURN>"); coluna += yyleng; return RETURN;}
 "if"            { printf("<IF>"); coluna += yyleng; return IF;}
@@ -179,8 +107,17 @@ ESPACO          [ \t\v\f\r]
 }
 "("             { printf("<ABRE_PARENTESES>"); coluna += yyleng; return ABRE_PARENTESES;}
 ")"             { printf("<FECHA_PARENTESES>"); coluna += yyleng; return FECHA_PARENTESES;}
-"{"             { printf("<ABRE_CHAVES>"); coluna += yyleng; contador_de_escopo++; indicador_de_escopo = contador_de_escopo; return ABRE_CHAVES;}
-"}"             { printf("<FECHA_CHAVES>"); coluna += yyleng; indicador_de_escopo--; return FECHA_CHAVES;}
+"{"             { printf("<ABRE_CHAVES>"); 
+                    coluna += yyleng;
+                    // contador_de_escopo++; 
+                    // indicador_de_escopo = contador_de_escopo;
+                    return ABRE_CHAVES;
+                }
+"}"             { printf("<FECHA_CHAVES>"); 
+                    coluna += yyleng; 
+                    // indicador_de_escopo--; 
+                    return FECHA_CHAVES;
+                }
 
     /* Regras */
 {INTEGER}           { printf("<INTEGER, %s>", yytext); coluna += yyleng; return INTEGER;}
@@ -198,20 +135,8 @@ ESPACO          [ \t\v\f\r]
 "\n"                { printf("\n"); yylineno++; coluna = 1; }
 
     /* Reconhecer o resto como erro */
-.                               { printf(RED"ERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }
+.                   { printf(RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }
+
 
 %%
 
-
-//  int main() {
-//     tabela_de_simbolos = criaTabela();
-//     yylex();
-//     if(erros == 0) {
-//         printf(GRN"\nTotal de erros: %d\n"reset, erros);
-//     } else {
-//         printf(RED"\nTotal de erros: %d\n"reset, erros);
-//     }
-//     yylex_destroy();
-//     mostra_tabela();
-//     destroiTabela();
-// }

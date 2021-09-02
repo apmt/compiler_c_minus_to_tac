@@ -2,6 +2,7 @@
 /* Analisador Sintatico para um subconjunto modificado da linguagem C */
 
 %{
+	
 #include <stdio.h>
 #include "tradutor_utils.h"
 
@@ -12,6 +13,7 @@ extern char* yytext;
 extern int yylineno;
 
 extern int coluna;
+
 %}
 
 %define lr.type canonical-lr

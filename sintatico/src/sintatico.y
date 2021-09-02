@@ -6,6 +6,7 @@
 #include "tradutor_utils.h"
 
 extern int yylex(void);
+extern int yylex_destroy(void);
 extern int yyerror(const char *s);
 extern char* yytext;
 extern int yylineno;
@@ -268,5 +269,6 @@ int yyerror (const char* s) {
 int main(int argc, char **argv)
 {
   yyparse();
+  yylex_destroy();
   return 0;
 }

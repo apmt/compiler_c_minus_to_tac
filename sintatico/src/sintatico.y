@@ -84,9 +84,9 @@ declaracao:
 	  declaracao_de_variavel {
 		// $$ = $1
 	}
-	// | declaracao_de_funcao {
+	| declaracao_de_funcao {
 	// 	// $$ = $1
-	// }
+	}
 	| error {
 		// yyerror/print
 		// erro sintatico
@@ -119,130 +119,130 @@ lista_de_IDs:
 	  }
 ;
 
-// declaracao_de_funcao:
-// 	  tipo_de_variavel ID ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao
-// ;
+declaracao_de_funcao:
+	  tipo_de_variavel ID ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao
+;
 
-// definicao_de_funcao:
-// 	  ABRE_CHAVES bloco_de_comando FECHA_CHAVES
-// ;
+definicao_de_funcao:
+	  ABRE_CHAVES bloco_de_comando FECHA_CHAVES
+;
 
-// parametros:
-// 	  lista_de_parametros
-// 	| /* epsilon */
-// ;
+parametros:
+	  lista_de_parametros
+	| /* epsilon */
+;
 
-// lista_de_parametros:
-// 	  lista_de_parametros VIRGULA parametro
-// 	| parametro
-// ;
+lista_de_parametros:
+	  lista_de_parametros VIRGULA parametro
+	| parametro
+;
 
-// parametro:
-// 	  tipo_de_variavel ID
-// ;
+parametro:
+	  tipo_de_variavel ID
+;
 
-// comando:
-// 	  bloco_de_comando
-// 	| comando_unico
-// ;
+comando:
+	  bloco_de_comando
+	| comando_unico
+;
 
-// comandos:
-// 	  comandos comando
-//     | /* epsilon */
-// ;
+comandos:
+	  comandos comando
+    | /* epsilon */
+;
 
-// bloco_de_comando:
-// 	  ABRE_CHAVES comandos FECHA_CHAVES
-// ;
+bloco_de_comando:
+	  ABRE_CHAVES comandos FECHA_CHAVES
+;
 
-// comando_unico:
-// 	  comando_condicional
-// 	| comando_iterativo
-// 	| declaracao_de_variavel
-// 	| chamada_de_funcao
-// 	| chamada_de_retorno
-// 	| comando_de_atribuicao
-// ;
+comando_unico:
+	  comando_condicional
+	| comando_iterativo
+	| declaracao_de_variavel
+	| chamada_de_funcao
+	| chamada_de_retorno
+	| comando_de_atribuicao
+;
 
-// comando_condicional:
-// 	  IF ABRE_PARENTESES expressao FECHA_PARENTESES comando {
-// 		// 
-// 		// $$ = create_node(tipo_node, $3, $5);
-// 		}
-// 	| IF ABRE_PARENTESES expressao FECHA_PARENTESES comando ELSE comando {
-// 		// $$ = create_node($3, $5, $7);
-// 		}
-// 	| error {
-// 		// print erro na linha tal
-// 		// coluna, yylineno
-// 	}
-// ;
+comando_condicional:
+	  IF ABRE_PARENTESES expressao FECHA_PARENTESES comando {
+		// 
+		// $$ = create_node(tipo_node, $3, $5);
+		}
+	| IF ABRE_PARENTESES expressao FECHA_PARENTESES comando ELSE comando {
+		// $$ = create_node($3, $5, $7);
+		}
+	| error {
+		// print erro na linha tal
+		// coluna, yylineno
+	}
+;
 
-// comando_iterativo:
-// 	  FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao FECHA_PARENTESES comando
-// 	| FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao expressao FECHA_PARENTESES comando
-// ;
+comando_iterativo:
+	  FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao FECHA_PARENTESES comando
+	| FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao expressao FECHA_PARENTESES comando
+;
 
-// comando_de_expressao:
-// 	  expressao PONTO_VIRGULA
-// 	| PONTO_VIRGULA
-// 	| error {
-// 		// errado: expected ;
-// 		// print erro na linha tal
-// 		// coluna, yylineno
-// 	}
-// ;
+comando_de_expressao:
+	  expressao PONTO_VIRGULA
+	| PONTO_VIRGULA
+	| error {
+		// errado: expected ;
+		// print erro na linha tal
+		// coluna, yylineno
+	}
+;
 
 
-// expressao:
-// 	  expressao VIRGULA exp
-// 	| exp
-// ;
+expressao:
+	  expressao VIRGULA exp
+	| exp
+;
 
-// exp:
-// 	  exp GT exp
-// 	| exp LT exp
-// 	| exp EQ exp
-// 	| exp NE exp
-// 	| exp LE exp
-// 	| exp GE exp
-// 	| exp AND exp
-// 	| exp OR exp
-// 	| exp_aritmetica
-// ;
+exp:
+	  exp GT exp
+	| exp LT exp
+	| exp EQ exp
+	| exp NE exp
+	| exp LE exp
+	| exp GE exp
+	| exp AND exp
+	| exp OR exp
+	| exp_aritmetica
+;
 
-// exp_aritmetica:
-// 	  termo
-// 	| exp_aritmetica SOMA termo
-// 	| exp_aritmetica SUB termo
-// ;
+exp_aritmetica:
+	  termo
+	| exp_aritmetica SOMA termo
+	| exp_aritmetica SUB termo
+;
 
-// termo:
-// 	  fator
-// 	| termo MULT fator
-// 	| termo DIV fator
-// ;
+termo:
+	  fator
+	| termo MULT fator
+	| termo DIV fator
+;
 
-// fator:
-// 	  constante
-// 	| SUB fator
-// 	| TOP_OR_NOT fator
-// 	| ID
-// 	| ABRE_PARENTESES exp FECHA_PARENTESES
-// ;
+fator:
+	  constante
+	| SUB fator
+	| TOP_OR_NOT fator
+	| ID
+	| ABRE_PARENTESES exp FECHA_PARENTESES
+;
 
-// comando_de_atribuicao:
-//     ID ATRIB exp
-// ;
+comando_de_atribuicao:
+    ID ATRIB exp
+;
 
-// chamada_de_funcao:
-// 	  ID ABRE_PARENTESES parametros FECHA_PARENTESES PONTO_VIRGULA
-// ;
+chamada_de_funcao:
+	  ID ABRE_PARENTESES parametros FECHA_PARENTESES PONTO_VIRGULA
+;
 
-// chamada_de_retorno:
-// 	  RETURN expressao PONTO_VIRGULA
-// 	| RETURN PONTO_VIRGULA
-// ;
+chamada_de_retorno:
+	  RETURN expressao PONTO_VIRGULA
+	| RETURN PONTO_VIRGULA
+;
 
 tipo_de_variavel:
 	  INT {
@@ -251,14 +251,17 @@ tipo_de_variavel:
 	| FLOAT {
 		// $$ create_node($1);
 	  }
-	| LIST {
+	| INT LIST {
 		// $$ create_node($1);
 	  }
+	| FLOAT LIST {
+	// $$ create_node($1);
+	}
 ;
 
-// constante:
-// 	  CONSTANTE
-// ;
+constante:
+	  CONSTANTE
+;
 
 
 %%

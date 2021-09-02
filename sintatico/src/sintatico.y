@@ -6,6 +6,10 @@
 #include <stdio.h>
 #include "tradutor_utils.h"
 
+#define RED "\e[0;31m"
+#define GRN "\e[0;32m"
+#define reset "\e[0m"
+
 extern int yylex(void);
 extern int yylex_destroy(void);
 extern int yyerror(const char *s);
@@ -40,8 +44,8 @@ extern int coluna;
 %token ID
 %token INT FLOAT LIST
 %token CONSTANTE_NIL
-%token TOP_OR_NOT
-%token HEADER POP MAP FILTER CONSTRUTOR
+%token TAIL_OR_NOT
+%token HEADER TAIL_POP MAP FILTER CONSTRUTOR
 %token READ WRITE WRITELN
 %token MAIN RETURN IF ELSE FOR
 %token AND OR
@@ -51,15 +55,19 @@ extern int coluna;
 %token ASPA_SIMPLES ATRIB
 %token ABRE_PARENTESES FECHA_PARENTESES ABRE_CHAVES FECHA_CHAVES
 
-%token CONSTANTE INTEGER STRING_LITERAL
+%token FLOAT_CONST INTEGER_CONST STRING_LITERAL
 %token STRING
 
-%left LT GT ATRIB GE LE EQ NE 
-// %left SOMA SUB TOP_OR_NOT
-// %left MULT DIV
-%left OR AND
-// %left VIRGULA
-// %left ABRE_PARENTESES ABRE_CHAVES
+%left AND OR
+%left EQ NE 
+%left LT GT GE LE
+%right MAP FILTER CONSTRUTOR
+%left SOMA SUB
+%left MULT DIV
+%right TAIL_OR_NOT HEADER TAIL_POP
+
+%nonassoc ELSE
+%nonassoc IFX
 
 %start programa
 
@@ -124,7 +132,7 @@ declaracao_de_funcao:
 ;
 
 definicao_de_funcao:
-	  ABRE_CHAVES bloco_de_comando FECHA_CHAVES
+	 bloco_de_comando
 ;
 
 parametros:
@@ -165,7 +173,7 @@ comando_unico:
 ;
 
 comando_condicional:
-	  IF ABRE_PARENTESES expressao FECHA_PARENTESES comando {
+	  IF ABRE_PARENTESES expressao FECHA_PARENTESES comando %prec IFX {
 		// 
 		// $$ = create_node(tipo_node, $3, $5);
 		}
@@ -179,13 +187,12 @@ comando_condicional:
 ;
 
 comando_iterativo:
-	  FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao FECHA_PARENTESES comando
-	| FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao expressao FECHA_PARENTESES comando
+	  FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao expressao FECHA_PARENTESES comando
 ;
 
 comando_de_expressao:
-	  expressao PONTO_VIRGULA
-	| PONTO_VIRGULA
+	   expressao PONTO_VIRGULA
+	// | PONTO_VIRGULA
 	| error {
 		// errado: expected ;
 		// print erro na linha tal
@@ -208,6 +215,13 @@ exp:
 	| exp GE exp
 	| exp AND exp
 	| exp OR exp
+	| exp_list
+;
+
+exp_list:
+	| exp_list CONSTRUTOR exp_list
+	| exp_list FILTER exp_list
+	| exp_list MAP exp_list
 	| exp_aritmetica
 ;
 
@@ -226,22 +240,33 @@ termo:
 fator:
 	  constante
 	| SUB fator
-	| TOP_OR_NOT fator
+	| TAIL_OR_NOT fator
+	| TAIL_POP fator
+	| HEADER fator
 	| ID
 	| ABRE_PARENTESES exp FECHA_PARENTESES
 ;
 
 comando_de_atribuicao:
-    ID ATRIB exp
+    ID ATRIB expressao PONTO_VIRGULA
 ;
 
 chamada_de_funcao:
-	  ID ABRE_PARENTESES parametros FECHA_PARENTESES PONTO_VIRGULA
+	  ID ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
+	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
+	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
+	|  WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
+;
+
+exp_funcao:
+  		ID ABRE_PARENTESES expressao FECHA_PARENTESES 
+	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES 
+	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES 
+	|  WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES 
 ;
 
 chamada_de_retorno:
 	  RETURN expressao PONTO_VIRGULA
-	| RETURN PONTO_VIRGULA
 ;
 
 tipo_de_variavel:
@@ -260,14 +285,18 @@ tipo_de_variavel:
 ;
 
 constante:
-	  CONSTANTE
+	  INTEGER_CONST
+	| FLOAT_CONST
+	| CONSTANTE_NIL
+	| STRING_LITERAL
+	| exp_funcao
 ;
 
 
 %%
 
 int yyerror (const char* s) {
-	fprintf (stderr, "%s\n", s);
+	fprintf (stderr, RED"linha: %d, na coluna: %d, %s\n"reset, yylineno, coluna, s);
   	return 0;
 }
 

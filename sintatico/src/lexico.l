@@ -53,11 +53,11 @@ ESPACO          [ \t\v\f\r]
 "NIL"         { printf("<CONSTANTE_NIL>"); coluna += yyleng; return CONSTANTE_NIL;}
 
     /* Operador ambiguo */
-"!"             { printf("<TOP_OR_NOT>"); coluna += yyleng; return TOP_OR_NOT;}
+"!"             { printf("<TAIL_OR_NOT>"); coluna += yyleng; return TAIL_OR_NOT;}
 
     /* Novas primitivas */
 "?"             { printf("<HEADER>"); coluna += yyleng; return HEADER;}
-"%"             { printf("<POP>"); coluna += yyleng; return POP;}
+"%"             { printf("<TAIL_POP>"); coluna += yyleng; return TAIL_POP;}
 ">>"            { printf("<MAP>"); coluna += yyleng; return MAP;}
 "<<"            { printf("<FILTER>"); coluna += yyleng; return FILTER;}
 ":"             { printf("<CONSTRUTOR>"); coluna += yyleng; return CONSTRUTOR;}
@@ -120,8 +120,8 @@ ESPACO          [ \t\v\f\r]
                 }
 
     /* Regras */
-{INTEGER}           { printf("<INTEGER, %s>", yytext); coluna += yyleng; return INTEGER;}
-{FLOAT}           { printf("<FLOAT, %s>", yytext); coluna += yyleng; return FLOAT;}
+{INTEGER}           { printf("<INTEGER_CONST, %s>", yytext); coluna += yyleng; return INTEGER_CONST;}
+{FLOAT}           { printf("<FLOAT_CONST, %s>", yytext); coluna += yyleng; return FLOAT_CONST;}
 {STRING_LITERAL}    { printf("<STRING_LITERAL, %s>", yytext); coluna += yyleng; return STRING_LITERAL;}
 
     /* Outras regras */

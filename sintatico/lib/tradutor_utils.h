@@ -25,8 +25,8 @@ typedef struct t_node {
     int linha;
     int coluna;
     // TokenType tipo;
-    t_node *primeiro_filho;
-    t_node *proximo_filho;
+    struct t_node *primeiro_filho;
+    struct t_node *proximo_filho;
 }t_node;
 
 t_node *novo_node(char *nome, int linha, int coluna);

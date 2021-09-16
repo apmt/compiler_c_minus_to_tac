@@ -98,8 +98,8 @@ programa:
 lista_de_declaracoes: 
 	  lista_de_declaracoes declaracao {
 		$$ = novo_node("lista_de_declaracoes", -1, -1);
-		coloca_node_filho($$, $1);
-		coloca_node_filho($$, $2);
+		// coloca_node_filho($$, $1);
+		// coloca_node_filho($$, $2);
 	}
 	| /* epsilon */ {
 		$$ = (t_node*)0;
@@ -251,6 +251,9 @@ exp_list:
 	| exp_list FILTER exp_list
 	| exp_list MAP exp_list
 	| exp_aritmetica
+	| /* epsilon */ {
+		$$ = (t_node*)0;
+	}
 ;
 
 exp_aritmetica:

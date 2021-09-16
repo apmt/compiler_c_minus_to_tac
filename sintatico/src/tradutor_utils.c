@@ -83,10 +83,9 @@ t_node *novo_node(char *nome, int linha, int coluna) {
 
 t_node *ast = (t_node *)0;
 
-void coloca_node_filho(t_node *node_pai_ptr, t_node *node_filho_ptr) {
-  t_node *aux;
-  for (aux = node_pai_ptr->primeiro_filho; aux != (t_simbolo *) 0; aux = (t_simbolo *)aux->proximo_filho) {
-    // continue;
-  }
-
-}
+// void coloca_node_filho(t_node *node_pai_ptr, t_node *node_filho_ptr) {
+//   t_node *aux;
+//   for (aux = node_pai_ptr->primeiro_filho; aux != (t_simbolo *) 0; aux = (t_simbolo *)aux->proximo_filho) {
+//     // continue;
+//   }
+// }

@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include "tradutor_utils.h"
 
-#define RED "\e[0;31m"
-#define GRN "\e[0;32m"
-#define reset "\e[0m"
+#define RED "\033[0;31m"
+#define GRN "\033[0;32m"
+#define reset "\033[0m"
 
 extern int yylex(void);
 extern int yylex_destroy(void);
@@ -29,7 +29,6 @@ extern int coluna;
 
 %union
 {
-	char *val;
 	struct t_token* token;
 	struct t_node* node;
 };
@@ -111,6 +110,7 @@ declaracao_de_variavel:
 
 lista_de_IDs:
 	  lista_de_IDs VIRGULA ID {
+		  incrementa_tabela($3->token_nome);
 		  // Código C $$ lista_de_IDs
 		  // $1 lista_de_IDs
 		  // $2 VIRGULA
@@ -119,6 +119,7 @@ lista_de_IDs:
 	  }
 	| ID 
 	{
+		incrementa_tabela($1->token_nome);
 		  // Código C $$ lista_de_IDs
 		  // $1 lista_de_IDs
 		  // $2 VIRGULA
@@ -128,7 +129,9 @@ lista_de_IDs:
 ;
 
 declaracao_de_funcao:
-	  tipo_de_variavel ID ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao
+	  tipo_de_variavel ID ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
+		  incrementa_tabela($2->token_nome);
+	  }
 ;
 
 definicao_de_funcao:
@@ -146,7 +149,9 @@ lista_de_parametros:
 ;
 
 parametro:
-	  tipo_de_variavel ID
+	  tipo_de_variavel ID {
+		  incrementa_tabela($2->token_nome);
+	  }
 ;
 
 comando:
@@ -243,23 +248,31 @@ fator:
 	| TAIL_OR_NOT fator
 	| TAIL_POP fator
 	| HEADER fator
-	| ID
+	| ID {
+		verifica_contexto($1->token_nome);
+	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES
 ;
 
 comando_de_atribuicao:
-    ID ATRIB expressao PONTO_VIRGULA
+    ID ATRIB expressao PONTO_VIRGULA {
+		verifica_contexto($1->token_nome);
+	}
 ;
 
 chamada_de_funcao:
-	  ID ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
+	  ID ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA {
+		  verifica_contexto($1->token_nome);
+	  }
 	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
 	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
 	|  WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
 ;
 
 exp_funcao:
-  		ID ABRE_PARENTESES expressao FECHA_PARENTESES 
+	  ID ABRE_PARENTESES expressao FECHA_PARENTESES {
+			  verifica_contexto($1->token_nome);
+		}
 	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES 
 	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES 
 	|  WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES 
@@ -300,9 +313,12 @@ int yyerror (const char* s) {
   	return 0;
 }
 
-int main(int argc, char **argv)
+int main()
 {
-  yyparse();
-  yylex_destroy();
-  return 0;
+	yyparse();
+	yylex_destroy();
+
+	mostra_tabela_simbolos();
+	destroi_tabela_simbolos();
+	return 0;
 }

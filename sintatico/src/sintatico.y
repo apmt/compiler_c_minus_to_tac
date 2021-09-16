@@ -29,16 +29,32 @@ extern int coluna;
 
 %union
 {
-	struct t_token* token;
 	struct t_node* node;
 };
 
 %type <node> programa lista_de_declaracoes declaracao declaracao_de_variavel
-%type <node> lista_de_IDs tipo_de_variavel
+%type <node> lista_de_IDs declaracao_de_funcao definicao_de_funcao parametros
+%type <node> lista_de_parametros parametro comando comandos bloco_de_comando
+%type <node> comando_unico comando_condicional comando_iterativo comando_de_expressao
+%type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao
+%type <node> chamada_de_funcao exp_funcao chamada_de_retorno tipo_de_variavel constante
 
-%type <token> ID
-%type <token> INT FLOAT LIST
-%type <token> VIRGULA PONTO_VIRGULA
+%type <node> ID
+%type <node> INT FLOAT LIST
+%type <node> CONSTANTE_NIL
+%type <node> TAIL_OR_NOT
+%type <node> HEADER TAIL_POP MAP FILTER CONSTRUTOR
+%type <node> READ WRITE WRITELN
+%type <node> MAIN RETURN IF ELSE FOR
+%type <node> AND OR
+%type <node> LT LE EQ GT GE NE
+%type <node> SOMA SUB MULT DIV
+%type <node> VIRGULA PONTO_VIRGULA
+%type <node> ASPA_SIMPLES ATRIB
+%type <node> ABRE_PARENTESES FECHA_PARENTESES ABRE_CHAVES FECHA_CHAVES
+
+%type <node> FLOAT_CONST INTEGER_CONST STRING_LITERAL
+%type <node> STRING
 
 %token ID
 %token INT FLOAT LIST
@@ -74,16 +90,19 @@ extern int coluna;
 
 programa:
 	lista_de_declaracoes {
-		// $$ = $1;
-	}
+		ast = $$;
+		$$ = $1;
+}	
 ;
 
 lista_de_declaracoes: 
 	  lista_de_declaracoes declaracao {
-		// $$ = create_node($1, $2);
-		}
+		$$ = novo_node("lista_de_declaracoes", -1, -1);
+		coloca_node_filho($$, $1);
+		coloca_node_filho($$, $2);
+	}
 	| /* epsilon */ {
-		$$ = NULL;
+		$$ = (t_node*)0;
 	}
 ;
 
@@ -110,7 +129,7 @@ declaracao_de_variavel:
 
 lista_de_IDs:
 	  lista_de_IDs VIRGULA ID {
-		  incrementa_tabela($3->token_nome);
+		  incrementa_tabela($3->nome);
 		  // Código C $$ lista_de_IDs
 		  // $1 lista_de_IDs
 		  // $2 VIRGULA
@@ -119,7 +138,7 @@ lista_de_IDs:
 	  }
 	| ID 
 	{
-		incrementa_tabela($1->token_nome);
+		incrementa_tabela($1->nome);
 		  // Código C $$ lista_de_IDs
 		  // $1 lista_de_IDs
 		  // $2 VIRGULA
@@ -130,7 +149,7 @@ lista_de_IDs:
 
 declaracao_de_funcao:
 	  tipo_de_variavel ID ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
-		  incrementa_tabela($2->token_nome);
+		  incrementa_tabela($2->nome);
 	  }
 ;
 
@@ -140,7 +159,9 @@ definicao_de_funcao:
 
 parametros:
 	  lista_de_parametros
-	| /* epsilon */
+	| /* epsilon */ {
+		$$ = (t_node*)0;
+	}
 ;
 
 lista_de_parametros:
@@ -150,7 +171,7 @@ lista_de_parametros:
 
 parametro:
 	  tipo_de_variavel ID {
-		  incrementa_tabela($2->token_nome);
+		  incrementa_tabela($2->nome);
 	  }
 ;
 
@@ -161,7 +182,9 @@ comando:
 
 comandos:
 	  comandos comando
-    | /* epsilon */
+    | /* epsilon */ {
+		$$ = (t_node*)0;
+	}
 ;
 
 bloco_de_comando:
@@ -224,7 +247,7 @@ exp:
 ;
 
 exp_list:
-	| exp_list CONSTRUTOR exp_list
+	  exp_list CONSTRUTOR exp_list
 	| exp_list FILTER exp_list
 	| exp_list MAP exp_list
 	| exp_aritmetica
@@ -249,20 +272,20 @@ fator:
 	| TAIL_POP fator
 	| HEADER fator
 	| ID {
-		verifica_contexto($1->token_nome);
+		verifica_contexto($1->nome);
 	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES
 ;
 
 comando_de_atribuicao:
     ID ATRIB expressao PONTO_VIRGULA {
-		verifica_contexto($1->token_nome);
+		verifica_contexto($1->nome);
 	}
 ;
 
 chamada_de_funcao:
 	  ID ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA {
-		  verifica_contexto($1->token_nome);
+		  verifica_contexto($1->nome);
 	  }
 	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
 	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
@@ -271,7 +294,7 @@ chamada_de_funcao:
 
 exp_funcao:
 	  ID ABRE_PARENTESES expressao FECHA_PARENTESES {
-			  verifica_contexto($1->token_nome);
+			  verifica_contexto($1->nome);
 		}
 	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES 
 	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES 

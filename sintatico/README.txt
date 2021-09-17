@@ -12,9 +12,9 @@ Executar testes (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
     $ make clean
 
 Visualize a AST:
-    1. Pegue o conteúdo do arquivo "tree_output_file.txt"
-    2. Remova todas as ocorrências de underscore "_"
-    3. Use o texto resultante como entrada para a seguinte ferramenta: https://ironcreek.net/syntaxtree/
+    1. Execute o teste escolhido;
+    2. Pegue o conteúdo do arquivo "tree_output_file.txt"
+    3. Use o texto desse arquivo como entrada para a seguinte ferramenta: https://ironcreek.net/syntaxtree/
 
 Troubleshoot:
     Precisa atualizar o bison para a versão 3.7?

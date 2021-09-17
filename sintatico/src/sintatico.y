@@ -37,7 +37,7 @@ extern int coluna;
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
 %type <node> comando_unico comando_condicional comando_iterativo expressao_for
 %type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao
-%type <node> exp_funcao chamada_de_retorno tipo_de_variavel constante IFX
+%type <node> exp_funcao chamada_de_retorno tipo_de_variavel constante id
 
 %type <node> ID
 %type <node> INT FLOAT LIST
@@ -149,12 +149,12 @@ lista_de_IDs:
 ;
 
 declaracao_de_funcao:
-	  tipo_de_variavel ID ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
+	  tipo_de_variavel id ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
 		incrementa_tabela($2->nome);
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
 		coloca_node_filho($$, $6);
 		coloca_node_filho($$, $4);
-		coloca_node_filho($$, novo_node("ID", yylineno, coluna));
+		coloca_node_filho($$, $2);
 		coloca_node_filho($$, $1);
 	  }
 ;
@@ -162,6 +162,14 @@ declaracao_de_funcao:
 definicao_de_funcao:
 	bloco_de_comando {
 		$$ = $1;
+		// $$ = novo_node("definicao_de_funcao", -1, -1);
+		// coloca_node_filho($$, $1);
+	}
+;
+
+id:
+	ID {
+		$$ = novo_node(nome_id_atual, yylineno, coluna);
 		// $$ = novo_node("definicao_de_funcao", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
@@ -231,9 +239,9 @@ comandos:
 
 bloco_de_comando:
 	  ABRE_CHAVES comandos FECHA_CHAVES {
-		$$ = $2;
-		// $$ = novo_node("bloco_de_comando", -1, -1);
-		// coloca_node_filho($$, $2);
+		// $$ = $2;
+		$$ = novo_node("BLOCO", yylineno, coluna);
+		coloca_node_filho($$, $2);
 	}
 ;
 
@@ -277,7 +285,7 @@ comando_condicional:
 		coloca_node_filho($$, $3);
 	}
 	| IF ABRE_PARENTESES expressao FECHA_PARENTESES comando ELSE comando {
-		$$ = novo_node("IF-ELSE", yylineno, coluna);
+		$$ = novo_node("IF_ELSE", yylineno, coluna);
 		coloca_node_filho($$, $7);
 		coloca_node_filho($$, $5);
 		coloca_node_filho($$, $3);
@@ -447,7 +455,7 @@ fator:
 		coloca_node_filho($$, $2);
 	}
 	| TAIL_OR_NOT fator {
-		$$ = novo_node("TAIL_OR_NOT", yylineno, coluna);
+		$$ = novo_node("TAIL_NOT", yylineno, coluna);
 		coloca_node_filho($$, $2);
 	}
 	| TAIL_POP fator {
@@ -561,8 +569,10 @@ int main()
 
 	printf("\n");
 	tree_output_file = fopen("tree_output_file.txt","w");
+    fprintf(tree_output_file,"[PROGRAMA");
 	imprime_ast(ast, 0);
 	destroi_arvore(ast);
+    fprintf(tree_output_file,"]");
 	fclose(tree_output_file);
 
 	return 0;

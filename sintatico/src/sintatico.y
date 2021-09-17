@@ -33,11 +33,11 @@ extern int coluna;
 };
 
 %type <node> programa lista_de_declaracoes declaracao declaracao_de_variavel
-%type <node> lista_de_IDs declaracao_de_funcao definicao_de_funcao parametros
+%type <node> declaracao_de_funcao definicao_de_funcao parametros
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
 %type <node> comando_unico comando_condicional comando_iterativo expressao_for
 %type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao
-%type <node> exp_funcao chamada_de_retorno tipo_de_variavel constante id
+%type <node> exp_funcao chamada_de_retorno tipo_de_variavel constante tipo_de_variavel_id id
 
 %type <node> ID
 %type <node> INT FLOAT LIST
@@ -126,50 +126,39 @@ declaracao:
 ;
 
 declaracao_de_variavel:
-	tipo_de_variavel lista_de_IDs PONTO_VIRGULA {
+	tipo_de_variavel_id PONTO_VIRGULA {
 		$$ = novo_node("declaracao_de_variavel", -1, -1);
-		coloca_node_filho($$, $2);
 		coloca_node_filho($$, $1);
 	}
 	  
 ;
 
-lista_de_IDs:
-	  lista_de_IDs VIRGULA ID {
-		incrementa_tabela($3->nome);
-		$$ = novo_node("lista_de_IDs", -1, -1);
-		coloca_node_filho($$, novo_node("ID", yylineno, coluna));
-		coloca_node_filho($$, $1);
-	  }
-	| ID 
-	{
-		incrementa_tabela($1->nome);
-		$$ = novo_node("ID", yylineno, coluna);
-	}
-;
-
 declaracao_de_funcao:
-	  tipo_de_variavel id ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
-		incrementa_tabela($2->nome);
+	  tipo_de_variavel_id ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
-		coloca_node_filho($$, $6);
-		coloca_node_filho($$, $4);
-		coloca_node_filho($$, $2);
+		coloca_node_filho($$, $5);
+		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
 	  }
 ;
 
-definicao_de_funcao:
-	bloco_de_comando {
-		$$ = $1;
-		// $$ = novo_node("definicao_de_funcao", -1, -1);
-		// coloca_node_filho($$, $1);
+tipo_de_variavel_id:
+	tipo_de_variavel id {
+		$$ = novo_node(nome_tipo_atual, yylineno, coluna);
+		coloca_node_filho($$, $2);
 	}
 ;
 
 id:
 	ID {
+		incrementa_tabela($1->nome);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
+	}
+;
+
+definicao_de_funcao:
+	bloco_de_comando {
+		$$ = $1;
 		// $$ = novo_node("definicao_de_funcao", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
@@ -201,10 +190,8 @@ lista_de_parametros:
 ;
 
 parametro:
-	  tipo_de_variavel ID {
-		incrementa_tabela($2->nome);
+	  tipo_de_variavel_id {
 		$$ = novo_node("parametro", -1, -1);
-		coloca_node_filho($$, novo_node("ID", yylineno, coluna));
 		coloca_node_filho($$, $1);
 	  }
 ;
@@ -303,10 +290,10 @@ comando_iterativo:
 ;
 
 expressao_for:
-	ID ATRIB expressao {
+	id ATRIB expressao {
 		$$ = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho($$, $3);
-		coloca_node_filho($$, novo_node("ID", yylineno, coluna));
+		coloca_node_filho($$, $1);
 	}
 	| expressao {
 		$$ = $1;
@@ -468,7 +455,7 @@ fator:
 	}
 	| ID {
 		verifica_contexto($1->nome);
-		$$ = novo_node("ID", yylineno, coluna);
+		$$ = novo_node(nome_id_atual, yylineno, coluna);
 	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES {
 		// $$ = $2;
@@ -479,20 +466,20 @@ fator:
 ;
 
 comando_de_atribuicao:
-    ID ATRIB expressao PONTO_VIRGULA {
+    id ATRIB expressao PONTO_VIRGULA {
 		verifica_contexto($1->nome);
 		$$ = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho($$, $3);
-		coloca_node_filho($$, novo_node("ID", yylineno, coluna));
+		coloca_node_filho($$, $1);
 	}
 ;
 
 exp_funcao:
-	  ID ABRE_PARENTESES expressao FECHA_PARENTESES {
+	  id ABRE_PARENTESES expressao FECHA_PARENTESES {
 		verifica_contexto($1->nome);
 		$$ = novo_node("exp_funcao", -1, -1);
 		coloca_node_filho($$, $3);
-		coloca_node_filho($$, novo_node("ID", yylineno, coluna));
+		coloca_node_filho($$, $1);
 	}
 	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES {
 		$$ = novo_node("READ", yylineno, coluna);
@@ -517,17 +504,29 @@ chamada_de_retorno:
 
 tipo_de_variavel:
 	  INT {
+		strcpy(nome_tipo_atual, "INT");
 		$$ = novo_node("INT", yylineno, coluna);
 	  }
 	| FLOAT {
+		strcpy(nome_tipo_atual, "FLOAT");
 		$$ = novo_node("FLOAT", yylineno, coluna);
 	  }
-	| INT LIST {
-		$$ = novo_node("INT LIST", yylineno, coluna);
+	| int_list {
+		strcpy(nome_tipo_atual, "INT_LIST");
+		$$ = novo_node("INT_LIST", yylineno, coluna);
 	  }
-	| FLOAT LIST {
-		$$ = novo_node("FLOAT LIST", yylineno, coluna);
+	| float_list {
+		strcpy(nome_tipo_atual, "FLOAT_LIST");
+		$$ = novo_node("FLOAT_LIST", yylineno, coluna);
 	}
+;
+
+int_list:
+	INT LIST
+;
+
+float_list:
+	FLOAT LIST
 ;
 
 constante:

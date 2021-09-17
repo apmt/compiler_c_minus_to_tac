@@ -37,5 +37,6 @@ void destroi_arvore(t_node *node_raiz_ptr);
 extern t_node *ast;
 
 extern char nome_id_atual[31];
+extern char nome_tipo_atual[31];
 
 extern FILE *tree_output_file;

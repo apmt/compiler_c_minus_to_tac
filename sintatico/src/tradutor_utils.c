@@ -99,14 +99,13 @@ void imprime_ast(t_node *node_raiz_ptr, int profundidade) {
     return;
   }
 
-  int i = profundidade;
-  while(i--) {
-    printf(" -");
-  }
-
   if(node_raiz_ptr->linha != -1) {
+    int i = profundidade;
+    while(i--) {
+      printf(" -");
+    }
     printf(" %s\n", node_raiz_ptr->nome);
-    fprintf(tree_output_file,"[%s", node_raiz_ptr->nome);
+    fprintf(tree_output_file,"[\"%s\"", node_raiz_ptr->nome);
   }
 
   t_node *aux;
@@ -148,4 +147,6 @@ void destroi_arvore(t_node *node_raiz_ptr) {
 }
 
 char nome_id_atual[31];
+char nome_tipo_atual[31];
+
 FILE *tree_output_file;

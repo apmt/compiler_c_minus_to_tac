@@ -15,7 +15,7 @@ int main()
    my_other_list >> my_list;
 
    for (i = 0; i < 10; i = i + 1) {
-    x = 2 + i;
+    x = 2 + i / 3 * 4 - -1 + + + 9;
     my_other_list = x : my_other_list;
 	}
 

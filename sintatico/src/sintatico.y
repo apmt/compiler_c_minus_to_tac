@@ -104,8 +104,8 @@ lista_de_declaracoes:
 		coloca_node_filho($$, $1);
 	}
 	| /* epsilon */ {
-		// $$ = (t_node*)0;
-		$$ = novo_node("parametros", -1, -1);
+		$$ = (t_node*)0;
+		// $$ = novo_node("lista_de_declaracoes", -1, -1);
 	}
 ;
 
@@ -151,7 +151,7 @@ tipo_de_variavel_id:
 
 id:
 	ID {
-		incrementa_tabela($1->nome);
+		incrementa_tabela(nome_id_atual);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
 	}
 ;
@@ -171,8 +171,8 @@ parametros:
 		// coloca_node_filho($$, $1);
 	}
 	| /* epsilon */ {
-		// $$ = (t_node*)0;
-		$$ = novo_node("parametros", -1, -1);
+		$$ = (t_node*)0;
+		// $$ = novo_node("parametros", -1, -1);
 	}
 ;
 
@@ -219,8 +219,8 @@ comandos:
 		coloca_node_filho($$, $1);
 	}
     | /* epsilon */ {
-		// $$ = (t_node*)0;
-		$$ = novo_node("comandos", -1, -1);
+		$$ = (t_node*)0;
+		// $$ = novo_node("comandos", -1, -1);
 	}
 ;
 
@@ -314,8 +314,8 @@ expressao:
 		// coloca_node_filho($$, $1);
 	}
 	| /* epsilon */ {
-		// $$ = (t_node*)0;
-		$$ = novo_node("expressao", -1, -1);
+		$$ = (t_node*)0;
+		// $$ = novo_node("expressao", -1, -1);
 	}
 ;
 
@@ -454,7 +454,7 @@ fator:
 		coloca_node_filho($$, $2);
 	}
 	| ID {
-		verifica_contexto($1->nome);
+		verifica_contexto(nome_id_atual);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
 	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES {
@@ -505,19 +505,15 @@ chamada_de_retorno:
 tipo_de_variavel:
 	  INT {
 		strcpy(nome_tipo_atual, "INT");
-		$$ = novo_node("INT", yylineno, coluna);
 	  }
 	| FLOAT {
 		strcpy(nome_tipo_atual, "FLOAT");
-		$$ = novo_node("FLOAT", yylineno, coluna);
 	  }
 	| int_list {
 		strcpy(nome_tipo_atual, "INT_LIST");
-		$$ = novo_node("INT_LIST", yylineno, coluna);
 	  }
 	| float_list {
 		strcpy(nome_tipo_atual, "FLOAT_LIST");
-		$$ = novo_node("FLOAT_LIST", yylineno, coluna);
 	}
 ;
 

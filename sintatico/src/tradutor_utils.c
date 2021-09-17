@@ -11,12 +11,13 @@ t_simbolo *coloca_simbolo(char *nome) {
     aux = (t_simbolo *)malloc(sizeof(t_simbolo));
     aux->nome = (char*)malloc(strlen(nome)+1);
     strcpy(aux->nome, nome);
+    // aux->nome  = strdup(nome);
     aux->proximo = (t_simbolo*)tabela_de_simbolos;
     tabela_de_simbolos = aux;
     return aux;
 }
 
-t_simbolo * pega_simbolo(char *nome)
+t_simbolo *pega_simbolo(char *nome)
 {
   t_simbolo *aux;
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
@@ -73,8 +74,9 @@ void destroi_tabela_simbolos() {
 
 t_node *novo_node(char *nome, int linha, int coluna) {
     t_node *node  = (t_node *)malloc(sizeof(t_node));
-    node->nome  = strdup(nome);
-    node->linha   = linha;
+    node->nome = (char*)malloc(strlen(nome)+1);
+    strcpy(node->nome, nome);
+    node->linha  = linha;
     node->coluna = coluna;
     node->primeiro_filho = (t_node *)0;
     node->proximo_irmao = (t_node *)0;
@@ -84,7 +86,10 @@ t_node *novo_node(char *nome, int linha, int coluna) {
 t_node *ast = (t_node *)0;
 
 void coloca_node_filho(t_node *node_pai_ptr, t_node *node_filho_ptr) {
-  if(node_pai_ptr->primeiro_filho == NULL) {
+  if(node_filho_ptr == (t_node*)0) {
+    return;
+  }
+  if(node_pai_ptr->primeiro_filho == (t_node*)0) {
     node_pai_ptr->primeiro_filho = node_filho_ptr;
   }
   else {
@@ -137,8 +142,9 @@ void destroi_arvore(t_node *node_raiz_ptr) {
   //   aux = (t_node*)1;
   // }
 
-  t_node *aux;
-  for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *) 0; aux = aux->proximo_irmao){
+  t_node *aux, *proximo;
+  for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *)0; aux = proximo){
+    proximo = aux->proximo_irmao;
     destroi_arvore(aux);
   }
 

@@ -795,403 +795,363 @@ YY_RULE_SETUP
 #line 38 "src/lexico.l"
 { 
     printf("<INT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return INT;
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 43 "src/lexico.l"
+#line 42 "src/lexico.l"
 {
     printf("<FLOAT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FLOAT;
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 48 "src/lexico.l"
+#line 46 "src/lexico.l"
 {
     printf("<LIST>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return LIST;
 }
 	YY_BREAK
 /* Nova constante */
 case 4:
 YY_RULE_SETUP
-#line 55 "src/lexico.l"
+#line 52 "src/lexico.l"
 {
     printf("<CONSTANTE_NIL>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return CONSTANTE_NIL;
 } 
 	YY_BREAK
 /* Operador ambiguo */
 case 5:
 YY_RULE_SETUP
-#line 62 "src/lexico.l"
+#line 58 "src/lexico.l"
 {
     printf("<TAIL_OR_NOT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return TAIL_OR_NOT;
 }
 	YY_BREAK
 /* Novas primitivas */
 case 6:
 YY_RULE_SETUP
-#line 69 "src/lexico.l"
+#line 64 "src/lexico.l"
 {
     printf("<HEADER>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return HEADER;
 }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 74 "src/lexico.l"
+#line 68 "src/lexico.l"
 {
     printf("<TAIL_POP>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return TAIL_POP;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 79 "src/lexico.l"
+#line 72 "src/lexico.l"
 {
     printf("<MAP>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return MAP;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 84 "src/lexico.l"
+#line 76 "src/lexico.l"
 {
     printf("<FILTER>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FILTER;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 89 "src/lexico.l"
+#line 80 "src/lexico.l"
 {
     printf("<CONSTRUTOR>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return CONSTRUTOR;
 }
 	YY_BREAK
 /* Entrada e saida */
 case 11:
 YY_RULE_SETUP
-#line 96 "src/lexico.l"
+#line 86 "src/lexico.l"
 {
     printf("<READ>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return READ;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 101 "src/lexico.l"
+#line 90 "src/lexico.l"
 {
     printf("<WRITE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return WRITE;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 106 "src/lexico.l"
+#line 94 "src/lexico.l"
 {
     printf("<WRITELN>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return WRITELN;
 }
 	YY_BREAK
 /* Controle de fluxo */
 case 14:
 YY_RULE_SETUP
-#line 113 "src/lexico.l"
+#line 100 "src/lexico.l"
 {
     printf("<RETURN>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return RETURN;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 118 "src/lexico.l"
+#line 104 "src/lexico.l"
 {
     printf("<IF>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return IF;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 123 "src/lexico.l"
+#line 108 "src/lexico.l"
 {
     printf("<ELSE>"); coluna+= yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ELSE;
 }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 128 "src/lexico.l"
+#line 112 "src/lexico.l"
 {
     printf("<FOR>"); coluna+= yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FOR;
 }
 	YY_BREAK
 /* Operadores logicos */
 case 18:
 YY_RULE_SETUP
-#line 135 "src/lexico.l"
+#line 118 "src/lexico.l"
 {
     printf("<AND>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return AND;
 }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 140 "src/lexico.l"
+#line 122 "src/lexico.l"
 {
     printf("<OR>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return OR;
 }
 	YY_BREAK
 /* Operadores relacionais */
 case 20:
 YY_RULE_SETUP
-#line 147 "src/lexico.l"
+#line 128 "src/lexico.l"
 {
     printf("<LT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return LT;
 }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 152 "src/lexico.l"
+#line 132 "src/lexico.l"
 {
     printf("<LE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return LE;
 }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 157 "src/lexico.l"
+#line 136 "src/lexico.l"
 {
     printf("<EQ>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return EQ;
 }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 162 "src/lexico.l"
+#line 140 "src/lexico.l"
 {
     printf("<GT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return GT;
 }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 167 "src/lexico.l"
+#line 144 "src/lexico.l"
 {
     printf("<GE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return GE;
 }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 172 "src/lexico.l"
+#line 148 "src/lexico.l"
 {
     printf("<NE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return NE;
 }
 	YY_BREAK
 /* Operadores aritmeticos */
 case 26:
 YY_RULE_SETUP
-#line 179 "src/lexico.l"
+#line 154 "src/lexico.l"
 {
     printf("<SOMA>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return SOMA;
 }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 184 "src/lexico.l"
+#line 158 "src/lexico.l"
 {
     printf("<SUB>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return SUB;
 }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 189 "src/lexico.l"
+#line 162 "src/lexico.l"
 {
     printf("<MULT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return MULT;
 }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 194 "src/lexico.l"
+#line 166 "src/lexico.l"
 {
     printf("<DIV>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return DIV;
 }
 	YY_BREAK
 /* Operador de atribuicao */
 case 30:
 YY_RULE_SETUP
-#line 201 "src/lexico.l"
+#line 172 "src/lexico.l"
 {
     printf("<ATRIB>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ATRIB;
 }
 	YY_BREAK
 /* Delimitadores e outros */
 case 31:
 YY_RULE_SETUP
-#line 208 "src/lexico.l"
+#line 178 "src/lexico.l"
 {
     printf("<VIRGULA>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return VIRGULA;
 }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 213 "src/lexico.l"
+#line 182 "src/lexico.l"
 {
     printf("<PONTO_VIRGULA>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return PONTO_VIRGULA;
 }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 218 "src/lexico.l"
+#line 186 "src/lexico.l"
 {
     printf("<ABRE_PARENTESES>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ABRE_PARENTESES;
 }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 223 "src/lexico.l"
+#line 190 "src/lexico.l"
 {
     printf("<FECHA_PARENTESES>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FECHA_PARENTESES;
 }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 228 "src/lexico.l"
+#line 194 "src/lexico.l"
 {
     printf("<ABRE_CHAVES>"); 
     coluna += yyleng;
     // contador_de_escopo++; 
     // indicador_de_escopo = contador_de_escopo;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ABRE_CHAVES;
 }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 236 "src/lexico.l"
+#line 201 "src/lexico.l"
 {
     printf("<FECHA_CHAVES>"); 
     coluna += yyleng; 
     // indicador_de_escopo--; 
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FECHA_CHAVES;
 }
 	YY_BREAK
 /* Regras */
 case 37:
 YY_RULE_SETUP
-#line 245 "src/lexico.l"
+#line 209 "src/lexico.l"
 {
     printf("<INTEGER_CONST, %s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return INTEGER_CONST;
 }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 250 "src/lexico.l"
+#line 213 "src/lexico.l"
 {
     printf("<FLOAT_CONST, %s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FLOAT_CONST;
 }
 	YY_BREAK
 case 39:
 /* rule 39 can match eol */
 YY_RULE_SETUP
-#line 255 "src/lexico.l"
+#line 217 "src/lexico.l"
 {
     printf("<STRING_LITERAL, %s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return STRING_LITERAL;
 }
 	YY_BREAK
 /* Outras regras */
 case 40:
 YY_RULE_SETUP
-#line 262 "src/lexico.l"
+#line 223 "src/lexico.l"
 {
     strcpy(nome_id_atual, yytext);
     printf("<ID,%s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ID;
 }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 269 "src/lexico.l"
+#line 229 "src/lexico.l"
 { /* Separa os tokens */ coluna += yyleng; }
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 270 "src/lexico.l"
+#line 230 "src/lexico.l"
 { yylineno++; printf("\n%d:  ", yylineno); coluna = 1; }
 	YY_BREAK
 /* Reconhecer o resto como erro */
 case 43:
 YY_RULE_SETUP
-#line 273 "src/lexico.l"
+#line 233 "src/lexico.l"
 { printf(RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 276 "src/lexico.l"
+#line 236 "src/lexico.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1195 "src/lex.yy.c"
+#line 1155 "src/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2160,7 +2120,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 276 "src/lexico.l"
+#line 236 "src/lexico.l"
 
 
 

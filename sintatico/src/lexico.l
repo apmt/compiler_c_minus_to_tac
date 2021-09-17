@@ -36,192 +36,158 @@ ESPACO          [ \t\v\f\r]
     /* Tipos */
 "int" { 
     printf("<INT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return INT;
 }
 "float" {
     printf("<FLOAT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FLOAT;
 }
 "list" {
     printf("<LIST>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return LIST;
 }
 
     /* Nova constante */
 "NIL"         {
     printf("<CONSTANTE_NIL>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return CONSTANTE_NIL;
 } 
 
     /* Operador ambiguo */
 "!"             {
     printf("<TAIL_OR_NOT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return TAIL_OR_NOT;
 }
 
     /* Novas primitivas */
 "?"             {
     printf("<HEADER>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return HEADER;
 }
 "%"             {
     printf("<TAIL_POP>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return TAIL_POP;
 }
 ">>"            {
     printf("<MAP>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return MAP;
 }
 "<<"            {
     printf("<FILTER>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FILTER;
 }
 ":"             {
     printf("<CONSTRUTOR>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return CONSTRUTOR;
 }
 
     /* Entrada e saida */
 "read"          {
     printf("<READ>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return READ;
 }
 "write"         {
     printf("<WRITE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return WRITE;
 }
 "writeln"       {
     printf("<WRITELN>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return WRITELN;
 }
 
     /* Controle de fluxo */
 "return"        {
     printf("<RETURN>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return RETURN;
 }
 "if"            {
     printf("<IF>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return IF;
 }
 "else"          {
     printf("<ELSE>"); coluna+= yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ELSE;
 }
 "for"           {
     printf("<FOR>"); coluna+= yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FOR;
 }
 
     /* Operadores logicos */
 "&&"            {
     printf("<AND>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return AND;
 }
 "||"            {
     printf("<OR>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return OR;
 }
 
     /* Operadores relacionais */
 "<"             {
     printf("<LT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return LT;
 }
 "<="            {
     printf("<LE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return LE;
 }
 "=="            {
     printf("<EQ>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return EQ;
 }
 ">"             {
     printf("<GT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return GT;
 }
 ">="            {
     printf("<GE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return GE;
 }
 "!="            {
     printf("<NE>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return NE;
 }
 
     /* Operadores aritmeticos */
 "+"             {
     printf("<SOMA>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return SOMA;
 }
 "-"             {
     printf("<SUB>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return SUB;
 }
 "*"             {
     printf("<MULT>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return MULT;
 }
 "/"             {
     printf("<DIV>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return DIV;
 }
 
     /* Operador de atribuicao */
 "="             {
     printf("<ATRIB>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ATRIB;
 }
 
     /* Delimitadores e outros */
 "," {
     printf("<VIRGULA>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return VIRGULA;
 }
 ";" {
     printf("<PONTO_VIRGULA>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return PONTO_VIRGULA;
 }
 "("             {
     printf("<ABRE_PARENTESES>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ABRE_PARENTESES;
 }
 ")"             {
     printf("<FECHA_PARENTESES>"); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FECHA_PARENTESES;
 }
 "{"             {
@@ -229,31 +195,26 @@ ESPACO          [ \t\v\f\r]
     coluna += yyleng;
     // contador_de_escopo++; 
     // indicador_de_escopo = contador_de_escopo;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ABRE_CHAVES;
 }
 "}"             {
     printf("<FECHA_CHAVES>"); 
     coluna += yyleng; 
     // indicador_de_escopo--; 
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FECHA_CHAVES;
 }
 
     /* Regras */
 {INTEGER}           {
     printf("<INTEGER_CONST, %s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return INTEGER_CONST;
 }
 {FLOAT}           {
     printf("<FLOAT_CONST, %s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return FLOAT_CONST;
 }
 {STRING_LITERAL}    {
     printf("<STRING_LITERAL, %s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return STRING_LITERAL;
 }
 
@@ -261,7 +222,6 @@ ESPACO          [ \t\v\f\r]
 {ID}  {
     strcpy(nome_id_atual, yytext);
     printf("<ID,%s>", yytext); coluna += yyleng;
-    yylval.node = novo_node(yytext, yylineno, coluna);
     return ID;
 }
 

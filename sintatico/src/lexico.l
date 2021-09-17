@@ -265,7 +265,7 @@ ESPACO          [ \t\v\f\r]
 }
 
 {ESPACO}+           { /* Separa os tokens */ coluna += yyleng; }
-"\n"                { printf("\n"); yylineno++; coluna = 1; }
+"\n"                { yylineno++; printf("\n%d:  ", yylineno); coluna = 1; }
 
     /* Reconhecer o resto como erro */
 .                   { printf(RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }

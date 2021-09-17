@@ -35,9 +35,9 @@ extern int coluna;
 %type <node> programa lista_de_declaracoes declaracao declaracao_de_variavel
 %type <node> lista_de_IDs declaracao_de_funcao definicao_de_funcao parametros
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
-%type <node> comando_unico comando_condicional comando_iterativo comando_de_expressao
+%type <node> comando_unico comando_condicional comando_iterativo expressao_for
 %type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao
-%type <node> chamada_de_funcao exp_funcao chamada_de_retorno tipo_de_variavel constante
+%type <node> exp_funcao chamada_de_retorno tipo_de_variavel constante
 
 %type <node> ID
 %type <node> INT FLOAT LIST
@@ -98,7 +98,7 @@ programa:
 lista_de_declaracoes: 
 	  lista_de_declaracoes declaracao {
 		$$ = novo_node("lista_de_declaracoes", -1, -1);
-		// coloca_node_filho($$, $1);
+		coloca_node_filho($$, $1);
 		// coloca_node_filho($$, $2);
 	}
 	| /* epsilon */ {
@@ -114,17 +114,15 @@ declaracao:
 	// 	// $$ = $1
 	}
 	| error {
-		// yyerror/print
-		// erro sintatico
-		// print erro na linha tal
-		// coluna, yylineno
+		yyerrok;
 	}
 ;
 
 declaracao_de_variavel:
 	  tipo_de_variavel lista_de_IDs PONTO_VIRGULA {
+		// $$ = create_node($1, $2);
 	  }
-	// $$ = create_node($1, $2);
+	  
 ;
 
 lista_de_IDs:
@@ -178,6 +176,9 @@ parametro:
 comando:
 	  bloco_de_comando
 	| comando_unico
+	| error {
+		yyerrok;
+	}
 ;
 
 comandos:
@@ -195,9 +196,9 @@ comando_unico:
 	  comando_condicional
 	| comando_iterativo
 	| declaracao_de_variavel
-	| chamada_de_funcao
 	| chamada_de_retorno
 	| comando_de_atribuicao
+	| expressao PONTO_VIRGULA
 ;
 
 comando_condicional:
@@ -208,26 +209,16 @@ comando_condicional:
 	| IF ABRE_PARENTESES expressao FECHA_PARENTESES comando ELSE comando {
 		// $$ = create_node($3, $5, $7);
 		}
-	| error {
-		// print erro na linha tal
-		// coluna, yylineno
-	}
 ;
 
 comando_iterativo:
-	  FOR ABRE_PARENTESES comando_de_expressao comando_de_expressao expressao FECHA_PARENTESES comando
+	  FOR ABRE_PARENTESES expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
 ;
 
-comando_de_expressao:
-	   expressao PONTO_VIRGULA
-	// | PONTO_VIRGULA
-	| error {
-		// errado: expected ;
-		// print erro na linha tal
-		// coluna, yylineno
-	}
+expressao_for:
+	  ID ATRIB expressao
+	| expressao
 ;
-
 
 expressao:
 	  expressao VIRGULA exp
@@ -271,6 +262,7 @@ termo:
 fator:
 	  constante
 	| SUB fator
+	| SOMA fator
 	| TAIL_OR_NOT fator
 	| TAIL_POP fator
 	| HEADER fator
@@ -284,15 +276,6 @@ comando_de_atribuicao:
     ID ATRIB expressao PONTO_VIRGULA {
 		verifica_contexto($1->nome);
 	}
-;
-
-chamada_de_funcao:
-	  ID ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA {
-		  verifica_contexto($1->nome);
-	  }
-	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
-	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
-	|  WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES PONTO_VIRGULA
 ;
 
 exp_funcao:
@@ -341,6 +324,7 @@ int yyerror (const char* s) {
 
 int main()
 {
+	printf("1:  ");
 	yyparse();
 	yylex_destroy();
 

@@ -1,41 +1,40 @@
-int x;
+float list my_list;
+int list my_other_list;
 
-int list concatena (int list a, int list b) {
-    int list b_inverso;
-    int elem;
-    for(; b != NIL;) {
-        elem = % b;
-        b_inverso = elem : b_inverso;
-    }
-    for(; b_inverso != NIL;) {
-        elem = % b_inverso;
-        a = elem : a;
-    }
-    return a;
-}
+int main()
+{
+  int i;
+  int x;
+  my_list = NIL;
+  for (i = 0; i < 10; i = i + 1) {
+		writeln("Write 10 elements to the my_list: ");
+		read(x);
+		my_list = x : my_list;
+	}
 
-int dobra (int a){
-    return 2 * a;
-}
+   my_other_list >> my_list;
 
-int main () {
-    float list x, y, z;
-    float elem;
-    int v_int;
+   for (i = 0; i < 10; i = i + 1) {
+    x = 2 + i;
+    my_other_list = x : my_other_list;
+	}
 
-    read(elem);
-    if(elem == 0) {
-        write("zero\n");
-    } else {
-        write(" not zero\n");
-    }
-    x = elem : x;
+   if(my_list != NIL && my_list != NIL) {
+      writeln("Lists are not empty!");
+   }
+   
+   if (my_list > my_list ) {
+      writeln("My list is bigger");
+   } else if (my_list < my_list ) {
+      writeln("My list is smaller");
+   } else {
+      writeln("Both lists are the same size");
+   }
 
-    read(elem);
-    y = elem : y;
+   my_other_list << my_list;
 
-    z = concatena(x, y);
+   writeln(! my_list);
+   writeln(% my_other_list);
 
-    v_int = 1;
-    write(dobra(v_int));
+   return 0;
 }

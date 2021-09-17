@@ -7,11 +7,11 @@ all: lib/tradutor_utils.h src/tradutor_utils.c src/lexico.l src/sintatico.y
 	${CC} ${CFLAGS} -I lib/ -Wall -o tradutor src/sintatico.tab.c src/lex.yy.c src/tradutor_utils.c -lfl
 
 run:
-	./tradutor < teste.c
+	./tradutor < tests/sintatico/correto_teste_1.c
 
 memcheck:
-	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < teste.c
+	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < 	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" tests/sintatico/correto_teste_1.c
 
 .PHONY: clean
 clean:
-	rm -f lib/sintatico.tab.h src/lex.yy.c src/sintatico.tab.c tradutor logfile.out src/sintatico.output
+	rm -f lib/sintatico.tab.h src/lex.yy.c src/sintatico.tab.c tradutor logfile.out src/sintatico.output tree_output_file.txt

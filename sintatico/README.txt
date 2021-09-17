@@ -11,6 +11,11 @@ Executar testes (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
     Limpar arquivos:
     $ make clean
 
+Visualize a AST:
+    1. Pegue o conteúdo do arquivo "tree_output_file.txt"
+    2. Remova todas as ocorrências de underscore "_"
+    3. Use o texto resultante como entrada para a seguinte ferramenta: https://ironcreek.net/syntaxtree/
+
 Troubleshoot:
     Precisa atualizar o bison para a versão 3.7?
         $ bison --version

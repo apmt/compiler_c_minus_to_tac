@@ -77,15 +77,75 @@ t_node *novo_node(char *nome, int linha, int coluna) {
     node->linha   = linha;
     node->coluna = coluna;
     node->primeiro_filho = (t_node *)0;
-    node->proximo_filho = (t_node *)0;
+    node->proximo_irmao = (t_node *)0;
     return node;
 }
 
 t_node *ast = (t_node *)0;
 
 void coloca_node_filho(t_node *node_pai_ptr, t_node *node_filho_ptr) {
-  // t_node *aux;
-  // for (aux = node_pai_ptr->primeiro_filho; aux != (t_simbolo *) 0; aux = (t_simbolo *)aux->proximo_filho) {
-    // continue;
-  // }
+  if(node_pai_ptr->primeiro_filho == NULL) {
+    node_pai_ptr->primeiro_filho = node_filho_ptr;
+  }
+  else {
+    t_node *aux = node_filho_ptr;
+    aux->proximo_irmao = (t_node*)node_pai_ptr->primeiro_filho;
+    node_pai_ptr->primeiro_filho = aux;
+  }
 }
+
+void imprime_ast(t_node *node_raiz_ptr, int profundidade) {
+  if(node_raiz_ptr == (t_node*)0) {
+    return;
+  }
+
+  int i = profundidade;
+  while(i--) {
+    printf(" -");
+  }
+
+  if(node_raiz_ptr->linha != -1) {
+    printf(" %s\n", node_raiz_ptr->nome);
+    fprintf(tree_output_file,"[%s", node_raiz_ptr->nome);
+  }
+
+  t_node *aux;
+  for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *) 0; aux = aux->proximo_irmao){
+    if(node_raiz_ptr->linha != -1) {
+      imprime_ast(aux, profundidade+1);
+    } else {
+      imprime_ast(aux, profundidade);
+    }
+  }
+
+  if(node_raiz_ptr->linha != -1) {
+    fprintf(tree_output_file,"]");
+  }
+}
+
+
+void destroi_arvore(t_node *node_raiz_ptr) {
+  if(node_raiz_ptr == (t_node*)0) {
+    return;
+  }
+
+  // t_node *aux, *proximo;
+  // for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *) 0; aux = proximo){
+  //   proximo = (t_node *)aux->proximo_irmao;
+  //   destroi_arvore(aux->primeiro_filho);
+  //   free(aux->nome);
+  //   free(aux);
+  //   aux = (t_node*)1;
+  // }
+
+  t_node *aux;
+  for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *) 0; aux = aux->proximo_irmao){
+    destroi_arvore(aux);
+  }
+
+  free(node_raiz_ptr->nome);
+  free(node_raiz_ptr);
+}
+
+char nome_id_atual[31];
+FILE *tree_output_file;

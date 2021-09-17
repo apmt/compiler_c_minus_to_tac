@@ -10,7 +10,7 @@ run:
 	./tradutor < teste.c
 
 memcheck:
-	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < tests/lexico/correto_teste_1.c
+	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < teste.c
 
 .PHONY: clean
 clean:

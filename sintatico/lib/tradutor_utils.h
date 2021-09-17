@@ -26,9 +26,16 @@ typedef struct t_node {
     int coluna;
     // TokenType tipo;
     struct t_node *primeiro_filho;
-    struct t_node *proximo_filho;
+    struct t_node *proximo_irmao;
 }t_node;
 
 t_node *novo_node(char *nome, int linha, int coluna);
+void coloca_node_filho(t_node *node_pai_ptr, t_node *node_filho_ptr);
+void imprime_ast(t_node *node_raiz_ptr, int profundidade);
+void destroi_arvore(t_node *node_raiz_ptr);
 
 extern t_node *ast;
+
+extern char nome_id_atual[31];
+
+extern FILE *tree_output_file;

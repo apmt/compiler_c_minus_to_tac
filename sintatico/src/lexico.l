@@ -259,6 +259,7 @@ ESPACO          [ \t\v\f\r]
 
     /* Outras regras */
 {ID}  {
+    strcpy(nome_id_atual, yytext);
     printf("<ID,%s>", yytext); coluna += yyleng;
     yylval.node = novo_node(yytext, yylineno, coluna);
     return ID;

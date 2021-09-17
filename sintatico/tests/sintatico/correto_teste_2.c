@@ -19,7 +19,9 @@ int dobra (int a){
 }
 
 int main () {
-    float list x, y, z;
+    float list x;
+    float list y;
+    float list z;
     float elem;
     int v_int;
 

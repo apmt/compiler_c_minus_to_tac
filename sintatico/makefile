@@ -8,6 +8,9 @@ all: lib/tradutor_utils.h src/tradutor_utils.c src/lexico.l src/sintatico.y
 
 run:
 	./tradutor < tests/sintatico/correto_teste_1.c
+	./tradutor < tests/sintatico/correto_teste_2.c
+	./tradutor < tests/sintatico/errado_teste_1.c
+	./tradutor < tests/sintatico/errado_teste_2.c
 
 memcheck:
 	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < 	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" tests/sintatico/correto_teste_1.c

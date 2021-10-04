@@ -88,59 +88,59 @@ Grammar
    55      | termo DIV fator
 
    56 fator: constante
-   57      | SUB fator
-   58      | SOMA fator
-   59      | TAIL_OR_NOT fator
-   60      | TAIL_POP fator
-   61      | HEADER fator
-   62      | ID
-   63      | ABRE_PARENTESES exp FECHA_PARENTESES
+   57      | func_call_exp
+   58      | SUB fator
+   59      | SOMA fator
+   60      | TAIL_OR_NOT fator
+   61      | TAIL_POP fator
+   62      | HEADER fator
+   63      | ID
+   64      | ABRE_PARENTESES exp FECHA_PARENTESES
 
-   64 comando_de_atribuicao: id ATRIB expressao PONTO_VIRGULA
+   65 comando_de_atribuicao: id ATRIB expressao PONTO_VIRGULA
 
-   65 exp_funcao: id ABRE_PARENTESES expressao FECHA_PARENTESES
-   66           | READ ABRE_PARENTESES expressao FECHA_PARENTESES
-   67           | WRITE ABRE_PARENTESES expressao FECHA_PARENTESES
-   68           | WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES expressao FECHA_PARENTESES
+   67              | READ ABRE_PARENTESES expressao FECHA_PARENTESES
+   68              | WRITE ABRE_PARENTESES expressao FECHA_PARENTESES
+   69              | WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES
 
-   69 chamada_de_retorno: RETURN expressao PONTO_VIRGULA
+   70 chamada_de_retorno: RETURN expressao PONTO_VIRGULA
 
-   70 tipo_de_variavel: INT
-   71                 | FLOAT
-   72                 | int_list
-   73                 | float_list
+   71 tipo_de_variavel: INT
+   72                 | FLOAT
+   73                 | int_list
+   74                 | float_list
 
-   74 int_list: INT LIST
+   75 int_list: INT LIST
 
-   75 float_list: FLOAT LIST
+   76 float_list: FLOAT LIST
 
-   76 constante: INTEGER_CONST
-   77          | FLOAT_CONST
-   78          | CONSTANTE_NIL
-   79          | STRING_LITERAL
-   80          | exp_funcao
+   77 constante: INTEGER_CONST
+   78          | FLOAT_CONST
+   79          | CONSTANTE_NIL
+   80          | STRING_LITERAL
 
 
 Terminals, with rules where they appear
 
     $end (0) 0
     error (256) 6 19
-    ID <node> (258) 10 62
-    INT <node> (259) 70 74
-    FLOAT <node> (260) 71 75
-    LIST <node> (261) 74 75
-    CONSTANTE_NIL <node> (262) 78
-    TAIL_OR_NOT <node> (263) 59
-    HEADER <node> (264) 61
-    TAIL_POP <node> (265) 60
+    ID <node> (258) 10 63
+    INT <node> (259) 71 75
+    FLOAT <node> (260) 72 76
+    LIST <node> (261) 75 76
+    CONSTANTE_NIL <node> (262) 79
+    TAIL_OR_NOT <node> (263) 60
+    HEADER <node> (264) 62
+    TAIL_POP <node> (265) 61
     MAP <node> (266) 48
     FILTER <node> (267) 47
     CONSTRUTOR <node> (268) 46
-    READ <node> (269) 66
-    WRITE <node> (270) 67
-    WRITELN <node> (271) 68
+    READ <node> (269) 67
+    WRITE <node> (270) 68
+    WRITELN <node> (271) 69
     MAIN <node> (272)
-    RETURN <node> (273) 69
+    RETURN <node> (273) 70
     IF <node> (274) 29 30
     ELSE <node> (275) 30
     FOR <node> (276) 31
@@ -152,21 +152,21 @@ Terminals, with rules where they appear
     GT <node> (282) 37
     GE <node> (283) 42
     NE <node> (284) 40
-    SOMA <node> (285) 51 58
-    SUB <node> (286) 52 57
+    SOMA <node> (285) 51 59
+    SUB <node> (286) 52 58
     MULT <node> (287) 54
     DIV <node> (288) 55
     VIRGULA <node> (289) 14 34
-    PONTO_VIRGULA <node> (290) 7 28 31 64 69
+    PONTO_VIRGULA <node> (290) 7 28 31 65 70
     ASPA_SIMPLES <node> (291)
-    ATRIB <node> (292) 32 64
-    ABRE_PARENTESES <node> (293) 8 29 30 31 63 65 66 67 68
-    FECHA_PARENTESES <node> (294) 8 29 30 31 63 65 66 67 68
+    ATRIB <node> (292) 32 65
+    ABRE_PARENTESES <node> (293) 8 29 30 31 64 66 67 68 69
+    FECHA_PARENTESES <node> (294) 8 29 30 31 64 66 67 68 69
     ABRE_CHAVES <node> (295) 22
     FECHA_CHAVES <node> (296) 22
-    FLOAT_CONST <node> (297) 77
-    INTEGER_CONST <node> (298) 76
-    STRING_LITERAL <node> (299) 79
+    FLOAT_CONST <node> (297) 78
+    INTEGER_CONST <node> (298) 77
+    STRING_LITERAL <node> (299) 80
     STRING <node> (300)
     IFX (301)
 
@@ -195,7 +195,7 @@ Nonterminals, with rules where they appear
         on right: 7 8 16
     id <node> (54)
         on left: 10
-        on right: 9 32 64 65
+        on right: 9 32 65 66
     definicao_de_funcao <node> (55)
         on left: 11
         on right: 8
@@ -231,10 +231,10 @@ Nonterminals, with rules where they appear
         on right: 31
     expressao <node> (66)
         on left: 34 35 36
-        on right: 28 29 30 32 33 34 64 65 66 67 68 69
+        on right: 28 29 30 32 33 34 65 66 67 68 69 70
     exp <node> (67)
         on left: 37 38 39 40 41 42 43 44 45
-        on right: 34 35 37 38 39 40 41 42 43 44 63
+        on right: 34 35 37 38 39 40 41 42 43 44 64
     exp_list <node> (68)
         on left: 46 47 48 49
         on right: 45 46 47 48
@@ -245,28 +245,28 @@ Nonterminals, with rules where they appear
         on left: 53 54 55
         on right: 50 51 52 54 55
     fator <node> (71)
-        on left: 56 57 58 59 60 61 62 63
-        on right: 53 54 55 57 58 59 60 61
+        on left: 56 57 58 59 60 61 62 63 64
+        on right: 53 54 55 58 59 60 61 62
     comando_de_atribuicao <node> (72)
-        on left: 64
+        on left: 65
         on right: 27
-    exp_funcao <node> (73)
-        on left: 65 66 67 68
-        on right: 80
+    func_call_exp <node> (73)
+        on left: 66 67 68 69
+        on right: 57
     chamada_de_retorno <node> (74)
-        on left: 69
+        on left: 70
         on right: 26
     tipo_de_variavel <node> (75)
-        on left: 70 71 72 73
+        on left: 71 72 73 74
         on right: 9
     int_list (76)
-        on left: 74
-        on right: 72
-    float_list (77)
         on left: 75
         on right: 73
+    float_list (77)
+        on left: 76
+        on right: 74
     constante <node> (78)
-        on left: 76 77 78 79 80
+        on left: 77 78 79 80
         on right: 56
 
 
@@ -329,22 +329,22 @@ State 4
 
 State 5
 
-   70 tipo_de_variavel: INT •
-   74 int_list: INT • LIST
+   71 tipo_de_variavel: INT •
+   75 int_list: INT • LIST
 
     LIST  shift, and go to state 14
 
-    ID  reduce using rule 70 (tipo_de_variavel)
+    ID  reduce using rule 71 (tipo_de_variavel)
 
 
 State 6
 
-   71 tipo_de_variavel: FLOAT •
-   75 float_list: FLOAT • LIST
+   72 tipo_de_variavel: FLOAT •
+   76 float_list: FLOAT • LIST
 
     LIST  shift, and go to state 15
 
-    ID  reduce using rule 71 (tipo_de_variavel)
+    ID  reduce using rule 72 (tipo_de_variavel)
 
 
 State 7
@@ -397,30 +397,30 @@ State 11
 
 State 12
 
-   72 tipo_de_variavel: int_list •
-
-    ID  reduce using rule 72 (tipo_de_variavel)
-
-
-State 13
-
-   73 tipo_de_variavel: float_list •
+   73 tipo_de_variavel: int_list •
 
     ID  reduce using rule 73 (tipo_de_variavel)
 
 
+State 13
+
+   74 tipo_de_variavel: float_list •
+
+    ID  reduce using rule 74 (tipo_de_variavel)
+
+
 State 14
 
-   74 int_list: INT LIST •
+   75 int_list: INT LIST •
 
-    ID  reduce using rule 74 (int_list)
+    ID  reduce using rule 75 (int_list)
 
 
 State 15
 
-   75 float_list: FLOAT LIST •
+   76 float_list: FLOAT LIST •
 
-    ID  reduce using rule 75 (float_list)
+    ID  reduce using rule 76 (float_list)
 
 
 State 16
@@ -630,7 +630,7 @@ State 30
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 64
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 66
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -671,55 +671,55 @@ State 31
 State 32
 
    10 id: ID •
-   62 fator: ID •
+   63 fator: ID •
 
-    MAP              reduce using rule 62 (fator)
-    FILTER           reduce using rule 62 (fator)
-    CONSTRUTOR       reduce using rule 62 (fator)
-    AND              reduce using rule 62 (fator)
-    OR               reduce using rule 62 (fator)
-    LT               reduce using rule 62 (fator)
-    LE               reduce using rule 62 (fator)
-    EQ               reduce using rule 62 (fator)
-    GT               reduce using rule 62 (fator)
-    GE               reduce using rule 62 (fator)
-    NE               reduce using rule 62 (fator)
-    SOMA             reduce using rule 62 (fator)
-    SUB              reduce using rule 62 (fator)
-    MULT             reduce using rule 62 (fator)
-    DIV              reduce using rule 62 (fator)
-    VIRGULA          reduce using rule 62 (fator)
-    PONTO_VIRGULA    reduce using rule 62 (fator)
+    MAP              reduce using rule 63 (fator)
+    FILTER           reduce using rule 63 (fator)
+    CONSTRUTOR       reduce using rule 63 (fator)
+    AND              reduce using rule 63 (fator)
+    OR               reduce using rule 63 (fator)
+    LT               reduce using rule 63 (fator)
+    LE               reduce using rule 63 (fator)
+    EQ               reduce using rule 63 (fator)
+    GT               reduce using rule 63 (fator)
+    GE               reduce using rule 63 (fator)
+    NE               reduce using rule 63 (fator)
+    SOMA             reduce using rule 63 (fator)
+    SUB              reduce using rule 63 (fator)
+    MULT             reduce using rule 63 (fator)
+    DIV              reduce using rule 63 (fator)
+    VIRGULA          reduce using rule 63 (fator)
+    PONTO_VIRGULA    reduce using rule 63 (fator)
     ATRIB            reduce using rule 10 (id)
     ABRE_PARENTESES  reduce using rule 10 (id)
 
 
 State 33
 
-   78 constante: CONSTANTE_NIL •
+   79 constante: CONSTANTE_NIL •
 
-    MAP            reduce using rule 78 (constante)
-    FILTER         reduce using rule 78 (constante)
-    CONSTRUTOR     reduce using rule 78 (constante)
-    AND            reduce using rule 78 (constante)
-    OR             reduce using rule 78 (constante)
-    LT             reduce using rule 78 (constante)
-    LE             reduce using rule 78 (constante)
-    EQ             reduce using rule 78 (constante)
-    GT             reduce using rule 78 (constante)
-    GE             reduce using rule 78 (constante)
-    NE             reduce using rule 78 (constante)
-    SOMA           reduce using rule 78 (constante)
-    SUB            reduce using rule 78 (constante)
-    MULT           reduce using rule 78 (constante)
-    DIV            reduce using rule 78 (constante)
-    VIRGULA        reduce using rule 78 (constante)
-    PONTO_VIRGULA  reduce using rule 78 (constante)
+    MAP            reduce using rule 79 (constante)
+    FILTER         reduce using rule 79 (constante)
+    CONSTRUTOR     reduce using rule 79 (constante)
+    AND            reduce using rule 79 (constante)
+    OR             reduce using rule 79 (constante)
+    LT             reduce using rule 79 (constante)
+    LE             reduce using rule 79 (constante)
+    EQ             reduce using rule 79 (constante)
+    GT             reduce using rule 79 (constante)
+    GE             reduce using rule 79 (constante)
+    NE             reduce using rule 79 (constante)
+    SOMA           reduce using rule 79 (constante)
+    SUB            reduce using rule 79 (constante)
+    MULT           reduce using rule 79 (constante)
+    DIV            reduce using rule 79 (constante)
+    VIRGULA        reduce using rule 79 (constante)
+    PONTO_VIRGULA  reduce using rule 79 (constante)
 
 
 State 34
 
-   59 fator: TAIL_OR_NOT • fator
+   60 fator: TAIL_OR_NOT • fator
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -736,15 +736,15 @@ State 34
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 69
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 69
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 35
 
-   61 fator: HEADER • fator
+   62 fator: HEADER • fator
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -761,15 +761,15 @@ State 35
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 70
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 70
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 36
 
-   60 fator: TAIL_POP • fator
+   61 fator: TAIL_POP • fator
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -786,36 +786,36 @@ State 36
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 71
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 71
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 37
 
-   66 exp_funcao: READ • ABRE_PARENTESES expressao FECHA_PARENTESES
+   67 func_call_exp: READ • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 72
 
 
 State 38
 
-   67 exp_funcao: WRITE • ABRE_PARENTESES expressao FECHA_PARENTESES
+   68 func_call_exp: WRITE • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 73
 
 
 State 39
 
-   68 exp_funcao: WRITELN • ABRE_PARENTESES expressao FECHA_PARENTESES
+   69 func_call_exp: WRITELN • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 74
 
 
 State 40
 
-   69 chamada_de_retorno: RETURN • expressao PONTO_VIRGULA
+   70 chamada_de_retorno: RETURN • expressao PONTO_VIRGULA
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -842,7 +842,7 @@ State 40
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -863,7 +863,7 @@ State 42
 
 State 43
 
-   58 fator: SOMA • fator
+   59 fator: SOMA • fator
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -880,15 +880,15 @@ State 43
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 78
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 78
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 44
 
-   57 fator: SUB • fator
+   58 fator: SUB • fator
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -905,15 +905,15 @@ State 44
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 79
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 79
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 45
 
-   63 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
+   64 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -936,7 +936,7 @@ State 45
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -952,7 +952,30 @@ State 46
 
 State 47
 
-   77 constante: FLOAT_CONST •
+   78 constante: FLOAT_CONST •
+
+    MAP            reduce using rule 78 (constante)
+    FILTER         reduce using rule 78 (constante)
+    CONSTRUTOR     reduce using rule 78 (constante)
+    AND            reduce using rule 78 (constante)
+    OR             reduce using rule 78 (constante)
+    LT             reduce using rule 78 (constante)
+    LE             reduce using rule 78 (constante)
+    EQ             reduce using rule 78 (constante)
+    GT             reduce using rule 78 (constante)
+    GE             reduce using rule 78 (constante)
+    NE             reduce using rule 78 (constante)
+    SOMA           reduce using rule 78 (constante)
+    SUB            reduce using rule 78 (constante)
+    MULT           reduce using rule 78 (constante)
+    DIV            reduce using rule 78 (constante)
+    VIRGULA        reduce using rule 78 (constante)
+    PONTO_VIRGULA  reduce using rule 78 (constante)
+
+
+State 48
+
+   77 constante: INTEGER_CONST •
 
     MAP            reduce using rule 77 (constante)
     FILTER         reduce using rule 77 (constante)
@@ -973,50 +996,27 @@ State 47
     PONTO_VIRGULA  reduce using rule 77 (constante)
 
 
-State 48
-
-   76 constante: INTEGER_CONST •
-
-    MAP            reduce using rule 76 (constante)
-    FILTER         reduce using rule 76 (constante)
-    CONSTRUTOR     reduce using rule 76 (constante)
-    AND            reduce using rule 76 (constante)
-    OR             reduce using rule 76 (constante)
-    LT             reduce using rule 76 (constante)
-    LE             reduce using rule 76 (constante)
-    EQ             reduce using rule 76 (constante)
-    GT             reduce using rule 76 (constante)
-    GE             reduce using rule 76 (constante)
-    NE             reduce using rule 76 (constante)
-    SOMA           reduce using rule 76 (constante)
-    SUB            reduce using rule 76 (constante)
-    MULT           reduce using rule 76 (constante)
-    DIV            reduce using rule 76 (constante)
-    VIRGULA        reduce using rule 76 (constante)
-    PONTO_VIRGULA  reduce using rule 76 (constante)
-
-
 State 49
 
-   79 constante: STRING_LITERAL •
+   80 constante: STRING_LITERAL •
 
-    MAP            reduce using rule 79 (constante)
-    FILTER         reduce using rule 79 (constante)
-    CONSTRUTOR     reduce using rule 79 (constante)
-    AND            reduce using rule 79 (constante)
-    OR             reduce using rule 79 (constante)
-    LT             reduce using rule 79 (constante)
-    LE             reduce using rule 79 (constante)
-    EQ             reduce using rule 79 (constante)
-    GT             reduce using rule 79 (constante)
-    GE             reduce using rule 79 (constante)
-    NE             reduce using rule 79 (constante)
-    SOMA           reduce using rule 79 (constante)
-    SUB            reduce using rule 79 (constante)
-    MULT           reduce using rule 79 (constante)
-    DIV            reduce using rule 79 (constante)
-    VIRGULA        reduce using rule 79 (constante)
-    PONTO_VIRGULA  reduce using rule 79 (constante)
+    MAP            reduce using rule 80 (constante)
+    FILTER         reduce using rule 80 (constante)
+    CONSTRUTOR     reduce using rule 80 (constante)
+    AND            reduce using rule 80 (constante)
+    OR             reduce using rule 80 (constante)
+    LT             reduce using rule 80 (constante)
+    LE             reduce using rule 80 (constante)
+    EQ             reduce using rule 80 (constante)
+    GT             reduce using rule 80 (constante)
+    GE             reduce using rule 80 (constante)
+    NE             reduce using rule 80 (constante)
+    SOMA           reduce using rule 80 (constante)
+    SUB            reduce using rule 80 (constante)
+    MULT           reduce using rule 80 (constante)
+    DIV            reduce using rule 80 (constante)
+    VIRGULA        reduce using rule 80 (constante)
+    PONTO_VIRGULA  reduce using rule 80 (constante)
 
 
 State 50
@@ -1058,8 +1058,8 @@ State 51
 
 State 52
 
-   64 comando_de_atribuicao: id • ATRIB expressao PONTO_VIRGULA
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   65 comando_de_atribuicao: id • ATRIB expressao PONTO_VIRGULA
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ATRIB            shift, and go to state 81
     ABRE_PARENTESES  shift, and go to state 82
@@ -1377,25 +1377,25 @@ State 64
 
 State 65
 
-   80 constante: exp_funcao •
+   57 fator: func_call_exp •
 
-    MAP            reduce using rule 80 (constante)
-    FILTER         reduce using rule 80 (constante)
-    CONSTRUTOR     reduce using rule 80 (constante)
-    AND            reduce using rule 80 (constante)
-    OR             reduce using rule 80 (constante)
-    LT             reduce using rule 80 (constante)
-    LE             reduce using rule 80 (constante)
-    EQ             reduce using rule 80 (constante)
-    GT             reduce using rule 80 (constante)
-    GE             reduce using rule 80 (constante)
-    NE             reduce using rule 80 (constante)
-    SOMA           reduce using rule 80 (constante)
-    SUB            reduce using rule 80 (constante)
-    MULT           reduce using rule 80 (constante)
-    DIV            reduce using rule 80 (constante)
-    VIRGULA        reduce using rule 80 (constante)
-    PONTO_VIRGULA  reduce using rule 80 (constante)
+    MAP            reduce using rule 57 (fator)
+    FILTER         reduce using rule 57 (fator)
+    CONSTRUTOR     reduce using rule 57 (fator)
+    AND            reduce using rule 57 (fator)
+    OR             reduce using rule 57 (fator)
+    LT             reduce using rule 57 (fator)
+    LE             reduce using rule 57 (fator)
+    EQ             reduce using rule 57 (fator)
+    GT             reduce using rule 57 (fator)
+    GE             reduce using rule 57 (fator)
+    NE             reduce using rule 57 (fator)
+    SOMA           reduce using rule 57 (fator)
+    SUB            reduce using rule 57 (fator)
+    MULT           reduce using rule 57 (fator)
+    DIV            reduce using rule 57 (fator)
+    VIRGULA        reduce using rule 57 (fator)
+    PONTO_VIRGULA  reduce using rule 57 (fator)
 
 
 State 66
@@ -1453,60 +1453,14 @@ State 67
 
 State 68
 
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 82
 
 
 State 69
 
-   59 fator: TAIL_OR_NOT fator •
-
-    MAP            reduce using rule 59 (fator)
-    FILTER         reduce using rule 59 (fator)
-    CONSTRUTOR     reduce using rule 59 (fator)
-    AND            reduce using rule 59 (fator)
-    OR             reduce using rule 59 (fator)
-    LT             reduce using rule 59 (fator)
-    LE             reduce using rule 59 (fator)
-    EQ             reduce using rule 59 (fator)
-    GT             reduce using rule 59 (fator)
-    GE             reduce using rule 59 (fator)
-    NE             reduce using rule 59 (fator)
-    SOMA           reduce using rule 59 (fator)
-    SUB            reduce using rule 59 (fator)
-    MULT           reduce using rule 59 (fator)
-    DIV            reduce using rule 59 (fator)
-    VIRGULA        reduce using rule 59 (fator)
-    PONTO_VIRGULA  reduce using rule 59 (fator)
-
-
-State 70
-
-   61 fator: HEADER fator •
-
-    MAP            reduce using rule 61 (fator)
-    FILTER         reduce using rule 61 (fator)
-    CONSTRUTOR     reduce using rule 61 (fator)
-    AND            reduce using rule 61 (fator)
-    OR             reduce using rule 61 (fator)
-    LT             reduce using rule 61 (fator)
-    LE             reduce using rule 61 (fator)
-    EQ             reduce using rule 61 (fator)
-    GT             reduce using rule 61 (fator)
-    GE             reduce using rule 61 (fator)
-    NE             reduce using rule 61 (fator)
-    SOMA           reduce using rule 61 (fator)
-    SUB            reduce using rule 61 (fator)
-    MULT           reduce using rule 61 (fator)
-    DIV            reduce using rule 61 (fator)
-    VIRGULA        reduce using rule 61 (fator)
-    PONTO_VIRGULA  reduce using rule 61 (fator)
-
-
-State 71
-
-   60 fator: TAIL_POP fator •
+   60 fator: TAIL_OR_NOT fator •
 
     MAP            reduce using rule 60 (fator)
     FILTER         reduce using rule 60 (fator)
@@ -1527,9 +1481,55 @@ State 71
     PONTO_VIRGULA  reduce using rule 60 (fator)
 
 
+State 70
+
+   62 fator: HEADER fator •
+
+    MAP            reduce using rule 62 (fator)
+    FILTER         reduce using rule 62 (fator)
+    CONSTRUTOR     reduce using rule 62 (fator)
+    AND            reduce using rule 62 (fator)
+    OR             reduce using rule 62 (fator)
+    LT             reduce using rule 62 (fator)
+    LE             reduce using rule 62 (fator)
+    EQ             reduce using rule 62 (fator)
+    GT             reduce using rule 62 (fator)
+    GE             reduce using rule 62 (fator)
+    NE             reduce using rule 62 (fator)
+    SOMA           reduce using rule 62 (fator)
+    SUB            reduce using rule 62 (fator)
+    MULT           reduce using rule 62 (fator)
+    DIV            reduce using rule 62 (fator)
+    VIRGULA        reduce using rule 62 (fator)
+    PONTO_VIRGULA  reduce using rule 62 (fator)
+
+
+State 71
+
+   61 fator: TAIL_POP fator •
+
+    MAP            reduce using rule 61 (fator)
+    FILTER         reduce using rule 61 (fator)
+    CONSTRUTOR     reduce using rule 61 (fator)
+    AND            reduce using rule 61 (fator)
+    OR             reduce using rule 61 (fator)
+    LT             reduce using rule 61 (fator)
+    LE             reduce using rule 61 (fator)
+    EQ             reduce using rule 61 (fator)
+    GT             reduce using rule 61 (fator)
+    GE             reduce using rule 61 (fator)
+    NE             reduce using rule 61 (fator)
+    SOMA           reduce using rule 61 (fator)
+    SUB            reduce using rule 61 (fator)
+    MULT           reduce using rule 61 (fator)
+    DIV            reduce using rule 61 (fator)
+    VIRGULA        reduce using rule 61 (fator)
+    PONTO_VIRGULA  reduce using rule 61 (fator)
+
+
 State 72
 
-   66 exp_funcao: READ ABRE_PARENTESES • expressao FECHA_PARENTESES
+   67 func_call_exp: READ ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -1556,13 +1556,13 @@ State 72
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 73
 
-   67 exp_funcao: WRITE ABRE_PARENTESES • expressao FECHA_PARENTESES
+   68 func_call_exp: WRITE ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -1589,13 +1589,13 @@ State 73
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 74
 
-   68 exp_funcao: WRITELN ABRE_PARENTESES • expressao FECHA_PARENTESES
+   69 func_call_exp: WRITELN ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -1622,14 +1622,14 @@ State 74
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 75
 
    34 expressao: expressao • VIRGULA exp
-   69 chamada_de_retorno: RETURN expressao • PONTO_VIRGULA
+   70 chamada_de_retorno: RETURN expressao • PONTO_VIRGULA
 
     VIRGULA        shift, and go to state 83
     PONTO_VIRGULA  shift, and go to state 103
@@ -1665,7 +1665,7 @@ State 76
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -1699,13 +1699,36 @@ State 77
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
 State 78
 
-   58 fator: SOMA fator •
+   59 fator: SOMA fator •
+
+    MAP            reduce using rule 59 (fator)
+    FILTER         reduce using rule 59 (fator)
+    CONSTRUTOR     reduce using rule 59 (fator)
+    AND            reduce using rule 59 (fator)
+    OR             reduce using rule 59 (fator)
+    LT             reduce using rule 59 (fator)
+    LE             reduce using rule 59 (fator)
+    EQ             reduce using rule 59 (fator)
+    GT             reduce using rule 59 (fator)
+    GE             reduce using rule 59 (fator)
+    NE             reduce using rule 59 (fator)
+    SOMA           reduce using rule 59 (fator)
+    SUB            reduce using rule 59 (fator)
+    MULT           reduce using rule 59 (fator)
+    DIV            reduce using rule 59 (fator)
+    VIRGULA        reduce using rule 59 (fator)
+    PONTO_VIRGULA  reduce using rule 59 (fator)
+
+
+State 79
+
+   58 fator: SUB fator •
 
     MAP            reduce using rule 58 (fator)
     FILTER         reduce using rule 58 (fator)
@@ -1726,29 +1749,6 @@ State 78
     PONTO_VIRGULA  reduce using rule 58 (fator)
 
 
-State 79
-
-   57 fator: SUB fator •
-
-    MAP            reduce using rule 57 (fator)
-    FILTER         reduce using rule 57 (fator)
-    CONSTRUTOR     reduce using rule 57 (fator)
-    AND            reduce using rule 57 (fator)
-    OR             reduce using rule 57 (fator)
-    LT             reduce using rule 57 (fator)
-    LE             reduce using rule 57 (fator)
-    EQ             reduce using rule 57 (fator)
-    GT             reduce using rule 57 (fator)
-    GE             reduce using rule 57 (fator)
-    NE             reduce using rule 57 (fator)
-    SOMA           reduce using rule 57 (fator)
-    SUB            reduce using rule 57 (fator)
-    MULT           reduce using rule 57 (fator)
-    DIV            reduce using rule 57 (fator)
-    VIRGULA        reduce using rule 57 (fator)
-    PONTO_VIRGULA  reduce using rule 57 (fator)
-
-
 State 80
 
    37 exp: exp • GT exp
@@ -1759,7 +1759,7 @@ State 80
    42    | exp • GE exp
    43    | exp • AND exp
    44    | exp • OR exp
-   63 fator: ABRE_PARENTESES exp • FECHA_PARENTESES
+   64 fator: ABRE_PARENTESES exp • FECHA_PARENTESES
 
     AND               shift, and go to state 192
     OR                shift, and go to state 193
@@ -1774,7 +1774,7 @@ State 80
 
 State 81
 
-   64 comando_de_atribuicao: id ATRIB • expressao PONTO_VIRGULA
+   65 comando_de_atribuicao: id ATRIB • expressao PONTO_VIRGULA
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -1801,13 +1801,13 @@ State 81
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
 State 82
 
-   65 exp_funcao: id ABRE_PARENTESES • expressao FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -1834,7 +1834,7 @@ State 82
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -1863,7 +1863,7 @@ State 83
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -1922,7 +1922,7 @@ State 85
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -1951,7 +1951,7 @@ State 86
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -1980,7 +1980,7 @@ State 87
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2009,7 +2009,7 @@ State 88
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2038,7 +2038,7 @@ State 89
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2067,7 +2067,7 @@ State 90
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2096,7 +2096,7 @@ State 91
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2125,7 +2125,7 @@ State 92
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2153,7 +2153,7 @@ State 93
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2181,7 +2181,7 @@ State 94
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2209,7 +2209,7 @@ State 95
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -2232,11 +2232,11 @@ State 96
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    termo       go to state 123
-    fator       go to state 63
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    termo          go to state 123
+    fator          go to state 63
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 97
@@ -2258,11 +2258,11 @@ State 97
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    termo       go to state 124
-    fator       go to state 63
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    termo          go to state 124
+    fator          go to state 63
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 98
@@ -2284,10 +2284,10 @@ State 98
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 125
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 125
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 99
@@ -2309,16 +2309,16 @@ State 99
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
 
-    id          go to state 68
-    fator       go to state 126
-    exp_funcao  go to state 65
-    constante   go to state 67
+    id             go to state 68
+    fator          go to state 126
+    func_call_exp  go to state 65
+    constante      go to state 67
 
 
 State 100
 
    34 expressao: expressao • VIRGULA exp
-   66 exp_funcao: READ ABRE_PARENTESES expressao • FECHA_PARENTESES
+   67 func_call_exp: READ ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 127
@@ -2327,7 +2327,7 @@ State 100
 State 101
 
    34 expressao: expressao • VIRGULA exp
-   67 exp_funcao: WRITE ABRE_PARENTESES expressao • FECHA_PARENTESES
+   68 func_call_exp: WRITE ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 128
@@ -2336,7 +2336,7 @@ State 101
 State 102
 
    34 expressao: expressao • VIRGULA exp
-   68 exp_funcao: WRITELN ABRE_PARENTESES expressao • FECHA_PARENTESES
+   69 func_call_exp: WRITELN ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 129
@@ -2344,32 +2344,32 @@ State 102
 
 State 103
 
-   69 chamada_de_retorno: RETURN expressao PONTO_VIRGULA •
+   70 chamada_de_retorno: RETURN expressao PONTO_VIRGULA •
 
-    error            reduce using rule 69 (chamada_de_retorno)
-    ID               reduce using rule 69 (chamada_de_retorno)
-    INT              reduce using rule 69 (chamada_de_retorno)
-    FLOAT            reduce using rule 69 (chamada_de_retorno)
-    CONSTANTE_NIL    reduce using rule 69 (chamada_de_retorno)
-    TAIL_OR_NOT      reduce using rule 69 (chamada_de_retorno)
-    HEADER           reduce using rule 69 (chamada_de_retorno)
-    TAIL_POP         reduce using rule 69 (chamada_de_retorno)
-    READ             reduce using rule 69 (chamada_de_retorno)
-    WRITE            reduce using rule 69 (chamada_de_retorno)
-    WRITELN          reduce using rule 69 (chamada_de_retorno)
-    RETURN           reduce using rule 69 (chamada_de_retorno)
-    IF               reduce using rule 69 (chamada_de_retorno)
-    FOR              reduce using rule 69 (chamada_de_retorno)
-    SOMA             reduce using rule 69 (chamada_de_retorno)
-    SUB              reduce using rule 69 (chamada_de_retorno)
-    VIRGULA          reduce using rule 69 (chamada_de_retorno)
-    PONTO_VIRGULA    reduce using rule 69 (chamada_de_retorno)
-    ABRE_PARENTESES  reduce using rule 69 (chamada_de_retorno)
-    ABRE_CHAVES      reduce using rule 69 (chamada_de_retorno)
-    FECHA_CHAVES     reduce using rule 69 (chamada_de_retorno)
-    FLOAT_CONST      reduce using rule 69 (chamada_de_retorno)
-    INTEGER_CONST    reduce using rule 69 (chamada_de_retorno)
-    STRING_LITERAL   reduce using rule 69 (chamada_de_retorno)
+    error            reduce using rule 70 (chamada_de_retorno)
+    ID               reduce using rule 70 (chamada_de_retorno)
+    INT              reduce using rule 70 (chamada_de_retorno)
+    FLOAT            reduce using rule 70 (chamada_de_retorno)
+    CONSTANTE_NIL    reduce using rule 70 (chamada_de_retorno)
+    TAIL_OR_NOT      reduce using rule 70 (chamada_de_retorno)
+    HEADER           reduce using rule 70 (chamada_de_retorno)
+    TAIL_POP         reduce using rule 70 (chamada_de_retorno)
+    READ             reduce using rule 70 (chamada_de_retorno)
+    WRITE            reduce using rule 70 (chamada_de_retorno)
+    WRITELN          reduce using rule 70 (chamada_de_retorno)
+    RETURN           reduce using rule 70 (chamada_de_retorno)
+    IF               reduce using rule 70 (chamada_de_retorno)
+    FOR              reduce using rule 70 (chamada_de_retorno)
+    SOMA             reduce using rule 70 (chamada_de_retorno)
+    SUB              reduce using rule 70 (chamada_de_retorno)
+    VIRGULA          reduce using rule 70 (chamada_de_retorno)
+    PONTO_VIRGULA    reduce using rule 70 (chamada_de_retorno)
+    ABRE_PARENTESES  reduce using rule 70 (chamada_de_retorno)
+    ABRE_CHAVES      reduce using rule 70 (chamada_de_retorno)
+    FECHA_CHAVES     reduce using rule 70 (chamada_de_retorno)
+    FLOAT_CONST      reduce using rule 70 (chamada_de_retorno)
+    INTEGER_CONST    reduce using rule 70 (chamada_de_retorno)
+    STRING_LITERAL   reduce using rule 70 (chamada_de_retorno)
 
 
 State 104
@@ -2385,7 +2385,7 @@ State 104
 State 105
 
    32 expressao_for: id • ATRIB expressao
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ATRIB            shift, and go to state 131
     ABRE_PARENTESES  shift, and go to state 82
@@ -2410,31 +2410,31 @@ State 107
 
 State 108
 
-   63 fator: ABRE_PARENTESES exp FECHA_PARENTESES •
+   64 fator: ABRE_PARENTESES exp FECHA_PARENTESES •
 
-    MAP            reduce using rule 63 (fator)
-    FILTER         reduce using rule 63 (fator)
-    CONSTRUTOR     reduce using rule 63 (fator)
-    AND            reduce using rule 63 (fator)
-    OR             reduce using rule 63 (fator)
-    LT             reduce using rule 63 (fator)
-    LE             reduce using rule 63 (fator)
-    EQ             reduce using rule 63 (fator)
-    GT             reduce using rule 63 (fator)
-    GE             reduce using rule 63 (fator)
-    NE             reduce using rule 63 (fator)
-    SOMA           reduce using rule 63 (fator)
-    SUB            reduce using rule 63 (fator)
-    MULT           reduce using rule 63 (fator)
-    DIV            reduce using rule 63 (fator)
-    VIRGULA        reduce using rule 63 (fator)
-    PONTO_VIRGULA  reduce using rule 63 (fator)
+    MAP            reduce using rule 64 (fator)
+    FILTER         reduce using rule 64 (fator)
+    CONSTRUTOR     reduce using rule 64 (fator)
+    AND            reduce using rule 64 (fator)
+    OR             reduce using rule 64 (fator)
+    LT             reduce using rule 64 (fator)
+    LE             reduce using rule 64 (fator)
+    EQ             reduce using rule 64 (fator)
+    GT             reduce using rule 64 (fator)
+    GE             reduce using rule 64 (fator)
+    NE             reduce using rule 64 (fator)
+    SOMA           reduce using rule 64 (fator)
+    SUB            reduce using rule 64 (fator)
+    MULT           reduce using rule 64 (fator)
+    DIV            reduce using rule 64 (fator)
+    VIRGULA        reduce using rule 64 (fator)
+    PONTO_VIRGULA  reduce using rule 64 (fator)
 
 
 State 109
 
    34 expressao: expressao • VIRGULA exp
-   64 comando_de_atribuicao: id ATRIB expressao • PONTO_VIRGULA
+   65 comando_de_atribuicao: id ATRIB expressao • PONTO_VIRGULA
 
     VIRGULA        shift, and go to state 83
     PONTO_VIRGULA  shift, and go to state 133
@@ -2443,7 +2443,7 @@ State 109
 State 110
 
    34 expressao: expressao • VIRGULA exp
-   65 exp_funcao: id ABRE_PARENTESES expressao • FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 134
@@ -2839,71 +2839,71 @@ State 126
 
 State 127
 
-   66 exp_funcao: READ ABRE_PARENTESES expressao FECHA_PARENTESES •
+   67 func_call_exp: READ ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP            reduce using rule 66 (exp_funcao)
-    FILTER         reduce using rule 66 (exp_funcao)
-    CONSTRUTOR     reduce using rule 66 (exp_funcao)
-    AND            reduce using rule 66 (exp_funcao)
-    OR             reduce using rule 66 (exp_funcao)
-    LT             reduce using rule 66 (exp_funcao)
-    LE             reduce using rule 66 (exp_funcao)
-    EQ             reduce using rule 66 (exp_funcao)
-    GT             reduce using rule 66 (exp_funcao)
-    GE             reduce using rule 66 (exp_funcao)
-    NE             reduce using rule 66 (exp_funcao)
-    SOMA           reduce using rule 66 (exp_funcao)
-    SUB            reduce using rule 66 (exp_funcao)
-    MULT           reduce using rule 66 (exp_funcao)
-    DIV            reduce using rule 66 (exp_funcao)
-    VIRGULA        reduce using rule 66 (exp_funcao)
-    PONTO_VIRGULA  reduce using rule 66 (exp_funcao)
+    MAP            reduce using rule 67 (func_call_exp)
+    FILTER         reduce using rule 67 (func_call_exp)
+    CONSTRUTOR     reduce using rule 67 (func_call_exp)
+    AND            reduce using rule 67 (func_call_exp)
+    OR             reduce using rule 67 (func_call_exp)
+    LT             reduce using rule 67 (func_call_exp)
+    LE             reduce using rule 67 (func_call_exp)
+    EQ             reduce using rule 67 (func_call_exp)
+    GT             reduce using rule 67 (func_call_exp)
+    GE             reduce using rule 67 (func_call_exp)
+    NE             reduce using rule 67 (func_call_exp)
+    SOMA           reduce using rule 67 (func_call_exp)
+    SUB            reduce using rule 67 (func_call_exp)
+    MULT           reduce using rule 67 (func_call_exp)
+    DIV            reduce using rule 67 (func_call_exp)
+    VIRGULA        reduce using rule 67 (func_call_exp)
+    PONTO_VIRGULA  reduce using rule 67 (func_call_exp)
 
 
 State 128
 
-   67 exp_funcao: WRITE ABRE_PARENTESES expressao FECHA_PARENTESES •
+   68 func_call_exp: WRITE ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP            reduce using rule 67 (exp_funcao)
-    FILTER         reduce using rule 67 (exp_funcao)
-    CONSTRUTOR     reduce using rule 67 (exp_funcao)
-    AND            reduce using rule 67 (exp_funcao)
-    OR             reduce using rule 67 (exp_funcao)
-    LT             reduce using rule 67 (exp_funcao)
-    LE             reduce using rule 67 (exp_funcao)
-    EQ             reduce using rule 67 (exp_funcao)
-    GT             reduce using rule 67 (exp_funcao)
-    GE             reduce using rule 67 (exp_funcao)
-    NE             reduce using rule 67 (exp_funcao)
-    SOMA           reduce using rule 67 (exp_funcao)
-    SUB            reduce using rule 67 (exp_funcao)
-    MULT           reduce using rule 67 (exp_funcao)
-    DIV            reduce using rule 67 (exp_funcao)
-    VIRGULA        reduce using rule 67 (exp_funcao)
-    PONTO_VIRGULA  reduce using rule 67 (exp_funcao)
+    MAP            reduce using rule 68 (func_call_exp)
+    FILTER         reduce using rule 68 (func_call_exp)
+    CONSTRUTOR     reduce using rule 68 (func_call_exp)
+    AND            reduce using rule 68 (func_call_exp)
+    OR             reduce using rule 68 (func_call_exp)
+    LT             reduce using rule 68 (func_call_exp)
+    LE             reduce using rule 68 (func_call_exp)
+    EQ             reduce using rule 68 (func_call_exp)
+    GT             reduce using rule 68 (func_call_exp)
+    GE             reduce using rule 68 (func_call_exp)
+    NE             reduce using rule 68 (func_call_exp)
+    SOMA           reduce using rule 68 (func_call_exp)
+    SUB            reduce using rule 68 (func_call_exp)
+    MULT           reduce using rule 68 (func_call_exp)
+    DIV            reduce using rule 68 (func_call_exp)
+    VIRGULA        reduce using rule 68 (func_call_exp)
+    PONTO_VIRGULA  reduce using rule 68 (func_call_exp)
 
 
 State 129
 
-   68 exp_funcao: WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES •
+   69 func_call_exp: WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP            reduce using rule 68 (exp_funcao)
-    FILTER         reduce using rule 68 (exp_funcao)
-    CONSTRUTOR     reduce using rule 68 (exp_funcao)
-    AND            reduce using rule 68 (exp_funcao)
-    OR             reduce using rule 68 (exp_funcao)
-    LT             reduce using rule 68 (exp_funcao)
-    LE             reduce using rule 68 (exp_funcao)
-    EQ             reduce using rule 68 (exp_funcao)
-    GT             reduce using rule 68 (exp_funcao)
-    GE             reduce using rule 68 (exp_funcao)
-    NE             reduce using rule 68 (exp_funcao)
-    SOMA           reduce using rule 68 (exp_funcao)
-    SUB            reduce using rule 68 (exp_funcao)
-    MULT           reduce using rule 68 (exp_funcao)
-    DIV            reduce using rule 68 (exp_funcao)
-    VIRGULA        reduce using rule 68 (exp_funcao)
-    PONTO_VIRGULA  reduce using rule 68 (exp_funcao)
+    MAP            reduce using rule 69 (func_call_exp)
+    FILTER         reduce using rule 69 (func_call_exp)
+    CONSTRUTOR     reduce using rule 69 (func_call_exp)
+    AND            reduce using rule 69 (func_call_exp)
+    OR             reduce using rule 69 (func_call_exp)
+    LT             reduce using rule 69 (func_call_exp)
+    LE             reduce using rule 69 (func_call_exp)
+    EQ             reduce using rule 69 (func_call_exp)
+    GT             reduce using rule 69 (func_call_exp)
+    GE             reduce using rule 69 (func_call_exp)
+    NE             reduce using rule 69 (func_call_exp)
+    SOMA           reduce using rule 69 (func_call_exp)
+    SUB            reduce using rule 69 (func_call_exp)
+    MULT           reduce using rule 69 (func_call_exp)
+    DIV            reduce using rule 69 (func_call_exp)
+    VIRGULA        reduce using rule 69 (func_call_exp)
+    PONTO_VIRGULA  reduce using rule 69 (func_call_exp)
 
 
 State 130
@@ -2951,7 +2951,7 @@ State 130
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 214
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 215
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -2988,7 +2988,7 @@ State 131
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -3022,61 +3022,61 @@ State 132
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
 State 133
 
-   64 comando_de_atribuicao: id ATRIB expressao PONTO_VIRGULA •
+   65 comando_de_atribuicao: id ATRIB expressao PONTO_VIRGULA •
 
-    error            reduce using rule 64 (comando_de_atribuicao)
-    ID               reduce using rule 64 (comando_de_atribuicao)
-    INT              reduce using rule 64 (comando_de_atribuicao)
-    FLOAT            reduce using rule 64 (comando_de_atribuicao)
-    CONSTANTE_NIL    reduce using rule 64 (comando_de_atribuicao)
-    TAIL_OR_NOT      reduce using rule 64 (comando_de_atribuicao)
-    HEADER           reduce using rule 64 (comando_de_atribuicao)
-    TAIL_POP         reduce using rule 64 (comando_de_atribuicao)
-    READ             reduce using rule 64 (comando_de_atribuicao)
-    WRITE            reduce using rule 64 (comando_de_atribuicao)
-    WRITELN          reduce using rule 64 (comando_de_atribuicao)
-    RETURN           reduce using rule 64 (comando_de_atribuicao)
-    IF               reduce using rule 64 (comando_de_atribuicao)
-    FOR              reduce using rule 64 (comando_de_atribuicao)
-    SOMA             reduce using rule 64 (comando_de_atribuicao)
-    SUB              reduce using rule 64 (comando_de_atribuicao)
-    VIRGULA          reduce using rule 64 (comando_de_atribuicao)
-    PONTO_VIRGULA    reduce using rule 64 (comando_de_atribuicao)
-    ABRE_PARENTESES  reduce using rule 64 (comando_de_atribuicao)
-    ABRE_CHAVES      reduce using rule 64 (comando_de_atribuicao)
-    FECHA_CHAVES     reduce using rule 64 (comando_de_atribuicao)
-    FLOAT_CONST      reduce using rule 64 (comando_de_atribuicao)
-    INTEGER_CONST    reduce using rule 64 (comando_de_atribuicao)
-    STRING_LITERAL   reduce using rule 64 (comando_de_atribuicao)
+    error            reduce using rule 65 (comando_de_atribuicao)
+    ID               reduce using rule 65 (comando_de_atribuicao)
+    INT              reduce using rule 65 (comando_de_atribuicao)
+    FLOAT            reduce using rule 65 (comando_de_atribuicao)
+    CONSTANTE_NIL    reduce using rule 65 (comando_de_atribuicao)
+    TAIL_OR_NOT      reduce using rule 65 (comando_de_atribuicao)
+    HEADER           reduce using rule 65 (comando_de_atribuicao)
+    TAIL_POP         reduce using rule 65 (comando_de_atribuicao)
+    READ             reduce using rule 65 (comando_de_atribuicao)
+    WRITE            reduce using rule 65 (comando_de_atribuicao)
+    WRITELN          reduce using rule 65 (comando_de_atribuicao)
+    RETURN           reduce using rule 65 (comando_de_atribuicao)
+    IF               reduce using rule 65 (comando_de_atribuicao)
+    FOR              reduce using rule 65 (comando_de_atribuicao)
+    SOMA             reduce using rule 65 (comando_de_atribuicao)
+    SUB              reduce using rule 65 (comando_de_atribuicao)
+    VIRGULA          reduce using rule 65 (comando_de_atribuicao)
+    PONTO_VIRGULA    reduce using rule 65 (comando_de_atribuicao)
+    ABRE_PARENTESES  reduce using rule 65 (comando_de_atribuicao)
+    ABRE_CHAVES      reduce using rule 65 (comando_de_atribuicao)
+    FECHA_CHAVES     reduce using rule 65 (comando_de_atribuicao)
+    FLOAT_CONST      reduce using rule 65 (comando_de_atribuicao)
+    INTEGER_CONST    reduce using rule 65 (comando_de_atribuicao)
+    STRING_LITERAL   reduce using rule 65 (comando_de_atribuicao)
 
 
 State 134
 
-   65 exp_funcao: id ABRE_PARENTESES expressao FECHA_PARENTESES •
+   66 func_call_exp: id ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP            reduce using rule 65 (exp_funcao)
-    FILTER         reduce using rule 65 (exp_funcao)
-    CONSTRUTOR     reduce using rule 65 (exp_funcao)
-    AND            reduce using rule 65 (exp_funcao)
-    OR             reduce using rule 65 (exp_funcao)
-    LT             reduce using rule 65 (exp_funcao)
-    LE             reduce using rule 65 (exp_funcao)
-    EQ             reduce using rule 65 (exp_funcao)
-    GT             reduce using rule 65 (exp_funcao)
-    GE             reduce using rule 65 (exp_funcao)
-    NE             reduce using rule 65 (exp_funcao)
-    SOMA           reduce using rule 65 (exp_funcao)
-    SUB            reduce using rule 65 (exp_funcao)
-    MULT           reduce using rule 65 (exp_funcao)
-    DIV            reduce using rule 65 (exp_funcao)
-    VIRGULA        reduce using rule 65 (exp_funcao)
-    PONTO_VIRGULA  reduce using rule 65 (exp_funcao)
+    MAP            reduce using rule 66 (func_call_exp)
+    FILTER         reduce using rule 66 (func_call_exp)
+    CONSTRUTOR     reduce using rule 66 (func_call_exp)
+    AND            reduce using rule 66 (func_call_exp)
+    OR             reduce using rule 66 (func_call_exp)
+    LT             reduce using rule 66 (func_call_exp)
+    LE             reduce using rule 66 (func_call_exp)
+    EQ             reduce using rule 66 (func_call_exp)
+    GT             reduce using rule 66 (func_call_exp)
+    GE             reduce using rule 66 (func_call_exp)
+    NE             reduce using rule 66 (func_call_exp)
+    SOMA           reduce using rule 66 (func_call_exp)
+    SUB            reduce using rule 66 (func_call_exp)
+    MULT           reduce using rule 66 (func_call_exp)
+    DIV            reduce using rule 66 (func_call_exp)
+    VIRGULA        reduce using rule 66 (func_call_exp)
+    PONTO_VIRGULA  reduce using rule 66 (func_call_exp)
 
 
 State 135
@@ -3173,7 +3173,7 @@ State 138
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 64
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 66
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -3211,7 +3211,7 @@ State 139
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -3296,7 +3296,7 @@ State 142
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 64
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 66
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -3387,77 +3387,77 @@ State 146
 State 147
 
    10 id: ID •
-   62 fator: ID •
+   63 fator: ID •
 
-    MAP              reduce using rule 62 (fator)
-    FILTER           reduce using rule 62 (fator)
-    CONSTRUTOR       reduce using rule 62 (fator)
-    AND              reduce using rule 62 (fator)
-    OR               reduce using rule 62 (fator)
-    LT               reduce using rule 62 (fator)
-    LE               reduce using rule 62 (fator)
-    EQ               reduce using rule 62 (fator)
-    GT               reduce using rule 62 (fator)
-    GE               reduce using rule 62 (fator)
-    NE               reduce using rule 62 (fator)
-    SOMA             reduce using rule 62 (fator)
-    SUB              reduce using rule 62 (fator)
-    MULT             reduce using rule 62 (fator)
-    DIV              reduce using rule 62 (fator)
-    VIRGULA          reduce using rule 62 (fator)
-    PONTO_VIRGULA    reduce using rule 62 (fator)
+    MAP              reduce using rule 63 (fator)
+    FILTER           reduce using rule 63 (fator)
+    CONSTRUTOR       reduce using rule 63 (fator)
+    AND              reduce using rule 63 (fator)
+    OR               reduce using rule 63 (fator)
+    LT               reduce using rule 63 (fator)
+    LE               reduce using rule 63 (fator)
+    EQ               reduce using rule 63 (fator)
+    GT               reduce using rule 63 (fator)
+    GE               reduce using rule 63 (fator)
+    NE               reduce using rule 63 (fator)
+    SOMA             reduce using rule 63 (fator)
+    SUB              reduce using rule 63 (fator)
+    MULT             reduce using rule 63 (fator)
+    DIV              reduce using rule 63 (fator)
+    VIRGULA          reduce using rule 63 (fator)
+    PONTO_VIRGULA    reduce using rule 63 (fator)
     ABRE_PARENTESES  reduce using rule 10 (id)
 
 
 State 148
 
    10 id: ID •
-   62 fator: ID •
+   63 fator: ID •
 
-    MAP               reduce using rule 62 (fator)
-    FILTER            reduce using rule 62 (fator)
-    CONSTRUTOR        reduce using rule 62 (fator)
-    AND               reduce using rule 62 (fator)
-    OR                reduce using rule 62 (fator)
-    LT                reduce using rule 62 (fator)
-    LE                reduce using rule 62 (fator)
-    EQ                reduce using rule 62 (fator)
-    GT                reduce using rule 62 (fator)
-    GE                reduce using rule 62 (fator)
-    NE                reduce using rule 62 (fator)
-    SOMA              reduce using rule 62 (fator)
-    SUB               reduce using rule 62 (fator)
-    MULT              reduce using rule 62 (fator)
-    DIV               reduce using rule 62 (fator)
+    MAP               reduce using rule 63 (fator)
+    FILTER            reduce using rule 63 (fator)
+    CONSTRUTOR        reduce using rule 63 (fator)
+    AND               reduce using rule 63 (fator)
+    OR                reduce using rule 63 (fator)
+    LT                reduce using rule 63 (fator)
+    LE                reduce using rule 63 (fator)
+    EQ                reduce using rule 63 (fator)
+    GT                reduce using rule 63 (fator)
+    GE                reduce using rule 63 (fator)
+    NE                reduce using rule 63 (fator)
+    SOMA              reduce using rule 63 (fator)
+    SUB               reduce using rule 63 (fator)
+    MULT              reduce using rule 63 (fator)
+    DIV               reduce using rule 63 (fator)
     ABRE_PARENTESES   reduce using rule 10 (id)
-    FECHA_PARENTESES  reduce using rule 62 (fator)
+    FECHA_PARENTESES  reduce using rule 63 (fator)
 
 
 State 149
 
-   78 constante: CONSTANTE_NIL •
+   79 constante: CONSTANTE_NIL •
 
-    MAP               reduce using rule 78 (constante)
-    FILTER            reduce using rule 78 (constante)
-    CONSTRUTOR        reduce using rule 78 (constante)
-    AND               reduce using rule 78 (constante)
-    OR                reduce using rule 78 (constante)
-    LT                reduce using rule 78 (constante)
-    LE                reduce using rule 78 (constante)
-    EQ                reduce using rule 78 (constante)
-    GT                reduce using rule 78 (constante)
-    GE                reduce using rule 78 (constante)
-    NE                reduce using rule 78 (constante)
-    SOMA              reduce using rule 78 (constante)
-    SUB               reduce using rule 78 (constante)
-    MULT              reduce using rule 78 (constante)
-    DIV               reduce using rule 78 (constante)
-    FECHA_PARENTESES  reduce using rule 78 (constante)
+    MAP               reduce using rule 79 (constante)
+    FILTER            reduce using rule 79 (constante)
+    CONSTRUTOR        reduce using rule 79 (constante)
+    AND               reduce using rule 79 (constante)
+    OR                reduce using rule 79 (constante)
+    LT                reduce using rule 79 (constante)
+    LE                reduce using rule 79 (constante)
+    EQ                reduce using rule 79 (constante)
+    GT                reduce using rule 79 (constante)
+    GE                reduce using rule 79 (constante)
+    NE                reduce using rule 79 (constante)
+    SOMA              reduce using rule 79 (constante)
+    SUB               reduce using rule 79 (constante)
+    MULT              reduce using rule 79 (constante)
+    DIV               reduce using rule 79 (constante)
+    FECHA_PARENTESES  reduce using rule 79 (constante)
 
 
 State 150
 
-   59 fator: TAIL_OR_NOT • fator
+   60 fator: TAIL_OR_NOT • fator
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -3474,15 +3474,15 @@ State 150
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 224
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 224
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 151
 
-   61 fator: HEADER • fator
+   62 fator: HEADER • fator
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -3499,15 +3499,15 @@ State 151
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 225
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 225
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 152
 
-   60 fator: TAIL_POP • fator
+   61 fator: TAIL_POP • fator
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -3524,36 +3524,36 @@ State 152
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 226
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 226
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 153
 
-   66 exp_funcao: READ • ABRE_PARENTESES expressao FECHA_PARENTESES
+   67 func_call_exp: READ • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 227
 
 
 State 154
 
-   67 exp_funcao: WRITE • ABRE_PARENTESES expressao FECHA_PARENTESES
+   68 func_call_exp: WRITE • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 228
 
 
 State 155
 
-   68 exp_funcao: WRITELN • ABRE_PARENTESES expressao FECHA_PARENTESES
+   69 func_call_exp: WRITELN • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 229
 
 
 State 156
 
-   58 fator: SOMA • fator
+   59 fator: SOMA • fator
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -3570,15 +3570,15 @@ State 156
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 230
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 230
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 157
 
-   57 fator: SUB • fator
+   58 fator: SUB • fator
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -3595,15 +3595,15 @@ State 157
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 231
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 231
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 158
 
-   63 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
+   64 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -3626,13 +3626,35 @@ State 158
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
 State 159
 
-   77 constante: FLOAT_CONST •
+   78 constante: FLOAT_CONST •
+
+    MAP               reduce using rule 78 (constante)
+    FILTER            reduce using rule 78 (constante)
+    CONSTRUTOR        reduce using rule 78 (constante)
+    AND               reduce using rule 78 (constante)
+    OR                reduce using rule 78 (constante)
+    LT                reduce using rule 78 (constante)
+    LE                reduce using rule 78 (constante)
+    EQ                reduce using rule 78 (constante)
+    GT                reduce using rule 78 (constante)
+    GE                reduce using rule 78 (constante)
+    NE                reduce using rule 78 (constante)
+    SOMA              reduce using rule 78 (constante)
+    SUB               reduce using rule 78 (constante)
+    MULT              reduce using rule 78 (constante)
+    DIV               reduce using rule 78 (constante)
+    FECHA_PARENTESES  reduce using rule 78 (constante)
+
+
+State 160
+
+   77 constante: INTEGER_CONST •
 
     MAP               reduce using rule 77 (constante)
     FILTER            reduce using rule 77 (constante)
@@ -3652,53 +3674,31 @@ State 159
     FECHA_PARENTESES  reduce using rule 77 (constante)
 
 
-State 160
-
-   76 constante: INTEGER_CONST •
-
-    MAP               reduce using rule 76 (constante)
-    FILTER            reduce using rule 76 (constante)
-    CONSTRUTOR        reduce using rule 76 (constante)
-    AND               reduce using rule 76 (constante)
-    OR                reduce using rule 76 (constante)
-    LT                reduce using rule 76 (constante)
-    LE                reduce using rule 76 (constante)
-    EQ                reduce using rule 76 (constante)
-    GT                reduce using rule 76 (constante)
-    GE                reduce using rule 76 (constante)
-    NE                reduce using rule 76 (constante)
-    SOMA              reduce using rule 76 (constante)
-    SUB               reduce using rule 76 (constante)
-    MULT              reduce using rule 76 (constante)
-    DIV               reduce using rule 76 (constante)
-    FECHA_PARENTESES  reduce using rule 76 (constante)
-
-
 State 161
 
-   79 constante: STRING_LITERAL •
+   80 constante: STRING_LITERAL •
 
-    MAP               reduce using rule 79 (constante)
-    FILTER            reduce using rule 79 (constante)
-    CONSTRUTOR        reduce using rule 79 (constante)
-    AND               reduce using rule 79 (constante)
-    OR                reduce using rule 79 (constante)
-    LT                reduce using rule 79 (constante)
-    LE                reduce using rule 79 (constante)
-    EQ                reduce using rule 79 (constante)
-    GT                reduce using rule 79 (constante)
-    GE                reduce using rule 79 (constante)
-    NE                reduce using rule 79 (constante)
-    SOMA              reduce using rule 79 (constante)
-    SUB               reduce using rule 79 (constante)
-    MULT              reduce using rule 79 (constante)
-    DIV               reduce using rule 79 (constante)
-    FECHA_PARENTESES  reduce using rule 79 (constante)
+    MAP               reduce using rule 80 (constante)
+    FILTER            reduce using rule 80 (constante)
+    CONSTRUTOR        reduce using rule 80 (constante)
+    AND               reduce using rule 80 (constante)
+    OR                reduce using rule 80 (constante)
+    LT                reduce using rule 80 (constante)
+    LE                reduce using rule 80 (constante)
+    EQ                reduce using rule 80 (constante)
+    GT                reduce using rule 80 (constante)
+    GE                reduce using rule 80 (constante)
+    NE                reduce using rule 80 (constante)
+    SOMA              reduce using rule 80 (constante)
+    SUB               reduce using rule 80 (constante)
+    MULT              reduce using rule 80 (constante)
+    DIV               reduce using rule 80 (constante)
+    FECHA_PARENTESES  reduce using rule 80 (constante)
 
 
 State 162
 
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 233
 
@@ -3797,24 +3797,24 @@ State 166
 
 State 167
 
-   80 constante: exp_funcao •
+   57 fator: func_call_exp •
 
-    MAP               reduce using rule 80 (constante)
-    FILTER            reduce using rule 80 (constante)
-    CONSTRUTOR        reduce using rule 80 (constante)
-    AND               reduce using rule 80 (constante)
-    OR                reduce using rule 80 (constante)
-    LT                reduce using rule 80 (constante)
-    LE                reduce using rule 80 (constante)
-    EQ                reduce using rule 80 (constante)
-    GT                reduce using rule 80 (constante)
-    GE                reduce using rule 80 (constante)
-    NE                reduce using rule 80 (constante)
-    SOMA              reduce using rule 80 (constante)
-    SUB               reduce using rule 80 (constante)
-    MULT              reduce using rule 80 (constante)
-    DIV               reduce using rule 80 (constante)
-    FECHA_PARENTESES  reduce using rule 80 (constante)
+    MAP               reduce using rule 57 (fator)
+    FILTER            reduce using rule 57 (fator)
+    CONSTRUTOR        reduce using rule 57 (fator)
+    AND               reduce using rule 57 (fator)
+    OR                reduce using rule 57 (fator)
+    LT                reduce using rule 57 (fator)
+    LE                reduce using rule 57 (fator)
+    EQ                reduce using rule 57 (fator)
+    GT                reduce using rule 57 (fator)
+    GE                reduce using rule 57 (fator)
+    NE                reduce using rule 57 (fator)
+    SOMA              reduce using rule 57 (fator)
+    SUB               reduce using rule 57 (fator)
+    MULT              reduce using rule 57 (fator)
+    DIV               reduce using rule 57 (fator)
+    FECHA_PARENTESES  reduce using rule 57 (fator)
 
 
 State 168
@@ -3872,54 +3872,54 @@ State 169
 State 170
 
    10 id: ID •
-   62 fator: ID •
+   63 fator: ID •
 
-    MAP               reduce using rule 62 (fator)
-    FILTER            reduce using rule 62 (fator)
-    CONSTRUTOR        reduce using rule 62 (fator)
-    AND               reduce using rule 62 (fator)
-    OR                reduce using rule 62 (fator)
-    LT                reduce using rule 62 (fator)
-    LE                reduce using rule 62 (fator)
-    EQ                reduce using rule 62 (fator)
-    GT                reduce using rule 62 (fator)
-    GE                reduce using rule 62 (fator)
-    NE                reduce using rule 62 (fator)
-    SOMA              reduce using rule 62 (fator)
-    SUB               reduce using rule 62 (fator)
-    MULT              reduce using rule 62 (fator)
-    DIV               reduce using rule 62 (fator)
-    VIRGULA           reduce using rule 62 (fator)
+    MAP               reduce using rule 63 (fator)
+    FILTER            reduce using rule 63 (fator)
+    CONSTRUTOR        reduce using rule 63 (fator)
+    AND               reduce using rule 63 (fator)
+    OR                reduce using rule 63 (fator)
+    LT                reduce using rule 63 (fator)
+    LE                reduce using rule 63 (fator)
+    EQ                reduce using rule 63 (fator)
+    GT                reduce using rule 63 (fator)
+    GE                reduce using rule 63 (fator)
+    NE                reduce using rule 63 (fator)
+    SOMA              reduce using rule 63 (fator)
+    SUB               reduce using rule 63 (fator)
+    MULT              reduce using rule 63 (fator)
+    DIV               reduce using rule 63 (fator)
+    VIRGULA           reduce using rule 63 (fator)
     ABRE_PARENTESES   reduce using rule 10 (id)
-    FECHA_PARENTESES  reduce using rule 62 (fator)
+    FECHA_PARENTESES  reduce using rule 63 (fator)
 
 
 State 171
 
-   78 constante: CONSTANTE_NIL •
+   79 constante: CONSTANTE_NIL •
 
-    MAP               reduce using rule 78 (constante)
-    FILTER            reduce using rule 78 (constante)
-    CONSTRUTOR        reduce using rule 78 (constante)
-    AND               reduce using rule 78 (constante)
-    OR                reduce using rule 78 (constante)
-    LT                reduce using rule 78 (constante)
-    LE                reduce using rule 78 (constante)
-    EQ                reduce using rule 78 (constante)
-    GT                reduce using rule 78 (constante)
-    GE                reduce using rule 78 (constante)
-    NE                reduce using rule 78 (constante)
-    SOMA              reduce using rule 78 (constante)
-    SUB               reduce using rule 78 (constante)
-    MULT              reduce using rule 78 (constante)
-    DIV               reduce using rule 78 (constante)
-    VIRGULA           reduce using rule 78 (constante)
-    FECHA_PARENTESES  reduce using rule 78 (constante)
+    MAP               reduce using rule 79 (constante)
+    FILTER            reduce using rule 79 (constante)
+    CONSTRUTOR        reduce using rule 79 (constante)
+    AND               reduce using rule 79 (constante)
+    OR                reduce using rule 79 (constante)
+    LT                reduce using rule 79 (constante)
+    LE                reduce using rule 79 (constante)
+    EQ                reduce using rule 79 (constante)
+    GT                reduce using rule 79 (constante)
+    GE                reduce using rule 79 (constante)
+    NE                reduce using rule 79 (constante)
+    SOMA              reduce using rule 79 (constante)
+    SUB               reduce using rule 79 (constante)
+    MULT              reduce using rule 79 (constante)
+    DIV               reduce using rule 79 (constante)
+    VIRGULA           reduce using rule 79 (constante)
+    FECHA_PARENTESES  reduce using rule 79 (constante)
 
 
 State 172
 
-   59 fator: TAIL_OR_NOT • fator
+   60 fator: TAIL_OR_NOT • fator
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -3936,15 +3936,15 @@ State 172
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 241
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 241
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 173
 
-   61 fator: HEADER • fator
+   62 fator: HEADER • fator
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -3961,15 +3961,15 @@ State 173
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 242
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 242
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 174
 
-   60 fator: TAIL_POP • fator
+   61 fator: TAIL_POP • fator
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -3986,36 +3986,36 @@ State 174
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 243
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 243
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 175
 
-   66 exp_funcao: READ • ABRE_PARENTESES expressao FECHA_PARENTESES
+   67 func_call_exp: READ • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 244
 
 
 State 176
 
-   67 exp_funcao: WRITE • ABRE_PARENTESES expressao FECHA_PARENTESES
+   68 func_call_exp: WRITE • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 245
 
 
 State 177
 
-   68 exp_funcao: WRITELN • ABRE_PARENTESES expressao FECHA_PARENTESES
+   69 func_call_exp: WRITELN • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 246
 
 
 State 178
 
-   58 fator: SOMA • fator
+   59 fator: SOMA • fator
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -4032,15 +4032,15 @@ State 178
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 247
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 247
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 179
 
-   57 fator: SUB • fator
+   58 fator: SUB • fator
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -4057,15 +4057,15 @@ State 179
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 248
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 248
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 180
 
-   63 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
+   64 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 148
     CONSTANTE_NIL    shift, and go to state 149
@@ -4088,13 +4088,36 @@ State 180
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
 State 181
 
-   77 constante: FLOAT_CONST •
+   78 constante: FLOAT_CONST •
+
+    MAP               reduce using rule 78 (constante)
+    FILTER            reduce using rule 78 (constante)
+    CONSTRUTOR        reduce using rule 78 (constante)
+    AND               reduce using rule 78 (constante)
+    OR                reduce using rule 78 (constante)
+    LT                reduce using rule 78 (constante)
+    LE                reduce using rule 78 (constante)
+    EQ                reduce using rule 78 (constante)
+    GT                reduce using rule 78 (constante)
+    GE                reduce using rule 78 (constante)
+    NE                reduce using rule 78 (constante)
+    SOMA              reduce using rule 78 (constante)
+    SUB               reduce using rule 78 (constante)
+    MULT              reduce using rule 78 (constante)
+    DIV               reduce using rule 78 (constante)
+    VIRGULA           reduce using rule 78 (constante)
+    FECHA_PARENTESES  reduce using rule 78 (constante)
+
+
+State 182
+
+   77 constante: INTEGER_CONST •
 
     MAP               reduce using rule 77 (constante)
     FILTER            reduce using rule 77 (constante)
@@ -4115,55 +4138,32 @@ State 181
     FECHA_PARENTESES  reduce using rule 77 (constante)
 
 
-State 182
-
-   76 constante: INTEGER_CONST •
-
-    MAP               reduce using rule 76 (constante)
-    FILTER            reduce using rule 76 (constante)
-    CONSTRUTOR        reduce using rule 76 (constante)
-    AND               reduce using rule 76 (constante)
-    OR                reduce using rule 76 (constante)
-    LT                reduce using rule 76 (constante)
-    LE                reduce using rule 76 (constante)
-    EQ                reduce using rule 76 (constante)
-    GT                reduce using rule 76 (constante)
-    GE                reduce using rule 76 (constante)
-    NE                reduce using rule 76 (constante)
-    SOMA              reduce using rule 76 (constante)
-    SUB               reduce using rule 76 (constante)
-    MULT              reduce using rule 76 (constante)
-    DIV               reduce using rule 76 (constante)
-    VIRGULA           reduce using rule 76 (constante)
-    FECHA_PARENTESES  reduce using rule 76 (constante)
-
-
 State 183
 
-   79 constante: STRING_LITERAL •
+   80 constante: STRING_LITERAL •
 
-    MAP               reduce using rule 79 (constante)
-    FILTER            reduce using rule 79 (constante)
-    CONSTRUTOR        reduce using rule 79 (constante)
-    AND               reduce using rule 79 (constante)
-    OR                reduce using rule 79 (constante)
-    LT                reduce using rule 79 (constante)
-    LE                reduce using rule 79 (constante)
-    EQ                reduce using rule 79 (constante)
-    GT                reduce using rule 79 (constante)
-    GE                reduce using rule 79 (constante)
-    NE                reduce using rule 79 (constante)
-    SOMA              reduce using rule 79 (constante)
-    SUB               reduce using rule 79 (constante)
-    MULT              reduce using rule 79 (constante)
-    DIV               reduce using rule 79 (constante)
-    VIRGULA           reduce using rule 79 (constante)
-    FECHA_PARENTESES  reduce using rule 79 (constante)
+    MAP               reduce using rule 80 (constante)
+    FILTER            reduce using rule 80 (constante)
+    CONSTRUTOR        reduce using rule 80 (constante)
+    AND               reduce using rule 80 (constante)
+    OR                reduce using rule 80 (constante)
+    LT                reduce using rule 80 (constante)
+    LE                reduce using rule 80 (constante)
+    EQ                reduce using rule 80 (constante)
+    GT                reduce using rule 80 (constante)
+    GE                reduce using rule 80 (constante)
+    NE                reduce using rule 80 (constante)
+    SOMA              reduce using rule 80 (constante)
+    SUB               reduce using rule 80 (constante)
+    MULT              reduce using rule 80 (constante)
+    DIV               reduce using rule 80 (constante)
+    VIRGULA           reduce using rule 80 (constante)
+    FECHA_PARENTESES  reduce using rule 80 (constante)
 
 
 State 184
 
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ABRE_PARENTESES  shift, and go to state 250
 
@@ -4291,25 +4291,25 @@ State 189
 
 State 190
 
-   80 constante: exp_funcao •
+   57 fator: func_call_exp •
 
-    MAP               reduce using rule 80 (constante)
-    FILTER            reduce using rule 80 (constante)
-    CONSTRUTOR        reduce using rule 80 (constante)
-    AND               reduce using rule 80 (constante)
-    OR                reduce using rule 80 (constante)
-    LT                reduce using rule 80 (constante)
-    LE                reduce using rule 80 (constante)
-    EQ                reduce using rule 80 (constante)
-    GT                reduce using rule 80 (constante)
-    GE                reduce using rule 80 (constante)
-    NE                reduce using rule 80 (constante)
-    SOMA              reduce using rule 80 (constante)
-    SUB               reduce using rule 80 (constante)
-    MULT              reduce using rule 80 (constante)
-    DIV               reduce using rule 80 (constante)
-    VIRGULA           reduce using rule 80 (constante)
-    FECHA_PARENTESES  reduce using rule 80 (constante)
+    MAP               reduce using rule 57 (fator)
+    FILTER            reduce using rule 57 (fator)
+    CONSTRUTOR        reduce using rule 57 (fator)
+    AND               reduce using rule 57 (fator)
+    OR                reduce using rule 57 (fator)
+    LT                reduce using rule 57 (fator)
+    LE                reduce using rule 57 (fator)
+    EQ                reduce using rule 57 (fator)
+    GT                reduce using rule 57 (fator)
+    GE                reduce using rule 57 (fator)
+    NE                reduce using rule 57 (fator)
+    SOMA              reduce using rule 57 (fator)
+    SUB               reduce using rule 57 (fator)
+    MULT              reduce using rule 57 (fator)
+    DIV               reduce using rule 57 (fator)
+    VIRGULA           reduce using rule 57 (fator)
+    FECHA_PARENTESES  reduce using rule 57 (fator)
 
 
 State 191
@@ -4360,7 +4360,7 @@ State 192
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4389,7 +4389,7 @@ State 193
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4418,7 +4418,7 @@ State 194
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4447,7 +4447,7 @@ State 195
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4476,7 +4476,7 @@ State 196
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4505,7 +4505,7 @@ State 197
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4534,7 +4534,7 @@ State 198
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4563,7 +4563,7 @@ State 199
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -4592,7 +4592,7 @@ State 200
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -4629,7 +4629,7 @@ State 201
 
 State 202
 
-   69 chamada_de_retorno: RETURN • expressao PONTO_VIRGULA
+   70 chamada_de_retorno: RETURN • expressao PONTO_VIRGULA
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -4656,7 +4656,7 @@ State 202
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -4747,8 +4747,8 @@ State 207
 
 State 208
 
-   64 comando_de_atribuicao: id • ATRIB expressao PONTO_VIRGULA
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   65 comando_de_atribuicao: id • ATRIB expressao PONTO_VIRGULA
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ATRIB            shift, and go to state 280
     ABRE_PARENTESES  shift, and go to state 82
@@ -4952,33 +4952,33 @@ State 215
 State 216
 
    10 id: ID •
-   62 fator: ID •
+   63 fator: ID •
 
-    MAP               reduce using rule 62 (fator)
-    FILTER            reduce using rule 62 (fator)
-    CONSTRUTOR        reduce using rule 62 (fator)
-    AND               reduce using rule 62 (fator)
-    OR                reduce using rule 62 (fator)
-    LT                reduce using rule 62 (fator)
-    LE                reduce using rule 62 (fator)
-    EQ                reduce using rule 62 (fator)
-    GT                reduce using rule 62 (fator)
-    GE                reduce using rule 62 (fator)
-    NE                reduce using rule 62 (fator)
-    SOMA              reduce using rule 62 (fator)
-    SUB               reduce using rule 62 (fator)
-    MULT              reduce using rule 62 (fator)
-    DIV               reduce using rule 62 (fator)
-    VIRGULA           reduce using rule 62 (fator)
+    MAP               reduce using rule 63 (fator)
+    FILTER            reduce using rule 63 (fator)
+    CONSTRUTOR        reduce using rule 63 (fator)
+    AND               reduce using rule 63 (fator)
+    OR                reduce using rule 63 (fator)
+    LT                reduce using rule 63 (fator)
+    LE                reduce using rule 63 (fator)
+    EQ                reduce using rule 63 (fator)
+    GT                reduce using rule 63 (fator)
+    GE                reduce using rule 63 (fator)
+    NE                reduce using rule 63 (fator)
+    SOMA              reduce using rule 63 (fator)
+    SUB               reduce using rule 63 (fator)
+    MULT              reduce using rule 63 (fator)
+    DIV               reduce using rule 63 (fator)
+    VIRGULA           reduce using rule 63 (fator)
     ATRIB             reduce using rule 10 (id)
     ABRE_PARENTESES   reduce using rule 10 (id)
-    FECHA_PARENTESES  reduce using rule 62 (fator)
+    FECHA_PARENTESES  reduce using rule 63 (fator)
 
 
 State 217
 
    32 expressao_for: id • ATRIB expressao
-   65 exp_funcao: id • ABRE_PARENTESES expressao FECHA_PARENTESES
+   66 func_call_exp: id • ABRE_PARENTESES expressao FECHA_PARENTESES
 
     ATRIB            shift, and go to state 282
     ABRE_PARENTESES  shift, and go to state 250
@@ -5056,7 +5056,7 @@ State 221
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 64
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 66
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -5080,51 +5080,7 @@ State 223
 
 State 224
 
-   59 fator: TAIL_OR_NOT fator •
-
-    MAP               reduce using rule 59 (fator)
-    FILTER            reduce using rule 59 (fator)
-    CONSTRUTOR        reduce using rule 59 (fator)
-    AND               reduce using rule 59 (fator)
-    OR                reduce using rule 59 (fator)
-    LT                reduce using rule 59 (fator)
-    LE                reduce using rule 59 (fator)
-    EQ                reduce using rule 59 (fator)
-    GT                reduce using rule 59 (fator)
-    GE                reduce using rule 59 (fator)
-    NE                reduce using rule 59 (fator)
-    SOMA              reduce using rule 59 (fator)
-    SUB               reduce using rule 59 (fator)
-    MULT              reduce using rule 59 (fator)
-    DIV               reduce using rule 59 (fator)
-    FECHA_PARENTESES  reduce using rule 59 (fator)
-
-
-State 225
-
-   61 fator: HEADER fator •
-
-    MAP               reduce using rule 61 (fator)
-    FILTER            reduce using rule 61 (fator)
-    CONSTRUTOR        reduce using rule 61 (fator)
-    AND               reduce using rule 61 (fator)
-    OR                reduce using rule 61 (fator)
-    LT                reduce using rule 61 (fator)
-    LE                reduce using rule 61 (fator)
-    EQ                reduce using rule 61 (fator)
-    GT                reduce using rule 61 (fator)
-    GE                reduce using rule 61 (fator)
-    NE                reduce using rule 61 (fator)
-    SOMA              reduce using rule 61 (fator)
-    SUB               reduce using rule 61 (fator)
-    MULT              reduce using rule 61 (fator)
-    DIV               reduce using rule 61 (fator)
-    FECHA_PARENTESES  reduce using rule 61 (fator)
-
-
-State 226
-
-   60 fator: TAIL_POP fator •
+   60 fator: TAIL_OR_NOT fator •
 
     MAP               reduce using rule 60 (fator)
     FILTER            reduce using rule 60 (fator)
@@ -5144,9 +5100,53 @@ State 226
     FECHA_PARENTESES  reduce using rule 60 (fator)
 
 
+State 225
+
+   62 fator: HEADER fator •
+
+    MAP               reduce using rule 62 (fator)
+    FILTER            reduce using rule 62 (fator)
+    CONSTRUTOR        reduce using rule 62 (fator)
+    AND               reduce using rule 62 (fator)
+    OR                reduce using rule 62 (fator)
+    LT                reduce using rule 62 (fator)
+    LE                reduce using rule 62 (fator)
+    EQ                reduce using rule 62 (fator)
+    GT                reduce using rule 62 (fator)
+    GE                reduce using rule 62 (fator)
+    NE                reduce using rule 62 (fator)
+    SOMA              reduce using rule 62 (fator)
+    SUB               reduce using rule 62 (fator)
+    MULT              reduce using rule 62 (fator)
+    DIV               reduce using rule 62 (fator)
+    FECHA_PARENTESES  reduce using rule 62 (fator)
+
+
+State 226
+
+   61 fator: TAIL_POP fator •
+
+    MAP               reduce using rule 61 (fator)
+    FILTER            reduce using rule 61 (fator)
+    CONSTRUTOR        reduce using rule 61 (fator)
+    AND               reduce using rule 61 (fator)
+    OR                reduce using rule 61 (fator)
+    LT                reduce using rule 61 (fator)
+    LE                reduce using rule 61 (fator)
+    EQ                reduce using rule 61 (fator)
+    GT                reduce using rule 61 (fator)
+    GE                reduce using rule 61 (fator)
+    NE                reduce using rule 61 (fator)
+    SOMA              reduce using rule 61 (fator)
+    SUB               reduce using rule 61 (fator)
+    MULT              reduce using rule 61 (fator)
+    DIV               reduce using rule 61 (fator)
+    FECHA_PARENTESES  reduce using rule 61 (fator)
+
+
 State 227
 
-   66 exp_funcao: READ ABRE_PARENTESES • expressao FECHA_PARENTESES
+   67 func_call_exp: READ ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5173,13 +5173,13 @@ State 227
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 228
 
-   67 exp_funcao: WRITE ABRE_PARENTESES • expressao FECHA_PARENTESES
+   68 func_call_exp: WRITE ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5206,13 +5206,13 @@ State 228
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 229
 
-   68 exp_funcao: WRITELN ABRE_PARENTESES • expressao FECHA_PARENTESES
+   69 func_call_exp: WRITELN ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5239,13 +5239,35 @@ State 229
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 230
 
-   58 fator: SOMA fator •
+   59 fator: SOMA fator •
+
+    MAP               reduce using rule 59 (fator)
+    FILTER            reduce using rule 59 (fator)
+    CONSTRUTOR        reduce using rule 59 (fator)
+    AND               reduce using rule 59 (fator)
+    OR                reduce using rule 59 (fator)
+    LT                reduce using rule 59 (fator)
+    LE                reduce using rule 59 (fator)
+    EQ                reduce using rule 59 (fator)
+    GT                reduce using rule 59 (fator)
+    GE                reduce using rule 59 (fator)
+    NE                reduce using rule 59 (fator)
+    SOMA              reduce using rule 59 (fator)
+    SUB               reduce using rule 59 (fator)
+    MULT              reduce using rule 59 (fator)
+    DIV               reduce using rule 59 (fator)
+    FECHA_PARENTESES  reduce using rule 59 (fator)
+
+
+State 231
+
+   58 fator: SUB fator •
 
     MAP               reduce using rule 58 (fator)
     FILTER            reduce using rule 58 (fator)
@@ -5265,28 +5287,6 @@ State 230
     FECHA_PARENTESES  reduce using rule 58 (fator)
 
 
-State 231
-
-   57 fator: SUB fator •
-
-    MAP               reduce using rule 57 (fator)
-    FILTER            reduce using rule 57 (fator)
-    CONSTRUTOR        reduce using rule 57 (fator)
-    AND               reduce using rule 57 (fator)
-    OR                reduce using rule 57 (fator)
-    LT                reduce using rule 57 (fator)
-    LE                reduce using rule 57 (fator)
-    EQ                reduce using rule 57 (fator)
-    GT                reduce using rule 57 (fator)
-    GE                reduce using rule 57 (fator)
-    NE                reduce using rule 57 (fator)
-    SOMA              reduce using rule 57 (fator)
-    SUB               reduce using rule 57 (fator)
-    MULT              reduce using rule 57 (fator)
-    DIV               reduce using rule 57 (fator)
-    FECHA_PARENTESES  reduce using rule 57 (fator)
-
-
 State 232
 
    37 exp: exp • GT exp
@@ -5297,7 +5297,7 @@ State 232
    42    | exp • GE exp
    43    | exp • AND exp
    44    | exp • OR exp
-   63 fator: ABRE_PARENTESES exp • FECHA_PARENTESES
+   64 fator: ABRE_PARENTESES exp • FECHA_PARENTESES
 
     AND               shift, and go to state 192
     OR                shift, and go to state 193
@@ -5312,7 +5312,7 @@ State 232
 
 State 233
 
-   65 exp_funcao: id ABRE_PARENTESES • expressao FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5339,7 +5339,7 @@ State 233
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5367,7 +5367,7 @@ State 234
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -5395,7 +5395,7 @@ State 235
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -5423,7 +5423,7 @@ State 236
     exp_aritmetica  go to state 164
     termo           go to state 165
     fator           go to state 166
-    exp_funcao      go to state 167
+    func_call_exp   go to state 167
     constante       go to state 168
 
 
@@ -5446,11 +5446,11 @@ State 237
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    termo       go to state 292
-    fator       go to state 166
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    termo          go to state 292
+    fator          go to state 166
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 238
@@ -5472,11 +5472,11 @@ State 238
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    termo       go to state 293
-    fator       go to state 166
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    termo          go to state 293
+    fator          go to state 166
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 239
@@ -5498,10 +5498,10 @@ State 239
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 294
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 294
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 240
@@ -5523,61 +5523,15 @@ State 240
     INTEGER_CONST    shift, and go to state 160
     STRING_LITERAL   shift, and go to state 161
 
-    id          go to state 162
-    fator       go to state 295
-    exp_funcao  go to state 167
-    constante   go to state 168
+    id             go to state 162
+    fator          go to state 295
+    func_call_exp  go to state 167
+    constante      go to state 168
 
 
 State 241
 
-   59 fator: TAIL_OR_NOT fator •
-
-    MAP               reduce using rule 59 (fator)
-    FILTER            reduce using rule 59 (fator)
-    CONSTRUTOR        reduce using rule 59 (fator)
-    AND               reduce using rule 59 (fator)
-    OR                reduce using rule 59 (fator)
-    LT                reduce using rule 59 (fator)
-    LE                reduce using rule 59 (fator)
-    EQ                reduce using rule 59 (fator)
-    GT                reduce using rule 59 (fator)
-    GE                reduce using rule 59 (fator)
-    NE                reduce using rule 59 (fator)
-    SOMA              reduce using rule 59 (fator)
-    SUB               reduce using rule 59 (fator)
-    MULT              reduce using rule 59 (fator)
-    DIV               reduce using rule 59 (fator)
-    VIRGULA           reduce using rule 59 (fator)
-    FECHA_PARENTESES  reduce using rule 59 (fator)
-
-
-State 242
-
-   61 fator: HEADER fator •
-
-    MAP               reduce using rule 61 (fator)
-    FILTER            reduce using rule 61 (fator)
-    CONSTRUTOR        reduce using rule 61 (fator)
-    AND               reduce using rule 61 (fator)
-    OR                reduce using rule 61 (fator)
-    LT                reduce using rule 61 (fator)
-    LE                reduce using rule 61 (fator)
-    EQ                reduce using rule 61 (fator)
-    GT                reduce using rule 61 (fator)
-    GE                reduce using rule 61 (fator)
-    NE                reduce using rule 61 (fator)
-    SOMA              reduce using rule 61 (fator)
-    SUB               reduce using rule 61 (fator)
-    MULT              reduce using rule 61 (fator)
-    DIV               reduce using rule 61 (fator)
-    VIRGULA           reduce using rule 61 (fator)
-    FECHA_PARENTESES  reduce using rule 61 (fator)
-
-
-State 243
-
-   60 fator: TAIL_POP fator •
+   60 fator: TAIL_OR_NOT fator •
 
     MAP               reduce using rule 60 (fator)
     FILTER            reduce using rule 60 (fator)
@@ -5598,9 +5552,55 @@ State 243
     FECHA_PARENTESES  reduce using rule 60 (fator)
 
 
+State 242
+
+   62 fator: HEADER fator •
+
+    MAP               reduce using rule 62 (fator)
+    FILTER            reduce using rule 62 (fator)
+    CONSTRUTOR        reduce using rule 62 (fator)
+    AND               reduce using rule 62 (fator)
+    OR                reduce using rule 62 (fator)
+    LT                reduce using rule 62 (fator)
+    LE                reduce using rule 62 (fator)
+    EQ                reduce using rule 62 (fator)
+    GT                reduce using rule 62 (fator)
+    GE                reduce using rule 62 (fator)
+    NE                reduce using rule 62 (fator)
+    SOMA              reduce using rule 62 (fator)
+    SUB               reduce using rule 62 (fator)
+    MULT              reduce using rule 62 (fator)
+    DIV               reduce using rule 62 (fator)
+    VIRGULA           reduce using rule 62 (fator)
+    FECHA_PARENTESES  reduce using rule 62 (fator)
+
+
+State 243
+
+   61 fator: TAIL_POP fator •
+
+    MAP               reduce using rule 61 (fator)
+    FILTER            reduce using rule 61 (fator)
+    CONSTRUTOR        reduce using rule 61 (fator)
+    AND               reduce using rule 61 (fator)
+    OR                reduce using rule 61 (fator)
+    LT                reduce using rule 61 (fator)
+    LE                reduce using rule 61 (fator)
+    EQ                reduce using rule 61 (fator)
+    GT                reduce using rule 61 (fator)
+    GE                reduce using rule 61 (fator)
+    NE                reduce using rule 61 (fator)
+    SOMA              reduce using rule 61 (fator)
+    SUB               reduce using rule 61 (fator)
+    MULT              reduce using rule 61 (fator)
+    DIV               reduce using rule 61 (fator)
+    VIRGULA           reduce using rule 61 (fator)
+    FECHA_PARENTESES  reduce using rule 61 (fator)
+
+
 State 244
 
-   66 exp_funcao: READ ABRE_PARENTESES • expressao FECHA_PARENTESES
+   67 func_call_exp: READ ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5627,13 +5627,13 @@ State 244
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 245
 
-   67 exp_funcao: WRITE ABRE_PARENTESES • expressao FECHA_PARENTESES
+   68 func_call_exp: WRITE ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5660,13 +5660,13 @@ State 245
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 246
 
-   68 exp_funcao: WRITELN ABRE_PARENTESES • expressao FECHA_PARENTESES
+   69 func_call_exp: WRITELN ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5693,13 +5693,36 @@ State 246
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
 State 247
 
-   58 fator: SOMA fator •
+   59 fator: SOMA fator •
+
+    MAP               reduce using rule 59 (fator)
+    FILTER            reduce using rule 59 (fator)
+    CONSTRUTOR        reduce using rule 59 (fator)
+    AND               reduce using rule 59 (fator)
+    OR                reduce using rule 59 (fator)
+    LT                reduce using rule 59 (fator)
+    LE                reduce using rule 59 (fator)
+    EQ                reduce using rule 59 (fator)
+    GT                reduce using rule 59 (fator)
+    GE                reduce using rule 59 (fator)
+    NE                reduce using rule 59 (fator)
+    SOMA              reduce using rule 59 (fator)
+    SUB               reduce using rule 59 (fator)
+    MULT              reduce using rule 59 (fator)
+    DIV               reduce using rule 59 (fator)
+    VIRGULA           reduce using rule 59 (fator)
+    FECHA_PARENTESES  reduce using rule 59 (fator)
+
+
+State 248
+
+   58 fator: SUB fator •
 
     MAP               reduce using rule 58 (fator)
     FILTER            reduce using rule 58 (fator)
@@ -5720,29 +5743,6 @@ State 247
     FECHA_PARENTESES  reduce using rule 58 (fator)
 
 
-State 248
-
-   57 fator: SUB fator •
-
-    MAP               reduce using rule 57 (fator)
-    FILTER            reduce using rule 57 (fator)
-    CONSTRUTOR        reduce using rule 57 (fator)
-    AND               reduce using rule 57 (fator)
-    OR                reduce using rule 57 (fator)
-    LT                reduce using rule 57 (fator)
-    LE                reduce using rule 57 (fator)
-    EQ                reduce using rule 57 (fator)
-    GT                reduce using rule 57 (fator)
-    GE                reduce using rule 57 (fator)
-    NE                reduce using rule 57 (fator)
-    SOMA              reduce using rule 57 (fator)
-    SUB               reduce using rule 57 (fator)
-    MULT              reduce using rule 57 (fator)
-    DIV               reduce using rule 57 (fator)
-    VIRGULA           reduce using rule 57 (fator)
-    FECHA_PARENTESES  reduce using rule 57 (fator)
-
-
 State 249
 
    37 exp: exp • GT exp
@@ -5753,7 +5753,7 @@ State 249
    42    | exp • GE exp
    43    | exp • AND exp
    44    | exp • OR exp
-   63 fator: ABRE_PARENTESES exp • FECHA_PARENTESES
+   64 fator: ABRE_PARENTESES exp • FECHA_PARENTESES
 
     AND               shift, and go to state 192
     OR                shift, and go to state 193
@@ -5768,7 +5768,7 @@ State 249
 
 State 250
 
-   65 exp_funcao: id ABRE_PARENTESES • expressao FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES • expressao FECHA_PARENTESES
 
     ID               shift, and go to state 170
     CONSTANTE_NIL    shift, and go to state 171
@@ -5795,7 +5795,7 @@ State 250
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5824,7 +5824,7 @@ State 251
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5853,7 +5853,7 @@ State 252
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5882,7 +5882,7 @@ State 253
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5911,7 +5911,7 @@ State 254
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5940,7 +5940,7 @@ State 255
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5969,7 +5969,7 @@ State 256
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -5998,7 +5998,7 @@ State 257
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6027,7 +6027,7 @@ State 258
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6055,7 +6055,7 @@ State 259
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6083,7 +6083,7 @@ State 260
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6111,7 +6111,7 @@ State 261
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6134,11 +6134,11 @@ State 262
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    termo       go to state 312
-    fator       go to state 189
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    termo          go to state 312
+    fator          go to state 189
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 263
@@ -6160,11 +6160,11 @@ State 263
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    termo       go to state 313
-    fator       go to state 189
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    termo          go to state 313
+    fator          go to state 189
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 264
@@ -6186,10 +6186,10 @@ State 264
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 314
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 314
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 265
@@ -6211,10 +6211,10 @@ State 265
     INTEGER_CONST    shift, and go to state 182
     STRING_LITERAL   shift, and go to state 183
 
-    id          go to state 184
-    fator       go to state 315
-    exp_funcao  go to state 190
-    constante   go to state 191
+    id             go to state 184
+    fator          go to state 315
+    func_call_exp  go to state 190
+    constante      go to state 191
 
 
 State 266
@@ -6433,7 +6433,7 @@ State 274
 State 275
 
    34 expressao: expressao • VIRGULA exp
-   69 chamada_de_retorno: RETURN expressao • PONTO_VIRGULA
+   70 chamada_de_retorno: RETURN expressao • PONTO_VIRGULA
 
     VIRGULA        shift, and go to state 83
     PONTO_VIRGULA  shift, and go to state 316
@@ -6469,7 +6469,7 @@ State 276
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6503,7 +6503,7 @@ State 277
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -6553,7 +6553,7 @@ State 278
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 64
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 66
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -6594,7 +6594,7 @@ State 279
 
 State 280
 
-   64 comando_de_atribuicao: id ATRIB • expressao PONTO_VIRGULA
+   65 comando_de_atribuicao: id ATRIB • expressao PONTO_VIRGULA
 
     ID               shift, and go to state 147
     CONSTANTE_NIL    shift, and go to state 33
@@ -6621,7 +6621,7 @@ State 280
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
@@ -6685,7 +6685,7 @@ State 282
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -6722,7 +6722,7 @@ State 283
 State 284
 
    34 expressao: expressao • VIRGULA exp
-   66 exp_funcao: READ ABRE_PARENTESES expressao • FECHA_PARENTESES
+   67 func_call_exp: READ ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 322
@@ -6731,7 +6731,7 @@ State 284
 State 285
 
    34 expressao: expressao • VIRGULA exp
-   67 exp_funcao: WRITE ABRE_PARENTESES expressao • FECHA_PARENTESES
+   68 func_call_exp: WRITE ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 323
@@ -6740,7 +6740,7 @@ State 285
 State 286
 
    34 expressao: expressao • VIRGULA exp
-   68 exp_funcao: WRITELN ABRE_PARENTESES expressao • FECHA_PARENTESES
+   69 func_call_exp: WRITELN ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 324
@@ -6748,30 +6748,30 @@ State 286
 
 State 287
 
-   63 fator: ABRE_PARENTESES exp FECHA_PARENTESES •
+   64 fator: ABRE_PARENTESES exp FECHA_PARENTESES •
 
-    MAP               reduce using rule 63 (fator)
-    FILTER            reduce using rule 63 (fator)
-    CONSTRUTOR        reduce using rule 63 (fator)
-    AND               reduce using rule 63 (fator)
-    OR                reduce using rule 63 (fator)
-    LT                reduce using rule 63 (fator)
-    LE                reduce using rule 63 (fator)
-    EQ                reduce using rule 63 (fator)
-    GT                reduce using rule 63 (fator)
-    GE                reduce using rule 63 (fator)
-    NE                reduce using rule 63 (fator)
-    SOMA              reduce using rule 63 (fator)
-    SUB               reduce using rule 63 (fator)
-    MULT              reduce using rule 63 (fator)
-    DIV               reduce using rule 63 (fator)
-    FECHA_PARENTESES  reduce using rule 63 (fator)
+    MAP               reduce using rule 64 (fator)
+    FILTER            reduce using rule 64 (fator)
+    CONSTRUTOR        reduce using rule 64 (fator)
+    AND               reduce using rule 64 (fator)
+    OR                reduce using rule 64 (fator)
+    LT                reduce using rule 64 (fator)
+    LE                reduce using rule 64 (fator)
+    EQ                reduce using rule 64 (fator)
+    GT                reduce using rule 64 (fator)
+    GE                reduce using rule 64 (fator)
+    NE                reduce using rule 64 (fator)
+    SOMA              reduce using rule 64 (fator)
+    SUB               reduce using rule 64 (fator)
+    MULT              reduce using rule 64 (fator)
+    DIV               reduce using rule 64 (fator)
+    FECHA_PARENTESES  reduce using rule 64 (fator)
 
 
 State 288
 
    34 expressao: expressao • VIRGULA exp
-   65 exp_funcao: id ABRE_PARENTESES expressao • FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 325
@@ -6940,7 +6940,7 @@ State 295
 State 296
 
    34 expressao: expressao • VIRGULA exp
-   66 exp_funcao: READ ABRE_PARENTESES expressao • FECHA_PARENTESES
+   67 func_call_exp: READ ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 326
@@ -6949,7 +6949,7 @@ State 296
 State 297
 
    34 expressao: expressao • VIRGULA exp
-   67 exp_funcao: WRITE ABRE_PARENTESES expressao • FECHA_PARENTESES
+   68 func_call_exp: WRITE ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 327
@@ -6958,7 +6958,7 @@ State 297
 State 298
 
    34 expressao: expressao • VIRGULA exp
-   68 exp_funcao: WRITELN ABRE_PARENTESES expressao • FECHA_PARENTESES
+   69 func_call_exp: WRITELN ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 328
@@ -6966,31 +6966,31 @@ State 298
 
 State 299
 
-   63 fator: ABRE_PARENTESES exp FECHA_PARENTESES •
+   64 fator: ABRE_PARENTESES exp FECHA_PARENTESES •
 
-    MAP               reduce using rule 63 (fator)
-    FILTER            reduce using rule 63 (fator)
-    CONSTRUTOR        reduce using rule 63 (fator)
-    AND               reduce using rule 63 (fator)
-    OR                reduce using rule 63 (fator)
-    LT                reduce using rule 63 (fator)
-    LE                reduce using rule 63 (fator)
-    EQ                reduce using rule 63 (fator)
-    GT                reduce using rule 63 (fator)
-    GE                reduce using rule 63 (fator)
-    NE                reduce using rule 63 (fator)
-    SOMA              reduce using rule 63 (fator)
-    SUB               reduce using rule 63 (fator)
-    MULT              reduce using rule 63 (fator)
-    DIV               reduce using rule 63 (fator)
-    VIRGULA           reduce using rule 63 (fator)
-    FECHA_PARENTESES  reduce using rule 63 (fator)
+    MAP               reduce using rule 64 (fator)
+    FILTER            reduce using rule 64 (fator)
+    CONSTRUTOR        reduce using rule 64 (fator)
+    AND               reduce using rule 64 (fator)
+    OR                reduce using rule 64 (fator)
+    LT                reduce using rule 64 (fator)
+    LE                reduce using rule 64 (fator)
+    EQ                reduce using rule 64 (fator)
+    GT                reduce using rule 64 (fator)
+    GE                reduce using rule 64 (fator)
+    NE                reduce using rule 64 (fator)
+    SOMA              reduce using rule 64 (fator)
+    SUB               reduce using rule 64 (fator)
+    MULT              reduce using rule 64 (fator)
+    DIV               reduce using rule 64 (fator)
+    VIRGULA           reduce using rule 64 (fator)
+    FECHA_PARENTESES  reduce using rule 64 (fator)
 
 
 State 300
 
    34 expressao: expressao • VIRGULA exp
-   65 exp_funcao: id ABRE_PARENTESES expressao • FECHA_PARENTESES
+   66 func_call_exp: id ABRE_PARENTESES expressao • FECHA_PARENTESES
 
     VIRGULA           shift, and go to state 200
     FECHA_PARENTESES  shift, and go to state 329
@@ -7361,33 +7361,33 @@ State 315
 
 State 316
 
-   69 chamada_de_retorno: RETURN expressao PONTO_VIRGULA •
+   70 chamada_de_retorno: RETURN expressao PONTO_VIRGULA •
 
-    error            reduce using rule 69 (chamada_de_retorno)
-    ID               reduce using rule 69 (chamada_de_retorno)
-    INT              reduce using rule 69 (chamada_de_retorno)
-    FLOAT            reduce using rule 69 (chamada_de_retorno)
-    CONSTANTE_NIL    reduce using rule 69 (chamada_de_retorno)
-    TAIL_OR_NOT      reduce using rule 69 (chamada_de_retorno)
-    HEADER           reduce using rule 69 (chamada_de_retorno)
-    TAIL_POP         reduce using rule 69 (chamada_de_retorno)
-    READ             reduce using rule 69 (chamada_de_retorno)
-    WRITE            reduce using rule 69 (chamada_de_retorno)
-    WRITELN          reduce using rule 69 (chamada_de_retorno)
-    RETURN           reduce using rule 69 (chamada_de_retorno)
-    IF               reduce using rule 69 (chamada_de_retorno)
-    ELSE             reduce using rule 69 (chamada_de_retorno)
-    FOR              reduce using rule 69 (chamada_de_retorno)
-    SOMA             reduce using rule 69 (chamada_de_retorno)
-    SUB              reduce using rule 69 (chamada_de_retorno)
-    VIRGULA          reduce using rule 69 (chamada_de_retorno)
-    PONTO_VIRGULA    reduce using rule 69 (chamada_de_retorno)
-    ABRE_PARENTESES  reduce using rule 69 (chamada_de_retorno)
-    ABRE_CHAVES      reduce using rule 69 (chamada_de_retorno)
-    FECHA_CHAVES     reduce using rule 69 (chamada_de_retorno)
-    FLOAT_CONST      reduce using rule 69 (chamada_de_retorno)
-    INTEGER_CONST    reduce using rule 69 (chamada_de_retorno)
-    STRING_LITERAL   reduce using rule 69 (chamada_de_retorno)
+    error            reduce using rule 70 (chamada_de_retorno)
+    ID               reduce using rule 70 (chamada_de_retorno)
+    INT              reduce using rule 70 (chamada_de_retorno)
+    FLOAT            reduce using rule 70 (chamada_de_retorno)
+    CONSTANTE_NIL    reduce using rule 70 (chamada_de_retorno)
+    TAIL_OR_NOT      reduce using rule 70 (chamada_de_retorno)
+    HEADER           reduce using rule 70 (chamada_de_retorno)
+    TAIL_POP         reduce using rule 70 (chamada_de_retorno)
+    READ             reduce using rule 70 (chamada_de_retorno)
+    WRITE            reduce using rule 70 (chamada_de_retorno)
+    WRITELN          reduce using rule 70 (chamada_de_retorno)
+    RETURN           reduce using rule 70 (chamada_de_retorno)
+    IF               reduce using rule 70 (chamada_de_retorno)
+    ELSE             reduce using rule 70 (chamada_de_retorno)
+    FOR              reduce using rule 70 (chamada_de_retorno)
+    SOMA             reduce using rule 70 (chamada_de_retorno)
+    SUB              reduce using rule 70 (chamada_de_retorno)
+    VIRGULA          reduce using rule 70 (chamada_de_retorno)
+    PONTO_VIRGULA    reduce using rule 70 (chamada_de_retorno)
+    ABRE_PARENTESES  reduce using rule 70 (chamada_de_retorno)
+    ABRE_CHAVES      reduce using rule 70 (chamada_de_retorno)
+    FECHA_CHAVES     reduce using rule 70 (chamada_de_retorno)
+    FLOAT_CONST      reduce using rule 70 (chamada_de_retorno)
+    INTEGER_CONST    reduce using rule 70 (chamada_de_retorno)
+    STRING_LITERAL   reduce using rule 70 (chamada_de_retorno)
 
 
 State 317
@@ -7441,7 +7441,7 @@ State 319
 State 320
 
    34 expressao: expressao • VIRGULA exp
-   64 comando_de_atribuicao: id ATRIB expressao • PONTO_VIRGULA
+   65 comando_de_atribuicao: id ATRIB expressao • PONTO_VIRGULA
 
     VIRGULA        shift, and go to state 83
     PONTO_VIRGULA  shift, and go to state 332
@@ -7459,182 +7459,182 @@ State 321
 
 State 322
 
-   66 exp_funcao: READ ABRE_PARENTESES expressao FECHA_PARENTESES •
+   67 func_call_exp: READ ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 66 (exp_funcao)
-    FILTER            reduce using rule 66 (exp_funcao)
-    CONSTRUTOR        reduce using rule 66 (exp_funcao)
-    AND               reduce using rule 66 (exp_funcao)
-    OR                reduce using rule 66 (exp_funcao)
-    LT                reduce using rule 66 (exp_funcao)
-    LE                reduce using rule 66 (exp_funcao)
-    EQ                reduce using rule 66 (exp_funcao)
-    GT                reduce using rule 66 (exp_funcao)
-    GE                reduce using rule 66 (exp_funcao)
-    NE                reduce using rule 66 (exp_funcao)
-    SOMA              reduce using rule 66 (exp_funcao)
-    SUB               reduce using rule 66 (exp_funcao)
-    MULT              reduce using rule 66 (exp_funcao)
-    DIV               reduce using rule 66 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 66 (exp_funcao)
+    MAP               reduce using rule 67 (func_call_exp)
+    FILTER            reduce using rule 67 (func_call_exp)
+    CONSTRUTOR        reduce using rule 67 (func_call_exp)
+    AND               reduce using rule 67 (func_call_exp)
+    OR                reduce using rule 67 (func_call_exp)
+    LT                reduce using rule 67 (func_call_exp)
+    LE                reduce using rule 67 (func_call_exp)
+    EQ                reduce using rule 67 (func_call_exp)
+    GT                reduce using rule 67 (func_call_exp)
+    GE                reduce using rule 67 (func_call_exp)
+    NE                reduce using rule 67 (func_call_exp)
+    SOMA              reduce using rule 67 (func_call_exp)
+    SUB               reduce using rule 67 (func_call_exp)
+    MULT              reduce using rule 67 (func_call_exp)
+    DIV               reduce using rule 67 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 67 (func_call_exp)
 
 
 State 323
 
-   67 exp_funcao: WRITE ABRE_PARENTESES expressao FECHA_PARENTESES •
+   68 func_call_exp: WRITE ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 67 (exp_funcao)
-    FILTER            reduce using rule 67 (exp_funcao)
-    CONSTRUTOR        reduce using rule 67 (exp_funcao)
-    AND               reduce using rule 67 (exp_funcao)
-    OR                reduce using rule 67 (exp_funcao)
-    LT                reduce using rule 67 (exp_funcao)
-    LE                reduce using rule 67 (exp_funcao)
-    EQ                reduce using rule 67 (exp_funcao)
-    GT                reduce using rule 67 (exp_funcao)
-    GE                reduce using rule 67 (exp_funcao)
-    NE                reduce using rule 67 (exp_funcao)
-    SOMA              reduce using rule 67 (exp_funcao)
-    SUB               reduce using rule 67 (exp_funcao)
-    MULT              reduce using rule 67 (exp_funcao)
-    DIV               reduce using rule 67 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 67 (exp_funcao)
+    MAP               reduce using rule 68 (func_call_exp)
+    FILTER            reduce using rule 68 (func_call_exp)
+    CONSTRUTOR        reduce using rule 68 (func_call_exp)
+    AND               reduce using rule 68 (func_call_exp)
+    OR                reduce using rule 68 (func_call_exp)
+    LT                reduce using rule 68 (func_call_exp)
+    LE                reduce using rule 68 (func_call_exp)
+    EQ                reduce using rule 68 (func_call_exp)
+    GT                reduce using rule 68 (func_call_exp)
+    GE                reduce using rule 68 (func_call_exp)
+    NE                reduce using rule 68 (func_call_exp)
+    SOMA              reduce using rule 68 (func_call_exp)
+    SUB               reduce using rule 68 (func_call_exp)
+    MULT              reduce using rule 68 (func_call_exp)
+    DIV               reduce using rule 68 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 68 (func_call_exp)
 
 
 State 324
 
-   68 exp_funcao: WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES •
+   69 func_call_exp: WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 68 (exp_funcao)
-    FILTER            reduce using rule 68 (exp_funcao)
-    CONSTRUTOR        reduce using rule 68 (exp_funcao)
-    AND               reduce using rule 68 (exp_funcao)
-    OR                reduce using rule 68 (exp_funcao)
-    LT                reduce using rule 68 (exp_funcao)
-    LE                reduce using rule 68 (exp_funcao)
-    EQ                reduce using rule 68 (exp_funcao)
-    GT                reduce using rule 68 (exp_funcao)
-    GE                reduce using rule 68 (exp_funcao)
-    NE                reduce using rule 68 (exp_funcao)
-    SOMA              reduce using rule 68 (exp_funcao)
-    SUB               reduce using rule 68 (exp_funcao)
-    MULT              reduce using rule 68 (exp_funcao)
-    DIV               reduce using rule 68 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 68 (exp_funcao)
+    MAP               reduce using rule 69 (func_call_exp)
+    FILTER            reduce using rule 69 (func_call_exp)
+    CONSTRUTOR        reduce using rule 69 (func_call_exp)
+    AND               reduce using rule 69 (func_call_exp)
+    OR                reduce using rule 69 (func_call_exp)
+    LT                reduce using rule 69 (func_call_exp)
+    LE                reduce using rule 69 (func_call_exp)
+    EQ                reduce using rule 69 (func_call_exp)
+    GT                reduce using rule 69 (func_call_exp)
+    GE                reduce using rule 69 (func_call_exp)
+    NE                reduce using rule 69 (func_call_exp)
+    SOMA              reduce using rule 69 (func_call_exp)
+    SUB               reduce using rule 69 (func_call_exp)
+    MULT              reduce using rule 69 (func_call_exp)
+    DIV               reduce using rule 69 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 69 (func_call_exp)
 
 
 State 325
 
-   65 exp_funcao: id ABRE_PARENTESES expressao FECHA_PARENTESES •
+   66 func_call_exp: id ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 65 (exp_funcao)
-    FILTER            reduce using rule 65 (exp_funcao)
-    CONSTRUTOR        reduce using rule 65 (exp_funcao)
-    AND               reduce using rule 65 (exp_funcao)
-    OR                reduce using rule 65 (exp_funcao)
-    LT                reduce using rule 65 (exp_funcao)
-    LE                reduce using rule 65 (exp_funcao)
-    EQ                reduce using rule 65 (exp_funcao)
-    GT                reduce using rule 65 (exp_funcao)
-    GE                reduce using rule 65 (exp_funcao)
-    NE                reduce using rule 65 (exp_funcao)
-    SOMA              reduce using rule 65 (exp_funcao)
-    SUB               reduce using rule 65 (exp_funcao)
-    MULT              reduce using rule 65 (exp_funcao)
-    DIV               reduce using rule 65 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 65 (exp_funcao)
+    MAP               reduce using rule 66 (func_call_exp)
+    FILTER            reduce using rule 66 (func_call_exp)
+    CONSTRUTOR        reduce using rule 66 (func_call_exp)
+    AND               reduce using rule 66 (func_call_exp)
+    OR                reduce using rule 66 (func_call_exp)
+    LT                reduce using rule 66 (func_call_exp)
+    LE                reduce using rule 66 (func_call_exp)
+    EQ                reduce using rule 66 (func_call_exp)
+    GT                reduce using rule 66 (func_call_exp)
+    GE                reduce using rule 66 (func_call_exp)
+    NE                reduce using rule 66 (func_call_exp)
+    SOMA              reduce using rule 66 (func_call_exp)
+    SUB               reduce using rule 66 (func_call_exp)
+    MULT              reduce using rule 66 (func_call_exp)
+    DIV               reduce using rule 66 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 66 (func_call_exp)
 
 
 State 326
 
-   66 exp_funcao: READ ABRE_PARENTESES expressao FECHA_PARENTESES •
+   67 func_call_exp: READ ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 66 (exp_funcao)
-    FILTER            reduce using rule 66 (exp_funcao)
-    CONSTRUTOR        reduce using rule 66 (exp_funcao)
-    AND               reduce using rule 66 (exp_funcao)
-    OR                reduce using rule 66 (exp_funcao)
-    LT                reduce using rule 66 (exp_funcao)
-    LE                reduce using rule 66 (exp_funcao)
-    EQ                reduce using rule 66 (exp_funcao)
-    GT                reduce using rule 66 (exp_funcao)
-    GE                reduce using rule 66 (exp_funcao)
-    NE                reduce using rule 66 (exp_funcao)
-    SOMA              reduce using rule 66 (exp_funcao)
-    SUB               reduce using rule 66 (exp_funcao)
-    MULT              reduce using rule 66 (exp_funcao)
-    DIV               reduce using rule 66 (exp_funcao)
-    VIRGULA           reduce using rule 66 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 66 (exp_funcao)
+    MAP               reduce using rule 67 (func_call_exp)
+    FILTER            reduce using rule 67 (func_call_exp)
+    CONSTRUTOR        reduce using rule 67 (func_call_exp)
+    AND               reduce using rule 67 (func_call_exp)
+    OR                reduce using rule 67 (func_call_exp)
+    LT                reduce using rule 67 (func_call_exp)
+    LE                reduce using rule 67 (func_call_exp)
+    EQ                reduce using rule 67 (func_call_exp)
+    GT                reduce using rule 67 (func_call_exp)
+    GE                reduce using rule 67 (func_call_exp)
+    NE                reduce using rule 67 (func_call_exp)
+    SOMA              reduce using rule 67 (func_call_exp)
+    SUB               reduce using rule 67 (func_call_exp)
+    MULT              reduce using rule 67 (func_call_exp)
+    DIV               reduce using rule 67 (func_call_exp)
+    VIRGULA           reduce using rule 67 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 67 (func_call_exp)
 
 
 State 327
 
-   67 exp_funcao: WRITE ABRE_PARENTESES expressao FECHA_PARENTESES •
+   68 func_call_exp: WRITE ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 67 (exp_funcao)
-    FILTER            reduce using rule 67 (exp_funcao)
-    CONSTRUTOR        reduce using rule 67 (exp_funcao)
-    AND               reduce using rule 67 (exp_funcao)
-    OR                reduce using rule 67 (exp_funcao)
-    LT                reduce using rule 67 (exp_funcao)
-    LE                reduce using rule 67 (exp_funcao)
-    EQ                reduce using rule 67 (exp_funcao)
-    GT                reduce using rule 67 (exp_funcao)
-    GE                reduce using rule 67 (exp_funcao)
-    NE                reduce using rule 67 (exp_funcao)
-    SOMA              reduce using rule 67 (exp_funcao)
-    SUB               reduce using rule 67 (exp_funcao)
-    MULT              reduce using rule 67 (exp_funcao)
-    DIV               reduce using rule 67 (exp_funcao)
-    VIRGULA           reduce using rule 67 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 67 (exp_funcao)
+    MAP               reduce using rule 68 (func_call_exp)
+    FILTER            reduce using rule 68 (func_call_exp)
+    CONSTRUTOR        reduce using rule 68 (func_call_exp)
+    AND               reduce using rule 68 (func_call_exp)
+    OR                reduce using rule 68 (func_call_exp)
+    LT                reduce using rule 68 (func_call_exp)
+    LE                reduce using rule 68 (func_call_exp)
+    EQ                reduce using rule 68 (func_call_exp)
+    GT                reduce using rule 68 (func_call_exp)
+    GE                reduce using rule 68 (func_call_exp)
+    NE                reduce using rule 68 (func_call_exp)
+    SOMA              reduce using rule 68 (func_call_exp)
+    SUB               reduce using rule 68 (func_call_exp)
+    MULT              reduce using rule 68 (func_call_exp)
+    DIV               reduce using rule 68 (func_call_exp)
+    VIRGULA           reduce using rule 68 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 68 (func_call_exp)
 
 
 State 328
 
-   68 exp_funcao: WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES •
+   69 func_call_exp: WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 68 (exp_funcao)
-    FILTER            reduce using rule 68 (exp_funcao)
-    CONSTRUTOR        reduce using rule 68 (exp_funcao)
-    AND               reduce using rule 68 (exp_funcao)
-    OR                reduce using rule 68 (exp_funcao)
-    LT                reduce using rule 68 (exp_funcao)
-    LE                reduce using rule 68 (exp_funcao)
-    EQ                reduce using rule 68 (exp_funcao)
-    GT                reduce using rule 68 (exp_funcao)
-    GE                reduce using rule 68 (exp_funcao)
-    NE                reduce using rule 68 (exp_funcao)
-    SOMA              reduce using rule 68 (exp_funcao)
-    SUB               reduce using rule 68 (exp_funcao)
-    MULT              reduce using rule 68 (exp_funcao)
-    DIV               reduce using rule 68 (exp_funcao)
-    VIRGULA           reduce using rule 68 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 68 (exp_funcao)
+    MAP               reduce using rule 69 (func_call_exp)
+    FILTER            reduce using rule 69 (func_call_exp)
+    CONSTRUTOR        reduce using rule 69 (func_call_exp)
+    AND               reduce using rule 69 (func_call_exp)
+    OR                reduce using rule 69 (func_call_exp)
+    LT                reduce using rule 69 (func_call_exp)
+    LE                reduce using rule 69 (func_call_exp)
+    EQ                reduce using rule 69 (func_call_exp)
+    GT                reduce using rule 69 (func_call_exp)
+    GE                reduce using rule 69 (func_call_exp)
+    NE                reduce using rule 69 (func_call_exp)
+    SOMA              reduce using rule 69 (func_call_exp)
+    SUB               reduce using rule 69 (func_call_exp)
+    MULT              reduce using rule 69 (func_call_exp)
+    DIV               reduce using rule 69 (func_call_exp)
+    VIRGULA           reduce using rule 69 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 69 (func_call_exp)
 
 
 State 329
 
-   65 exp_funcao: id ABRE_PARENTESES expressao FECHA_PARENTESES •
+   66 func_call_exp: id ABRE_PARENTESES expressao FECHA_PARENTESES •
 
-    MAP               reduce using rule 65 (exp_funcao)
-    FILTER            reduce using rule 65 (exp_funcao)
-    CONSTRUTOR        reduce using rule 65 (exp_funcao)
-    AND               reduce using rule 65 (exp_funcao)
-    OR                reduce using rule 65 (exp_funcao)
-    LT                reduce using rule 65 (exp_funcao)
-    LE                reduce using rule 65 (exp_funcao)
-    EQ                reduce using rule 65 (exp_funcao)
-    GT                reduce using rule 65 (exp_funcao)
-    GE                reduce using rule 65 (exp_funcao)
-    NE                reduce using rule 65 (exp_funcao)
-    SOMA              reduce using rule 65 (exp_funcao)
-    SUB               reduce using rule 65 (exp_funcao)
-    MULT              reduce using rule 65 (exp_funcao)
-    DIV               reduce using rule 65 (exp_funcao)
-    VIRGULA           reduce using rule 65 (exp_funcao)
-    FECHA_PARENTESES  reduce using rule 65 (exp_funcao)
+    MAP               reduce using rule 66 (func_call_exp)
+    FILTER            reduce using rule 66 (func_call_exp)
+    CONSTRUTOR        reduce using rule 66 (func_call_exp)
+    AND               reduce using rule 66 (func_call_exp)
+    OR                reduce using rule 66 (func_call_exp)
+    LT                reduce using rule 66 (func_call_exp)
+    LE                reduce using rule 66 (func_call_exp)
+    EQ                reduce using rule 66 (func_call_exp)
+    GT                reduce using rule 66 (func_call_exp)
+    GE                reduce using rule 66 (func_call_exp)
+    NE                reduce using rule 66 (func_call_exp)
+    SOMA              reduce using rule 66 (func_call_exp)
+    SUB               reduce using rule 66 (func_call_exp)
+    MULT              reduce using rule 66 (func_call_exp)
+    DIV               reduce using rule 66 (func_call_exp)
+    VIRGULA           reduce using rule 66 (func_call_exp)
+    FECHA_PARENTESES  reduce using rule 66 (func_call_exp)
 
 
 State 330
@@ -7682,7 +7682,7 @@ State 330
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 214
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 215
     tipo_de_variavel        go to state 146
     int_list                go to state 12
@@ -7720,39 +7720,39 @@ State 331
     exp_aritmetica  go to state 61
     termo           go to state 62
     fator           go to state 63
-    exp_funcao      go to state 65
+    func_call_exp   go to state 65
     constante       go to state 67
 
 
 State 332
 
-   64 comando_de_atribuicao: id ATRIB expressao PONTO_VIRGULA •
+   65 comando_de_atribuicao: id ATRIB expressao PONTO_VIRGULA •
 
-    error            reduce using rule 64 (comando_de_atribuicao)
-    ID               reduce using rule 64 (comando_de_atribuicao)
-    INT              reduce using rule 64 (comando_de_atribuicao)
-    FLOAT            reduce using rule 64 (comando_de_atribuicao)
-    CONSTANTE_NIL    reduce using rule 64 (comando_de_atribuicao)
-    TAIL_OR_NOT      reduce using rule 64 (comando_de_atribuicao)
-    HEADER           reduce using rule 64 (comando_de_atribuicao)
-    TAIL_POP         reduce using rule 64 (comando_de_atribuicao)
-    READ             reduce using rule 64 (comando_de_atribuicao)
-    WRITE            reduce using rule 64 (comando_de_atribuicao)
-    WRITELN          reduce using rule 64 (comando_de_atribuicao)
-    RETURN           reduce using rule 64 (comando_de_atribuicao)
-    IF               reduce using rule 64 (comando_de_atribuicao)
-    ELSE             reduce using rule 64 (comando_de_atribuicao)
-    FOR              reduce using rule 64 (comando_de_atribuicao)
-    SOMA             reduce using rule 64 (comando_de_atribuicao)
-    SUB              reduce using rule 64 (comando_de_atribuicao)
-    VIRGULA          reduce using rule 64 (comando_de_atribuicao)
-    PONTO_VIRGULA    reduce using rule 64 (comando_de_atribuicao)
-    ABRE_PARENTESES  reduce using rule 64 (comando_de_atribuicao)
-    ABRE_CHAVES      reduce using rule 64 (comando_de_atribuicao)
-    FECHA_CHAVES     reduce using rule 64 (comando_de_atribuicao)
-    FLOAT_CONST      reduce using rule 64 (comando_de_atribuicao)
-    INTEGER_CONST    reduce using rule 64 (comando_de_atribuicao)
-    STRING_LITERAL   reduce using rule 64 (comando_de_atribuicao)
+    error            reduce using rule 65 (comando_de_atribuicao)
+    ID               reduce using rule 65 (comando_de_atribuicao)
+    INT              reduce using rule 65 (comando_de_atribuicao)
+    FLOAT            reduce using rule 65 (comando_de_atribuicao)
+    CONSTANTE_NIL    reduce using rule 65 (comando_de_atribuicao)
+    TAIL_OR_NOT      reduce using rule 65 (comando_de_atribuicao)
+    HEADER           reduce using rule 65 (comando_de_atribuicao)
+    TAIL_POP         reduce using rule 65 (comando_de_atribuicao)
+    READ             reduce using rule 65 (comando_de_atribuicao)
+    WRITE            reduce using rule 65 (comando_de_atribuicao)
+    WRITELN          reduce using rule 65 (comando_de_atribuicao)
+    RETURN           reduce using rule 65 (comando_de_atribuicao)
+    IF               reduce using rule 65 (comando_de_atribuicao)
+    ELSE             reduce using rule 65 (comando_de_atribuicao)
+    FOR              reduce using rule 65 (comando_de_atribuicao)
+    SOMA             reduce using rule 65 (comando_de_atribuicao)
+    SUB              reduce using rule 65 (comando_de_atribuicao)
+    VIRGULA          reduce using rule 65 (comando_de_atribuicao)
+    PONTO_VIRGULA    reduce using rule 65 (comando_de_atribuicao)
+    ABRE_PARENTESES  reduce using rule 65 (comando_de_atribuicao)
+    ABRE_CHAVES      reduce using rule 65 (comando_de_atribuicao)
+    FECHA_CHAVES     reduce using rule 65 (comando_de_atribuicao)
+    FLOAT_CONST      reduce using rule 65 (comando_de_atribuicao)
+    INTEGER_CONST    reduce using rule 65 (comando_de_atribuicao)
+    STRING_LITERAL   reduce using rule 65 (comando_de_atribuicao)
 
 
 State 333
@@ -7824,7 +7824,7 @@ State 335
     exp_aritmetica  go to state 187
     termo           go to state 188
     fator           go to state 189
-    exp_funcao      go to state 190
+    func_call_exp   go to state 190
     constante       go to state 191
 
 
@@ -7879,7 +7879,7 @@ State 337
     termo                   go to state 62
     fator                   go to state 63
     comando_de_atribuicao   go to state 214
-    exp_funcao              go to state 65
+    func_call_exp           go to state 65
     chamada_de_retorno      go to state 215
     tipo_de_variavel        go to state 146
     int_list                go to state 12

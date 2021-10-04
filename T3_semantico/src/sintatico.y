@@ -37,7 +37,7 @@ extern int coluna;
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
 %type <node> comando_unico comando_condicional comando_iterativo expressao_for
 %type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao
-%type <node> exp_funcao chamada_de_retorno tipo_de_variavel constante tipo_de_variavel_id id
+%type <node> func_call_exp chamada_de_retorno tipo_de_variavel constante tipo_de_variavel_id id
 
 %type <node> ID
 %type <node> INT FLOAT LIST
@@ -433,6 +433,11 @@ fator:
 		// $$ = novo_node("fator", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
+	| func_call_exp {
+		// $$ = $1;
+		$$ = novo_node("func_call_exp", -1, -1);
+		coloca_node_filho($$, $1);
+	}
 	| SUB fator {
 		$$ = novo_node("SUB", yylineno, coluna);
 		coloca_node_filho($$, $2);
@@ -474,10 +479,10 @@ comando_de_atribuicao:
 	}
 ;
 
-exp_funcao:
+func_call_exp:
 	  id ABRE_PARENTESES expressao FECHA_PARENTESES {
 		verifica_contexto($1->nome);
-		$$ = novo_node("exp_funcao", -1, -1);
+		$$ = novo_node("my_func_call_exp", -1, -1);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
 	}
@@ -537,11 +542,6 @@ constante:
 	}
 	| STRING_LITERAL {
 		$$ = novo_node("STRING_LITERAL", yylineno, coluna);
-	}
-	| exp_funcao {
-		// $$ = $1;
-		$$ = novo_node("constante", -1, -1);
-		coloca_node_filho($$, $1);
 	}
 ;
 

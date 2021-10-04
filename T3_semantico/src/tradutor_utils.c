@@ -2,6 +2,52 @@
 #include <stdio.h>
 #include "tradutor_utils.h"
 
+// #### VARIAVEIS GLOBAIS ####
+
+int coluna;
+int *linha;
+
+// #### ESCOPO ####
+
+int num_escopo_atual = 0;
+int contador_escopo = 0;
+
+t_node_escopo *arvore_de_escopo = (t_node_escopo *)0;
+t_node_escopo *node_escopo_atual = (t_node_escopo *)0;
+
+void incrementa_escopo() {
+  if(contador_escopo == 0 && arvore_de_escopo == (t_node_escopo *)0) {
+    arvore_de_escopo = (t_node_escopo *)malloc(sizeof(t_node_escopo));
+    node_escopo_atual = arvore_de_escopo;
+    arvore_de_escopo->num_escopo = contador_escopo;
+    arvore_de_escopo->node_mae = (t_node_escopo *)0;
+  }
+
+  contador_escopo++;
+  num_escopo_atual = contador_escopo;
+  t_node_escopo *node_escopo  = (t_node_escopo *)malloc(sizeof(t_node_escopo));
+  node_escopo->num_escopo = contador_escopo;
+  node_escopo->node_mae = node_escopo_atual;
+  node_escopo_atual = node_escopo;
+}
+
+void decrementa_escopo() {
+  t_node_escopo *node_escopo = node_escopo_atual;
+  if(node_escopo_atual != (t_node_escopo *)0) {
+    node_escopo_atual = node_escopo_atual->node_mae;
+  }
+  if(node_escopo_atual != (t_node_escopo *)0) {
+    num_escopo_atual = node_escopo_atual->num_escopo;
+  }
+  free(node_escopo);
+}
+
+void destroi_arvore_escopo() {
+  if(arvore_de_escopo != (t_node_escopo *)0) {
+    free(arvore_de_escopo);
+  }
+}
+
 // #### TABELA DE SIMBOLOS ####
 
 char *var_ou_func_atual = "*";
@@ -41,13 +87,27 @@ void incrementa_tabela(char *nome)  {
     }
 	else {
         // errors++;
-		// printf("\nErro: %s ja definido\n", nome);
+	  printf(RED"ERRO, linha: %d, na coluna: %d, '%s' ja definida\n"reset, *linha, coluna, nome);
 	}
 }
 
 void verifica_contexto(char *nome) {
-	if (pega_simbolo(nome) == 0) {
-		// printf("\nErro: %s nao declarado\n", nome);
+  t_simbolo *aux;
+  t_node_escopo *node_escopo_aux;
+  int num_escopo_verificacao;
+  int foi_declarado = 0;
+
+  for (node_escopo_aux = node_escopo_atual; node_escopo_aux != (t_node_escopo*)0; node_escopo_aux = (t_node_escopo *)node_escopo_aux->node_mae) {
+    num_escopo_verificacao = node_escopo_aux->num_escopo;
+    for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+      if(strcmp(aux->nome, nome) == 0 && aux->escopo == num_escopo_verificacao) {
+        foi_declarado = 1;
+      }
+    }
+  }
+
+	if (foi_declarado == 0) {
+	  printf(RED"ERRO, linha: %d, na coluna: %d, referencia nao definida para '%s'\n"reset, *linha, coluna, nome);
 	}
 }
 
@@ -87,41 +147,6 @@ void destroi_tabela_simbolos() {
     // Confirmar que aux nao sera nulo na proxima iteracao
     aux = (t_simbolo*)1;
   }
-}
-
-// #### ESCOPO ####
-
-int num_escopo_atual = 0;
-int contador_escopo = 0;
-
-t_node_escopo *arvore_de_escopo = (t_node_escopo *)0;
-t_node_escopo *node_escopo_atual = (t_node_escopo *)0;
-
-void incrementa_escopo() {
-  if(contador_escopo == 0 && arvore_de_escopo == (t_node_escopo *)0) {
-    arvore_de_escopo = (t_node_escopo *)malloc(sizeof(t_node_escopo));
-    node_escopo_atual = arvore_de_escopo;
-    arvore_de_escopo->num_escopo = contador_escopo;
-    arvore_de_escopo->node_mae = (t_node_escopo *)0;
-  }
-
-  contador_escopo++;
-  num_escopo_atual = contador_escopo;
-  t_node_escopo *node_escopo  = (t_node_escopo *)malloc(sizeof(t_node_escopo));
-  node_escopo->num_escopo = contador_escopo;
-  node_escopo->node_mae = node_escopo_atual;
-  node_escopo_atual = node_escopo;
-}
-
-void decrementa_escopo() {
-  t_node_escopo *node_escopo = node_escopo_atual;
-  if(node_escopo_atual != (t_node_escopo *)0) {
-    node_escopo_atual = node_escopo_atual->node_mae;
-  }
-  if(node_escopo_atual != (t_node_escopo *)0) {
-    num_escopo_atual = node_escopo_atual->num_escopo;
-  }
-  free(node_escopo);
 }
 
 // #### ARVORE SINTATICA ABSTRATA ####

@@ -12,8 +12,6 @@ extern int yyerror(const char *s);
 extern char* yytext;
 extern int yylineno;
 
-extern int coluna;
-
 %}
 
 %define lr.type canonical-lr
@@ -122,25 +120,23 @@ declaracao:
 ;
 
 declaracao_de_variavel:
-	tipo_de_variavel_id PONTO_VIRGULA {
+	tipo_de_variavel_id {
+			var_ou_func_atual = "Variavel";
+			incrementa_tabela(nome_id_atual);
+		} PONTO_VIRGULA {
 		$$ = novo_node("declaracao_de_variavel", -1, -1);
 		coloca_node_filho($$, $1);
-
-		var_ou_func_atual = "Variavel";
-		incrementa_tabela(nome_id_atual);
-
 	}
 	  
 ;
 
 declaracao_de_funcao:
-	  tipo_de_variavel_id ABRE_PARENTESES {
+	  tipo_de_variavel_id {
 		  var_ou_func_atual = "funcao";
 		  incrementa_tabela(nome_id_atual);
-
+		  
 		  incrementa_escopo();
-
-	  } parametros FECHA_PARENTESES definicao_de_funcao {
+	  } ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
 		// coloca_node_filho($$, $5);
 		// coloca_node_filho($$, $3);
@@ -575,7 +571,8 @@ int yyerror (const char* s) {
 
 int main()
 {
-	// printf("1:  ");
+    coluna = 1;
+	linha = &yylineno;
 	yyparse();
 
 	mostra_tabela_simbolos();
@@ -591,6 +588,7 @@ int main()
 
 	yylex_destroy();
 	destroi_tabela_simbolos();
+	destroi_arvore_escopo();
 	destroi_arvore(ast);
 	return 0;
 }

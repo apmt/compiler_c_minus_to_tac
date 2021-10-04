@@ -16,7 +16,6 @@
     #define GRN "\033[0;32m"
     #define reset "\033[0m"
 
-    int coluna = 1;
     int erros = 0;
 
 %}

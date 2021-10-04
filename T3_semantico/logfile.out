@@ -1,259 +1,117 @@
-==11992== Memcheck, a memory error detector
-==11992== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==11992== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
-==11992== Command: ./tradutor
-==11992== Parent PID: 11991
-==11992== 
---11992-- 
---11992-- Valgrind options:
---11992--    -v
---11992--    --tool=memcheck
---11992--    --leak-check=full
---11992--    --show-leak-kinds=all
---11992--    --track-origins=yes
---11992--    --log-file=logfile.out
---11992-- Contents of /proc/version:
---11992--   Linux version 5.10.16.3-microsoft-standard-WSL2 (oe-user@oe-host) (x86_64-msft-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 SMP Fri Apr 2 22:23:49 UTC 2021
---11992-- 
---11992-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
---11992-- Page sizes: currently 4096, max supported 4096
---11992-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
---11992-- Reading syms from /home/anapaula/Desktop/trad/T3_semantico/tradutor
---11992-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.33.so
---11992--   Considering /usr/lib/x86_64-linux-gnu/ld-2.33.so ..
---11992--   .. CRC mismatch (computed 425b6850 wanted cee0dc4c)
---11992--   Considering /lib/x86_64-linux-gnu/ld-2.33.so ..
---11992--   .. CRC mismatch (computed 425b6850 wanted cee0dc4c)
---11992--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.33.so ..
---11992--   .. CRC is valid
---11992-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
---11992--    object doesn't have a symbol table
---11992--    object doesn't have a dynamic symbol table
---11992-- Scheduler: using generic scheduler lock implementation.
---11992-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
-==11992== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-11992-by-anapaula-on-???
-==11992== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-11992-by-anapaula-on-???
-==11992== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-11992-by-anapaula-on-???
-==11992== 
-==11992== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==11992== don't want to do, unless you know exactly what you're doing,
-==11992== or are doing some strange experiment):
-==11992==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=11992 ...command...
-==11992== 
-==11992== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==11992==   /path/to/gdb ./tradutor
-==11992== and then give GDB the following command
-==11992==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=11992
-==11992== --pid is optional if only one valgrind process is running
-==11992== 
---11992-- REDIR: 0x40276d0 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
---11992-- REDIR: 0x40274a0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
---11992-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
---11992--    object doesn't have a symbol table
---11992-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
---11992--    object doesn't have a symbol table
-==11992== WARNING: new redirection conflicts with existing -- ignoring it
---11992--     old: 0x040276d0 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
---11992--     new: 0x040276d0 (strlen              ) R-> (2007.0) 0x04845060 strlen
---11992-- REDIR: 0x4023eb0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4845fd0 (strcmp)
---11992-- REDIR: 0x4027c30 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4849a20 (mempcpy)
---11992-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.33.so
---11992--   Considering /usr/lib/x86_64-linux-gnu/libc-2.33.so ..
---11992--   .. CRC mismatch (computed 31fcf0a5 wanted 9eb4d521)
---11992--   Considering /lib/x86_64-linux-gnu/libc-2.33.so ..
---11992--   .. CRC mismatch (computed 31fcf0a5 wanted 9eb4d521)
---11992--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.33.so ..
---11992--   .. CRC is valid
---11992-- REDIR: 0x48f8f00 (libc.so.6:memmove) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f83a0 (libc.so.6:strncpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f9240 (libc.so.6:strcasecmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f7e50 (libc.so.6:strcat) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8400 (libc.so.6:rindex) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48fa700 (libc.so.6:rawmemchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x4914830 (libc.so.6:wmemchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x4914370 (libc.so.6:wcscmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f9060 (libc.so.6:mempcpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8e90 (libc.so.6:bcmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8340 (libc.so.6:strncmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f7f00 (libc.so.6:strcmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8fd0 (libc.so.6:memset) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x4914330 (libc.so.6:wcschr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f82a0 (libc.so.6:strnlen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f7fe0 (libc.so.6:strcspn) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f9290 (libc.so.6:strncasecmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f7f80 (libc.so.6:strcpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f93e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x4915ab0 (libc.so.6:wcsnlen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x49143b0 (libc.so.6:wcscpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8440 (libc.so.6:strpbrk) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f7eb0 (libc.so.6:index) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8260 (libc.so.6:strlen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x4900c20 (libc.so.6:memrchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f92e0 (libc.so.6:strcasecmp_l) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8e50 (libc.so.6:memchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x4914480 (libc.so.6:wcslen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f8560 (libc.so.6:strspn) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f91e0 (libc.so.6:stpncpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f9180 (libc.so.6:stpcpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48fa740 (libc.so.6:strchrnul) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x48f9330 (libc.so.6:strncasecmp_l) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
---11992-- REDIR: 0x49dbd60 (libc.so.6:__strrchr_avx2) redirected to 0x4844a10 (rindex)
---11992-- REDIR: 0x48f3130 (libc.so.6:malloc) redirected to 0x4841780 (malloc)
---11992-- REDIR: 0x49df3d0 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48488e0 (memset)
---11992-- REDIR: 0x49dd470 (libc.so.6:__strcpy_avx2) redirected to 0x4845090 (strcpy)
---11992-- REDIR: 0x49dbf30 (libc.so.6:__strlen_avx2) redirected to 0x4844f40 (strlen)
---11992-- REDIR: 0x49d7420 (libc.so.6:__strcmp_avx2) redirected to 0x4845ed0 (strcmp)
-==11992== Invalid write of size 4
-==11992==    at 0x10F0D8: incrementa_escopo (tradutor_utils.c:101)
-==11992==    by 0x10B495: yyparse (sintatico.y:141)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==11992== 
-==11992== 
-==11992== Process terminating with default action of signal 11 (SIGSEGV)
-==11992==  Access not within mapped region at address 0x0
-==11992==    at 0x10F0D8: incrementa_escopo (tradutor_utils.c:101)
-==11992==    by 0x10B495: yyparse (sintatico.y:141)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992==  If you believe this happened as a result of a stack
-==11992==  overflow in your program's main thread (unlikely but
-==11992==  possible), you can try to increase the size of the
-==11992==  main thread stack using the --main-stacksize= flag.
-==11992==  The main thread stack size used in this run was 8388608.
---11992-- REDIR: 0x48f3740 (libc.so.6:free) redirected to 0x48429d0 (free)
-==11992== 
-==11992== HEAP SUMMARY:
-==11992==     in use at exit: 21,141 bytes in 32 blocks
-==11992==   total heap usage: 32 allocs, 0 frees, 21,141 bytes allocated
-==11992== 
-==11992== Searching for pointers to 32 not-freed blocks
-==11992== Checked 96,424 bytes
-==11992== 
-==11992== 6 bytes in 2 blocks are still reachable in loss record 1 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10ED65: coloca_simbolo (tradutor_utils.c:13)
-==11992==    by 0x10EECD: incrementa_tabela (tradutor_utils.c:40)
-==11992==    by 0x10B486: yyparse (sintatico.y:134)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 8 bytes in 1 blocks are still reachable in loss record 2 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10ECE5: yyalloc (lex.yy.c:2142)
-==11992==    by 0x10E79C: yyensure_buffer_stack (lex.yy.c:1840)
-==11992==    by 0x10CEA4: yylex (lex.yy.c:726)
-==11992==    by 0x10B0B5: yyparse (sintatico.tab.c:2718)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 16 bytes in 3 blocks are still reachable in loss record 3 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1BD: novo_node (tradutor_utils.c:125)
-==11992==    by 0x10B6AB: yyparse (sintatico.y:210)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 18 bytes in 2 blocks are still reachable in loss record 4 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10EDED: coloca_simbolo (tradutor_utils.c:18)
-==11992==    by 0x10EECD: incrementa_tabela (tradutor_utils.c:40)
-==11992==    by 0x10B486: yyparse (sintatico.y:134)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 24 bytes in 2 blocks are still reachable in loss record 5 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10EDA0: coloca_simbolo (tradutor_utils.c:15)
-==11992==    by 0x10EECD: incrementa_tabela (tradutor_utils.c:40)
-==11992==    by 0x10B486: yyparse (sintatico.y:134)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 35 bytes in 3 blocks are still reachable in loss record 6 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1BD: novo_node (tradutor_utils.c:125)
-==11992==    by 0x10B666: yyparse (sintatico.y:201)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 42 bytes in 2 blocks are still reachable in loss record 7 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1BD: novo_node (tradutor_utils.c:125)
-==11992==    by 0x10B396: yyparse (sintatico.y:102)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 46 bytes in 2 blocks are still reachable in loss record 8 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1BD: novo_node (tradutor_utils.c:125)
-==11992==    by 0x10B442: yyparse (sintatico.y:130)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 64 bytes in 1 blocks are still reachable in loss record 9 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10ECE5: yyalloc (lex.yy.c:2142)
-==11992==    by 0x10E331: yy_create_buffer (lex.yy.c:1680)
-==11992==    by 0x10CECE: yylex (lex.yy.c:728)
-==11992==    by 0x10B0B5: yyparse (sintatico.tab.c:2718)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 64 bytes in 2 blocks are still reachable in loss record 10 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1A1: novo_node (tradutor_utils.c:124)
-==11992==    by 0x10B442: yyparse (sintatico.y:130)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 64 bytes in 2 blocks are still reachable in loss record 11 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1A1: novo_node (tradutor_utils.c:124)
-==11992==    by 0x10B396: yyparse (sintatico.y:102)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 80 bytes in 2 blocks are still reachable in loss record 12 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10ED49: coloca_simbolo (tradutor_utils.c:12)
-==11992==    by 0x10EECD: incrementa_tabela (tradutor_utils.c:40)
-==11992==    by 0x10B486: yyparse (sintatico.y:134)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 96 bytes in 3 blocks are still reachable in loss record 13 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1A1: novo_node (tradutor_utils.c:124)
-==11992==    by 0x10B6AB: yyparse (sintatico.y:210)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 96 bytes in 3 blocks are still reachable in loss record 14 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10F1A1: novo_node (tradutor_utils.c:124)
-==11992==    by 0x10B666: yyparse (sintatico.y:201)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 4,096 bytes in 1 blocks are still reachable in loss record 15 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x48DA2D3: _IO_file_doallocate (filedoalloc.c:101)
-==11992==    by 0x48EA02F: _IO_doallocbuf (genops.c:347)
-==11992==    by 0x48E75D3: _IO_file_xsgetn (fileops.c:1288)
-==11992==    by 0x48DB492: fread (iofread.c:38)
-==11992==    by 0x10DC99: yy_get_next_buffer (lex.yy.c:1429)
-==11992==    by 0x10D761: yylex (lex.yy.c:1269)
-==11992==    by 0x10B0B5: yyparse (sintatico.tab.c:2718)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== 16,386 bytes in 1 blocks are still reachable in loss record 16 of 16
-==11992==    at 0x48417F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
-==11992==    by 0x10ECE5: yyalloc (lex.yy.c:2142)
-==11992==    by 0x10E369: yy_create_buffer (lex.yy.c:1689)
-==11992==    by 0x10CECE: yylex (lex.yy.c:728)
-==11992==    by 0x10B0B5: yyparse (sintatico.tab.c:2718)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992== 
-==11992== LEAK SUMMARY:
-==11992==    definitely lost: 0 bytes in 0 blocks
-==11992==    indirectly lost: 0 bytes in 0 blocks
-==11992==      possibly lost: 0 bytes in 0 blocks
-==11992==    still reachable: 21,141 bytes in 32 blocks
-==11992==         suppressed: 0 bytes in 0 blocks
-==11992== 
-==11992== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-==11992== 
-==11992== 1 errors in context 1 of 1:
-==11992== Invalid write of size 4
-==11992==    at 0x10F0D8: incrementa_escopo (tradutor_utils.c:101)
-==11992==    by 0x10B495: yyparse (sintatico.y:141)
-==11992==    by 0x10CD56: main (sintatico.y:582)
-==11992==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
-==11992== 
-==11992== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==18192== Memcheck, a memory error detector
+==18192== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==18192== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==18192== Command: ./tradutor
+==18192== Parent PID: 18191
+==18192== 
+--18192-- 
+--18192-- Valgrind options:
+--18192--    -v
+--18192--    --tool=memcheck
+--18192--    --leak-check=full
+--18192--    --show-leak-kinds=all
+--18192--    --track-origins=yes
+--18192--    --log-file=logfile.out
+--18192-- Contents of /proc/version:
+--18192--   Linux version 5.10.16.3-microsoft-standard-WSL2 (oe-user@oe-host) (x86_64-msft-linux-gcc (GCC) 9.3.0, GNU ld (GNU Binutils) 2.34.0.20200220) #1 SMP Fri Apr 2 22:23:49 UTC 2021
+--18192-- 
+--18192-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--18192-- Page sizes: currently 4096, max supported 4096
+--18192-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--18192-- Reading syms from /home/anapaula/Desktop/trad/T3_semantico/tradutor
+--18192-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.33.so
+--18192--   Considering /usr/lib/x86_64-linux-gnu/ld-2.33.so ..
+--18192--   .. CRC mismatch (computed 425b6850 wanted cee0dc4c)
+--18192--   Considering /lib/x86_64-linux-gnu/ld-2.33.so ..
+--18192--   .. CRC mismatch (computed 425b6850 wanted cee0dc4c)
+--18192--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.33.so ..
+--18192--   .. CRC is valid
+--18192-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--18192--    object doesn't have a symbol table
+--18192--    object doesn't have a dynamic symbol table
+--18192-- Scheduler: using generic scheduler lock implementation.
+--18192-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==18192== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-18192-by-anapaula-on-???
+==18192== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-18192-by-anapaula-on-???
+==18192== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-18192-by-anapaula-on-???
+==18192== 
+==18192== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==18192== don't want to do, unless you know exactly what you're doing,
+==18192== or are doing some strange experiment):
+==18192==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=18192 ...command...
+==18192== 
+==18192== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==18192==   /path/to/gdb ./tradutor
+==18192== and then give GDB the following command
+==18192==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=18192
+==18192== --pid is optional if only one valgrind process is running
+==18192== 
+--18192-- REDIR: 0x40276d0 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--18192-- REDIR: 0x40274a0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--18192-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--18192--    object doesn't have a symbol table
+--18192-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--18192--    object doesn't have a symbol table
+==18192== WARNING: new redirection conflicts with existing -- ignoring it
+--18192--     old: 0x040276d0 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--18192--     new: 0x040276d0 (strlen              ) R-> (2007.0) 0x04845060 strlen
+--18192-- REDIR: 0x4023eb0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4845fd0 (strcmp)
+--18192-- REDIR: 0x4027c30 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4849a20 (mempcpy)
+--18192-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.33.so
+--18192--   Considering /usr/lib/x86_64-linux-gnu/libc-2.33.so ..
+--18192--   .. CRC mismatch (computed 31fcf0a5 wanted 9eb4d521)
+--18192--   Considering /lib/x86_64-linux-gnu/libc-2.33.so ..
+--18192--   .. CRC mismatch (computed 31fcf0a5 wanted 9eb4d521)
+--18192--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.33.so ..
+--18192--   .. CRC is valid
+--18192-- REDIR: 0x48f8f00 (libc.so.6:memmove) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f83a0 (libc.so.6:strncpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f9240 (libc.so.6:strcasecmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f7e50 (libc.so.6:strcat) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8400 (libc.so.6:rindex) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48fa700 (libc.so.6:rawmemchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x4914830 (libc.so.6:wmemchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x4914370 (libc.so.6:wcscmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f9060 (libc.so.6:mempcpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8e90 (libc.so.6:bcmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8340 (libc.so.6:strncmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f7f00 (libc.so.6:strcmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8fd0 (libc.so.6:memset) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x4914330 (libc.so.6:wcschr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f82a0 (libc.so.6:strnlen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f7fe0 (libc.so.6:strcspn) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f9290 (libc.so.6:strncasecmp) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f7f80 (libc.so.6:strcpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f93e0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x4915ab0 (libc.so.6:wcsnlen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x49143b0 (libc.so.6:wcscpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8440 (libc.so.6:strpbrk) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f7eb0 (libc.so.6:index) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8260 (libc.so.6:strlen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x4900c20 (libc.so.6:memrchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f92e0 (libc.so.6:strcasecmp_l) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8e50 (libc.so.6:memchr) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x4914480 (libc.so.6:wcslen) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f8560 (libc.so.6:strspn) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f91e0 (libc.so.6:stpncpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f9180 (libc.so.6:stpcpy) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48fa740 (libc.so.6:strchrnul) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x48f9330 (libc.so.6:strncasecmp_l) redirected to 0x48391d0 (_vgnU_ifunc_wrapper)
+--18192-- REDIR: 0x49dbd60 (libc.so.6:__strrchr_avx2) redirected to 0x4844a10 (rindex)
+--18192-- REDIR: 0x48f3130 (libc.so.6:malloc) redirected to 0x4841780 (malloc)
+--18192-- REDIR: 0x49df3d0 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48488e0 (memset)
+--18192-- REDIR: 0x49dd470 (libc.so.6:__strcpy_avx2) redirected to 0x4845090 (strcpy)
+--18192-- REDIR: 0x49dbf30 (libc.so.6:__strlen_avx2) redirected to 0x4844f40 (strlen)
+--18192-- REDIR: 0x49d7420 (libc.so.6:__strcmp_avx2) redirected to 0x4845ed0 (strcmp)
+--18192-- REDIR: 0x48f3740 (libc.so.6:free) redirected to 0x48429d0 (free)
+--18192-- REDIR: 0x49def20 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4849660 (mempcpy)
+--18192-- REDIR: 0x49dbb70 (libc.so.6:__strchrnul_avx2) redirected to 0x4849540 (strchrnul)
+--18192-- REDIR: 0x48f8a20 (libc.so.6:__GI_strstr) redirected to 0x4849ca0 (__strstr_sse2)
+==18192== 
+==18192== HEAP SUMMARY:
+==18192==     in use at exit: 0 bytes in 0 blocks
+==18192==   total heap usage: 532 allocs, 532 frees, 36,484 bytes allocated
+==18192== 
+==18192== All heap blocks were freed -- no leaks are possible
+==18192== 
+==18192== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

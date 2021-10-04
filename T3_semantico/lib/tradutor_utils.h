@@ -6,6 +6,11 @@
 #define GRN "\033[0;32m"
 #define reset "\033[0m"
 
+// #### VARIAVEIS GLOBAIS ####
+
+extern int coluna;
+extern int *linha;
+
 // #### TABELA DE SIMBOLOS ####
 
 typedef struct t_simbolo {
@@ -38,6 +43,7 @@ extern int num_escopo_atual;
 
 void incrementa_escopo();
 void decrementa_escopo();
+void destroi_arvore_escopo();
 
 // #### ARVORE SINTATICA ABSTRATA ####
 

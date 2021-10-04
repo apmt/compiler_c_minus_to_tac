@@ -8,9 +8,11 @@ typedef struct t_simbolo {
     char *nome;
     char *tipo;
     int escopo;
+    char *var_ou_func;
     struct t_simbolo * proximo;
 }t_simbolo;
 
+extern char *var_ou_func_atual;
 extern t_simbolo *tabela_de_simbolos;
 
 t_simbolo *coloca_simbolo ();

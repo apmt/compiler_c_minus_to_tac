@@ -129,12 +129,20 @@ declaracao_de_variavel:
 	tipo_de_variavel_id PONTO_VIRGULA {
 		$$ = novo_node("declaracao_de_variavel", -1, -1);
 		coloca_node_filho($$, $1);
+
+		var_ou_func_atual = "Variavel";
+		incrementa_tabela(nome_id_atual);
 	}
 	  
 ;
 
 declaracao_de_funcao:
-	  tipo_de_variavel_id ABRE_PARENTESES {incrementa_escopo();} parametros FECHA_PARENTESES definicao_de_funcao {
+	  tipo_de_variavel_id ABRE_PARENTESES {
+		  incrementa_escopo();
+		  
+		  var_ou_func_atual = "funcao";
+		  incrementa_tabela(nome_id_atual);
+	  } parametros FECHA_PARENTESES definicao_de_funcao {
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
 		// coloca_node_filho($$, $5);
 		// coloca_node_filho($$, $3);
@@ -182,6 +190,9 @@ parametro:
 	  tipo_de_variavel_id {
 		$$ = novo_node("parametro", -1, -1);
 		coloca_node_filho($$, $1);
+
+		var_ou_func_atual = "Variavel (parametro)";
+		incrementa_tabela(nome_id_atual);
 	  }
 ;
 
@@ -194,7 +205,8 @@ tipo_de_variavel_id:
 
 id:
 	ID {
-		incrementa_tabela(nome_id_atual);
+		// printf(">>%s, %d, %s\n", nome_id_atual, yylineno, var_ou_func_str);
+		// incrementa_tabela(nome_id_atual);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
 	}
 ;

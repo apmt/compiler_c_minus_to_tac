@@ -4,6 +4,7 @@
 
 // #### TABELA DE SIMBOLOS ####
 
+char *var_ou_func_atual = "*";
 t_simbolo *tabela_de_simbolos = (t_simbolo *)0;
 
 t_simbolo *coloca_simbolo(char *nome) {
@@ -14,6 +15,8 @@ t_simbolo *coloca_simbolo(char *nome) {
     aux->tipo = (char*)malloc(strlen(nome_tipo_atual)+1);
     strcpy(aux->tipo, nome_tipo_atual);
     aux->escopo = contador_escopo;
+    aux->var_ou_func = (char*)malloc(strlen(var_ou_func_atual)+1);
+    strcpy(aux->var_ou_func, var_ou_func_atual);
     aux->proximo = (t_simbolo*)tabela_de_simbolos;
     tabela_de_simbolos = aux;
     return aux;
@@ -23,7 +26,7 @@ t_simbolo *pega_simbolo(char *nome)
 {
   t_simbolo *aux;
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
-    if (strcmp(aux->nome, nome) == 0) {
+    if (strcmp(aux->nome, nome) == 0 && aux->escopo == contador_escopo) {
       return aux;
     }
   }
@@ -56,21 +59,21 @@ void mostra_tabela_simbolos() {
       contador_aux_1++;
     }
 
-    printf("\n=====================================================================================\n");
+    printf("\n================================================================================================\n");
     printf("\t\t\t\tTABELA DE SIMBOLOS\n");
-    printf("=====================================================================================\n");
-    printf("%-32s\t| %-8s\t| %-12s\t| %-32s\n", "nome", "escopo", "tipo", "valor");
-    printf("=====================================================================================\n");
+    printf("================================================================================================\n");
+    printf("%-32s\t| %-8s\t| %-12s\t| %-32s\n", "nome", "escopo", "tipo", "declaracao");
+    printf("================================================================================================\n");
     while(contador_aux_1--) {
       contador_aux_2 = 0;
       for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
           contador_aux_2++;
           if(contador_aux_2 == contador_aux_1) {
-            printf("%-32s\t| %-8d\t| %-12s\t| %-32s\n", aux->nome, aux->escopo, aux->tipo, "0*");
+            printf("%-32s\t| %-8d\t| %-12s\t| %-32s\n", aux->nome, aux->escopo, aux->tipo, aux->var_ou_func);
           }
       }
     }
-    printf("=====================================================================================\n");
+    printf("================================================================================================\n");
 }
 
 void destroi_tabela_simbolos() {
@@ -79,6 +82,7 @@ void destroi_tabela_simbolos() {
     proximo = (t_simbolo *)aux->proximo;
     free(aux->nome);
     free(aux->tipo);
+    free(aux->var_ou_func);
     free(aux);
     // Confirmar que aux nao sera nulo na proxima iteracao
     aux = (t_simbolo*)1;

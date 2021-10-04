@@ -36,7 +36,7 @@ extern int coluna;
 %type <node> declaracao_de_funcao definicao_de_funcao parametros
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
 %type <node> comando_unico comando_condicional comando_iterativo expressao_for
-%type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao
+%type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao func_call_parameters
 %type <node> func_call_exp chamada_de_retorno tipo_de_variavel constante tipo_de_variavel_id id
 
 %type <node> ID
@@ -142,20 +142,6 @@ declaracao_de_funcao:
 	  }
 ;
 
-tipo_de_variavel_id:
-	tipo_de_variavel id {
-		$$ = novo_node(nome_tipo_atual, yylineno, coluna);
-		coloca_node_filho($$, $2);
-	}
-;
-
-id:
-	ID {
-		incrementa_tabela(nome_id_atual);
-		$$ = novo_node(nome_id_atual, yylineno, coluna);
-	}
-;
-
 definicao_de_funcao:
 	bloco_de_comando {
 		$$ = $1;
@@ -194,6 +180,20 @@ parametro:
 		$$ = novo_node("parametro", -1, -1);
 		coloca_node_filho($$, $1);
 	  }
+;
+
+tipo_de_variavel_id:
+	tipo_de_variavel id {
+		$$ = novo_node(nome_tipo_atual, yylineno, coluna);
+		coloca_node_filho($$, $2);
+	}
+;
+
+id:
+	ID {
+		incrementa_tabela(nome_id_atual);
+		$$ = novo_node(nome_id_atual, yylineno, coluna);
+	}
 ;
 
 comando:
@@ -303,12 +303,7 @@ expressao_for:
 ;
 
 expressao:
-	expressao VIRGULA exp {
-		$$ = novo_node("expressao", -1, -1);
-		coloca_node_filho($$, $3);
-		coloca_node_filho($$, $1);
-	}
-	| exp {
+	exp {
 		$$ = $1;
 		// $$ = novo_node("expressao", -1, -1);
 		// coloca_node_filho($$, $1);
@@ -480,7 +475,7 @@ comando_de_atribuicao:
 ;
 
 func_call_exp:
-	  id ABRE_PARENTESES expressao FECHA_PARENTESES {
+	  id ABRE_PARENTESES func_call_parameters FECHA_PARENTESES {
 		verifica_contexto($1->nome);
 		$$ = novo_node("my_func_call_exp", -1, -1);
 		coloca_node_filho($$, $3);
@@ -499,6 +494,20 @@ func_call_exp:
 		coloca_node_filho($$, $3);
 	}
 ;
+
+func_call_parameters:
+	func_call_parameters VIRGULA expressao {
+		$$ = novo_node("lista_de_expressao", -1, -1);
+		coloca_node_filho($$, $3);
+		coloca_node_filho($$, $1);
+	}
+	| expressao {
+		$$ = $1;
+		// $$ = novo_node("lista_de_parametros", -1, -1);
+		// coloca_node_filho($$, $1);
+	}
+;
+
 
 chamada_de_retorno:
 	RETURN expressao PONTO_VIRGULA {

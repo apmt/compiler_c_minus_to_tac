@@ -11,7 +11,8 @@ t_simbolo *coloca_simbolo(char *nome) {
     aux = (t_simbolo *)malloc(sizeof(t_simbolo));
     aux->nome = (char*)malloc(strlen(nome)+1);
     strcpy(aux->nome, nome);
-    // aux->nome  = strdup(nome);
+    aux->tipo = (char*)malloc(strlen(nome_tipo_atual)+1);
+    strcpy(aux->tipo, nome_tipo_atual);
     aux->proximo = (t_simbolo*)tabela_de_simbolos;
     tabela_de_simbolos = aux;
     return aux;
@@ -48,15 +49,15 @@ void verifica_contexto(char *nome) {
 
 void mostra_tabela_simbolos() {
     t_simbolo *aux;
-    printf("\n\n--------------------------------------------------\n");
-    printf("            TABELA DE SIMBOLOS\n");
-    printf("--------------------------------------------------\n");
-    printf("nome\t\t| escopo\t| tipo\t| valor\n");
-    printf("--------------------------------------------------\n");
+    printf("\n=====================================================================================\n");
+    printf("\t\t\t\tTABELA DE SIMBOLOS\n");
+    printf("=====================================================================================\n");
+    printf("%-32s\t| %-8s\t| %-12s\t| %-32s\n", "nome", "escopo", "tipo", "valor");
+    printf("=====================================================================================\n");
     for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
-        printf("%s\n", aux->nome);
+        printf("%-32s\t| %-8s\t| %-12s\t| %-32s\n", aux->nome, "0*", aux->tipo, "0*");
     }
-    printf("--------------------------------------------------\n");
+    printf("=====================================================================================\n");
 }
 
 void destroi_tabela_simbolos() {
@@ -64,6 +65,7 @@ void destroi_tabela_simbolos() {
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = proximo) {
     proximo = (t_simbolo *)aux->proximo;
     free(aux->nome);
+    free(aux->tipo);
     free(aux);
     // Confirmar que aux nao sera nulo na proxima iteracao
     aux = (t_simbolo*)1;

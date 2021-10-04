@@ -6,6 +6,7 @@
 
 typedef struct t_simbolo {
     char *nome;
+    char *tipo;
     struct t_simbolo * proximo;
 }t_simbolo;
 

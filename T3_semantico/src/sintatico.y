@@ -134,10 +134,13 @@ declaracao_de_variavel:
 ;
 
 declaracao_de_funcao:
-	  tipo_de_variavel_id ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
+	  tipo_de_variavel_id ABRE_PARENTESES {incrementa_escopo();} parametros FECHA_PARENTESES definicao_de_funcao {
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
-		coloca_node_filho($$, $5);
-		coloca_node_filho($$, $3);
+		// coloca_node_filho($$, $5);
+		// coloca_node_filho($$, $3);
+		// coloca_node_filho($$, $1);
+		coloca_node_filho($$, $6);
+		coloca_node_filho($$, $4);
 		coloca_node_filho($$, $1);
 	  }
 ;
@@ -199,6 +202,7 @@ id:
 comando:
 	  bloco_de_comando {
 		$$ = $1;
+		incrementa_escopo();
 		// $$ = novo_node("comando", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
@@ -229,6 +233,7 @@ bloco_de_comando:
 		// $$ = $2;
 		$$ = novo_node("BLOCO", yylineno, coluna);
 		coloca_node_filho($$, $2);
+		decrementa_escopo();
 	}
 ;
 

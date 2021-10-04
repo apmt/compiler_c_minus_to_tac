@@ -7,6 +7,7 @@
 typedef struct t_simbolo {
     char *nome;
     char *tipo;
+    int escopo;
     struct t_simbolo * proximo;
 }t_simbolo;
 
@@ -18,6 +19,13 @@ void incrementa_tabela (char *nome);
 void verifica_contexto(char *nome);
 void mostra_tabela_simbolos();
 void destroi_tabela_simbolos();
+
+// #### ESCOPO ####
+
+extern int contador_escopo;
+
+void incrementa_escopo();
+void decrementa_escopo();
 
 // #### ARVORE SINTATICA ABSTRATA ####
 

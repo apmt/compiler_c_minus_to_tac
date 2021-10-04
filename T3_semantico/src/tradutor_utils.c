@@ -13,6 +13,7 @@ t_simbolo *coloca_simbolo(char *nome) {
     strcpy(aux->nome, nome);
     aux->tipo = (char*)malloc(strlen(nome_tipo_atual)+1);
     strcpy(aux->tipo, nome_tipo_atual);
+    aux->escopo = contador_escopo;
     aux->proximo = (t_simbolo*)tabela_de_simbolos;
     tabela_de_simbolos = aux;
     return aux;
@@ -49,13 +50,25 @@ void verifica_contexto(char *nome) {
 
 void mostra_tabela_simbolos() {
     t_simbolo *aux;
+
+    int contador_aux_2, contador_aux_1 = 1;
+    for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+      contador_aux_1++;
+    }
+
     printf("\n=====================================================================================\n");
     printf("\t\t\t\tTABELA DE SIMBOLOS\n");
     printf("=====================================================================================\n");
     printf("%-32s\t| %-8s\t| %-12s\t| %-32s\n", "nome", "escopo", "tipo", "valor");
     printf("=====================================================================================\n");
-    for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
-        printf("%-32s\t| %-8s\t| %-12s\t| %-32s\n", aux->nome, "0*", aux->tipo, "0*");
+    while(contador_aux_1--) {
+      contador_aux_2 = 0;
+      for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+          contador_aux_2++;
+          if(contador_aux_2 == contador_aux_1) {
+            printf("%-32s\t| %-8d\t| %-12s\t| %-32s\n", aux->nome, aux->escopo, aux->tipo, "0*");
+          }
+      }
     }
     printf("=====================================================================================\n");
 }
@@ -70,6 +83,18 @@ void destroi_tabela_simbolos() {
     // Confirmar que aux nao sera nulo na proxima iteracao
     aux = (t_simbolo*)1;
   }
+}
+
+// #### ESCOPO ####
+
+int contador_escopo = 0;
+
+void incrementa_escopo() {
+  contador_escopo++;
+}
+
+void decrementa_escopo() {
+  contador_escopo--;
 }
 
 // #### ARVORE SINTATICA ABSTRATA ####

@@ -14,7 +14,7 @@ t_simbolo *coloca_simbolo(char *nome) {
     strcpy(aux->nome, nome);
     aux->tipo = (char*)malloc(strlen(nome_tipo_atual)+1);
     strcpy(aux->tipo, nome_tipo_atual);
-    aux->escopo = contador_escopo;
+    aux->escopo = num_escopo_atual;
     aux->var_ou_func = (char*)malloc(strlen(var_ou_func_atual)+1);
     strcpy(aux->var_ou_func, var_ou_func_atual);
     aux->proximo = (t_simbolo*)tabela_de_simbolos;
@@ -91,14 +91,37 @@ void destroi_tabela_simbolos() {
 
 // #### ESCOPO ####
 
+int num_escopo_atual = 0;
 int contador_escopo = 0;
 
+t_node_escopo *arvore_de_escopo = (t_node_escopo *)0;
+t_node_escopo *node_escopo_atual = (t_node_escopo *)0;
+
 void incrementa_escopo() {
+  if(contador_escopo == 0 && arvore_de_escopo == (t_node_escopo *)0) {
+    arvore_de_escopo = (t_node_escopo *)malloc(sizeof(t_node_escopo));
+    node_escopo_atual = arvore_de_escopo;
+    arvore_de_escopo->num_escopo = contador_escopo;
+    arvore_de_escopo->node_mae = (t_node_escopo *)0;
+  }
+
   contador_escopo++;
+  num_escopo_atual = contador_escopo;
+  t_node_escopo *node_escopo  = (t_node_escopo *)malloc(sizeof(t_node_escopo));
+  node_escopo->num_escopo = contador_escopo;
+  node_escopo->node_mae = node_escopo_atual;
+  node_escopo_atual = node_escopo;
 }
 
 void decrementa_escopo() {
-  contador_escopo--;
+  t_node_escopo *node_escopo = node_escopo_atual;
+  if(node_escopo_atual != (t_node_escopo *)0) {
+    node_escopo_atual = node_escopo_atual->node_mae;
+  }
+  if(node_escopo_atual != (t_node_escopo *)0) {
+    num_escopo_atual = node_escopo_atual->num_escopo;
+  }
+  free(node_escopo);
 }
 
 // #### ARVORE SINTATICA ABSTRATA ####
@@ -187,3 +210,18 @@ char nome_id_atual[31];
 char nome_tipo_atual[31];
 
 FILE *tree_output_file;
+
+// #### ANALISE SEMANTICA ####
+
+void existe_main() {
+  t_simbolo *aux;
+  int existe = 0;
+  for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+    if(strcmp(aux->nome,"main") == 0 && aux->escopo == 0) {
+      existe = 1;
+    }
+  }
+  if(existe == 0) {
+    fprintf (stderr, RED"ERRO: referencia indefinida para `main'\n"reset);
+  }
+}

@@ -1186,7 +1186,7 @@ YY_RULE_SETUP
 case 43:
 YY_RULE_SETUP
 #line 275 "src/lexico.l"
-{ printf(RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }
+{ fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; erros++; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP

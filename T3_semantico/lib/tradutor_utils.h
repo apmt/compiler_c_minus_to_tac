@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define RED "\033[0;31m"
+#define GRN "\033[0;32m"
+#define reset "\033[0m"
+
 // #### TABELA DE SIMBOLOS ####
 
 typedef struct t_simbolo {
@@ -24,7 +28,13 @@ void destroi_tabela_simbolos();
 
 // #### ESCOPO ####
 
+typedef struct t_node_escopo {
+    int num_escopo;
+    struct t_node_escopo * node_mae;
+}t_node_escopo;
+
 extern int contador_escopo;
+extern int num_escopo_atual;
 
 void incrementa_escopo();
 void decrementa_escopo();
@@ -51,3 +61,7 @@ extern char nome_id_atual[31];
 extern char nome_tipo_atual[31];
 
 extern FILE *tree_output_file;
+
+// #### ANALISE SEMANTICA ####
+
+void existe_main();

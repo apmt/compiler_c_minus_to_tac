@@ -6,10 +6,6 @@
 #include <stdio.h>
 #include "tradutor_utils.h"
 
-#define RED "\033[0;31m"
-#define GRN "\033[0;32m"
-#define reset "\033[0m"
-
 extern int yylex(void);
 extern int yylex_destroy(void);
 extern int yyerror(const char *s);
@@ -132,16 +128,18 @@ declaracao_de_variavel:
 
 		var_ou_func_atual = "Variavel";
 		incrementa_tabela(nome_id_atual);
+
 	}
 	  
 ;
 
 declaracao_de_funcao:
 	  tipo_de_variavel_id ABRE_PARENTESES {
-		  incrementa_escopo();
-		  
 		  var_ou_func_atual = "funcao";
 		  incrementa_tabela(nome_id_atual);
+
+		  incrementa_escopo();
+
 	  } parametros FECHA_PARENTESES definicao_de_funcao {
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
 		// coloca_node_filho($$, $5);
@@ -212,9 +210,8 @@ id:
 ;
 
 comando:
-	  bloco_de_comando {
-		$$ = $1;
-		incrementa_escopo();
+	  {incrementa_escopo();} bloco_de_comando {
+		$$ = $2;
 		// $$ = novo_node("comando", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
@@ -572,7 +569,7 @@ constante:
 %%
 
 int yyerror (const char* s) {
-	fprintf (stderr, RED"yylineno: %d, na coluna: %d, %s\n"reset, yylineno, coluna, s);
+	fprintf (stderr, RED"ERRO, linha: %d, na coluna: %d, %s\n"reset, yylineno, coluna, s);
   	return 0;
 }
 
@@ -580,18 +577,20 @@ int main()
 {
 	// printf("1:  ");
 	yyparse();
-	yylex_destroy();
 
 	mostra_tabela_simbolos();
-	destroi_tabela_simbolos();
 
 	printf("\n");
 	tree_output_file = fopen("tree_output_file.txt","w");
     fprintf(tree_output_file,"[PROGRAMA");
 	imprime_ast(ast, 0);
-	destroi_arvore(ast);
     fprintf(tree_output_file,"]");
 	fclose(tree_output_file);
 
+	existe_main();
+
+	yylex_destroy();
+	destroi_tabela_simbolos();
+	destroi_arvore(ast);
 	return 0;
 }

@@ -271,7 +271,7 @@ ESPACO          [ \t\v\f\r]
 }
 
     /* Reconhecer o resto como erro */
-.                   { printf(RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }
+.                   { fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; erros++; }
 
 
 %%

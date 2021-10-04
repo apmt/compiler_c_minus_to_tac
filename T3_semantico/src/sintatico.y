@@ -35,7 +35,7 @@ extern int coluna;
 %type <node> programa lista_de_declaracoes declaracao declaracao_de_variavel
 %type <node> declaracao_de_funcao definicao_de_funcao parametros
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
-%type <node> comando_unico comando_condicional comando_iterativo expressao_for
+%type <node> comando_unico comando_condicional comando_iterativo expressao_for list
 %type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao func_call_parameters
 %type <node> func_call_exp chamada_de_retorno tipo_de_variavel constante tipo_de_variavel_id id
 
@@ -528,21 +528,18 @@ tipo_de_variavel:
 	| FLOAT {
 		strcpy(nome_tipo_atual, "FLOAT");
 	  }
-	| int_list {
-		strcpy(nome_tipo_atual, "INT_LIST");
+	| list
+;
+
+list:
+	  INT LIST {
+		strcpy(nome_tipo_atual, "LIST (int)");
 	  }
-	| float_list {
-		strcpy(nome_tipo_atual, "FLOAT_LIST");
-	}
+	| FLOAT LIST {
+		strcpy(nome_tipo_atual, "LIST (float)");
+	  }
 ;
 
-int_list:
-	INT LIST
-;
-
-float_list:
-	FLOAT LIST
-;
 
 constante:
 	INTEGER_CONST {

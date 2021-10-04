@@ -3816,7 +3816,7 @@ int yyerror (const char* s) {
 
 int main()
 {
-	printf("1:  ");
+	// printf("1:  ");
 	yyparse();
 	yylex_destroy();
 

@@ -794,289 +794,323 @@ case 1:
 YY_RULE_SETUP
 #line 38 "src/lexico.l"
 { 
-    printf("<INT>"); coluna += yyleng;
+    // printf("<INT>");
+    coluna += yyleng;
     return INT;
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 42 "src/lexico.l"
+#line 43 "src/lexico.l"
 {
-    printf("<FLOAT>"); coluna += yyleng;
+    // printf("<FLOAT>");
+    coluna += yyleng;
     return FLOAT;
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 46 "src/lexico.l"
+#line 48 "src/lexico.l"
 {
-    printf("<LIST>"); coluna += yyleng;
+    // printf("<LIST>");
+    coluna += yyleng;
     return LIST;
 }
 	YY_BREAK
 /* Nova constante */
 case 4:
 YY_RULE_SETUP
-#line 52 "src/lexico.l"
+#line 55 "src/lexico.l"
 {
-    printf("<CONSTANTE_NIL>"); coluna += yyleng;
+    // printf("<CONSTANTE_NIL>");
+    coluna += yyleng;
     return CONSTANTE_NIL;
 } 
 	YY_BREAK
 /* Operador ambiguo */
 case 5:
 YY_RULE_SETUP
-#line 58 "src/lexico.l"
+#line 62 "src/lexico.l"
 {
-    printf("<TAIL_OR_NOT>"); coluna += yyleng;
+    // printf("<TAIL_OR_NOT>");
+    coluna += yyleng;
     return TAIL_OR_NOT;
 }
 	YY_BREAK
 /* Novas primitivas */
 case 6:
 YY_RULE_SETUP
-#line 64 "src/lexico.l"
+#line 69 "src/lexico.l"
 {
-    printf("<HEADER>"); coluna += yyleng;
+    // printf("<HEADER>");
+    coluna += yyleng;
     return HEADER;
 }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 68 "src/lexico.l"
+#line 74 "src/lexico.l"
 {
-    printf("<TAIL_POP>"); coluna += yyleng;
+    // printf("<TAIL_POP>");
+    coluna += yyleng;
     return TAIL_POP;
 }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 72 "src/lexico.l"
+#line 79 "src/lexico.l"
 {
-    printf("<MAP>"); coluna += yyleng;
+    // printf("<MAP>");
+    coluna += yyleng;
     return MAP;
 }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 76 "src/lexico.l"
+#line 84 "src/lexico.l"
 {
-    printf("<FILTER>"); coluna += yyleng;
+    // printf("<FILTER>");
+    coluna += yyleng;
     return FILTER;
 }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 80 "src/lexico.l"
+#line 89 "src/lexico.l"
 {
-    printf("<CONSTRUTOR>"); coluna += yyleng;
+    // printf("<CONSTRUTOR>");
+    coluna += yyleng;
     return CONSTRUTOR;
 }
 	YY_BREAK
 /* Entrada e saida */
 case 11:
 YY_RULE_SETUP
-#line 86 "src/lexico.l"
+#line 96 "src/lexico.l"
 {
-    printf("<READ>"); coluna += yyleng;
+    // printf("<READ>");
+    coluna += yyleng;
     return READ;
 }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 90 "src/lexico.l"
+#line 101 "src/lexico.l"
 {
-    printf("<WRITE>"); coluna += yyleng;
+    // printf("<WRITE>");
+    coluna += yyleng;
     return WRITE;
 }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 94 "src/lexico.l"
+#line 106 "src/lexico.l"
 {
-    printf("<WRITELN>"); coluna += yyleng;
+    // printf("<WRITELN>");
+    coluna += yyleng;
     return WRITELN;
 }
 	YY_BREAK
 /* Controle de fluxo */
 case 14:
 YY_RULE_SETUP
-#line 100 "src/lexico.l"
+#line 113 "src/lexico.l"
 {
-    printf("<RETURN>"); coluna += yyleng;
+    // printf("<RETURN>");
+    coluna += yyleng;
     return RETURN;
 }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 104 "src/lexico.l"
+#line 118 "src/lexico.l"
 {
-    printf("<IF>"); coluna += yyleng;
+    // printf("<IF>");
+    coluna += yyleng;
     return IF;
 }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 108 "src/lexico.l"
+#line 123 "src/lexico.l"
 {
-    printf("<ELSE>"); coluna+= yyleng;
+    // printf("<ELSE>");
+    coluna += yyleng;
     return ELSE;
 }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 112 "src/lexico.l"
+#line 128 "src/lexico.l"
 {
-    printf("<FOR>"); coluna+= yyleng;
+    // printf("<FOR>");
+    coluna += yyleng;
     return FOR;
 }
 	YY_BREAK
 /* Operadores logicos */
 case 18:
 YY_RULE_SETUP
-#line 118 "src/lexico.l"
+#line 135 "src/lexico.l"
 {
-    printf("<AND>"); coluna += yyleng;
+    // printf("<AND>");
+    coluna += yyleng;
     return AND;
 }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 122 "src/lexico.l"
+#line 140 "src/lexico.l"
 {
-    printf("<OR>"); coluna += yyleng;
+    // printf("<OR>");
+    coluna += yyleng;
     return OR;
 }
 	YY_BREAK
 /* Operadores relacionais */
 case 20:
 YY_RULE_SETUP
-#line 128 "src/lexico.l"
+#line 147 "src/lexico.l"
 {
-    printf("<LT>"); coluna += yyleng;
+    // printf("<LT>");
+    coluna += yyleng;
     return LT;
 }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 132 "src/lexico.l"
+#line 152 "src/lexico.l"
 {
-    printf("<LE>"); coluna += yyleng;
+    // printf("<LE>");
+    coluna += yyleng;
     return LE;
 }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 136 "src/lexico.l"
+#line 157 "src/lexico.l"
 {
-    printf("<EQ>"); coluna += yyleng;
+    // printf("<EQ>");
+    coluna += yyleng;
     return EQ;
 }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 140 "src/lexico.l"
+#line 162 "src/lexico.l"
 {
-    printf("<GT>"); coluna += yyleng;
+    // printf("<GT>");
+    coluna += yyleng;
     return GT;
 }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 144 "src/lexico.l"
+#line 167 "src/lexico.l"
 {
-    printf("<GE>"); coluna += yyleng;
+    // printf("<GE>");
+    coluna += yyleng;
     return GE;
 }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 148 "src/lexico.l"
+#line 172 "src/lexico.l"
 {
-    printf("<NE>"); coluna += yyleng;
+    // printf("<NE>");
+    coluna += yyleng;
     return NE;
 }
 	YY_BREAK
 /* Operadores aritmeticos */
 case 26:
 YY_RULE_SETUP
-#line 154 "src/lexico.l"
+#line 179 "src/lexico.l"
 {
-    printf("<SOMA>"); coluna += yyleng;
+    // printf("<SOMA>");
+    coluna += yyleng;
     return SOMA;
 }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 158 "src/lexico.l"
+#line 184 "src/lexico.l"
 {
-    printf("<SUB>"); coluna += yyleng;
+    // printf("<SUB>");
+    coluna += yyleng;
     return SUB;
 }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 162 "src/lexico.l"
+#line 189 "src/lexico.l"
 {
-    printf("<MULT>"); coluna += yyleng;
+    // printf("<MULT>");
+    coluna += yyleng;
     return MULT;
 }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 166 "src/lexico.l"
+#line 194 "src/lexico.l"
 {
-    printf("<DIV>"); coluna += yyleng;
+    // printf("<DIV>");
+    coluna += yyleng;
     return DIV;
 }
 	YY_BREAK
 /* Operador de atribuicao */
 case 30:
 YY_RULE_SETUP
-#line 172 "src/lexico.l"
+#line 201 "src/lexico.l"
 {
-    printf("<ATRIB>"); coluna += yyleng;
+    // printf("<ATRIB>");
+    coluna += yyleng;
     return ATRIB;
 }
 	YY_BREAK
 /* Delimitadores e outros */
 case 31:
 YY_RULE_SETUP
-#line 178 "src/lexico.l"
+#line 208 "src/lexico.l"
 {
-    printf("<VIRGULA>"); coluna += yyleng;
+    // printf("<VIRGULA>");
+    coluna += yyleng;
     return VIRGULA;
 }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 182 "src/lexico.l"
+#line 213 "src/lexico.l"
 {
-    printf("<PONTO_VIRGULA>"); coluna += yyleng;
+    // printf("<PONTO_VIRGULA>");
+    coluna += yyleng;
     return PONTO_VIRGULA;
 }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 186 "src/lexico.l"
+#line 218 "src/lexico.l"
 {
-    printf("<ABRE_PARENTESES>"); coluna += yyleng;
+    // printf("<ABRE_PARENTESES>");
+    coluna += yyleng;
     return ABRE_PARENTESES;
 }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 190 "src/lexico.l"
+#line 223 "src/lexico.l"
 {
-    printf("<FECHA_PARENTESES>"); coluna += yyleng;
+    // printf("<FECHA_PARENTESES>");
+    coluna += yyleng;
     return FECHA_PARENTESES;
 }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 194 "src/lexico.l"
+#line 228 "src/lexico.l"
 {
-    printf("<ABRE_CHAVES>"); 
+    // printf("<ABRE_CHAVES>"); 
     coluna += yyleng;
     // contador_de_escopo++; 
     // indicador_de_escopo = contador_de_escopo;
@@ -1085,9 +1119,9 @@ YY_RULE_SETUP
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 201 "src/lexico.l"
+#line 235 "src/lexico.l"
 {
-    printf("<FECHA_CHAVES>"); 
+    // printf("<FECHA_CHAVES>"); 
     coluna += yyleng; 
     // indicador_de_escopo--; 
     return FECHA_CHAVES;
@@ -1096,62 +1130,70 @@ YY_RULE_SETUP
 /* Regras */
 case 37:
 YY_RULE_SETUP
-#line 209 "src/lexico.l"
+#line 243 "src/lexico.l"
 {
-    printf("<INTEGER_CONST, %s>", yytext); coluna += yyleng;
+    // printf("<INTEGER_CONST, %s>", yytext);
+    coluna += yyleng;
     return INTEGER_CONST;
 }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 213 "src/lexico.l"
+#line 248 "src/lexico.l"
 {
-    printf("<FLOAT_CONST, %s>", yytext); coluna += yyleng;
+    // printf("<FLOAT_CONST, %s>", yytext);
+    coluna += yyleng;
     return FLOAT_CONST;
 }
 	YY_BREAK
 case 39:
 /* rule 39 can match eol */
 YY_RULE_SETUP
-#line 217 "src/lexico.l"
+#line 253 "src/lexico.l"
 {
-    printf("<STRING_LITERAL, %s>", yytext); coluna += yyleng;
+    // printf("<STRING_LITERAL, %s>", yytext);
+    coluna += yyleng;
     return STRING_LITERAL;
 }
 	YY_BREAK
 /* Outras regras */
 case 40:
 YY_RULE_SETUP
-#line 223 "src/lexico.l"
+#line 260 "src/lexico.l"
 {
     strcpy(nome_id_atual, yytext);
-    printf("<ID,%s>", yytext); coluna += yyleng;
+    // printf("<ID,%s>", yytext);
+    coluna += yyleng;
     return ID;
 }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 229 "src/lexico.l"
+#line 267 "src/lexico.l"
 { /* Separa os tokens */ coluna += yyleng; }
 	YY_BREAK
 case 42:
 /* rule 42 can match eol */
 YY_RULE_SETUP
-#line 230 "src/lexico.l"
-{ yylineno++; printf("\n%d:  ", yylineno); coluna = 1; }
+#line 268 "src/lexico.l"
+{
+    yylineno++;
+    // printf("\n%d:  ", yylineno);
+    coluna = 1;
+}
 	YY_BREAK
 /* Reconhecer o resto como erro */
 case 43:
 YY_RULE_SETUP
-#line 233 "src/lexico.l"
+#line 275 "src/lexico.l"
 { printf(RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d"reset, yylineno, coluna); coluna += yyleng; erros++; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 236 "src/lexico.l"
+#line 278 "src/lexico.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1155 "src/lex.yy.c"
+#line 1197 "src/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2120,7 +2162,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 236 "src/lexico.l"
+#line 278 "src/lexico.l"
 
 
 

@@ -29,6 +29,7 @@ FLOAT           ({DIGITO}*\.?{DIGITO}+|{DIGITO}+\.)
 STRING_LITERAL  \"(\\.|[^"\\])*\"
 
 ESPACO          [ \t\v\f\r]
+COMENTARIO      \/\/.*
 
 %%
 
@@ -262,6 +263,7 @@ ESPACO          [ \t\v\f\r]
     return ID;
 }
 
+{COMENTARIO}        { /* Ignora comentarios de uma linha */ }
 {ESPACO}+           { /* Separa os tokens */ coluna += yyleng; }
 "\n"                {
     yylineno++;

@@ -580,6 +580,7 @@ int main()
 	linha = &yylineno;
 	yyparse();
 
+	existe_main();
 	mostra_tabela_simbolos();
 
 	printf("\n");
@@ -588,8 +589,6 @@ int main()
 	imprime_ast(ast, 0);
     fprintf(tree_output_file,"]");
 	fclose(tree_output_file);
-
-	existe_main();
 
 	yylex_destroy();
 	destroi_tabela_simbolos();

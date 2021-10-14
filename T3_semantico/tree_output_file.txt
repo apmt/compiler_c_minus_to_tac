@@ -1,1 +1,1 @@
-[PROGRAMA["INT"["main"]]["BLOCO"["INT"["a"]]["FLOAT"["a"]]["LIST (int)"["c"]]["ATRIB"["c"]["INTEGER_CONST"]]["INT"["b"]]["INTEGER_CONST"]]]
+[PROGRAMA["INT"["a"]]["INT"["mein"]]["BLOCO"["ATRIB"["b"]["INTEGER_CONST"]]["BLOCO"]]]

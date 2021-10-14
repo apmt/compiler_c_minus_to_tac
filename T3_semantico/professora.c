@@ -1,7 +1,7 @@
 int list IL;
 float list FL;
 
-int list read_list(int n) {
+int list read_list(float n) {
 	int i;
 	i =  -435.7;
 	int list new;
@@ -28,6 +28,10 @@ float succ(int i, float x) {
 
 
 int leq_10(float x) {
+	return x <= 10;
+}
+
+int leq_10_l(float list x) {
 	return x <= 10;
 }
 

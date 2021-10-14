@@ -199,8 +199,6 @@ tipo_de_variavel_id:
 
 id:
 	ID {
-		// printf(">>%s, %d, %s\n", nome_id_atual, yylineno, var_ou_func_str);
-		// incrementa_tabela(nome_id_atual);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
 	}
 ;
@@ -496,7 +494,8 @@ func_call_exp:
 		$$ = novo_node("my_func_call_exp", -1, -1);
 		coloca_node_filho($$, $1);
 	}
-	|  READ ABRE_PARENTESES exp FECHA_PARENTESES {
+	|  READ ABRE_PARENTESES id FECHA_PARENTESES {
+		verifica_contexto($3->nome);
 		$$ = novo_node("READ", yylineno, coluna);
 		coloca_node_filho($$, $3);
 	}

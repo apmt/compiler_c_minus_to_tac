@@ -64,7 +64,7 @@ typedef struct t_node {
     char *nome;
     int linha;
     int coluna;
-    // TokenType tipo;
+    char *tipo;
     struct t_node *primeiro_filho;
     struct t_node *proximo_irmao;
 }t_node;

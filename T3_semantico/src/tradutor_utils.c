@@ -183,11 +183,35 @@ void destroi_tabela_simbolos() {
 // #### ARVORE SINTATICA ABSTRATA ####
 
 t_node *novo_node(char *nome, int linha, int coluna) {
+    t_simbolo *aux;
+    char *tipo = NULL;
+
+    // GET IDs TYPE
+    for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+      if(strcmp(aux->nome, nome) == 0 && aux->escopo == num_escopo_atual) {
+        tipo = strdup(aux->tipo);
+      }
+    }
+
+    // GET CONSTs TYPE
+    if(strcmp(nome, "INTEGER_CONST") == 0) tipo = strdup("INT");
+    if(strcmp(nome, "FLOAT_CONST") == 0) tipo = strdup("FLOAT_CONST");
+    if(strcmp(nome, "CONSTANTE_NIL") == 0) tipo = strdup("UNDEF_NIL");
+    if(strcmp(nome, "STRING_LITERAL") == 0) tipo = strdup("STRING");
+
     t_node *node  = (t_node *)malloc(sizeof(t_node));
     node->nome = (char*)malloc(strlen(nome)+1);
     strcpy(node->nome, nome);
     node->linha  = linha;
     node->coluna = coluna;
+    //TODO
+    if(tipo != NULL) {
+      node->tipo = tipo;
+    } else {
+      node->tipo = (char*)malloc(strlen("UNDEF")+1);
+      strcpy(node->tipo, "UNDEF");
+    }
+    //END TODO
     node->primeiro_filho = (t_node *)0;
     node->proximo_irmao = (t_node *)0;
     return node;
@@ -219,7 +243,9 @@ void imprime_ast(t_node *node_raiz_ptr, int profundidade) {
     while(i--) {
       printf(" -");
     }
-    printf(" %s\n", node_raiz_ptr->nome);
+    printf(" %s", node_raiz_ptr->nome);
+    if(strcmp(node_raiz_ptr->tipo, "UNDEF") == 0) printf(BLUE" %s\n"reset, node_raiz_ptr->tipo);
+    else printf(MAGENTA" %s\n"reset, node_raiz_ptr->tipo);
     fprintf(tree_output_file,"[\"%s\"", node_raiz_ptr->nome);
   }
 
@@ -259,6 +285,7 @@ void destroi_arvore(t_node *node_raiz_ptr) {
   }
 
   free(node_raiz_ptr->nome);
+  free(node_raiz_ptr->tipo);
   free(node_raiz_ptr);
 }
 

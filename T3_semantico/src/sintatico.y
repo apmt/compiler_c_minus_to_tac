@@ -30,7 +30,7 @@ extern int yylineno;
 %type <node> declaracao_de_funcao definicao_de_funcao parametros
 %type <node> lista_de_parametros parametro comando comandos bloco_de_comando
 %type <node> comando_unico comando_condicional comando_iterativo expressao_for list
-%type <node> expressao exp exp_list exp_aritmetica termo fator comando_de_atribuicao func_call_parameters
+%type <node> exp_or_empty exp exp_list exp_aritmetica termo fator comando_de_atribuicao func_call_parameters
 %type <node> func_call_exp chamada_de_retorno tipo_de_variavel constante tipo_de_variavel_id id
 
 %type <node> ID
@@ -268,7 +268,7 @@ comando_unico:
 		// $$ = novo_node("comando_unico", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
-	| expressao PONTO_VIRGULA {
+	| exp_or_empty PONTO_VIRGULA {
 		$$ = $1;
 		// $$ = novo_node("comando_unico", -1, -1);
 		// coloca_node_filho($$, $1);
@@ -276,12 +276,12 @@ comando_unico:
 ;
 
 comando_condicional:
-	  IF ABRE_PARENTESES expressao FECHA_PARENTESES comando %prec IFX {
+	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando %prec IFX {
 		$$ = novo_node("IF", yylineno, coluna);
 		coloca_node_filho($$, $5);
 		coloca_node_filho($$, $3);
 	}
-	| IF ABRE_PARENTESES expressao FECHA_PARENTESES comando ELSE comando {
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES comando ELSE comando {
 		$$ = novo_node("IF_ELSE", yylineno, coluna);
 		coloca_node_filho($$, $7);
 		coloca_node_filho($$, $5);
@@ -300,19 +300,19 @@ comando_iterativo:
 ;
 
 expressao_for:
-	id ATRIB expressao {
+	id ATRIB exp {
 		$$ = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
 	}
-	| expressao {
+	| exp_or_empty {
 		$$ = $1;
 		// $$ = novo_node("expressao_for", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
 ;
 
-expressao:
+exp_or_empty:
 	exp {
 		$$ = $1;
 		// $$ = novo_node("expressao", -1, -1);
@@ -476,7 +476,7 @@ fator:
 ;
 
 comando_de_atribuicao:
-    id ATRIB expressao PONTO_VIRGULA {
+    id ATRIB exp PONTO_VIRGULA {
 		verifica_contexto($1->nome);
 		$$ = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho($$, $3);
@@ -491,27 +491,32 @@ func_call_exp:
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
 	}
-	|  READ ABRE_PARENTESES expressao FECHA_PARENTESES {
+	|  id ABRE_PARENTESES FECHA_PARENTESES {
+		verifica_contexto($1->nome);
+		$$ = novo_node("my_func_call_exp", -1, -1);
+		coloca_node_filho($$, $1);
+	}
+	|  READ ABRE_PARENTESES exp FECHA_PARENTESES {
 		$$ = novo_node("READ", yylineno, coluna);
 		coloca_node_filho($$, $3);
 	}
-	|  WRITE ABRE_PARENTESES expressao FECHA_PARENTESES {
+	|  WRITE ABRE_PARENTESES exp FECHA_PARENTESES {
 		$$ = novo_node("WRITE", yylineno, coluna);
 		coloca_node_filho($$, $3);
 	}
-	|  WRITELN ABRE_PARENTESES expressao FECHA_PARENTESES {
+	|  WRITELN ABRE_PARENTESES exp FECHA_PARENTESES {
 		$$ = novo_node("WRITELN", yylineno, coluna);
 		coloca_node_filho($$, $3);
 	}
 ;
 
 func_call_parameters:
-	func_call_parameters VIRGULA expressao {
+	func_call_parameters VIRGULA exp {
 		$$ = novo_node("lista_de_expressao", -1, -1);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
 	}
-	| expressao {
+	| exp {
 		$$ = $1;
 		// $$ = novo_node("lista_de_parametros", -1, -1);
 		// coloca_node_filho($$, $1);
@@ -520,7 +525,7 @@ func_call_parameters:
 
 
 chamada_de_retorno:
-	RETURN expressao PONTO_VIRGULA {
+	RETURN exp PONTO_VIRGULA {
 		$$ = novo_node("RETURN", yylineno, coluna);
 		coloca_node_filho($$, $2);
 	}

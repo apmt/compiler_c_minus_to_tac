@@ -28,8 +28,9 @@ INTEGER         {DIGITO}+
 FLOAT           ({DIGITO}*\.?{DIGITO}+|{DIGITO}+\.)
 STRING_LITERAL  \"(\\.|[^"\\])*\"
 
-ESPACO          [ \t\v\f\r]
-COMENTARIO      "/*"([^*]|\*+[^*/])*\*+"/"
+ESPACO              [ \t\v\f\r]
+COMENTARIO_BLOCO    "/*"([^*]|\*+[^*/])*\*+"/"
+COMENTARIO          \/\/.*
 
 %%
 
@@ -270,13 +271,14 @@ COMENTARIO      "/*"([^*]|\*+[^*/])*\*+"/"
     return ID;
 }
 
+{COMENTARIO_BLOCO}        { /* Ignora comentarios de uma linha */ }
+{COMENTARIO}        { /* Ignora comentarios de uma linha */ }
+{ESPACO}+           { /* Separa os tokens */ coluna += yyleng; }
 "\n"                {
     yylineno++;
     // printf("\n%d:  ", yylineno);
     coluna = 1;
 }
-{COMENTARIO}        { /* Ignora comentarios de uma linha */ }
-{ESPACO}+           { /* Separa os tokens */ coluna += yyleng; }
 
     /* Reconhecer o resto como erro */
 .                   { fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; erros++; }

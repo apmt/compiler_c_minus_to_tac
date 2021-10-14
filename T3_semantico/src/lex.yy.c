@@ -366,14 +366,14 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[88] =
     {   0,
-        0,    0,   46,   44,   42,   43,    5,   44,    7,   44,
+        0,    0,   46,   44,   43,   41,    5,   44,    7,   44,
        33,   34,   28,   26,   31,   27,   44,   29,   37,   10,
        32,   20,   30,   23,    6,   40,   40,   40,   40,   40,
-       40,   40,   40,   35,   44,   36,   42,   25,    0,   39,
+       40,   40,   40,   35,   44,   36,   43,   25,    0,   39,
         0,   18,   38,    0,   38,   37,    9,   21,   22,   24,
         8,   40,   40,   40,   40,   40,   15,   40,   40,   40,
        40,   19,    0,    0,    4,   40,   40,   17,    1,   40,
-       40,   40,   40,   41,   16,   40,    3,   11,   40,   40,
+       40,   40,   40,   42,   16,   40,    3,   11,   40,   40,
         2,   40,   12,   14,   40,   13,    0
     } ;
 
@@ -1177,22 +1177,22 @@ case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
 #line 274 "src/lexico.l"
-{ /* Ignora comentarios de uma linha */ }
-	YY_BREAK
-case 42:
-YY_RULE_SETUP
-#line 275 "src/lexico.l"
-{ /* Separa os tokens */ coluna += yyleng; }
-	YY_BREAK
-case 43:
-/* rule 43 can match eol */
-YY_RULE_SETUP
-#line 276 "src/lexico.l"
 {
     yylineno++;
     // printf("\n%d:  ", yylineno);
     coluna = 1;
 }
+	YY_BREAK
+case 42:
+/* rule 42 can match eol */
+YY_RULE_SETUP
+#line 279 "src/lexico.l"
+{ /* Ignora comentarios de uma linha */ }
+	YY_BREAK
+case 43:
+YY_RULE_SETUP
+#line 280 "src/lexico.l"
+{ /* Separa os tokens */ coluna += yyleng; }
 	YY_BREAK
 /* Reconhecer o resto como erro */
 case 44:

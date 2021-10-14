@@ -8,6 +8,8 @@
 int coluna;
 int *linha;
 char nome_funcao_atual[64];
+int num_parametros_chamada_func = 0;
+
 
 // #### ESCOPO ####
 
@@ -308,3 +310,17 @@ void existe_main() {
     fprintf (stderr, RED"ERRO: referencia indefinida para `main'\n"reset);
   }
 }
+
+void verifica_qnt_parametros_chamada_func(char *nome_funcao_chamada) {
+  t_simbolo *aux;
+  for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+    if(strcmp(aux->nome, nome_funcao_chamada) == 0){
+      if(aux->contador_de_parametros != num_parametros_chamada_func) {
+        printf(RED"ERRO, linha: %d, coluna: %d, quantidade incorreta de paramentros passados para a funcao '%s'\n"reset, *linha, coluna, nome_funcao_chamada);
+      }
+    }
+  }
+}
+
+
+

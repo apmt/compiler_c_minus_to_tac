@@ -270,13 +270,13 @@ COMENTARIO      "/*"([^*]|\*+[^*/])*\*+"/"
     return ID;
 }
 
-{COMENTARIO}        { /* Ignora comentarios de uma linha */ }
-{ESPACO}+           { /* Separa os tokens */ coluna += yyleng; }
 "\n"                {
     yylineno++;
     // printf("\n%d:  ", yylineno);
     coluna = 1;
 }
+{COMENTARIO}        { /* Ignora comentarios de uma linha */ }
+{ESPACO}+           { /* Separa os tokens */ coluna += yyleng; }
 
     /* Reconhecer o resto como erro */
 .                   { fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; erros++; }

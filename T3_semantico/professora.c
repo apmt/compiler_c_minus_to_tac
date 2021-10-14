@@ -40,7 +40,13 @@ int main() {
 
 	writeln("Digite os número de elementos da lista: ");
 
+
 	int n;
+	int m;
+
+	succ(1.2);
+	succ(n, m);
+
 	float list FL10;
 	read(n);
 

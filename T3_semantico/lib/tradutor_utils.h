@@ -21,6 +21,7 @@
 extern int coluna;
 extern int *linha;
 extern char nome_funcao_atual[64];
+extern int num_parametros_chamada_func;
 
 // #### TABELA DE SIMBOLOS ####
 
@@ -84,3 +85,4 @@ extern FILE *tree_output_file;
 // #### ANALISE SEMANTICA ####
 
 void existe_main();
+void verifica_qnt_parametros_chamada_func(char *nome_funcao_chamada);

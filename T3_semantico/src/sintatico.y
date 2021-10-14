@@ -488,11 +488,17 @@ func_call_exp:
 		$$ = novo_node("my_func_call_exp", -1, -1);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
+
+		verifica_qnt_parametros_chamada_func($1->nome);
+		num_parametros_chamada_func = 0;
 	}
 	|  id ABRE_PARENTESES FECHA_PARENTESES {
 		verifica_contexto($1->nome);
 		$$ = novo_node("my_func_call_exp", -1, -1);
 		coloca_node_filho($$, $1);
+
+		verifica_qnt_parametros_chamada_func($1->nome);
+		num_parametros_chamada_func = 0;
 	}
 	|  READ ABRE_PARENTESES id FECHA_PARENTESES {
 		verifica_contexto($3->nome);
@@ -514,9 +520,13 @@ func_call_parameters:
 		$$ = novo_node("lista_de_expressao", -1, -1);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
+
+		num_parametros_chamada_func++;
 	}
 	| exp {
 		$$ = $1;
+
+		num_parametros_chamada_func++;
 		// $$ = novo_node("lista_de_parametros", -1, -1);
 		// coloca_node_filho($$, $1);
 	}

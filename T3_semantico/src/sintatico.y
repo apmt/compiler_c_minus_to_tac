@@ -86,8 +86,6 @@ programa:
 	lista_de_declaracoes {
 		ast = $$;
 		$$ = $1;
-		// $$ = novo_node("programa", -1, -1);
-		// coloca_node_filho($$, $1);
 	}	
 ;
 
@@ -99,20 +97,15 @@ lista_de_declaracoes:
 	}
 	| /* epsilon */ {
 		$$ = (t_node*)0;
-		// $$ = novo_node("lista_de_declaracoes", -1, -1);
 	}
 ;
 
 declaracao: 
 	  declaracao_de_variavel {
 		$$ = $1;
-		// $$ = novo_node("declaracao", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| declaracao_de_funcao {
 		$$ = $1;
-		// $$ = novo_node("declaracao", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| error {
 		yyerrok;
@@ -134,13 +127,9 @@ declaracao_de_funcao:
 	  tipo_de_variavel_id {
 		  var_ou_func_atual = "funcao";
 		  incrementa_tabela(nome_id_atual);
-		  
 		  incrementa_escopo();
 	  } ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao {
 		$$ = novo_node("declaracao_de_funcao", -1, -1);
-		// coloca_node_filho($$, $5);
-		// coloca_node_filho($$, $3);
-		// coloca_node_filho($$, $1);
 		coloca_node_filho($$, $6);
 		coloca_node_filho($$, $4);
 		coloca_node_filho($$, $1);
@@ -150,20 +139,15 @@ declaracao_de_funcao:
 definicao_de_funcao:
 	bloco_de_comando {
 		$$ = $1;
-		// $$ = novo_node("definicao_de_funcao", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 ;
 
 parametros:
 	  lista_de_parametros {
 		$$ = $1;
-		// $$ = novo_node("parametros", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| /* epsilon */ {
 		$$ = (t_node*)0;
-		// $$ = novo_node("parametros", -1, -1);
 	}
 ;
 
@@ -175,8 +159,6 @@ lista_de_parametros:
 	}
 	| parametro {
 		$$ = $1;
-		// $$ = novo_node("lista_de_parametros", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 ;
 
@@ -206,13 +188,9 @@ id:
 comando:
 	  {incrementa_escopo();} bloco_de_comando {
 		$$ = $2;
-		// $$ = novo_node("comando", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| comando_unico {
 		$$ = $1;
-		// $$ = novo_node("comando", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| error {
 		yyerrok;
@@ -227,13 +205,11 @@ comandos:
 	}
     | /* epsilon */ {
 		$$ = (t_node*)0;
-		// $$ = novo_node("comandos", -1, -1);
 	}
 ;
 
 bloco_de_comando:
 	  ABRE_CHAVES comandos FECHA_CHAVES {
-		// $$ = $2;
 		$$ = novo_node("BLOCO", yylineno, coluna);
 		coloca_node_filho($$, $2);
 		decrementa_escopo();
@@ -243,33 +219,21 @@ bloco_de_comando:
 comando_unico:
 	  comando_condicional {
 		$$ = $1;
-		// $$ = novo_node("comando_unico", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| comando_iterativo {
 		$$ = $1;
-		// $$ = novo_node("comando_unico", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| declaracao_de_variavel {
 		$$ = $1;
-		// $$ = novo_node("comando_unico", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| chamada_de_retorno {
 		$$ = $1;
-		// $$ = novo_node("comando_unico", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| comando_de_atribuicao {
 		$$ = $1;
-		// $$ = novo_node("comando_unico", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| exp_or_empty PONTO_VIRGULA {
 		$$ = $1;
-		// $$ = novo_node("comando_unico", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 ;
 
@@ -305,20 +269,15 @@ expressao_for:
 	}
 	| exp_or_empty {
 		$$ = $1;
-		// $$ = novo_node("expressao_for", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 ;
 
 exp_or_empty:
 	exp {
 		$$ = $1;
-		// $$ = novo_node("expressao", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| /* epsilon */ {
 		$$ = (t_node*)0;
-		// $$ = novo_node("expressao", -1, -1);
 	}
 ;
 
@@ -365,8 +324,6 @@ exp:
 	}
 	| exp_list {
 		$$ = $1;
-		// $$ = novo_node("exp", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 ;
 
@@ -388,8 +345,6 @@ exp_list:
 	}
 	| exp_aritmetica {
 		$$ = $1;
-		// $$ = novo_node("exp_list", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 
 ;
@@ -397,8 +352,6 @@ exp_list:
 exp_aritmetica:
 	termo {
 		$$ = $1;
-		// $$ = novo_node("exp_aritmetica", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| exp_aritmetica SOMA termo {
 		$$ = novo_node("SOMA", yylineno, coluna);
@@ -415,8 +368,6 @@ exp_aritmetica:
 termo:
 	fator {
 		$$ = $1;
-		// $$ = novo_node("termo", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| termo MULT fator {
 		$$ = novo_node("MULT", yylineno, coluna);
@@ -433,13 +384,9 @@ termo:
 fator:
 	constante {
 		$$ = $1;
-		// $$ = novo_node("fator", -1, -1);
-		// coloca_node_filho($$, $1);
 	}
 	| func_call_exp {
-		// $$ = $1;
-		$$ = novo_node("func_call_exp", -1, -1);
-		coloca_node_filho($$, $1);
+		$$ = $1;
 	}
 	| SUB fator {
 		$$ = novo_node("SUB", yylineno, coluna);
@@ -466,9 +413,7 @@ fator:
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
 	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES {
-		// $$ = $2;
-		$$ = novo_node("fator", -1, -1);
-		coloca_node_filho($$, $2);
+		$$ = $2;
 	}
 	
 ;
@@ -494,8 +439,7 @@ func_call_exp:
 	}
 	|  id ABRE_PARENTESES FECHA_PARENTESES {
 		verifica_contexto($1->nome);
-		$$ = novo_node("my_func_call_exp", -1, -1);
-		coloca_node_filho($$, $1);
+		$$ = $1;
 
 		verifica_qnt_parametros_chamada_func($1->nome);
 		num_parametros_chamada_func = 0;

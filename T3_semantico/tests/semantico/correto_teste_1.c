@@ -18,6 +18,15 @@ int append (int list a, int b) {
     return b : a;
 }
 
+int ZERO () {
+    return 0;
+}
+
 int main () {
+    {
+       int a;
+    }
+    a = 2 + (a - 1);
+    ZERO(1);
 }
 

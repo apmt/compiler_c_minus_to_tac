@@ -29,7 +29,7 @@ FLOAT           ({DIGITO}*\.?{DIGITO}+|{DIGITO}+\.)
 STRING_LITERAL  \"(\\.|[^"\\])*\"
 
 ESPACO          [ \t\v\f\r]
-COMENTARIO      \/\/.*
+COMENTARIO      "/*"([^*]|\*+[^*/])*\*+"/"
 
 %%
 

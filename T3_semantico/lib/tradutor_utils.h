@@ -4,6 +4,9 @@
 
 #define RED "\033[0;31m"
 #define GRN "\033[0;32m"
+#define BLUE "\033[0;34m"
+#define MAGENTA "\033[0;35m"
+#define CYAN "\033[0;36m"
 #define reset "\033[0m"
 
 #define MAX_NUMBER_OF_FUNC_PARAMS_IN_C 253
@@ -17,6 +20,7 @@
 
 extern int coluna;
 extern int *linha;
+extern char nome_funcao_atual[64];
 
 // #### TABELA DE SIMBOLOS ####
 
@@ -25,7 +29,7 @@ typedef struct t_simbolo {
     char *tipo;
     int escopo;
     char *var_ou_func;
-    int tipos_dos_parametros[MAX_NUMBER_OF_FUNC_PARAMS_IN_C];
+    char *tipos_dos_parametros[MAX_NUMBER_OF_FUNC_PARAMS_IN_C];
     int contador_de_parametros;
     struct t_simbolo * proximo;
 }t_simbolo;
@@ -35,7 +39,6 @@ extern t_simbolo *tabela_de_simbolos;
 
 t_simbolo *coloca_simbolo ();
 t_simbolo *pega_simbolo ();
-void incrementa_tipos_esperados_da_funcao(char *nome, char *tipo);
 void incrementa_tabela (char *nome);
 void verifica_contexto(char *nome);
 void mostra_tabela_simbolos();

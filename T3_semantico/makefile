@@ -13,7 +13,7 @@ run:
 	./tradutor < tests/sintatico/errado_teste_2.c
 
 memcheck:
-	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < ex_professora.c
+	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor < professora.c
 
 .PHONY: clean
 clean:

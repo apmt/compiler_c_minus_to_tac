@@ -7,6 +7,7 @@
 
 int coluna;
 int *linha;
+char nome_funcao_atual[64];
 
 // #### ESCOPO ####
 
@@ -83,32 +84,29 @@ t_simbolo *pega_simbolo(char *nome)
 
 void incrementa_tabela(char *nome)  {
 	t_simbolo *simbolo;
+  t_simbolo *aux;
 	simbolo = pega_simbolo(nome);
 	if (simbolo == 0) {
 		simbolo = coloca_simbolo(nome);
+
+    // Incrementa lista de parametros da funcao
+    if(strcmp(var_ou_func_atual, "funcao") == 0) {
+      strcpy(nome_funcao_atual, nome);
     }
+    else if(strcmp(var_ou_func_atual, "Variavel (parametro)") == 0) {
+      for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+        if (strcmp(aux->nome, nome_funcao_atual) == 0) {
+          aux->tipos_dos_parametros[aux->contador_de_parametros] = strdup(nome_tipo_atual);
+          aux->contador_de_parametros++;
+        }
+      }
+    }
+    // END Incrementa lista de parametros da funcao
+  }
 	else {
         // errors++;
 	  printf(RED"ERRO, linha: %d, na coluna: %d, '%s' ja definida\n"reset, *linha, coluna, nome);
 	}
-}
-
-void incrementa_tipos_esperados_da_funcao(char *nome, char *tipo)  {
-	t_simbolo *simbolo;
-	simbolo = pega_simbolo(nome);
-	if (simbolo == 0) {
-		// simbolo = coloca_simbolo(nome);
-    if(strcmp(tipo, "int") == 0) {
-
-    } else if (strcmp(tipo, "float") == 0) {
-
-    } else if (strcmp(tipo, "int") == 0) {
-      
-    } else if (strcmp(tipo, "int") == 0) {
-      
-    }
-  }
-  return;
 }
 
 void verifica_contexto(char *nome) {
@@ -133,7 +131,7 @@ void verifica_contexto(char *nome) {
 
 void mostra_tabela_simbolos() {
     t_simbolo *aux;
-
+    int i;
     int contador_aux_2, contador_aux_1 = 1;
     for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
       contador_aux_1++;
@@ -149,7 +147,16 @@ void mostra_tabela_simbolos() {
       for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
           contador_aux_2++;
           if(contador_aux_2 == contador_aux_1) {
-            printf("%-32s\t| %-8d\t| %-12s\t| %-32s\n", aux->nome, aux->escopo, aux->tipo, aux->var_ou_func);
+            if(strcmp(aux->var_ou_func, "funcao") == 0){
+              printf("%-32s\t| %-8d\t| %-12s\t| %-7s(", aux->nome, aux->escopo, aux->tipo, aux->var_ou_func);
+              for(i = 0; i < aux->contador_de_parametros; i++){
+                if(i==0) printf("%s", aux->tipos_dos_parametros[i]);
+                else printf(",%s", aux->tipos_dos_parametros[i]);
+              }
+              printf(")\n");
+            } else {
+              printf("%-32s\t| %-8d\t| %-12s\t| %-32s\n", aux->nome, aux->escopo, aux->tipo, aux->var_ou_func);
+            }
           }
       }
     }
@@ -158,11 +165,15 @@ void mostra_tabela_simbolos() {
 
 void destroi_tabela_simbolos() {
   t_simbolo *aux, *proximo;
+  int i;
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = proximo) {
     proximo = (t_simbolo *)aux->proximo;
     free(aux->nome);
     free(aux->tipo);
     free(aux->var_ou_func);
+    for(i = 0; i < aux->contador_de_parametros; i++){
+      free(aux->tipos_dos_parametros[i]);
+    }
     free(aux);
     // Confirmar que aux nao sera nulo na proxima iteracao
     aux = (t_simbolo*)1;

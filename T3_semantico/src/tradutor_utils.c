@@ -73,8 +73,7 @@ t_simbolo *coloca_simbolo(char *nome) {
     return aux;
 }
 
-t_simbolo *pega_simbolo(char *nome)
-{
+t_simbolo *pega_simbolo(char *nome) {
   t_simbolo *aux;
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
     if (strcmp(aux->nome, nome) == 0 && aux->escopo == contador_escopo) {
@@ -131,6 +130,23 @@ void verifica_contexto(char *nome) {
 	}
 }
 
+char* get_tipo_pelo_contexto(char *nome) {
+  t_simbolo *aux;
+  t_node_escopo *node_escopo_aux;
+  int num_escopo_verificacao;
+
+  for (node_escopo_aux = node_escopo_atual; node_escopo_aux != (t_node_escopo*)0; node_escopo_aux = (t_node_escopo *)node_escopo_aux->node_mae) {
+    num_escopo_verificacao = node_escopo_aux->num_escopo;
+    for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+      if(strcmp(aux->nome, nome) == 0 && aux->escopo == num_escopo_verificacao) {
+        return aux->tipo;
+      }
+    }
+  }
+
+  return NULL;
+}
+
 void mostra_tabela_simbolos() {
     t_simbolo *aux;
     int i;
@@ -185,19 +201,18 @@ void destroi_tabela_simbolos() {
 // #### ARVORE SINTATICA ABSTRATA ####
 
 t_node *novo_node(char *nome, int linha, int coluna) {
-    t_simbolo *aux;
+    // t_simbolo *aux;
     char *tipo = NULL;
 
     // GET IDs TYPE
-    for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
-      if(strcmp(aux->nome, nome) == 0 && aux->escopo == num_escopo_atual) {
-        tipo = strdup(aux->tipo);
-      }
+    tipo = get_tipo_pelo_contexto(nome);
+    if(tipo != NULL) {
+      tipo = strdup(tipo);
     }
 
     // GET CONSTs TYPE
     if(strcmp(nome, "INTEGER_CONST") == 0) tipo = strdup("INT");
-    if(strcmp(nome, "FLOAT_CONST") == 0) tipo = strdup("FLOAT_CONST");
+    if(strcmp(nome, "FLOAT_CONST") == 0) tipo = strdup("FLOAT");
     if(strcmp(nome, "CONSTANTE_NIL") == 0) tipo = strdup("UNDEF_NIL");
     if(strcmp(nome, "STRING_LITERAL") == 0) tipo = strdup("STRING");
 
@@ -265,6 +280,66 @@ void imprime_ast(t_node *node_raiz_ptr, int profundidade) {
   }
 }
 
+void anota_ast(t_node *node_raiz_ptr, int profundidade) {
+  if(node_raiz_ptr == (t_node*)0) {
+    return;
+  }
+
+  t_node *aux;
+  for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *) 0; aux = aux->proximo_irmao){
+    if(node_raiz_ptr->linha != -1) {
+      anota_ast(aux, profundidade + 1);
+    } else {
+      anota_ast(aux, profundidade);
+    }
+  }
+
+  if(strcmp(node_raiz_ptr->nome, "SOMA") == 0
+    || strcmp(node_raiz_ptr->nome, "SUB") == 0
+    || strcmp(node_raiz_ptr->nome, "MULT") == 0
+    || strcmp(node_raiz_ptr->nome, "DIV") == 0) {
+    char *tipo_1 = NULL;
+    char *tipo_2 = NULL;
+
+    if(node_raiz_ptr->primeiro_filho != NULL) {
+      tipo_1 = node_raiz_ptr->primeiro_filho->tipo;
+      if(strcmp(tipo_1, "LIST (int)") == 0
+          || strcmp(tipo_1, "LIST (float)") == 0) {
+            printf(RED"ERRO, linha: %d, coluna: %d, operacao '%s' nao espera tipo 'LIST'\n"reset, *linha, coluna, node_raiz_ptr->nome);
+      } else if(node_raiz_ptr->primeiro_filho->proximo_irmao == NULL) {
+        if(strcmp(node_raiz_ptr->nome, "SOMA") == 0
+          || strcmp(node_raiz_ptr->nome, "SUB") == 0) {
+            if(strcmp(tipo_1, "INT") == 0) {
+              free(node_raiz_ptr->tipo);
+              node_raiz_ptr->tipo = strdup("INT");
+            } else if(strcmp(tipo_1, "FLOAT") == 0) {
+              free(node_raiz_ptr->tipo);
+              node_raiz_ptr->tipo = strdup("FLOAT");
+            } 
+          }
+      }
+      if(node_raiz_ptr->primeiro_filho->proximo_irmao != NULL) {
+        tipo_2 = node_raiz_ptr->primeiro_filho->proximo_irmao->tipo;
+        if(strcmp(tipo_2, "LIST (int)") == 0
+          || strcmp(tipo_2, "LIST (float)") == 0) {
+            printf(RED"ERRO, linha: %d, coluna: %d, operacao '%s' nao espera tipo 'LIST'\n"reset, *linha, coluna, node_raiz_ptr->nome);
+        } else if(strcmp(tipo_1, "INT") == 0 && strcmp(tipo_2, "INT") == 0) {
+          free(node_raiz_ptr->tipo);
+          node_raiz_ptr->tipo = strdup("INT");
+        } else if(strcmp(tipo_1, "FLOAT") == 0 || strcmp(tipo_2, "FLOAT") == 0) {
+          free(node_raiz_ptr->tipo);
+          node_raiz_ptr->tipo = strdup("FLOAT");
+        }
+      }
+    }
+  }
+
+  // if(node_raiz_ptr->linha != -1) {
+    // printf(" %s", node_raiz_ptr->nome);
+    // if(strcmp(node_raiz_ptr->tipo, "UNDEF") == 0) printf(BLUE" %s\n"reset, node_raiz_ptr->tipo);
+    // else printf(MAGENTA" %s\n"reset, node_raiz_ptr->tipo);
+  // }
+}
 
 void destroi_arvore(t_node *node_raiz_ptr) {
   if(node_raiz_ptr == (t_node*)0) {

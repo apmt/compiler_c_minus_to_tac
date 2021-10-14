@@ -526,6 +526,8 @@ int main()
 	yyparse();
 
 	existe_main();
+	anota_ast(ast, 0);
+
 	mostra_tabela_simbolos();
 
 	printf("\n");

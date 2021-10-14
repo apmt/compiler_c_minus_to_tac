@@ -23,10 +23,16 @@ int ZERO () {
 }
 
 int main () {
-    {
-       int a;
-    }
-    a = 2 + (a - 1);
-    ZERO(1);
+    int a;
+    int b;
+    int c;
+
+    a = (a + 1 + 4.5) / 2 * 3.0;
+    a = ZERO() / 2.0;
+
+    b = - a;
+    b = + a;
+
+    ZERO();
 }
 

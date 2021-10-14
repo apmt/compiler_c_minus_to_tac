@@ -72,6 +72,7 @@ typedef struct t_node {
 
 t_node *novo_node(char *nome, int linha, int coluna);
 void coloca_node_filho(t_node *node_pai_ptr, t_node *node_filho_ptr);
+void anota_ast(t_node *node_raiz_ptr, int profundidade);
 void imprime_ast(t_node *node_raiz_ptr, int profundidade);
 void destroi_arvore(t_node *node_raiz_ptr);
 

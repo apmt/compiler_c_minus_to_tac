@@ -503,18 +503,10 @@ chamada_de_retorno:
 ;
 
 tipo_de_variavel:
-	  INT {
-		strcpy(nome_tipo_atual, "INT");
-	  }
-	| FLOAT {
-		strcpy(nome_tipo_atual, "FLOAT");
-	  }
-	| int_list {
-		strcpy(nome_tipo_atual, "INT_LIST");
-	  }
-	| float_list {
-		strcpy(nome_tipo_atual, "FLOAT_LIST");
-	}
+	  INT
+	| FLOAT
+	| int_list
+	| float_list
 ;
 
 int_list:

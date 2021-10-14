@@ -558,8 +558,8 @@ static const yytype_int16 yyrline[] =
      328,   333,   338,   343,   348,   353,   358,   363,   368,   376,
      381,   386,   391,   400,   405,   410,   418,   423,   428,   436,
      441,   446,   450,   454,   458,   462,   466,   470,   479,   488,
-     494,   499,   503,   507,   514,   519,   528,   535,   538,   541,
-     545,   548,   555,   558,   561,   564
+     494,   499,   503,   507,   514,   519,   528,   535,   536,   537,
+     541,   542,   547,   550,   553,   556
 };
 #endif
 
@@ -3633,72 +3633,40 @@ yyreduce:
 #line 3634 "src/sintatico.tab.c"
     break;
 
-  case 77: /* tipo_de_variavel: INT  */
-#line 535 "src/sintatico.y"
-              {
-		strcpy(nome_tipo_atual, "INT");
-	  }
-#line 3642 "src/sintatico.tab.c"
-    break;
-
-  case 78: /* tipo_de_variavel: FLOAT  */
-#line 538 "src/sintatico.y"
-                {
-		strcpy(nome_tipo_atual, "FLOAT");
-	  }
-#line 3650 "src/sintatico.tab.c"
-    break;
-
-  case 80: /* list: INT LIST  */
-#line 545 "src/sintatico.y"
-                   {
-		strcpy(nome_tipo_atual, "LIST (int)");
-	  }
-#line 3658 "src/sintatico.tab.c"
-    break;
-
-  case 81: /* list: FLOAT LIST  */
-#line 548 "src/sintatico.y"
-                     {
-		strcpy(nome_tipo_atual, "LIST (float)");
-	  }
-#line 3666 "src/sintatico.tab.c"
-    break;
-
   case 82: /* constante: INTEGER_CONST  */
-#line 555 "src/sintatico.y"
+#line 547 "src/sintatico.y"
                       {
 		(yyval.node) = novo_node("INTEGER_CONST", yylineno, coluna);
 	}
-#line 3674 "src/sintatico.tab.c"
+#line 3642 "src/sintatico.tab.c"
     break;
 
   case 83: /* constante: FLOAT_CONST  */
-#line 558 "src/sintatico.y"
+#line 550 "src/sintatico.y"
                       {
 		(yyval.node) = novo_node("FLOAT_CONST", yylineno, coluna);
 	}
-#line 3682 "src/sintatico.tab.c"
+#line 3650 "src/sintatico.tab.c"
     break;
 
   case 84: /* constante: CONSTANTE_NIL  */
-#line 561 "src/sintatico.y"
+#line 553 "src/sintatico.y"
                         {
 		(yyval.node) = novo_node("CONSTANTE_NIL", yylineno, coluna);
 	}
-#line 3690 "src/sintatico.tab.c"
+#line 3658 "src/sintatico.tab.c"
     break;
 
   case 85: /* constante: STRING_LITERAL  */
-#line 564 "src/sintatico.y"
+#line 556 "src/sintatico.y"
                          {
 		(yyval.node) = novo_node("STRING_LITERAL", yylineno, coluna);
 	}
-#line 3698 "src/sintatico.tab.c"
+#line 3666 "src/sintatico.tab.c"
     break;
 
 
-#line 3702 "src/sintatico.tab.c"
+#line 3670 "src/sintatico.tab.c"
 
         default: break;
       }
@@ -3934,7 +3902,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 570 "src/sintatico.y"
+#line 562 "src/sintatico.y"
 
 
 int yyerror (const char* s) {

@@ -37,16 +37,23 @@ COMENTARIO      \/\/.*
 "int" { 
     // printf("<INT>");
     coluna += yyleng;
+    strcpy(nome_tipo_atual, "INT");
     return INT;
 }
 "float" {
     // printf("<FLOAT>");
     coluna += yyleng;
+    strcpy(nome_tipo_atual, "FLOAT");
     return FLOAT;
 }
 "list" {
     // printf("<LIST>");
     coluna += yyleng;
+    if(strcmp(nome_tipo_atual, "INT") == 0){
+        strcpy(nome_tipo_atual, "LIST (int)");
+    } else {
+        strcpy(nome_tipo_atual, "LIST (float)");
+    }
     return LIST;
 }
 

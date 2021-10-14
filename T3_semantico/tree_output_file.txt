@@ -1,1 +1,1 @@
-[PROGRAMA["INT"["a"]]["INT"["mein"]]["BLOCO"["ATRIB"["b"]["INTEGER_CONST"]]["BLOCO"]]]
+[PROGRAMA["INT"["soma"]]["INT"["a"]]["INT"["b"]]["BLOCO"["RETURN"["SOMA"["a"]["b"]]]]["INT"["head"]]["LIST (int)"["a"]]["BLOCO"["RETURN"["HEADER"["a"]]]]["INT"["tail"]]["LIST (int)"["a"]]["BLOCO"["RETURN"["TAIL_NOT"["a"]]]]["INT"["pop"]]["LIST (int)"["a"]]["BLOCO"["RETURN"["TAIL_POP"["a"]]]]["INT"["append"]]["LIST (int)"["a"]]["INT"["b"]]["BLOCO"["RETURN"["CONSTRUTOR"["b"]["a"]]]]["INT"["main"]]["BLOCO"]]

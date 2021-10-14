@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "tradutor_utils.h"
 
+
 // #### VARIAVEIS GLOBAIS ####
 
 int coluna;
@@ -63,6 +64,7 @@ t_simbolo *coloca_simbolo(char *nome) {
     aux->escopo = num_escopo_atual;
     aux->var_ou_func = (char*)malloc(strlen(var_ou_func_atual)+1);
     strcpy(aux->var_ou_func, var_ou_func_atual);
+    aux->contador_de_parametros = 0;
     aux->proximo = (t_simbolo*)tabela_de_simbolos;
     tabela_de_simbolos = aux;
     return aux;
@@ -89,6 +91,24 @@ void incrementa_tabela(char *nome)  {
         // errors++;
 	  printf(RED"ERRO, linha: %d, na coluna: %d, '%s' ja definida\n"reset, *linha, coluna, nome);
 	}
+}
+
+void incrementa_tipos_esperados_da_funcao(char *nome, char *tipo)  {
+	t_simbolo *simbolo;
+	simbolo = pega_simbolo(nome);
+	if (simbolo == 0) {
+		// simbolo = coloca_simbolo(nome);
+    if(strcmp(tipo, "int") == 0) {
+
+    } else if (strcmp(tipo, "float") == 0) {
+
+    } else if (strcmp(tipo, "int") == 0) {
+      
+    } else if (strcmp(tipo, "int") == 0) {
+      
+    }
+  }
+  return;
 }
 
 void verifica_contexto(char *nome) {

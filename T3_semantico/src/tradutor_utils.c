@@ -286,6 +286,7 @@ void anota_ast(t_node *node_raiz_ptr, int profundidade) {
   }
 
   t_node *aux;
+  t_node *aux_1;
   for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *) 0; aux = aux->proximo_irmao){
     if(node_raiz_ptr->linha != -1) {
       anota_ast(aux, profundidade + 1);
@@ -329,6 +330,17 @@ void anota_ast(t_node *node_raiz_ptr, int profundidade) {
         } else if(strcmp(tipo_1, "FLOAT") == 0 || strcmp(tipo_2, "FLOAT") == 0) {
           free(node_raiz_ptr->tipo);
           node_raiz_ptr->tipo = strdup("FLOAT");
+          if(strcmp(tipo_1, "INT") == 0) {
+            aux_1 = novo_node("INTTOFLOAT", *linha, coluna);
+            aux_1->primeiro_filho = node_raiz_ptr->primeiro_filho;
+            aux_1->proximo_irmao = node_raiz_ptr->primeiro_filho->proximo_irmao;
+            node_raiz_ptr->primeiro_filho->proximo_irmao = NULL;
+            node_raiz_ptr->primeiro_filho = aux_1;
+          } else if (strcmp(tipo_2, "INT") == 0) {
+            aux_1 = novo_node("INTTOFLOAT", *linha, coluna);
+            aux_1->primeiro_filho = node_raiz_ptr->primeiro_filho->proximo_irmao;
+            node_raiz_ptr->primeiro_filho->proximo_irmao = aux_1;
+          } 
         }
       }
     }

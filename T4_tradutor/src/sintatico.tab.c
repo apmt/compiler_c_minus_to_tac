@@ -78,9 +78,10 @@ extern int yylex_destroy(void);
 extern int yyerror(const char *s);
 extern char* yytext;
 extern int yylineno;
+extern FILE* yyin;
 
 
-#line 84 "src/sintatico.tab.c"
+#line 85 "src/sintatico.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -551,15 +552,15 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    86,    86,    93,    98,   104,   107,   110,   116,   116,
-     127,   127,   140,   146,   149,   155,   160,   166,   176,   183,
-     189,   189,   192,   195,   201,   206,   212,   220,   223,   226,
-     229,   232,   235,   241,   246,   255,   265,   270,   276,   279,
-     285,   290,   295,   300,   305,   310,   315,   320,   325,   331,
-     336,   341,   346,   353,   356,   361,   369,   372,   377,   385,
-     388,   391,   395,   399,   403,   407,   411,   415,   422,   431,
-     440,   447,   452,   456,   463,   470,   481,   488,   489,   490,
-     494,   495,   500,   503,   506,   509
+       0,    87,    87,    94,    99,   105,   108,   111,   117,   117,
+     128,   128,   141,   147,   150,   156,   161,   167,   177,   184,
+     190,   190,   193,   196,   202,   207,   213,   221,   224,   227,
+     230,   233,   236,   242,   247,   256,   266,   271,   277,   280,
+     286,   291,   296,   301,   306,   311,   316,   321,   326,   332,
+     337,   342,   347,   354,   357,   362,   370,   373,   378,   386,
+     389,   392,   396,   400,   404,   408,   412,   416,   423,   432,
+     441,   448,   453,   457,   464,   471,   482,   489,   490,   491,
+     495,   496,   501,   504,   507,   510
 };
 #endif
 
@@ -2859,139 +2860,139 @@ yyreduce:
     switch (yyn)
       {
   case 2: /* programa: lista_de_declaracoes  */
-#line 86 "src/sintatico.y"
+#line 87 "src/sintatico.y"
                              {
 		ast = (yyval.node);
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 2868 "src/sintatico.tab.c"
+#line 2869 "src/sintatico.tab.c"
     break;
 
   case 3: /* lista_de_declaracoes: lista_de_declaracoes declaracao  */
-#line 93 "src/sintatico.y"
+#line 94 "src/sintatico.y"
                                           {
 		(yyval.node) = novo_node("lista_de_declaracoes", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 	}
-#line 2878 "src/sintatico.tab.c"
+#line 2879 "src/sintatico.tab.c"
     break;
 
   case 4: /* lista_de_declaracoes: %empty  */
-#line 98 "src/sintatico.y"
+#line 99 "src/sintatico.y"
                         {
 		(yyval.node) = (t_node*)0;
 	}
-#line 2886 "src/sintatico.tab.c"
+#line 2887 "src/sintatico.tab.c"
     break;
 
   case 5: /* declaracao: declaracao_de_variavel  */
-#line 104 "src/sintatico.y"
+#line 105 "src/sintatico.y"
                                  {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 2894 "src/sintatico.tab.c"
+#line 2895 "src/sintatico.tab.c"
     break;
 
   case 6: /* declaracao: declaracao_de_funcao  */
-#line 107 "src/sintatico.y"
+#line 108 "src/sintatico.y"
                                {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 2902 "src/sintatico.tab.c"
+#line 2903 "src/sintatico.tab.c"
     break;
 
   case 7: /* declaracao: error  */
-#line 110 "src/sintatico.y"
+#line 111 "src/sintatico.y"
                 {
 		yyerrok;
 	}
-#line 2910 "src/sintatico.tab.c"
+#line 2911 "src/sintatico.tab.c"
     break;
 
   case 8: /* $@1: %empty  */
-#line 116 "src/sintatico.y"
+#line 117 "src/sintatico.y"
                             {
 			var_ou_func_atual = "Variavel";
 			incrementa_tabela(nome_id_atual);
 		}
-#line 2919 "src/sintatico.tab.c"
+#line 2920 "src/sintatico.tab.c"
     break;
 
   case 9: /* declaracao_de_variavel: tipo_de_variavel_id $@1 PONTO_VIRGULA  */
-#line 119 "src/sintatico.y"
+#line 120 "src/sintatico.y"
                                 {
 		(yyval.node) = novo_node("declaracao_de_variavel", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 2928 "src/sintatico.tab.c"
+#line 2929 "src/sintatico.tab.c"
     break;
 
   case 10: /* $@2: %empty  */
-#line 127 "src/sintatico.y"
+#line 128 "src/sintatico.y"
                               {
 		  var_ou_func_atual = "funcao";
 		  incrementa_tabela(nome_id_atual);
 		  incrementa_escopo();
 	  }
-#line 2938 "src/sintatico.tab.c"
+#line 2939 "src/sintatico.tab.c"
     break;
 
   case 11: /* declaracao_de_funcao: tipo_de_variavel_id $@2 ABRE_PARENTESES parametros FECHA_PARENTESES definicao_de_funcao  */
-#line 131 "src/sintatico.y"
+#line 132 "src/sintatico.y"
                                                                             {
 		(yyval.node) = novo_node("declaracao_de_funcao", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 		coloca_node_filho((yyval.node), (yyvsp[-5].node));
 	  }
-#line 2949 "src/sintatico.tab.c"
+#line 2950 "src/sintatico.tab.c"
     break;
 
   case 12: /* definicao_de_funcao: bloco_de_comando  */
-#line 140 "src/sintatico.y"
+#line 141 "src/sintatico.y"
                          {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 2957 "src/sintatico.tab.c"
+#line 2958 "src/sintatico.tab.c"
     break;
 
   case 13: /* parametros: lista_de_parametros  */
-#line 146 "src/sintatico.y"
+#line 147 "src/sintatico.y"
                               {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 2965 "src/sintatico.tab.c"
+#line 2966 "src/sintatico.tab.c"
     break;
 
   case 14: /* parametros: %empty  */
-#line 149 "src/sintatico.y"
+#line 150 "src/sintatico.y"
                         {
 		(yyval.node) = (t_node*)0;
 	}
-#line 2973 "src/sintatico.tab.c"
+#line 2974 "src/sintatico.tab.c"
     break;
 
   case 15: /* lista_de_parametros: lista_de_parametros VIRGULA parametro  */
-#line 155 "src/sintatico.y"
+#line 156 "src/sintatico.y"
                                                 {
 		(yyval.node) = novo_node("lista_de_parametros", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 2983 "src/sintatico.tab.c"
+#line 2984 "src/sintatico.tab.c"
     break;
 
   case 16: /* lista_de_parametros: parametro  */
-#line 160 "src/sintatico.y"
+#line 161 "src/sintatico.y"
                     {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 2991 "src/sintatico.tab.c"
+#line 2992 "src/sintatico.tab.c"
     break;
 
   case 17: /* parametro: tipo_de_variavel_id  */
-#line 166 "src/sintatico.y"
+#line 167 "src/sintatico.y"
                               {
 		(yyval.node) = novo_node("parametro", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
@@ -2999,155 +3000,155 @@ yyreduce:
 		var_ou_func_atual = "Variavel (parametro)";
 		incrementa_tabela(nome_id_atual);
 	  }
-#line 3003 "src/sintatico.tab.c"
+#line 3004 "src/sintatico.tab.c"
     break;
 
   case 18: /* tipo_de_variavel_id: tipo_de_variavel id  */
-#line 176 "src/sintatico.y"
+#line 177 "src/sintatico.y"
                             {
 		(yyval.node) = novo_node(nome_tipo_atual, yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 	}
-#line 3012 "src/sintatico.tab.c"
+#line 3013 "src/sintatico.tab.c"
     break;
 
   case 19: /* id: ID  */
-#line 183 "src/sintatico.y"
+#line 184 "src/sintatico.y"
            {
 		(yyval.node) = novo_node(nome_id_atual, yylineno, coluna);
 	}
-#line 3020 "src/sintatico.tab.c"
+#line 3021 "src/sintatico.tab.c"
     break;
 
   case 20: /* $@3: %empty  */
-#line 189 "src/sintatico.y"
+#line 190 "src/sintatico.y"
           {incrementa_escopo();}
-#line 3026 "src/sintatico.tab.c"
+#line 3027 "src/sintatico.tab.c"
     break;
 
   case 21: /* comando: $@3 bloco_de_comando  */
-#line 189 "src/sintatico.y"
+#line 190 "src/sintatico.y"
                                                   {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3034 "src/sintatico.tab.c"
+#line 3035 "src/sintatico.tab.c"
     break;
 
   case 22: /* comando: comando_unico  */
-#line 192 "src/sintatico.y"
+#line 193 "src/sintatico.y"
                         {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3042 "src/sintatico.tab.c"
+#line 3043 "src/sintatico.tab.c"
     break;
 
   case 23: /* comando: error  */
-#line 195 "src/sintatico.y"
+#line 196 "src/sintatico.y"
                 {
 		yyerrok;
 	}
-#line 3050 "src/sintatico.tab.c"
+#line 3051 "src/sintatico.tab.c"
     break;
 
   case 24: /* comandos: comandos comando  */
-#line 201 "src/sintatico.y"
+#line 202 "src/sintatico.y"
                            {
 		(yyval.node) = novo_node("comandos", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 	}
-#line 3060 "src/sintatico.tab.c"
+#line 3061 "src/sintatico.tab.c"
     break;
 
   case 25: /* comandos: %empty  */
-#line 206 "src/sintatico.y"
+#line 207 "src/sintatico.y"
                     {
 		(yyval.node) = (t_node*)0;
 	}
-#line 3068 "src/sintatico.tab.c"
+#line 3069 "src/sintatico.tab.c"
     break;
 
   case 26: /* bloco_de_comando: ABRE_CHAVES comandos FECHA_CHAVES  */
-#line 212 "src/sintatico.y"
+#line 213 "src/sintatico.y"
                                             {
 		(yyval.node) = novo_node("BLOCO", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 		decrementa_escopo();
 	}
-#line 3078 "src/sintatico.tab.c"
+#line 3079 "src/sintatico.tab.c"
     break;
 
   case 27: /* comando_unico: comando_condicional  */
-#line 220 "src/sintatico.y"
+#line 221 "src/sintatico.y"
                               {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3086 "src/sintatico.tab.c"
+#line 3087 "src/sintatico.tab.c"
     break;
 
   case 28: /* comando_unico: comando_iterativo  */
-#line 223 "src/sintatico.y"
+#line 224 "src/sintatico.y"
                             {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3094 "src/sintatico.tab.c"
+#line 3095 "src/sintatico.tab.c"
     break;
 
   case 29: /* comando_unico: declaracao_de_variavel  */
-#line 226 "src/sintatico.y"
+#line 227 "src/sintatico.y"
                                  {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3102 "src/sintatico.tab.c"
+#line 3103 "src/sintatico.tab.c"
     break;
 
   case 30: /* comando_unico: chamada_de_retorno  */
-#line 229 "src/sintatico.y"
+#line 230 "src/sintatico.y"
                              {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3110 "src/sintatico.tab.c"
+#line 3111 "src/sintatico.tab.c"
     break;
 
   case 31: /* comando_unico: comando_de_atribuicao  */
-#line 232 "src/sintatico.y"
+#line 233 "src/sintatico.y"
                                 {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3118 "src/sintatico.tab.c"
+#line 3119 "src/sintatico.tab.c"
     break;
 
   case 32: /* comando_unico: exp_or_empty PONTO_VIRGULA  */
-#line 235 "src/sintatico.y"
+#line 236 "src/sintatico.y"
                                      {
 		(yyval.node) = (yyvsp[-1].node);
 	}
-#line 3126 "src/sintatico.tab.c"
+#line 3127 "src/sintatico.tab.c"
     break;
 
   case 33: /* comando_condicional: IF ABRE_PARENTESES exp FECHA_PARENTESES comando  */
-#line 241 "src/sintatico.y"
+#line 242 "src/sintatico.y"
                                                                     {
 		(yyval.node) = novo_node("IF", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3136 "src/sintatico.tab.c"
+#line 3137 "src/sintatico.tab.c"
     break;
 
   case 34: /* comando_condicional: IF ABRE_PARENTESES exp FECHA_PARENTESES comando ELSE comando  */
-#line 246 "src/sintatico.y"
+#line 247 "src/sintatico.y"
                                                                        {
 		(yyval.node) = novo_node("IF_ELSE", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 		coloca_node_filho((yyval.node), (yyvsp[-4].node));
 	}
-#line 3147 "src/sintatico.tab.c"
+#line 3148 "src/sintatico.tab.c"
     break;
 
   case 35: /* comando_iterativo: FOR ABRE_PARENTESES expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando  */
-#line 255 "src/sintatico.y"
+#line 256 "src/sintatico.y"
                                                                                                                              {
 		(yyval.node) = novo_node("FOR", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
@@ -3155,316 +3156,316 @@ yyreduce:
 		coloca_node_filho((yyval.node), (yyvsp[-4].node));
 		coloca_node_filho((yyval.node), (yyvsp[-6].node));
 	}
-#line 3159 "src/sintatico.tab.c"
+#line 3160 "src/sintatico.tab.c"
     break;
 
   case 36: /* expressao_for: id ATRIB exp  */
-#line 265 "src/sintatico.y"
+#line 266 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3169 "src/sintatico.tab.c"
+#line 3170 "src/sintatico.tab.c"
     break;
 
   case 37: /* expressao_for: exp_or_empty  */
-#line 270 "src/sintatico.y"
+#line 271 "src/sintatico.y"
                        {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3177 "src/sintatico.tab.c"
+#line 3178 "src/sintatico.tab.c"
     break;
 
   case 38: /* exp_or_empty: exp  */
-#line 276 "src/sintatico.y"
+#line 277 "src/sintatico.y"
             {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3185 "src/sintatico.tab.c"
+#line 3186 "src/sintatico.tab.c"
     break;
 
   case 39: /* exp_or_empty: %empty  */
-#line 279 "src/sintatico.y"
+#line 280 "src/sintatico.y"
                         {
 		(yyval.node) = (t_node*)0;
 	}
-#line 3193 "src/sintatico.tab.c"
+#line 3194 "src/sintatico.tab.c"
     break;
 
   case 40: /* exp: exp GT exp  */
-#line 285 "src/sintatico.y"
+#line 286 "src/sintatico.y"
                    {
 		(yyval.node) = novo_node("GT", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3203 "src/sintatico.tab.c"
+#line 3204 "src/sintatico.tab.c"
     break;
 
   case 41: /* exp: exp LT exp  */
-#line 290 "src/sintatico.y"
+#line 291 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("LT", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3213 "src/sintatico.tab.c"
+#line 3214 "src/sintatico.tab.c"
     break;
 
   case 42: /* exp: exp EQ exp  */
-#line 295 "src/sintatico.y"
+#line 296 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("EQ", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3223 "src/sintatico.tab.c"
+#line 3224 "src/sintatico.tab.c"
     break;
 
   case 43: /* exp: exp NE exp  */
-#line 300 "src/sintatico.y"
+#line 301 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("NE", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3233 "src/sintatico.tab.c"
+#line 3234 "src/sintatico.tab.c"
     break;
 
   case 44: /* exp: exp LE exp  */
-#line 305 "src/sintatico.y"
+#line 306 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("LE", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3243 "src/sintatico.tab.c"
+#line 3244 "src/sintatico.tab.c"
     break;
 
   case 45: /* exp: exp GE exp  */
-#line 310 "src/sintatico.y"
+#line 311 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("GE", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3253 "src/sintatico.tab.c"
+#line 3254 "src/sintatico.tab.c"
     break;
 
   case 46: /* exp: exp AND exp  */
-#line 315 "src/sintatico.y"
+#line 316 "src/sintatico.y"
                       {
 		(yyval.node) = novo_node("AND", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3263 "src/sintatico.tab.c"
+#line 3264 "src/sintatico.tab.c"
     break;
 
   case 47: /* exp: exp OR exp  */
-#line 320 "src/sintatico.y"
+#line 321 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("OR", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3273 "src/sintatico.tab.c"
+#line 3274 "src/sintatico.tab.c"
     break;
 
   case 48: /* exp: exp_list  */
-#line 325 "src/sintatico.y"
+#line 326 "src/sintatico.y"
                    {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3281 "src/sintatico.tab.c"
+#line 3282 "src/sintatico.tab.c"
     break;
 
   case 49: /* exp_list: exp_list CONSTRUTOR exp_list  */
-#line 331 "src/sintatico.y"
+#line 332 "src/sintatico.y"
                                      {
 		(yyval.node) = novo_node("CONSTRUTOR", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3291 "src/sintatico.tab.c"
+#line 3292 "src/sintatico.tab.c"
     break;
 
   case 50: /* exp_list: exp_list FILTER exp_list  */
-#line 336 "src/sintatico.y"
+#line 337 "src/sintatico.y"
                                    {
 		(yyval.node) = novo_node("FILTER", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3301 "src/sintatico.tab.c"
+#line 3302 "src/sintatico.tab.c"
     break;
 
   case 51: /* exp_list: exp_list MAP exp_list  */
-#line 341 "src/sintatico.y"
+#line 342 "src/sintatico.y"
                                 {
 		(yyval.node) = novo_node("MAP", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3311 "src/sintatico.tab.c"
+#line 3312 "src/sintatico.tab.c"
     break;
 
   case 52: /* exp_list: exp_aritmetica  */
-#line 346 "src/sintatico.y"
+#line 347 "src/sintatico.y"
                          {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3319 "src/sintatico.tab.c"
+#line 3320 "src/sintatico.tab.c"
     break;
 
   case 53: /* exp_aritmetica: termo  */
-#line 353 "src/sintatico.y"
+#line 354 "src/sintatico.y"
               {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3327 "src/sintatico.tab.c"
+#line 3328 "src/sintatico.tab.c"
     break;
 
   case 54: /* exp_aritmetica: exp_aritmetica SOMA termo  */
-#line 356 "src/sintatico.y"
+#line 357 "src/sintatico.y"
                                     {
 		(yyval.node) = novo_node("SOMA", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3337 "src/sintatico.tab.c"
+#line 3338 "src/sintatico.tab.c"
     break;
 
   case 55: /* exp_aritmetica: exp_aritmetica SUB termo  */
-#line 361 "src/sintatico.y"
+#line 362 "src/sintatico.y"
                                    {
 		(yyval.node) = novo_node("SUB", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3347 "src/sintatico.tab.c"
+#line 3348 "src/sintatico.tab.c"
     break;
 
   case 56: /* termo: fator  */
-#line 369 "src/sintatico.y"
+#line 370 "src/sintatico.y"
               {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3355 "src/sintatico.tab.c"
+#line 3356 "src/sintatico.tab.c"
     break;
 
   case 57: /* termo: termo MULT fator  */
-#line 372 "src/sintatico.y"
+#line 373 "src/sintatico.y"
                            {
 		(yyval.node) = novo_node("MULT", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3365 "src/sintatico.tab.c"
+#line 3366 "src/sintatico.tab.c"
     break;
 
   case 58: /* termo: termo DIV fator  */
-#line 377 "src/sintatico.y"
+#line 378 "src/sintatico.y"
                           {
 		(yyval.node) = novo_node("DIV", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 		coloca_node_filho((yyval.node), (yyvsp[-2].node));
 	}
-#line 3375 "src/sintatico.tab.c"
+#line 3376 "src/sintatico.tab.c"
     break;
 
   case 59: /* fator: constante  */
-#line 385 "src/sintatico.y"
+#line 386 "src/sintatico.y"
                   {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3383 "src/sintatico.tab.c"
+#line 3384 "src/sintatico.tab.c"
     break;
 
   case 60: /* fator: func_call_exp  */
-#line 388 "src/sintatico.y"
+#line 389 "src/sintatico.y"
                         {
 		(yyval.node) = (yyvsp[0].node);
 	}
-#line 3391 "src/sintatico.tab.c"
+#line 3392 "src/sintatico.tab.c"
     break;
 
   case 61: /* fator: SUB fator  */
-#line 391 "src/sintatico.y"
+#line 392 "src/sintatico.y"
                     {
 		(yyval.node) = novo_node("SUB", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 	}
-#line 3400 "src/sintatico.tab.c"
+#line 3401 "src/sintatico.tab.c"
     break;
 
   case 62: /* fator: SOMA fator  */
-#line 395 "src/sintatico.y"
+#line 396 "src/sintatico.y"
                      {
 		(yyval.node) = novo_node("SOMA", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 	}
-#line 3409 "src/sintatico.tab.c"
+#line 3410 "src/sintatico.tab.c"
     break;
 
   case 63: /* fator: TAIL_OR_NOT fator  */
-#line 399 "src/sintatico.y"
+#line 400 "src/sintatico.y"
                             {
 		(yyval.node) = novo_node("TAIL_NOT", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 	}
-#line 3418 "src/sintatico.tab.c"
+#line 3419 "src/sintatico.tab.c"
     break;
 
   case 64: /* fator: TAIL_POP fator  */
-#line 403 "src/sintatico.y"
+#line 404 "src/sintatico.y"
                          {
 		(yyval.node) = novo_node("TAIL_POP", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 	}
-#line 3427 "src/sintatico.tab.c"
+#line 3428 "src/sintatico.tab.c"
     break;
 
   case 65: /* fator: HEADER fator  */
-#line 407 "src/sintatico.y"
+#line 408 "src/sintatico.y"
                        {
 		(yyval.node) = novo_node("HEADER", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
 	}
-#line 3436 "src/sintatico.tab.c"
+#line 3437 "src/sintatico.tab.c"
     break;
 
   case 66: /* fator: ID  */
-#line 411 "src/sintatico.y"
+#line 412 "src/sintatico.y"
              {
 		verifica_contexto(nome_id_atual);
 		(yyval.node) = novo_node(nome_id_atual, yylineno, coluna);
 	}
-#line 3445 "src/sintatico.tab.c"
+#line 3446 "src/sintatico.tab.c"
     break;
 
   case 67: /* fator: ABRE_PARENTESES exp FECHA_PARENTESES  */
-#line 415 "src/sintatico.y"
+#line 416 "src/sintatico.y"
                                                {
 		(yyval.node) = (yyvsp[-1].node);
 	}
-#line 3453 "src/sintatico.tab.c"
+#line 3454 "src/sintatico.tab.c"
     break;
 
   case 68: /* comando_de_atribuicao: id ATRIB exp PONTO_VIRGULA  */
-#line 422 "src/sintatico.y"
+#line 423 "src/sintatico.y"
                                {
 		verifica_contexto((yyvsp[-3].node)->nome);
 		(yyval.node) = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 		coloca_node_filho((yyval.node), (yyvsp[-3].node));
 	}
-#line 3464 "src/sintatico.tab.c"
+#line 3465 "src/sintatico.tab.c"
     break;
 
   case 69: /* func_call_exp: id ABRE_PARENTESES func_call_parameters FECHA_PARENTESES  */
-#line 431 "src/sintatico.y"
+#line 432 "src/sintatico.y"
                                                                    {
 		verifica_contexto((yyvsp[-3].node)->nome);
 		(yyval.node) = novo_node("my_func_call_exp", -1, -1);
@@ -3474,11 +3475,11 @@ yyreduce:
 		verifica_qnt_parametros_chamada_func((yyvsp[-3].node)->nome);
 		num_parametros_chamada_func = 0;
 	}
-#line 3478 "src/sintatico.tab.c"
+#line 3479 "src/sintatico.tab.c"
     break;
 
   case 70: /* func_call_exp: id ABRE_PARENTESES FECHA_PARENTESES  */
-#line 440 "src/sintatico.y"
+#line 441 "src/sintatico.y"
                                                {
 		verifica_contexto((yyvsp[-2].node)->nome);
 		(yyval.node) = (yyvsp[-2].node);
@@ -3486,39 +3487,39 @@ yyreduce:
 		verifica_qnt_parametros_chamada_func((yyvsp[-2].node)->nome);
 		num_parametros_chamada_func = 0;
 	}
-#line 3490 "src/sintatico.tab.c"
+#line 3491 "src/sintatico.tab.c"
     break;
 
   case 71: /* func_call_exp: READ ABRE_PARENTESES id FECHA_PARENTESES  */
-#line 447 "src/sintatico.y"
+#line 448 "src/sintatico.y"
                                                     {
 		verifica_contexto((yyvsp[-1].node)->nome);
 		(yyval.node) = novo_node("READ", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 	}
-#line 3500 "src/sintatico.tab.c"
+#line 3501 "src/sintatico.tab.c"
     break;
 
   case 72: /* func_call_exp: WRITE ABRE_PARENTESES exp FECHA_PARENTESES  */
-#line 452 "src/sintatico.y"
+#line 453 "src/sintatico.y"
                                                       {
 		(yyval.node) = novo_node("WRITE", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 	}
-#line 3509 "src/sintatico.tab.c"
+#line 3510 "src/sintatico.tab.c"
     break;
 
   case 73: /* func_call_exp: WRITELN ABRE_PARENTESES exp FECHA_PARENTESES  */
-#line 456 "src/sintatico.y"
+#line 457 "src/sintatico.y"
                                                         {
 		(yyval.node) = novo_node("WRITELN", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 	}
-#line 3518 "src/sintatico.tab.c"
+#line 3519 "src/sintatico.tab.c"
     break;
 
   case 74: /* func_call_parameters: func_call_parameters VIRGULA exp  */
-#line 463 "src/sintatico.y"
+#line 464 "src/sintatico.y"
                                          {
 		(yyval.node) = novo_node("lista_de_expressao", -1, -1);
 		coloca_node_filho((yyval.node), (yyvsp[0].node));
@@ -3526,11 +3527,11 @@ yyreduce:
 
 		num_parametros_chamada_func++;
 	}
-#line 3530 "src/sintatico.tab.c"
+#line 3531 "src/sintatico.tab.c"
     break;
 
   case 75: /* func_call_parameters: exp  */
-#line 470 "src/sintatico.y"
+#line 471 "src/sintatico.y"
               {
 		(yyval.node) = (yyvsp[0].node);
 
@@ -3538,52 +3539,52 @@ yyreduce:
 		// $$ = novo_node("lista_de_parametros", -1, -1);
 		// coloca_node_filho($$, $1);
 	}
-#line 3542 "src/sintatico.tab.c"
+#line 3543 "src/sintatico.tab.c"
     break;
 
   case 76: /* chamada_de_retorno: RETURN exp PONTO_VIRGULA  */
-#line 481 "src/sintatico.y"
+#line 482 "src/sintatico.y"
                                  {
 		(yyval.node) = novo_node("RETURN", yylineno, coluna);
 		coloca_node_filho((yyval.node), (yyvsp[-1].node));
 	}
-#line 3551 "src/sintatico.tab.c"
+#line 3552 "src/sintatico.tab.c"
     break;
 
   case 82: /* constante: INTEGER_CONST  */
-#line 500 "src/sintatico.y"
+#line 501 "src/sintatico.y"
                       {
 		(yyval.node) = novo_node("INTEGER_CONST", yylineno, coluna);
 	}
-#line 3559 "src/sintatico.tab.c"
+#line 3560 "src/sintatico.tab.c"
     break;
 
   case 83: /* constante: FLOAT_CONST  */
-#line 503 "src/sintatico.y"
+#line 504 "src/sintatico.y"
                       {
 		(yyval.node) = novo_node("FLOAT_CONST", yylineno, coluna);
 	}
-#line 3567 "src/sintatico.tab.c"
+#line 3568 "src/sintatico.tab.c"
     break;
 
   case 84: /* constante: CONSTANTE_NIL  */
-#line 506 "src/sintatico.y"
+#line 507 "src/sintatico.y"
                         {
 		(yyval.node) = novo_node("CONSTANTE_NIL", yylineno, coluna);
 	}
-#line 3575 "src/sintatico.tab.c"
+#line 3576 "src/sintatico.tab.c"
     break;
 
   case 85: /* constante: STRING_LITERAL  */
-#line 509 "src/sintatico.y"
+#line 510 "src/sintatico.y"
                          {
 		(yyval.node) = novo_node("STRING_LITERAL", yylineno, coluna);
 	}
-#line 3583 "src/sintatico.tab.c"
+#line 3584 "src/sintatico.tab.c"
     break;
 
 
-#line 3587 "src/sintatico.tab.c"
+#line 3588 "src/sintatico.tab.c"
 
         default: break;
       }
@@ -3819,7 +3820,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 515 "src/sintatico.y"
+#line 516 "src/sintatico.y"
 
 
 int yyerror (const char* s) {
@@ -3827,18 +3828,26 @@ int yyerror (const char* s) {
   	return 0;
 }
 
-int main()
+int main(int argc, char **argv)
 {
     coluna = 1;
 	linha = &yylineno;
+	
+	if(argc > 1) {
+		if(!(yyin = fopen(argv[1], "r"))) {
+			perror(argv[1]);
+			return (1);
+		}
+	}
+
 	yyparse();
 
 	existe_main();
 	anota_ast(ast, 0);
 
 	mostra_tabela_simbolos();
-
 	printf("\n");
+
 	tree_output_file = fopen("tree_output_file.txt","w");
     fprintf(tree_output_file,"[PROGRAMA");
 	imprime_ast(ast, 0);

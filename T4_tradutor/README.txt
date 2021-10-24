@@ -6,7 +6,7 @@ Executar testes (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
     $ make run
 
     Rodar teste específico:
-    $ ./tradutor < tests/sintatico/<nome do teste>
+    $ ./tradutor tests/sintatico/<nome do teste>
 
     Rodar com o valgrind no primeiro teste sintatico (gera o arquivo de saida logfile.out):
     $ make memcheck

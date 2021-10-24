@@ -11,6 +11,7 @@ extern int yylex_destroy(void);
 extern int yyerror(const char *s);
 extern char* yytext;
 extern int yylineno;
+extern FILE* yyin;
 
 %}
 
@@ -519,18 +520,26 @@ int yyerror (const char* s) {
   	return 0;
 }
 
-int main()
+int main(int argc, char **argv)
 {
     coluna = 1;
 	linha = &yylineno;
+	
+	if(argc > 1) {
+		if(!(yyin = fopen(argv[1], "r"))) {
+			perror(argv[1]);
+			return (1);
+		}
+	}
+
 	yyparse();
 
 	existe_main();
 	anota_ast(ast, 0);
 
 	mostra_tabela_simbolos();
-
 	printf("\n");
+
 	tree_output_file = fopen("tree_output_file.txt","w");
     fprintf(tree_output_file,"[PROGRAMA");
 	imprime_ast(ast, 0);

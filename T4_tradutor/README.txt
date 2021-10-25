@@ -14,6 +14,13 @@ Executar testes (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
     Limpar arquivos:
     $ make clean
 
+    Para testar no Interpretador de TAC, baixe o repositório 
+    https://github.com/lhsantos/tac e gere o executável de acordo com as 
+    instruções do pdf do diretório "doc". Por fim, copie o executável
+    chamado "tac" para o diretório principal deste trabalho e execute
+    a seguinte linha de comando:
+    $ ./tac tests/tradutor/<nome_do_teste.tac>
+
 Visualize a AST:
     1. Execute o teste escolhido;
     2. Pegue o conteúdo do arquivo "tree_output_file.txt"

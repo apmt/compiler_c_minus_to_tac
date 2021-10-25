@@ -1,1 +1,1 @@
-[PROGRAMA]
+[PROGRAMA["INT"["main"]]["INT"["c"]]["FLOAT"["elem"]]["READ"["elem"]]["IF_ELSE"["EQ"["elem"]["INTEGER_CONST"]]["BLOCO"["INT"["a"]]]["BLOCO"["INT"["b"]]]]["INT"["c"]]["READ"["elem"]]["READ"["elem"]]["READ"["elem"]]]

@@ -74,6 +74,8 @@ extern FILE* yyin;
 %left LT GT GE LE
 %right MAP FILTER CONSTRUTOR
 
+%right "then" ELSE
+
 %start programa
 
 %%
@@ -212,7 +214,10 @@ bloco_de_comando:
 ;
 
 comando_unico:
-	 comando_iterativo {
+	comando_condicional {
+		$$ = $1;
+	}
+	| comando_iterativo {
 		$$ = $1;
 	}
 	| declaracao_de_variavel {
@@ -230,12 +235,12 @@ comando_unico:
 ;
 
 comando_condicional:
-	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando_unico {
+	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando_unico %prec "then" {
 		$$ = novo_node("IF", yylineno, coluna);
 		coloca_node_filho($$, $5);
 		coloca_node_filho($$, $3);
 	}
-	| IF ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando {
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando %prec "then" {
 		$$ = novo_node("IF", yylineno, coluna);
 		coloca_node_filho($$, $5);
 		coloca_node_filho($$, $3);
@@ -297,10 +302,7 @@ exp_or_empty:
 ;
 
 exp:
-	comando_condicional {
-		$$ = $1;
-	}
-	| exp GT exp {
+	 exp GT exp {
 		$$ = novo_node("GT", yylineno, coluna);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);

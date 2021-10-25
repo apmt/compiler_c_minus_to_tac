@@ -1,5 +1,6 @@
 #define _DEFAULT_SOURCE
 #include <stdio.h>
+#include <ctype.h>
 #include "tradutor_utils.h"
 
 
@@ -9,7 +10,7 @@ int coluna;
 int *linha;
 char nome_funcao_atual[64];
 int num_parametros_chamada_func = 0;
-
+FILE *tac_output_file;
 
 // #### ESCOPO ####
 
@@ -410,4 +411,27 @@ void verifica_qnt_parametros_chamada_func(char *nome_funcao_chamada) {
 }
 
 
+// #### GERADOR DE CODIGO INTERMEDIARIO ####
 
+void gera_codigo_intermediario() {
+  t_simbolo* aux;
+  int i;
+
+  fprintf(tac_output_file, ".table\n");
+
+  for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
+    if(strcmp(aux->var_ou_func, "Variavel") == 0) {
+      for(i = 0; i < (int)strlen(aux->tipo); i++) aux->tipo[i] = tolower(aux->tipo[i]);
+      fprintf(tac_output_file, "%s %s\n", aux->tipo, aux->nome);
+    }
+  }
+
+  fprintf(tac_output_file, ".code\n");
+
+  // TODO: funcoes
+
+  fprintf(tac_output_file, "main:\n");
+
+  // TODO: comandos
+
+}

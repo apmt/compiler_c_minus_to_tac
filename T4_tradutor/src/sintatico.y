@@ -546,9 +546,19 @@ int main(int argc, char **argv)
     fprintf(tree_output_file,"]");
 	fclose(tree_output_file);
 
+	// TAC file
+	char *end = argv[1] + strlen(argv[1]);
+    while (end > argv[1] && *end != '.') --end;
+    if (end > argv[1]) *end = '\0';
+	tac_output_file = fopen(strcat(argv[1], ".tac"), "w");
+	gera_codigo_intermediario();
+	fclose(tac_output_file);
+
+	fclose(yyin);
 	yylex_destroy();
 	destroi_tabela_simbolos();
 	destroi_arvore_escopo();
 	destroi_arvore(ast);
+	
 	return 0;
 }

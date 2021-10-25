@@ -22,6 +22,7 @@ extern int coluna;
 extern int *linha;
 extern char nome_funcao_atual[64];
 extern int num_parametros_chamada_func;
+extern FILE *tac_output_file;
 
 // #### TABELA DE SIMBOLOS ####
 
@@ -87,3 +88,7 @@ extern FILE *tree_output_file;
 
 void existe_main();
 void verifica_qnt_parametros_chamada_func(char *nome_funcao_chamada);
+
+// #### GERADOR DE CODIGO INTERMEDIARIO ####
+
+void gera_codigo_intermediario();

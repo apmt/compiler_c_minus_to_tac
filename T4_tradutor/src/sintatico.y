@@ -68,16 +68,11 @@ extern FILE* yyin;
 %token FLOAT_CONST INTEGER_CONST STRING_LITERAL
 %token STRING
 
+
 %left AND OR
 %left EQ NE 
 %left LT GT GE LE
 %right MAP FILTER CONSTRUTOR
-%left SOMA SUB
-%left MULT DIV
-%right TAIL_OR_NOT HEADER TAIL_POP
-
-%nonassoc ELSE
-%nonassoc IFX
 
 %start programa
 
@@ -96,7 +91,7 @@ lista_de_declaracoes:
 		coloca_node_filho($$, $2);
 		coloca_node_filho($$, $1);
 	}
-	| /* epsilon */ {
+	| %empty {
 		$$ = (t_node*)0;
 	}
 ;
@@ -147,7 +142,7 @@ parametros:
 	  lista_de_parametros {
 		$$ = $1;
 	}
-	| /* epsilon */ {
+	| %empty {
 		$$ = (t_node*)0;
 	}
 ;
@@ -204,7 +199,7 @@ comandos:
 		coloca_node_filho($$, $2);
 		coloca_node_filho($$, $1);
 	}
-    | /* epsilon */ {
+    | %empty {
 		$$ = (t_node*)0;
 	}
 ;
@@ -218,10 +213,7 @@ bloco_de_comando:
 ;
 
 comando_unico:
-	  comando_condicional {
-		$$ = $1;
-	}
-	| comando_iterativo {
+	 comando_iterativo {
 		$$ = $1;
 	}
 	| declaracao_de_variavel {
@@ -239,7 +231,7 @@ comando_unico:
 ;
 
 comando_condicional:
-	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando %prec IFX {
+	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando {
 		$$ = novo_node("IF", yylineno, coluna);
 		coloca_node_filho($$, $5);
 		coloca_node_filho($$, $3);
@@ -277,13 +269,16 @@ exp_or_empty:
 	exp {
 		$$ = $1;
 	}
-	| /* epsilon */ {
+	| %empty {
 		$$ = (t_node*)0;
 	}
 ;
 
 exp:
-	exp GT exp {
+	comando_condicional {
+		$$ = $1;
+	}
+	| exp GT exp {
 		$$ = novo_node("GT", yylineno, coluna);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);

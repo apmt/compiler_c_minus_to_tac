@@ -21,11 +21,6 @@ Executar testes (TERMINAL NO DIRETÓRIO PRINCIPAL DO TRABALHO):
     a seguinte linha de comando:
     $ ./tac tests/tradutor/<nome_do_teste.tac>
 
-Visualize a AST:
-    1. Execute o teste escolhido;
-    2. Pegue o conteúdo do arquivo "tree_output_file.txt"
-    3. Use o texto desse arquivo como entrada para a seguinte ferramenta: https://ironcreek.net/syntaxtree/
-
 Troubleshoot:
     Precisa atualizar o bison para a versão 3.7?
         $ bison --version

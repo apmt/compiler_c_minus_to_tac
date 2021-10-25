@@ -96,8 +96,7 @@ extern int yydebug;
     FLOAT_CONST = 297,             /* FLOAT_CONST  */
     INTEGER_CONST = 298,           /* INTEGER_CONST  */
     STRING_LITERAL = 299,          /* STRING_LITERAL  */
-    STRING = 300,                  /* STRING  */
-    IFX = 301                      /* IFX  */
+    STRING = 300                   /* STRING  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -110,7 +109,7 @@ union YYSTYPE
 
 	struct t_node* node;
 
-#line 114 "lib/sintatico.tab.h"
+#line 113 "lib/sintatico.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

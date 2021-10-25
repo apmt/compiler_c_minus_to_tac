@@ -1,1 +1,1 @@
-[PROGRAMA["INT"["main"]]["BLOCO"["INT"["a"]]["ATRIB"["a"]["INTEGER_CONST"]]["WRITELN"["a"]]]]
+[PROGRAMA["INT"["main"]]["BLOCO"["INT"["a"]]["INT"["b"]]["BLOCO"["ATRIB"["a"]["INTEGER_CONST"]]]["b"]]]

@@ -243,6 +243,7 @@ COMENTARIO          \/\/.*
     // printf("<FECHA_CHAVES>"); 
     coluna += yyleng; 
     // indicador_de_escopo--; 
+    decrementa_escopo();
     return FECHA_CHAVES;
 }
 

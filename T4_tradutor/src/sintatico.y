@@ -133,8 +133,8 @@ declaracao_de_funcao:
 ;
 
 definicao_de_funcao:
-	bloco_de_comando {
-		$$ = $1;
+	ABRE_CHAVES comandos FECHA_CHAVES {
+		$$ = $2;
 	}
 ;
 
@@ -182,8 +182,8 @@ id:
 ;
 
 comando:
-	  {incrementa_escopo();} bloco_de_comando {
-		$$ = $2;
+	 bloco_de_comando {
+		$$ = $1;
 	}
 	| comando_unico {
 		$$ = $1;
@@ -205,10 +205,9 @@ comandos:
 ;
 
 bloco_de_comando:
-	  ABRE_CHAVES comandos FECHA_CHAVES {
+	 {incrementa_escopo();} ABRE_CHAVES comandos FECHA_CHAVES {
 		$$ = novo_node("BLOCO", yylineno, coluna);
-		coloca_node_filho($$, $2);
-		decrementa_escopo();
+		coloca_node_filho($$, $3);
 	}
 ;
 
@@ -231,12 +230,35 @@ comando_unico:
 ;
 
 comando_condicional:
-	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando {
+	  IF ABRE_PARENTESES exp FECHA_PARENTESES comando_unico {
 		$$ = novo_node("IF", yylineno, coluna);
 		coloca_node_filho($$, $5);
 		coloca_node_filho($$, $3);
 	}
-	| IF ABRE_PARENTESES exp FECHA_PARENTESES comando ELSE comando {
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando {
+		$$ = novo_node("IF", yylineno, coluna);
+		coloca_node_filho($$, $5);
+		coloca_node_filho($$, $3);
+	}
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES comando_unico ELSE comando_unico {
+		$$ = novo_node("IF_ELSE", yylineno, coluna);
+		coloca_node_filho($$, $7);
+		coloca_node_filho($$, $5);
+		coloca_node_filho($$, $3);
+	}
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando ELSE comando_unico {
+		$$ = novo_node("IF_ELSE", yylineno, coluna);
+		coloca_node_filho($$, $7);
+		coloca_node_filho($$, $5);
+		coloca_node_filho($$, $3);
+	}
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES comando_unico ELSE bloco_de_comando {
+		$$ = novo_node("IF_ELSE", yylineno, coluna);
+		coloca_node_filho($$, $7);
+		coloca_node_filho($$, $5);
+		coloca_node_filho($$, $3);
+	}
+	| IF ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando ELSE bloco_de_comando {
 		$$ = novo_node("IF_ELSE", yylineno, coluna);
 		coloca_node_filho($$, $7);
 		coloca_node_filho($$, $5);

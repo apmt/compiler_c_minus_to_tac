@@ -1136,13 +1136,14 @@ YY_RULE_SETUP
     // printf("<FECHA_CHAVES>"); 
     coluna += yyleng; 
     // indicador_de_escopo--; 
+    decrementa_escopo();
     return FECHA_CHAVES;
 }
 	YY_BREAK
 /* Regras */
 case 37:
 YY_RULE_SETUP
-#line 251 "src/lexico.l"
+#line 252 "src/lexico.l"
 {
     // printf("<INTEGER_CONST, %s>", yytext);
     coluna += yyleng;
@@ -1151,7 +1152,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 256 "src/lexico.l"
+#line 257 "src/lexico.l"
 {
     // printf("<FLOAT_CONST, %s>", yytext);
     coluna += yyleng;
@@ -1161,7 +1162,7 @@ YY_RULE_SETUP
 case 39:
 /* rule 39 can match eol */
 YY_RULE_SETUP
-#line 261 "src/lexico.l"
+#line 262 "src/lexico.l"
 {
     // printf("<STRING_LITERAL, %s>", yytext);
     coluna += yyleng;
@@ -1171,7 +1172,7 @@ YY_RULE_SETUP
 /* Outras regras */
 case 40:
 YY_RULE_SETUP
-#line 268 "src/lexico.l"
+#line 269 "src/lexico.l"
 {
     strcpy(nome_id_atual, yytext);
     // printf("<ID,%s>", yytext);
@@ -1182,23 +1183,23 @@ YY_RULE_SETUP
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
-#line 275 "src/lexico.l"
+#line 276 "src/lexico.l"
 { /* Ignora comentarios de uma linha */ }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 276 "src/lexico.l"
+#line 277 "src/lexico.l"
 { /* Ignora comentarios de uma linha */ }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 277 "src/lexico.l"
+#line 278 "src/lexico.l"
 { /* Separa os tokens */ coluna += yyleng; }
 	YY_BREAK
 case 44:
 /* rule 44 can match eol */
 YY_RULE_SETUP
-#line 278 "src/lexico.l"
+#line 279 "src/lexico.l"
 {
     yylineno++;
     // printf("\n%d:  ", yylineno);
@@ -1208,15 +1209,15 @@ YY_RULE_SETUP
 /* Reconhecer o resto como erro */
 case 45:
 YY_RULE_SETUP
-#line 285 "src/lexico.l"
+#line 286 "src/lexico.l"
 { fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; erros++; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 288 "src/lexico.l"
+#line 289 "src/lexico.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1220 "src/lex.yy.c"
+#line 1221 "src/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2185,7 +2186,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 288 "src/lexico.l"
+#line 289 "src/lexico.l"
 
 
 

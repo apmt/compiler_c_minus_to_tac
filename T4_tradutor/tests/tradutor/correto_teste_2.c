@@ -1,18 +1,10 @@
-int main (int c) {
+int main () {
     float elem;
     read(elem);
 
-    if(elem == 0) {
-        int a;
-        // write("zero\n");
-    }
-    else {
-        int b;
-        // write(" not zero\n");
-    }
+    if(elem == 0) int a;
+    else write(" not zero\n");
 
     int c;
-    read(elem);
-    read(elem);
     read(elem);
 }

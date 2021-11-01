@@ -36,7 +36,6 @@ extern FILE* yyin;
 
 %type <node> ID
 %type <node> INT FLOAT LIST
-%type <node> CONSTANTE_NIL
 %type <node> TAIL_OR_NOT
 %type <node> HEADER TAIL_POP MAP FILTER CONSTRUTOR
 %type <node> READ WRITE WRITELN
@@ -48,12 +47,11 @@ extern FILE* yyin;
 %type <node> ASPA_SIMPLES ATRIB
 %type <node> ABRE_PARENTESES FECHA_PARENTESES ABRE_CHAVES FECHA_CHAVES
 
+%type <node> CONSTANTE_NIL
 %type <node> FLOAT_CONST INTEGER_CONST STRING_LITERAL
-%type <node> STRING
 
 %token ID
 %token INT FLOAT LIST
-%token CONSTANTE_NIL
 %token TAIL_OR_NOT
 %token HEADER TAIL_POP MAP FILTER CONSTRUTOR
 %token READ WRITE WRITELN
@@ -65,9 +63,8 @@ extern FILE* yyin;
 %token ASPA_SIMPLES ATRIB
 %token ABRE_PARENTESES FECHA_PARENTESES ABRE_CHAVES FECHA_CHAVES
 
+%token CONSTANTE_NIL
 %token FLOAT_CONST INTEGER_CONST STRING_LITERAL
-%token STRING
-
 
 %left AND OR
 %left EQ NE 
@@ -429,8 +426,10 @@ fator:
 		coloca_node_filho($$, $2);
 	}
 	| ID {
-		verifica_contexto(nome_id_atual);
+		t_simbolo *token;
+		token = verifica_contexto(nome_id_atual);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
+		$$->token = token;
 	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES {
 		$$ = $2;
@@ -440,34 +439,43 @@ fator:
 
 comando_de_atribuicao:
     id ATRIB exp PONTO_VIRGULA {
-		verifica_contexto($1->nome);
+		t_simbolo *token;
+		token = verifica_contexto($1->nome);
 		$$ = novo_node("ATRIB", yylineno, coluna);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
+		$$->token = token;
 	}
 ;
 
 func_call_exp:
 	  id ABRE_PARENTESES func_call_parameters FECHA_PARENTESES {
-		verifica_contexto($1->nome);
-		$$ = novo_node("my_func_call_exp", -1, -1);
+		t_simbolo *token;
+		token = verifica_contexto($1->nome);
+		$$ = novo_node("func_call_exp", -1, -1);
 		coloca_node_filho($$, $3);
 		coloca_node_filho($$, $1);
+		$$->token = token;
 
 		verifica_qnt_parametros_chamada_func($1->nome);
 		num_parametros_chamada_func = 0;
 	}
 	|  id ABRE_PARENTESES FECHA_PARENTESES {
-		verifica_contexto($1->nome);
-		$$ = $1;
+		t_simbolo *token;
+		token = verifica_contexto($1->nome);
+		$$ = novo_node("func_call_exp", -1, -1);
+		coloca_node_filho($$, $1);
+		$$->token = token;
 
 		verifica_qnt_parametros_chamada_func($1->nome);
 		num_parametros_chamada_func = 0;
 	}
 	|  READ ABRE_PARENTESES id FECHA_PARENTESES {
-		verifica_contexto($3->nome);
+		t_simbolo *token;
+		token = verifica_contexto($3->nome);
 		$$ = novo_node("READ", yylineno, coluna);
 		coloca_node_filho($$, $3);
+		$$->token = token;
 	}
 	|  WRITE ABRE_PARENTESES exp FECHA_PARENTESES {
 		$$ = novo_node("WRITE", yylineno, coluna);
@@ -535,6 +543,7 @@ constante:
 %%
 
 int yyerror (const char* s) {
+	contador_erro++;
 	fprintf (stderr, RED"ERRO, linha: %d, na coluna: %d, %s\n"reset, yylineno, coluna, s);
   	return 0;
 }
@@ -565,13 +574,19 @@ int main(int argc, char **argv)
     fprintf(tree_output_file,"]");
 	fclose(tree_output_file);
 
-	// TAC file
-	char *end = argv[1] + strlen(argv[1]);
-    while (end > argv[1] && *end != '.') --end;
-    if (end > argv[1]) *end = '\0';
-	tac_output_file = fopen(strcat(argv[1], ".tac"), "w");
-	gera_codigo_intermediario();
-	fclose(tac_output_file);
+	if(contador_erro == 0) {
+		fprintf (stderr, GRN"\nNenhum erro encontrado\n\n"reset);
+		// TAC file
+		char *end = argv[1] + strlen(argv[1]);
+		while (end > argv[1] && *end != '.') --end;
+		if (end > argv[1]) *end = '\0';
+		tac_output_file = fopen(strcat(argv[1], ".tac"), "w");
+		gera_codigo_intermediario();
+		fclose(tac_output_file);
+	} else {
+		fprintf (stderr, RED"\nTotal de %d erros (ver inicio do log)\n\n"reset, contador_erro);
+	}
+
 
 	fclose(yyin);
 	yylex_destroy();

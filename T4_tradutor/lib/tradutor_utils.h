@@ -21,8 +21,18 @@
 extern int coluna;
 extern int *linha;
 extern char nome_funcao_atual[64];
+extern char nome_const_atual[300];
 extern int num_parametros_chamada_func;
+extern int contador_erro;
 extern FILE *tac_output_file;
+
+
+typedef struct t_constante {
+    char *nome;
+    char *cvalue;
+    int ivalue;
+    float fvalue;
+}t_constante;
 
 // #### TABELA DE SIMBOLOS ####
 
@@ -42,7 +52,7 @@ extern t_simbolo *tabela_de_simbolos;
 t_simbolo *coloca_simbolo ();
 t_simbolo *pega_simbolo ();
 void incrementa_tabela (char *nome);
-void verifica_contexto(char *nome);
+t_simbolo *verifica_contexto(char *nome);
 void mostra_tabela_simbolos();
 void destroi_tabela_simbolos();
 
@@ -67,6 +77,7 @@ typedef struct t_node {
     int linha;
     int coluna;
     char *tipo;
+    t_simbolo *token;
     struct t_node *primeiro_filho;
     struct t_node *proximo_irmao;
 }t_node;

@@ -13,8 +13,9 @@ run:
 	./tradutor tests/tradutor/errado_teste_2.c
 
 memcheck:
-	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor tests/tradutor/correto_teste_1.c
+#	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor tests/tradutor/correto_teste_1.c
+	valgrind -v --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="logfile.out" ./tradutor tests/tradutor/lab/t7.c
 
 .PHONY: clean
 clean:
-	rm -f lib/sintatico.tab.h src/lex.yy.c src/sintatico.tab.c tradutor logfile.out src/sintatico.output tree_output_file.txt
+	rm -f lib/sintatico.tab.h src/lex.yy.c src/sintatico.tab.c tradutor logfile.out src/sintatico.output tree_output_file.txt tests/tradutor/*.tac

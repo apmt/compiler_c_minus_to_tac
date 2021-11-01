@@ -2,7 +2,6 @@ Terminals unused in grammar
 
     MAIN
     ASPA_SIMPLES
-    STRING
 
 
 Grammar
@@ -140,152 +139,151 @@ Terminals, with rules where they appear
     INT <node> (259) 80 83
     FLOAT <node> (260) 81 84
     LIST <node> (261) 83 84
-    CONSTANTE_NIL <node> (262) 87
-    TAIL_OR_NOT <node> (263) 66
-    HEADER <node> (264) 68
-    TAIL_POP <node> (265) 67
-    MAP <node> (266) 54
-    FILTER <node> (267) 53
-    CONSTRUTOR <node> (268) 52
-    READ <node> (269) 74
-    WRITE <node> (270) 75
-    WRITELN <node> (271) 76
-    MAIN <node> (272)
-    RETURN <node> (273) 79
-    IF <node> (274) 32 33 34 35 36 37
-    ELSE <node> (275) 34 35 36 37
-    FOR <node> (276) 38
-    AND <node> (277) 49
-    OR <node> (278) 50
-    LT <node> (279) 44
-    LE <node> (280) 47
-    EQ <node> (281) 45
-    GT <node> (282) 43
-    GE <node> (283) 48
-    NE <node> (284) 46
-    SOMA <node> (285) 57 65
-    SUB <node> (286) 58 64
-    MULT <node> (287) 60
-    DIV <node> (288) 61
-    VIRGULA <node> (289) 14 77
-    PONTO_VIRGULA <node> (290) 8 31 38 71 79
-    ASPA_SIMPLES <node> (291)
-    ATRIB <node> (292) 39 71
-    ABRE_PARENTESES <node> (293) 10 32 33 34 35 36 37 38 70 72 73 74 75 76
-    FECHA_PARENTESES <node> (294) 10 32 33 34 35 36 37 38 70 72 73 74 75 76
-    ABRE_CHAVES <node> (295) 11 25
-    FECHA_CHAVES <node> (296) 11 25
+    TAIL_OR_NOT <node> (262) 66
+    HEADER <node> (263) 68
+    TAIL_POP <node> (264) 67
+    MAP <node> (265) 54
+    FILTER <node> (266) 53
+    CONSTRUTOR <node> (267) 52
+    READ <node> (268) 74
+    WRITE <node> (269) 75
+    WRITELN <node> (270) 76
+    MAIN <node> (271)
+    RETURN <node> (272) 79
+    IF <node> (273) 32 33 34 35 36 37
+    ELSE <node> (274) 34 35 36 37
+    FOR <node> (275) 38
+    AND <node> (276) 49
+    OR <node> (277) 50
+    LT <node> (278) 44
+    LE <node> (279) 47
+    EQ <node> (280) 45
+    GT <node> (281) 43
+    GE <node> (282) 48
+    NE <node> (283) 46
+    SOMA <node> (284) 57 65
+    SUB <node> (285) 58 64
+    MULT <node> (286) 60
+    DIV <node> (287) 61
+    VIRGULA <node> (288) 14 77
+    PONTO_VIRGULA <node> (289) 8 31 38 71 79
+    ASPA_SIMPLES <node> (290)
+    ATRIB <node> (291) 39 71
+    ABRE_PARENTESES <node> (292) 10 32 33 34 35 36 37 38 70 72 73 74 75 76
+    FECHA_PARENTESES <node> (293) 10 32 33 34 35 36 37 38 70 72 73 74 75 76
+    ABRE_CHAVES <node> (294) 11 25
+    FECHA_CHAVES <node> (295) 11 25
+    CONSTANTE_NIL <node> (296) 87
     FLOAT_CONST <node> (297) 86
     INTEGER_CONST <node> (298) 85
     STRING_LITERAL <node> (299) 88
-    STRING <node> (300)
-    "then" (301)
+    "then" (300)
 
 
 Nonterminals, with rules where they appear
 
-    $accept (47)
+    $accept (46)
         on left: 0
-    programa <node> (48)
+    programa <node> (47)
         on left: 1
         on right: 0
-    lista_de_declaracoes <node> (49)
+    lista_de_declaracoes <node> (48)
         on left: 2 3
         on right: 1 2
-    declaracao <node> (50)
+    declaracao <node> (49)
         on left: 4 5 6
         on right: 2
-    declaracao_de_variavel <node> (51)
+    declaracao_de_variavel <node> (50)
         on left: 8
         on right: 4 28
-    $@1 (52)
+    $@1 (51)
         on left: 7
         on right: 8
-    declaracao_de_funcao <node> (53)
+    declaracao_de_funcao <node> (52)
         on left: 10
         on right: 5
-    $@2 (54)
+    $@2 (53)
         on left: 9
         on right: 10
-    definicao_de_funcao <node> (55)
+    definicao_de_funcao <node> (54)
         on left: 11
         on right: 10
-    parametros <node> (56)
+    parametros <node> (55)
         on left: 12 13
         on right: 10
-    lista_de_parametros <node> (57)
+    lista_de_parametros <node> (56)
         on left: 14 15
         on right: 12 14
-    parametro <node> (58)
+    parametro <node> (57)
         on left: 16
         on right: 14 15
-    tipo_de_variavel_id <node> (59)
+    tipo_de_variavel_id <node> (58)
         on left: 17
         on right: 8 10 16
-    id <node> (60)
+    id <node> (59)
         on left: 18
         on right: 17 39 71 72 73 74
-    comando <node> (61)
+    comando <node> (60)
         on left: 19 20 21
         on right: 22 38
-    comandos <node> (62)
+    comandos <node> (61)
         on left: 22 23
         on right: 11 22 25
-    bloco_de_comando <node> (63)
+    bloco_de_comando <node> (62)
         on left: 25
         on right: 19 33 35 36 37
-    $@3 (64)
+    $@3 (63)
         on left: 24
         on right: 25
-    comando_unico <node> (65)
+    comando_unico <node> (64)
         on left: 26 27 28 29 30 31
         on right: 20 32 34 35 36
-    comando_condicional <node> (66)
+    comando_condicional <node> (65)
         on left: 32 33 34 35 36 37
         on right: 26
-    comando_iterativo <node> (67)
+    comando_iterativo <node> (66)
         on left: 38
         on right: 27
-    expressao_for <node> (68)
+    expressao_for <node> (67)
         on left: 39 40
         on right: 38
-    exp_or_empty <node> (69)
+    exp_or_empty <node> (68)
         on left: 41 42
         on right: 31 40
-    exp <node> (70)
+    exp <node> (69)
         on left: 43 44 45 46 47 48 49 50 51
         on right: 32 33 34 35 36 37 39 41 43 44 45 46 47 48 49 50 70 71 75 76 77 78 79
-    exp_list <node> (71)
+    exp_list <node> (70)
         on left: 52 53 54 55
         on right: 51 52 53 54
-    exp_aritmetica <node> (72)
+    exp_aritmetica <node> (71)
         on left: 56 57 58
         on right: 55 57 58
-    termo <node> (73)
+    termo <node> (72)
         on left: 59 60 61
         on right: 56 57 58 60 61
-    fator <node> (74)
+    fator <node> (73)
         on left: 62 63 64 65 66 67 68 69 70
         on right: 59 60 61 64 65 66 67 68
-    comando_de_atribuicao <node> (75)
+    comando_de_atribuicao <node> (74)
         on left: 71
         on right: 30
-    func_call_exp <node> (76)
+    func_call_exp <node> (75)
         on left: 72 73 74 75 76
         on right: 63
-    func_call_parameters <node> (77)
+    func_call_parameters <node> (76)
         on left: 77 78
         on right: 72 77
-    chamada_de_retorno <node> (78)
+    chamada_de_retorno <node> (77)
         on left: 79
         on right: 29
-    tipo_de_variavel <node> (79)
+    tipo_de_variavel <node> (78)
         on left: 80 81 82
         on right: 17
-    list <node> (80)
+    list <node> (79)
         on left: 83 84
         on right: 82
-    constante <node> (81)
+    constante <node> (80)
         on left: 85 86 87 88
         on right: 62
 
@@ -558,7 +556,6 @@ State 27
     ID               reduce using rule 23 (comandos)
     INT              reduce using rule 23 (comandos)
     FLOAT            reduce using rule 23 (comandos)
-    CONSTANTE_NIL    reduce using rule 23 (comandos)
     TAIL_OR_NOT      reduce using rule 23 (comandos)
     HEADER           reduce using rule 23 (comandos)
     TAIL_POP         reduce using rule 23 (comandos)
@@ -574,6 +571,7 @@ State 27
     ABRE_PARENTESES  reduce using rule 23 (comandos)
     ABRE_CHAVES      reduce using rule 23 (comandos)
     FECHA_CHAVES     reduce using rule 23 (comandos)
+    CONSTANTE_NIL    reduce using rule 23 (comandos)
     FLOAT_CONST      reduce using rule 23 (comandos)
     INTEGER_CONST    reduce using rule 23 (comandos)
     STRING_LITERAL   reduce using rule 23 (comandos)
@@ -608,20 +606,20 @@ State 30
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    RETURN           shift, and go to state 40
-    IF               shift, and go to state 41
-    FOR              shift, and go to state 42
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FECHA_CHAVES     shift, and go to state 46
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    RETURN           shift, and go to state 39
+    IF               shift, and go to state 40
+    FOR              shift, and go to state 41
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    FECHA_CHAVES     shift, and go to state 45
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -660,7 +658,6 @@ State 31
     ID               reduce using rule 21 (comando)
     INT              reduce using rule 21 (comando)
     FLOAT            reduce using rule 21 (comando)
-    CONSTANTE_NIL    reduce using rule 21 (comando)
     TAIL_OR_NOT      reduce using rule 21 (comando)
     HEADER           reduce using rule 21 (comando)
     TAIL_POP         reduce using rule 21 (comando)
@@ -676,6 +673,7 @@ State 31
     ABRE_PARENTESES  reduce using rule 21 (comando)
     ABRE_CHAVES      reduce using rule 21 (comando)
     FECHA_CHAVES     reduce using rule 21 (comando)
+    CONSTANTE_NIL    reduce using rule 21 (comando)
     FLOAT_CONST      reduce using rule 21 (comando)
     INTEGER_CONST    reduce using rule 21 (comando)
     STRING_LITERAL   reduce using rule 21 (comando)
@@ -708,6 +706,239 @@ State 32
 
 State 33
 
+   66 fator: TAIL_OR_NOT • fator
+
+    ID               shift, and go to state 157
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
+    FLOAT_CONST      shift, and go to state 47
+    INTEGER_CONST    shift, and go to state 48
+    STRING_LITERAL   shift, and go to state 49
+
+    id             go to state 69
+    fator          go to state 70
+    func_call_exp  go to state 66
+    constante      go to state 68
+
+
+State 34
+
+   68 fator: HEADER • fator
+
+    ID               shift, and go to state 157
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
+    FLOAT_CONST      shift, and go to state 47
+    INTEGER_CONST    shift, and go to state 48
+    STRING_LITERAL   shift, and go to state 49
+
+    id             go to state 69
+    fator          go to state 71
+    func_call_exp  go to state 66
+    constante      go to state 68
+
+
+State 35
+
+   67 fator: TAIL_POP • fator
+
+    ID               shift, and go to state 157
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
+    FLOAT_CONST      shift, and go to state 47
+    INTEGER_CONST    shift, and go to state 48
+    STRING_LITERAL   shift, and go to state 49
+
+    id             go to state 69
+    fator          go to state 72
+    func_call_exp  go to state 66
+    constante      go to state 68
+
+
+State 36
+
+   74 func_call_exp: READ • ABRE_PARENTESES id FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 73
+
+
+State 37
+
+   75 func_call_exp: WRITE • ABRE_PARENTESES exp FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 74
+
+
+State 38
+
+   76 func_call_exp: WRITELN • ABRE_PARENTESES exp FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 75
+
+
+State 39
+
+   79 chamada_de_retorno: RETURN • exp PONTO_VIRGULA
+
+    ID               shift, and go to state 157
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
+    FLOAT_CONST      shift, and go to state 47
+    INTEGER_CONST    shift, and go to state 48
+    STRING_LITERAL   shift, and go to state 49
+
+    id              go to state 69
+    exp             go to state 76
+    exp_list        go to state 61
+    exp_aritmetica  go to state 62
+    termo           go to state 63
+    fator           go to state 64
+    func_call_exp   go to state 66
+    constante       go to state 68
+
+
+State 40
+
+   32 comando_condicional: IF • ABRE_PARENTESES exp FECHA_PARENTESES comando_unico
+   33                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando
+   34                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES comando_unico ELSE comando_unico
+   35                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando ELSE comando_unico
+   36                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES comando_unico ELSE bloco_de_comando
+   37                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando ELSE bloco_de_comando
+
+    ABRE_PARENTESES  shift, and go to state 77
+
+
+State 41
+
+   38 comando_iterativo: FOR • ABRE_PARENTESES expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
+
+    ABRE_PARENTESES  shift, and go to state 78
+
+
+State 42
+
+   65 fator: SOMA • fator
+
+    ID               shift, and go to state 157
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
+    FLOAT_CONST      shift, and go to state 47
+    INTEGER_CONST    shift, and go to state 48
+    STRING_LITERAL   shift, and go to state 49
+
+    id             go to state 69
+    fator          go to state 79
+    func_call_exp  go to state 66
+    constante      go to state 68
+
+
+State 43
+
+   64 fator: SUB • fator
+
+    ID               shift, and go to state 157
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
+    FLOAT_CONST      shift, and go to state 47
+    INTEGER_CONST    shift, and go to state 48
+    STRING_LITERAL   shift, and go to state 49
+
+    id             go to state 69
+    fator          go to state 80
+    func_call_exp  go to state 66
+    constante      go to state 68
+
+
+State 44
+
+   70 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id              go to state 172
+    exp             go to state 81
+    exp_list        go to state 173
+    exp_aritmetica  go to state 174
+    termo           go to state 175
+    fator           go to state 176
+    func_call_exp   go to state 177
+    constante       go to state 178
+
+
+State 45
+
+   11 definicao_de_funcao: ABRE_CHAVES comandos FECHA_CHAVES •
+
+    $end   reduce using rule 11 (definicao_de_funcao)
+    error  reduce using rule 11 (definicao_de_funcao)
+    INT    reduce using rule 11 (definicao_de_funcao)
+    FLOAT  reduce using rule 11 (definicao_de_funcao)
+
+
+State 46
+
    87 constante: CONSTANTE_NIL •
 
     MAP            reduce using rule 87 (constante)
@@ -726,239 +957,6 @@ State 33
     MULT           reduce using rule 87 (constante)
     DIV            reduce using rule 87 (constante)
     PONTO_VIRGULA  reduce using rule 87 (constante)
-
-
-State 34
-
-   66 fator: TAIL_OR_NOT • fator
-
-    ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FLOAT_CONST      shift, and go to state 47
-    INTEGER_CONST    shift, and go to state 48
-    STRING_LITERAL   shift, and go to state 49
-
-    id             go to state 69
-    fator          go to state 70
-    func_call_exp  go to state 66
-    constante      go to state 68
-
-
-State 35
-
-   68 fator: HEADER • fator
-
-    ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FLOAT_CONST      shift, and go to state 47
-    INTEGER_CONST    shift, and go to state 48
-    STRING_LITERAL   shift, and go to state 49
-
-    id             go to state 69
-    fator          go to state 71
-    func_call_exp  go to state 66
-    constante      go to state 68
-
-
-State 36
-
-   67 fator: TAIL_POP • fator
-
-    ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FLOAT_CONST      shift, and go to state 47
-    INTEGER_CONST    shift, and go to state 48
-    STRING_LITERAL   shift, and go to state 49
-
-    id             go to state 69
-    fator          go to state 72
-    func_call_exp  go to state 66
-    constante      go to state 68
-
-
-State 37
-
-   74 func_call_exp: READ • ABRE_PARENTESES id FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 73
-
-
-State 38
-
-   75 func_call_exp: WRITE • ABRE_PARENTESES exp FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 74
-
-
-State 39
-
-   76 func_call_exp: WRITELN • ABRE_PARENTESES exp FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 75
-
-
-State 40
-
-   79 chamada_de_retorno: RETURN • exp PONTO_VIRGULA
-
-    ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FLOAT_CONST      shift, and go to state 47
-    INTEGER_CONST    shift, and go to state 48
-    STRING_LITERAL   shift, and go to state 49
-
-    id              go to state 69
-    exp             go to state 76
-    exp_list        go to state 61
-    exp_aritmetica  go to state 62
-    termo           go to state 63
-    fator           go to state 64
-    func_call_exp   go to state 66
-    constante       go to state 68
-
-
-State 41
-
-   32 comando_condicional: IF • ABRE_PARENTESES exp FECHA_PARENTESES comando_unico
-   33                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando
-   34                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES comando_unico ELSE comando_unico
-   35                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando ELSE comando_unico
-   36                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES comando_unico ELSE bloco_de_comando
-   37                    | IF • ABRE_PARENTESES exp FECHA_PARENTESES bloco_de_comando ELSE bloco_de_comando
-
-    ABRE_PARENTESES  shift, and go to state 77
-
-
-State 42
-
-   38 comando_iterativo: FOR • ABRE_PARENTESES expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
-
-    ABRE_PARENTESES  shift, and go to state 78
-
-
-State 43
-
-   65 fator: SOMA • fator
-
-    ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FLOAT_CONST      shift, and go to state 47
-    INTEGER_CONST    shift, and go to state 48
-    STRING_LITERAL   shift, and go to state 49
-
-    id             go to state 69
-    fator          go to state 79
-    func_call_exp  go to state 66
-    constante      go to state 68
-
-
-State 44
-
-   64 fator: SUB • fator
-
-    ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
-    FLOAT_CONST      shift, and go to state 47
-    INTEGER_CONST    shift, and go to state 48
-    STRING_LITERAL   shift, and go to state 49
-
-    id             go to state 69
-    fator          go to state 80
-    func_call_exp  go to state 66
-    constante      go to state 68
-
-
-State 45
-
-   70 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id              go to state 172
-    exp             go to state 81
-    exp_list        go to state 173
-    exp_aritmetica  go to state 174
-    termo           go to state 175
-    fator           go to state 176
-    func_call_exp   go to state 177
-    constante       go to state 178
-
-
-State 46
-
-   11 definicao_de_funcao: ABRE_CHAVES comandos FECHA_CHAVES •
-
-    $end   reduce using rule 11 (definicao_de_funcao)
-    error  reduce using rule 11 (definicao_de_funcao)
-    INT    reduce using rule 11 (definicao_de_funcao)
-    FLOAT  reduce using rule 11 (definicao_de_funcao)
 
 
 State 47
@@ -1035,7 +1033,6 @@ State 50
     ID               reduce using rule 28 (comando_unico)
     INT              reduce using rule 28 (comando_unico)
     FLOAT            reduce using rule 28 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 28 (comando_unico)
     TAIL_OR_NOT      reduce using rule 28 (comando_unico)
     HEADER           reduce using rule 28 (comando_unico)
     TAIL_POP         reduce using rule 28 (comando_unico)
@@ -1051,6 +1048,7 @@ State 50
     ABRE_PARENTESES  reduce using rule 28 (comando_unico)
     ABRE_CHAVES      reduce using rule 28 (comando_unico)
     FECHA_CHAVES     reduce using rule 28 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 28 (comando_unico)
     FLOAT_CONST      reduce using rule 28 (comando_unico)
     INTEGER_CONST    reduce using rule 28 (comando_unico)
     STRING_LITERAL   reduce using rule 28 (comando_unico)
@@ -1083,7 +1081,6 @@ State 53
     ID               reduce using rule 22 (comandos)
     INT              reduce using rule 22 (comandos)
     FLOAT            reduce using rule 22 (comandos)
-    CONSTANTE_NIL    reduce using rule 22 (comandos)
     TAIL_OR_NOT      reduce using rule 22 (comandos)
     HEADER           reduce using rule 22 (comandos)
     TAIL_POP         reduce using rule 22 (comandos)
@@ -1099,6 +1096,7 @@ State 53
     ABRE_PARENTESES  reduce using rule 22 (comandos)
     ABRE_CHAVES      reduce using rule 22 (comandos)
     FECHA_CHAVES     reduce using rule 22 (comandos)
+    CONSTANTE_NIL    reduce using rule 22 (comandos)
     FLOAT_CONST      reduce using rule 22 (comandos)
     INTEGER_CONST    reduce using rule 22 (comandos)
     STRING_LITERAL   reduce using rule 22 (comandos)
@@ -1112,7 +1110,6 @@ State 54
     ID               reduce using rule 19 (comando)
     INT              reduce using rule 19 (comando)
     FLOAT            reduce using rule 19 (comando)
-    CONSTANTE_NIL    reduce using rule 19 (comando)
     TAIL_OR_NOT      reduce using rule 19 (comando)
     HEADER           reduce using rule 19 (comando)
     TAIL_POP         reduce using rule 19 (comando)
@@ -1128,6 +1125,7 @@ State 54
     ABRE_PARENTESES  reduce using rule 19 (comando)
     ABRE_CHAVES      reduce using rule 19 (comando)
     FECHA_CHAVES     reduce using rule 19 (comando)
+    CONSTANTE_NIL    reduce using rule 19 (comando)
     FLOAT_CONST      reduce using rule 19 (comando)
     INTEGER_CONST    reduce using rule 19 (comando)
     STRING_LITERAL   reduce using rule 19 (comando)
@@ -1148,7 +1146,6 @@ State 56
     ID               reduce using rule 20 (comando)
     INT              reduce using rule 20 (comando)
     FLOAT            reduce using rule 20 (comando)
-    CONSTANTE_NIL    reduce using rule 20 (comando)
     TAIL_OR_NOT      reduce using rule 20 (comando)
     HEADER           reduce using rule 20 (comando)
     TAIL_POP         reduce using rule 20 (comando)
@@ -1164,6 +1161,7 @@ State 56
     ABRE_PARENTESES  reduce using rule 20 (comando)
     ABRE_CHAVES      reduce using rule 20 (comando)
     FECHA_CHAVES     reduce using rule 20 (comando)
+    CONSTANTE_NIL    reduce using rule 20 (comando)
     FLOAT_CONST      reduce using rule 20 (comando)
     INTEGER_CONST    reduce using rule 20 (comando)
     STRING_LITERAL   reduce using rule 20 (comando)
@@ -1177,7 +1175,6 @@ State 57
     ID               reduce using rule 26 (comando_unico)
     INT              reduce using rule 26 (comando_unico)
     FLOAT            reduce using rule 26 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 26 (comando_unico)
     TAIL_OR_NOT      reduce using rule 26 (comando_unico)
     HEADER           reduce using rule 26 (comando_unico)
     TAIL_POP         reduce using rule 26 (comando_unico)
@@ -1193,6 +1190,7 @@ State 57
     ABRE_PARENTESES  reduce using rule 26 (comando_unico)
     ABRE_CHAVES      reduce using rule 26 (comando_unico)
     FECHA_CHAVES     reduce using rule 26 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 26 (comando_unico)
     FLOAT_CONST      reduce using rule 26 (comando_unico)
     INTEGER_CONST    reduce using rule 26 (comando_unico)
     STRING_LITERAL   reduce using rule 26 (comando_unico)
@@ -1206,7 +1204,6 @@ State 58
     ID               reduce using rule 27 (comando_unico)
     INT              reduce using rule 27 (comando_unico)
     FLOAT            reduce using rule 27 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 27 (comando_unico)
     TAIL_OR_NOT      reduce using rule 27 (comando_unico)
     HEADER           reduce using rule 27 (comando_unico)
     TAIL_POP         reduce using rule 27 (comando_unico)
@@ -1222,6 +1219,7 @@ State 58
     ABRE_PARENTESES  reduce using rule 27 (comando_unico)
     ABRE_CHAVES      reduce using rule 27 (comando_unico)
     FECHA_CHAVES     reduce using rule 27 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 27 (comando_unico)
     FLOAT_CONST      reduce using rule 27 (comando_unico)
     INTEGER_CONST    reduce using rule 27 (comando_unico)
     STRING_LITERAL   reduce using rule 27 (comando_unico)
@@ -1358,7 +1356,6 @@ State 65
     ID               reduce using rule 30 (comando_unico)
     INT              reduce using rule 30 (comando_unico)
     FLOAT            reduce using rule 30 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 30 (comando_unico)
     TAIL_OR_NOT      reduce using rule 30 (comando_unico)
     HEADER           reduce using rule 30 (comando_unico)
     TAIL_POP         reduce using rule 30 (comando_unico)
@@ -1374,6 +1371,7 @@ State 65
     ABRE_PARENTESES  reduce using rule 30 (comando_unico)
     ABRE_CHAVES      reduce using rule 30 (comando_unico)
     FECHA_CHAVES     reduce using rule 30 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 30 (comando_unico)
     FLOAT_CONST      reduce using rule 30 (comando_unico)
     INTEGER_CONST    reduce using rule 30 (comando_unico)
     STRING_LITERAL   reduce using rule 30 (comando_unico)
@@ -1409,7 +1407,6 @@ State 67
     ID               reduce using rule 29 (comando_unico)
     INT              reduce using rule 29 (comando_unico)
     FLOAT            reduce using rule 29 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 29 (comando_unico)
     TAIL_OR_NOT      reduce using rule 29 (comando_unico)
     HEADER           reduce using rule 29 (comando_unico)
     TAIL_POP         reduce using rule 29 (comando_unico)
@@ -1425,6 +1422,7 @@ State 67
     ABRE_PARENTESES  reduce using rule 29 (comando_unico)
     ABRE_CHAVES      reduce using rule 29 (comando_unico)
     FECHA_CHAVES     reduce using rule 29 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 29 (comando_unico)
     FLOAT_CONST      reduce using rule 29 (comando_unico)
     INTEGER_CONST    reduce using rule 29 (comando_unico)
     STRING_LITERAL   reduce using rule 29 (comando_unico)
@@ -1540,16 +1538,16 @@ State 74
    75 func_call_exp: WRITE ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -1569,16 +1567,16 @@ State 75
    76 func_call_exp: WRITELN ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -1626,16 +1624,16 @@ State 77
    37                    | IF ABRE_PARENTESES • exp FECHA_PARENTESES bloco_de_comando ELSE bloco_de_comando
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -1655,16 +1653,16 @@ State 78
    38 comando_iterativo: FOR ABRE_PARENTESES • expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
 
     ID               shift, and go to state 32
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -1755,16 +1753,16 @@ State 82
    71 comando_de_atribuicao: id ATRIB • exp PONTO_VIRGULA
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -1785,17 +1783,17 @@ State 83
    73              | id ABRE_PARENTESES • FECHA_PARENTESES
 
     ID                shift, and go to state 189
-    CONSTANTE_NIL     shift, and go to state 190
-    TAIL_OR_NOT       shift, and go to state 191
-    HEADER            shift, and go to state 192
-    TAIL_POP          shift, and go to state 193
-    READ              shift, and go to state 194
-    WRITE             shift, and go to state 195
-    WRITELN           shift, and go to state 196
-    SOMA              shift, and go to state 197
-    SUB               shift, and go to state 198
-    ABRE_PARENTESES   shift, and go to state 199
+    TAIL_OR_NOT       shift, and go to state 190
+    HEADER            shift, and go to state 191
+    TAIL_POP          shift, and go to state 192
+    READ              shift, and go to state 193
+    WRITE             shift, and go to state 194
+    WRITELN           shift, and go to state 195
+    SOMA              shift, and go to state 196
+    SUB               shift, and go to state 197
+    ABRE_PARENTESES   shift, and go to state 198
     FECHA_PARENTESES  shift, and go to state 111
+    CONSTANTE_NIL     shift, and go to state 199
     FLOAT_CONST       shift, and go to state 200
     INTEGER_CONST     shift, and go to state 201
     STRING_LITERAL    shift, and go to state 202
@@ -1819,7 +1817,6 @@ State 84
     ID               reduce using rule 23 (comandos)
     INT              reduce using rule 23 (comandos)
     FLOAT            reduce using rule 23 (comandos)
-    CONSTANTE_NIL    reduce using rule 23 (comandos)
     TAIL_OR_NOT      reduce using rule 23 (comandos)
     HEADER           reduce using rule 23 (comandos)
     TAIL_POP         reduce using rule 23 (comandos)
@@ -1835,6 +1832,7 @@ State 84
     ABRE_PARENTESES  reduce using rule 23 (comandos)
     ABRE_CHAVES      reduce using rule 23 (comandos)
     FECHA_CHAVES     reduce using rule 23 (comandos)
+    CONSTANTE_NIL    reduce using rule 23 (comandos)
     FLOAT_CONST      reduce using rule 23 (comandos)
     INTEGER_CONST    reduce using rule 23 (comandos)
     STRING_LITERAL   reduce using rule 23 (comandos)
@@ -1850,7 +1848,6 @@ State 85
     ID               reduce using rule 31 (comando_unico)
     INT              reduce using rule 31 (comando_unico)
     FLOAT            reduce using rule 31 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 31 (comando_unico)
     TAIL_OR_NOT      reduce using rule 31 (comando_unico)
     HEADER           reduce using rule 31 (comando_unico)
     TAIL_POP         reduce using rule 31 (comando_unico)
@@ -1866,6 +1863,7 @@ State 85
     ABRE_PARENTESES  reduce using rule 31 (comando_unico)
     ABRE_CHAVES      reduce using rule 31 (comando_unico)
     FECHA_CHAVES     reduce using rule 31 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 31 (comando_unico)
     FLOAT_CONST      reduce using rule 31 (comando_unico)
     INTEGER_CONST    reduce using rule 31 (comando_unico)
     STRING_LITERAL   reduce using rule 31 (comando_unico)
@@ -1876,16 +1874,16 @@ State 86
    49 exp: exp AND • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -1905,16 +1903,16 @@ State 87
    50 exp: exp OR • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -1934,16 +1932,16 @@ State 88
    44 exp: exp LT • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -1963,16 +1961,16 @@ State 89
    47 exp: exp LE • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -1992,16 +1990,16 @@ State 90
    45 exp: exp EQ • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2021,16 +2019,16 @@ State 91
    43 exp: exp GT • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2050,16 +2048,16 @@ State 92
    48 exp: exp GE • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2079,16 +2077,16 @@ State 93
    46 exp: exp NE • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2108,16 +2106,16 @@ State 94
    54 exp_list: exp_list MAP • exp_list
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2136,16 +2134,16 @@ State 95
    53 exp_list: exp_list FILTER • exp_list
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2164,16 +2162,16 @@ State 96
    52 exp_list: exp_list CONSTRUTOR • exp_list
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2192,16 +2190,16 @@ State 97
    57 exp_aritmetica: exp_aritmetica SOMA • termo
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2218,16 +2216,16 @@ State 98
    58 exp_aritmetica: exp_aritmetica SUB • termo
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2244,16 +2242,16 @@ State 99
    60 termo: termo MULT • fator
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2269,16 +2267,16 @@ State 100
    61 termo: termo DIV • fator
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -2350,7 +2348,6 @@ State 104
     ID               reduce using rule 79 (chamada_de_retorno)
     INT              reduce using rule 79 (chamada_de_retorno)
     FLOAT            reduce using rule 79 (chamada_de_retorno)
-    CONSTANTE_NIL    reduce using rule 79 (chamada_de_retorno)
     TAIL_OR_NOT      reduce using rule 79 (chamada_de_retorno)
     HEADER           reduce using rule 79 (chamada_de_retorno)
     TAIL_POP         reduce using rule 79 (chamada_de_retorno)
@@ -2366,6 +2363,7 @@ State 104
     ABRE_PARENTESES  reduce using rule 79 (chamada_de_retorno)
     ABRE_CHAVES      reduce using rule 79 (chamada_de_retorno)
     FECHA_CHAVES     reduce using rule 79 (chamada_de_retorno)
+    CONSTANTE_NIL    reduce using rule 79 (chamada_de_retorno)
     FLOAT_CONST      reduce using rule 79 (chamada_de_retorno)
     INTEGER_CONST    reduce using rule 79 (chamada_de_retorno)
     STRING_LITERAL   reduce using rule 79 (chamada_de_retorno)
@@ -2533,20 +2531,20 @@ State 114
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    RETURN           shift, and go to state 40
-    IF               shift, and go to state 41
-    FOR              shift, and go to state 42
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    RETURN           shift, and go to state 39
+    IF               shift, and go to state 40
+    FOR              shift, and go to state 41
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
     FECHA_CHAVES     shift, and go to state 139
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3003,19 +3001,19 @@ State 133
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
     RETURN           shift, and go to state 218
     IF               shift, and go to state 219
     FOR              shift, and go to state 220
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3050,16 +3048,16 @@ State 134
    39 expressao_for: id ATRIB • exp
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3079,16 +3077,16 @@ State 135
    38 comando_iterativo: FOR ABRE_PARENTESES expressao_for PONTO_VIRGULA • expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
 
     ID               shift, and go to state 32
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3115,7 +3113,6 @@ State 136
     ID               reduce using rule 71 (comando_de_atribuicao)
     INT              reduce using rule 71 (comando_de_atribuicao)
     FLOAT            reduce using rule 71 (comando_de_atribuicao)
-    CONSTANTE_NIL    reduce using rule 71 (comando_de_atribuicao)
     TAIL_OR_NOT      reduce using rule 71 (comando_de_atribuicao)
     HEADER           reduce using rule 71 (comando_de_atribuicao)
     TAIL_POP         reduce using rule 71 (comando_de_atribuicao)
@@ -3131,6 +3128,7 @@ State 136
     ABRE_PARENTESES  reduce using rule 71 (comando_de_atribuicao)
     ABRE_CHAVES      reduce using rule 71 (comando_de_atribuicao)
     FECHA_CHAVES     reduce using rule 71 (comando_de_atribuicao)
+    CONSTANTE_NIL    reduce using rule 71 (comando_de_atribuicao)
     FLOAT_CONST      reduce using rule 71 (comando_de_atribuicao)
     INTEGER_CONST    reduce using rule 71 (comando_de_atribuicao)
     STRING_LITERAL   reduce using rule 71 (comando_de_atribuicao)
@@ -3141,16 +3139,16 @@ State 137
    77 func_call_parameters: func_call_parameters VIRGULA • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -3195,7 +3193,6 @@ State 139
     ID               reduce using rule 25 (bloco_de_comando)
     INT              reduce using rule 25 (bloco_de_comando)
     FLOAT            reduce using rule 25 (bloco_de_comando)
-    CONSTANTE_NIL    reduce using rule 25 (bloco_de_comando)
     TAIL_OR_NOT      reduce using rule 25 (bloco_de_comando)
     HEADER           reduce using rule 25 (bloco_de_comando)
     TAIL_POP         reduce using rule 25 (bloco_de_comando)
@@ -3211,6 +3208,7 @@ State 139
     ABRE_PARENTESES  reduce using rule 25 (bloco_de_comando)
     ABRE_CHAVES      reduce using rule 25 (bloco_de_comando)
     FECHA_CHAVES     reduce using rule 25 (bloco_de_comando)
+    CONSTANTE_NIL    reduce using rule 25 (bloco_de_comando)
     FLOAT_CONST      reduce using rule 25 (bloco_de_comando)
     INTEGER_CONST    reduce using rule 25 (bloco_de_comando)
     STRING_LITERAL   reduce using rule 25 (bloco_de_comando)
@@ -3228,7 +3226,6 @@ State 140
     ID               reduce using rule 33 (comando_condicional)
     INT              reduce using rule 33 (comando_condicional)
     FLOAT            reduce using rule 33 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 33 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 33 (comando_condicional)
     HEADER           reduce using rule 33 (comando_condicional)
     TAIL_POP         reduce using rule 33 (comando_condicional)
@@ -3244,6 +3241,7 @@ State 140
     ABRE_PARENTESES  reduce using rule 33 (comando_condicional)
     ABRE_CHAVES      reduce using rule 33 (comando_condicional)
     FECHA_CHAVES     reduce using rule 33 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 33 (comando_condicional)
     FLOAT_CONST      reduce using rule 33 (comando_condicional)
     INTEGER_CONST    reduce using rule 33 (comando_condicional)
     STRING_LITERAL   reduce using rule 33 (comando_condicional)
@@ -3261,7 +3259,6 @@ State 141
     ID               reduce using rule 32 (comando_condicional)
     INT              reduce using rule 32 (comando_condicional)
     FLOAT            reduce using rule 32 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 32 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 32 (comando_condicional)
     HEADER           reduce using rule 32 (comando_condicional)
     TAIL_POP         reduce using rule 32 (comando_condicional)
@@ -3277,6 +3274,7 @@ State 141
     ABRE_PARENTESES  reduce using rule 32 (comando_condicional)
     ABRE_CHAVES      reduce using rule 32 (comando_condicional)
     FECHA_CHAVES     reduce using rule 32 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 32 (comando_condicional)
     FLOAT_CONST      reduce using rule 32 (comando_condicional)
     INTEGER_CONST    reduce using rule 32 (comando_condicional)
     STRING_LITERAL   reduce using rule 32 (comando_condicional)
@@ -3346,19 +3344,19 @@ State 145
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    RETURN           shift, and go to state 40
-    IF               shift, and go to state 41
-    FOR              shift, and go to state 42
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    RETURN           shift, and go to state 39
+    IF               shift, and go to state 40
+    FOR              shift, and go to state 41
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3396,19 +3394,19 @@ State 146
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    RETURN           shift, and go to state 40
-    IF               shift, and go to state 41
-    FOR              shift, and go to state 42
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    RETURN           shift, and go to state 39
+    IF               shift, and go to state 40
+    FOR              shift, and go to state 41
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3443,16 +3441,16 @@ State 147
    38 comando_iterativo: FOR ABRE_PARENTESES expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA • expressao_for FECHA_PARENTESES comando
 
     ID               shift, and go to state 230
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -3479,7 +3477,6 @@ State 148
     ID               reduce using rule 37 (comando_condicional)
     INT              reduce using rule 37 (comando_condicional)
     FLOAT            reduce using rule 37 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 37 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 37 (comando_condicional)
     HEADER           reduce using rule 37 (comando_condicional)
     TAIL_POP         reduce using rule 37 (comando_condicional)
@@ -3495,6 +3492,7 @@ State 148
     ABRE_PARENTESES  reduce using rule 37 (comando_condicional)
     ABRE_CHAVES      reduce using rule 37 (comando_condicional)
     FECHA_CHAVES     reduce using rule 37 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 37 (comando_condicional)
     FLOAT_CONST      reduce using rule 37 (comando_condicional)
     INTEGER_CONST    reduce using rule 37 (comando_condicional)
     STRING_LITERAL   reduce using rule 37 (comando_condicional)
@@ -3508,7 +3506,6 @@ State 149
     ID               reduce using rule 35 (comando_condicional)
     INT              reduce using rule 35 (comando_condicional)
     FLOAT            reduce using rule 35 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 35 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 35 (comando_condicional)
     HEADER           reduce using rule 35 (comando_condicional)
     TAIL_POP         reduce using rule 35 (comando_condicional)
@@ -3524,6 +3521,7 @@ State 149
     ABRE_PARENTESES  reduce using rule 35 (comando_condicional)
     ABRE_CHAVES      reduce using rule 35 (comando_condicional)
     FECHA_CHAVES     reduce using rule 35 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 35 (comando_condicional)
     FLOAT_CONST      reduce using rule 35 (comando_condicional)
     INTEGER_CONST    reduce using rule 35 (comando_condicional)
     STRING_LITERAL   reduce using rule 35 (comando_condicional)
@@ -3537,7 +3535,6 @@ State 150
     ID               reduce using rule 36 (comando_condicional)
     INT              reduce using rule 36 (comando_condicional)
     FLOAT            reduce using rule 36 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 36 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 36 (comando_condicional)
     HEADER           reduce using rule 36 (comando_condicional)
     TAIL_POP         reduce using rule 36 (comando_condicional)
@@ -3553,6 +3550,7 @@ State 150
     ABRE_PARENTESES  reduce using rule 36 (comando_condicional)
     ABRE_CHAVES      reduce using rule 36 (comando_condicional)
     FECHA_CHAVES     reduce using rule 36 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 36 (comando_condicional)
     FLOAT_CONST      reduce using rule 36 (comando_condicional)
     INTEGER_CONST    reduce using rule 36 (comando_condicional)
     STRING_LITERAL   reduce using rule 36 (comando_condicional)
@@ -3566,7 +3564,6 @@ State 151
     ID               reduce using rule 34 (comando_condicional)
     INT              reduce using rule 34 (comando_condicional)
     FLOAT            reduce using rule 34 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 34 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 34 (comando_condicional)
     HEADER           reduce using rule 34 (comando_condicional)
     TAIL_POP         reduce using rule 34 (comando_condicional)
@@ -3582,6 +3579,7 @@ State 151
     ABRE_PARENTESES  reduce using rule 34 (comando_condicional)
     ABRE_CHAVES      reduce using rule 34 (comando_condicional)
     FECHA_CHAVES     reduce using rule 34 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 34 (comando_condicional)
     FLOAT_CONST      reduce using rule 34 (comando_condicional)
     INTEGER_CONST    reduce using rule 34 (comando_condicional)
     STRING_LITERAL   reduce using rule 34 (comando_condicional)
@@ -3602,19 +3600,19 @@ State 153
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    RETURN           shift, and go to state 40
-    IF               shift, and go to state 41
-    FOR              shift, and go to state 42
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    RETURN           shift, and go to state 39
+    IF               shift, and go to state 40
+    FOR              shift, and go to state 41
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -3653,7 +3651,6 @@ State 154
     ID               reduce using rule 38 (comando_iterativo)
     INT              reduce using rule 38 (comando_iterativo)
     FLOAT            reduce using rule 38 (comando_iterativo)
-    CONSTANTE_NIL    reduce using rule 38 (comando_iterativo)
     TAIL_OR_NOT      reduce using rule 38 (comando_iterativo)
     HEADER           reduce using rule 38 (comando_iterativo)
     TAIL_POP         reduce using rule 38 (comando_iterativo)
@@ -3669,6 +3666,7 @@ State 154
     ABRE_PARENTESES  reduce using rule 38 (comando_iterativo)
     ABRE_CHAVES      reduce using rule 38 (comando_iterativo)
     FECHA_CHAVES     reduce using rule 38 (comando_iterativo)
+    CONSTANTE_NIL    reduce using rule 38 (comando_iterativo)
     FLOAT_CONST      reduce using rule 38 (comando_iterativo)
     INTEGER_CONST    reduce using rule 38 (comando_iterativo)
     STRING_LITERAL   reduce using rule 38 (comando_iterativo)
@@ -3742,6 +3740,181 @@ State 158
 
 State 159
 
+   66 fator: TAIL_OR_NOT • fator
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id             go to state 172
+    fator          go to state 238
+    func_call_exp  go to state 177
+    constante      go to state 178
+
+
+State 160
+
+   68 fator: HEADER • fator
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id             go to state 172
+    fator          go to state 239
+    func_call_exp  go to state 177
+    constante      go to state 178
+
+
+State 161
+
+   67 fator: TAIL_POP • fator
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id             go to state 172
+    fator          go to state 240
+    func_call_exp  go to state 177
+    constante      go to state 178
+
+
+State 162
+
+   74 func_call_exp: READ • ABRE_PARENTESES id FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 241
+
+
+State 163
+
+   75 func_call_exp: WRITE • ABRE_PARENTESES exp FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 242
+
+
+State 164
+
+   76 func_call_exp: WRITELN • ABRE_PARENTESES exp FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 243
+
+
+State 165
+
+   65 fator: SOMA • fator
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id             go to state 172
+    fator          go to state 244
+    func_call_exp  go to state 177
+    constante      go to state 178
+
+
+State 166
+
+   64 fator: SUB • fator
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id             go to state 172
+    fator          go to state 245
+    func_call_exp  go to state 177
+    constante      go to state 178
+
+
+State 167
+
+   70 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id              go to state 172
+    exp             go to state 246
+    exp_list        go to state 173
+    exp_aritmetica  go to state 174
+    termo           go to state 175
+    fator           go to state 176
+    func_call_exp   go to state 177
+    constante       go to state 178
+
+
+State 168
+
    87 constante: CONSTANTE_NIL •
 
     MAP               reduce using rule 87 (constante)
@@ -3760,181 +3933,6 @@ State 159
     MULT              reduce using rule 87 (constante)
     DIV               reduce using rule 87 (constante)
     FECHA_PARENTESES  reduce using rule 87 (constante)
-
-
-State 160
-
-   66 fator: TAIL_OR_NOT • fator
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id             go to state 172
-    fator          go to state 238
-    func_call_exp  go to state 177
-    constante      go to state 178
-
-
-State 161
-
-   68 fator: HEADER • fator
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id             go to state 172
-    fator          go to state 239
-    func_call_exp  go to state 177
-    constante      go to state 178
-
-
-State 162
-
-   67 fator: TAIL_POP • fator
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id             go to state 172
-    fator          go to state 240
-    func_call_exp  go to state 177
-    constante      go to state 178
-
-
-State 163
-
-   74 func_call_exp: READ • ABRE_PARENTESES id FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 241
-
-
-State 164
-
-   75 func_call_exp: WRITE • ABRE_PARENTESES exp FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 242
-
-
-State 165
-
-   76 func_call_exp: WRITELN • ABRE_PARENTESES exp FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 243
-
-
-State 166
-
-   65 fator: SOMA • fator
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id             go to state 172
-    fator          go to state 244
-    func_call_exp  go to state 177
-    constante      go to state 178
-
-
-State 167
-
-   64 fator: SUB • fator
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id             go to state 172
-    fator          go to state 245
-    func_call_exp  go to state 177
-    constante      go to state 178
-
-
-State 168
-
-   70 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id              go to state 172
-    exp             go to state 246
-    exp_list        go to state 173
-    exp_aritmetica  go to state 174
-    termo           go to state 175
-    fator           go to state 176
-    func_call_exp   go to state 177
-    constante       go to state 178
 
 
 State 169
@@ -4166,16 +4164,16 @@ State 181
    49 exp: exp AND • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4195,16 +4193,16 @@ State 182
    50 exp: exp OR • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4224,16 +4222,16 @@ State 183
    44 exp: exp LT • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4253,16 +4251,16 @@ State 184
    47 exp: exp LE • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4282,16 +4280,16 @@ State 185
    45 exp: exp EQ • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4311,16 +4309,16 @@ State 186
    43 exp: exp GT • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4340,16 +4338,16 @@ State 187
    48 exp: exp GE • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4369,16 +4367,16 @@ State 188
    46 exp: exp NE • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -4420,6 +4418,181 @@ State 189
 
 State 190
 
+   66 fator: TAIL_OR_NOT • fator
+
+    ID               shift, and go to state 189
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
+    FLOAT_CONST      shift, and go to state 200
+    INTEGER_CONST    shift, and go to state 201
+    STRING_LITERAL   shift, and go to state 202
+
+    id             go to state 203
+    fator          go to state 264
+    func_call_exp  go to state 208
+    constante      go to state 209
+
+
+State 191
+
+   68 fator: HEADER • fator
+
+    ID               shift, and go to state 189
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
+    FLOAT_CONST      shift, and go to state 200
+    INTEGER_CONST    shift, and go to state 201
+    STRING_LITERAL   shift, and go to state 202
+
+    id             go to state 203
+    fator          go to state 265
+    func_call_exp  go to state 208
+    constante      go to state 209
+
+
+State 192
+
+   67 fator: TAIL_POP • fator
+
+    ID               shift, and go to state 189
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
+    FLOAT_CONST      shift, and go to state 200
+    INTEGER_CONST    shift, and go to state 201
+    STRING_LITERAL   shift, and go to state 202
+
+    id             go to state 203
+    fator          go to state 266
+    func_call_exp  go to state 208
+    constante      go to state 209
+
+
+State 193
+
+   74 func_call_exp: READ • ABRE_PARENTESES id FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 267
+
+
+State 194
+
+   75 func_call_exp: WRITE • ABRE_PARENTESES exp FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 268
+
+
+State 195
+
+   76 func_call_exp: WRITELN • ABRE_PARENTESES exp FECHA_PARENTESES
+
+    ABRE_PARENTESES  shift, and go to state 269
+
+
+State 196
+
+   65 fator: SOMA • fator
+
+    ID               shift, and go to state 189
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
+    FLOAT_CONST      shift, and go to state 200
+    INTEGER_CONST    shift, and go to state 201
+    STRING_LITERAL   shift, and go to state 202
+
+    id             go to state 203
+    fator          go to state 270
+    func_call_exp  go to state 208
+    constante      go to state 209
+
+
+State 197
+
+   64 fator: SUB • fator
+
+    ID               shift, and go to state 189
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
+    FLOAT_CONST      shift, and go to state 200
+    INTEGER_CONST    shift, and go to state 201
+    STRING_LITERAL   shift, and go to state 202
+
+    id             go to state 203
+    fator          go to state 271
+    func_call_exp  go to state 208
+    constante      go to state 209
+
+
+State 198
+
+   70 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
+
+    ID               shift, and go to state 158
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
+    FLOAT_CONST      shift, and go to state 169
+    INTEGER_CONST    shift, and go to state 170
+    STRING_LITERAL   shift, and go to state 171
+
+    id              go to state 172
+    exp             go to state 272
+    exp_list        go to state 173
+    exp_aritmetica  go to state 174
+    termo           go to state 175
+    fator           go to state 176
+    func_call_exp   go to state 177
+    constante       go to state 178
+
+
+State 199
+
    87 constante: CONSTANTE_NIL •
 
     MAP               reduce using rule 87 (constante)
@@ -4439,181 +4612,6 @@ State 190
     DIV               reduce using rule 87 (constante)
     VIRGULA           reduce using rule 87 (constante)
     FECHA_PARENTESES  reduce using rule 87 (constante)
-
-
-State 191
-
-   66 fator: TAIL_OR_NOT • fator
-
-    ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
-    FLOAT_CONST      shift, and go to state 200
-    INTEGER_CONST    shift, and go to state 201
-    STRING_LITERAL   shift, and go to state 202
-
-    id             go to state 203
-    fator          go to state 264
-    func_call_exp  go to state 208
-    constante      go to state 209
-
-
-State 192
-
-   68 fator: HEADER • fator
-
-    ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
-    FLOAT_CONST      shift, and go to state 200
-    INTEGER_CONST    shift, and go to state 201
-    STRING_LITERAL   shift, and go to state 202
-
-    id             go to state 203
-    fator          go to state 265
-    func_call_exp  go to state 208
-    constante      go to state 209
-
-
-State 193
-
-   67 fator: TAIL_POP • fator
-
-    ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
-    FLOAT_CONST      shift, and go to state 200
-    INTEGER_CONST    shift, and go to state 201
-    STRING_LITERAL   shift, and go to state 202
-
-    id             go to state 203
-    fator          go to state 266
-    func_call_exp  go to state 208
-    constante      go to state 209
-
-
-State 194
-
-   74 func_call_exp: READ • ABRE_PARENTESES id FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 267
-
-
-State 195
-
-   75 func_call_exp: WRITE • ABRE_PARENTESES exp FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 268
-
-
-State 196
-
-   76 func_call_exp: WRITELN • ABRE_PARENTESES exp FECHA_PARENTESES
-
-    ABRE_PARENTESES  shift, and go to state 269
-
-
-State 197
-
-   65 fator: SOMA • fator
-
-    ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
-    FLOAT_CONST      shift, and go to state 200
-    INTEGER_CONST    shift, and go to state 201
-    STRING_LITERAL   shift, and go to state 202
-
-    id             go to state 203
-    fator          go to state 270
-    func_call_exp  go to state 208
-    constante      go to state 209
-
-
-State 198
-
-   64 fator: SUB • fator
-
-    ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
-    FLOAT_CONST      shift, and go to state 200
-    INTEGER_CONST    shift, and go to state 201
-    STRING_LITERAL   shift, and go to state 202
-
-    id             go to state 203
-    fator          go to state 271
-    func_call_exp  go to state 208
-    constante      go to state 209
-
-
-State 199
-
-   70 fator: ABRE_PARENTESES • exp FECHA_PARENTESES
-
-    ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
-    FLOAT_CONST      shift, and go to state 169
-    INTEGER_CONST    shift, and go to state 170
-    STRING_LITERAL   shift, and go to state 171
-
-    id              go to state 172
-    exp             go to state 272
-    exp_list        go to state 173
-    exp_aritmetica  go to state 174
-    termo           go to state 175
-    fator           go to state 176
-    func_call_exp   go to state 177
-    constante       go to state 178
 
 
 State 200
@@ -4840,16 +4838,16 @@ State 210
    49 exp: exp AND • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -4869,16 +4867,16 @@ State 211
    50 exp: exp OR • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -4898,16 +4896,16 @@ State 212
    44 exp: exp LT • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -4927,16 +4925,16 @@ State 213
    47 exp: exp LE • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -4956,16 +4954,16 @@ State 214
    45 exp: exp EQ • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -4985,16 +4983,16 @@ State 215
    43 exp: exp GT • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -5014,16 +5012,16 @@ State 216
    48 exp: exp GE • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -5043,16 +5041,16 @@ State 217
    46 exp: exp NE • exp
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -5072,16 +5070,16 @@ State 218
    79 chamada_de_retorno: RETURN • exp PONTO_VIRGULA
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -5123,7 +5121,6 @@ State 221
     ID               reduce using rule 28 (comando_unico)
     INT              reduce using rule 28 (comando_unico)
     FLOAT            reduce using rule 28 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 28 (comando_unico)
     TAIL_OR_NOT      reduce using rule 28 (comando_unico)
     HEADER           reduce using rule 28 (comando_unico)
     TAIL_POP         reduce using rule 28 (comando_unico)
@@ -5140,6 +5137,7 @@ State 221
     ABRE_PARENTESES  reduce using rule 28 (comando_unico)
     ABRE_CHAVES      reduce using rule 28 (comando_unico)
     FECHA_CHAVES     reduce using rule 28 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 28 (comando_unico)
     FLOAT_CONST      reduce using rule 28 (comando_unico)
     INTEGER_CONST    reduce using rule 28 (comando_unico)
     STRING_LITERAL   reduce using rule 28 (comando_unico)
@@ -5179,7 +5177,6 @@ State 225
     ID               reduce using rule 26 (comando_unico)
     INT              reduce using rule 26 (comando_unico)
     FLOAT            reduce using rule 26 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 26 (comando_unico)
     TAIL_OR_NOT      reduce using rule 26 (comando_unico)
     HEADER           reduce using rule 26 (comando_unico)
     TAIL_POP         reduce using rule 26 (comando_unico)
@@ -5196,6 +5193,7 @@ State 225
     ABRE_PARENTESES  reduce using rule 26 (comando_unico)
     ABRE_CHAVES      reduce using rule 26 (comando_unico)
     FECHA_CHAVES     reduce using rule 26 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 26 (comando_unico)
     FLOAT_CONST      reduce using rule 26 (comando_unico)
     INTEGER_CONST    reduce using rule 26 (comando_unico)
     STRING_LITERAL   reduce using rule 26 (comando_unico)
@@ -5209,7 +5207,6 @@ State 226
     ID               reduce using rule 27 (comando_unico)
     INT              reduce using rule 27 (comando_unico)
     FLOAT            reduce using rule 27 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 27 (comando_unico)
     TAIL_OR_NOT      reduce using rule 27 (comando_unico)
     HEADER           reduce using rule 27 (comando_unico)
     TAIL_POP         reduce using rule 27 (comando_unico)
@@ -5226,6 +5223,7 @@ State 226
     ABRE_PARENTESES  reduce using rule 27 (comando_unico)
     ABRE_CHAVES      reduce using rule 27 (comando_unico)
     FECHA_CHAVES     reduce using rule 27 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 27 (comando_unico)
     FLOAT_CONST      reduce using rule 27 (comando_unico)
     INTEGER_CONST    reduce using rule 27 (comando_unico)
     STRING_LITERAL   reduce using rule 27 (comando_unico)
@@ -5246,7 +5244,6 @@ State 228
     ID               reduce using rule 30 (comando_unico)
     INT              reduce using rule 30 (comando_unico)
     FLOAT            reduce using rule 30 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 30 (comando_unico)
     TAIL_OR_NOT      reduce using rule 30 (comando_unico)
     HEADER           reduce using rule 30 (comando_unico)
     TAIL_POP         reduce using rule 30 (comando_unico)
@@ -5263,6 +5260,7 @@ State 228
     ABRE_PARENTESES  reduce using rule 30 (comando_unico)
     ABRE_CHAVES      reduce using rule 30 (comando_unico)
     FECHA_CHAVES     reduce using rule 30 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 30 (comando_unico)
     FLOAT_CONST      reduce using rule 30 (comando_unico)
     INTEGER_CONST    reduce using rule 30 (comando_unico)
     STRING_LITERAL   reduce using rule 30 (comando_unico)
@@ -5276,7 +5274,6 @@ State 229
     ID               reduce using rule 29 (comando_unico)
     INT              reduce using rule 29 (comando_unico)
     FLOAT            reduce using rule 29 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 29 (comando_unico)
     TAIL_OR_NOT      reduce using rule 29 (comando_unico)
     HEADER           reduce using rule 29 (comando_unico)
     TAIL_POP         reduce using rule 29 (comando_unico)
@@ -5293,6 +5290,7 @@ State 229
     ABRE_PARENTESES  reduce using rule 29 (comando_unico)
     ABRE_CHAVES      reduce using rule 29 (comando_unico)
     FECHA_CHAVES     reduce using rule 29 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 29 (comando_unico)
     FLOAT_CONST      reduce using rule 29 (comando_unico)
     INTEGER_CONST    reduce using rule 29 (comando_unico)
     STRING_LITERAL   reduce using rule 29 (comando_unico)
@@ -5474,16 +5472,16 @@ State 242
    75 func_call_exp: WRITE ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5503,16 +5501,16 @@ State 243
    76 func_call_exp: WRITELN ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5600,17 +5598,17 @@ State 247
    73              | id ABRE_PARENTESES • FECHA_PARENTESES
 
     ID                shift, and go to state 189
-    CONSTANTE_NIL     shift, and go to state 190
-    TAIL_OR_NOT       shift, and go to state 191
-    HEADER            shift, and go to state 192
-    TAIL_POP          shift, and go to state 193
-    READ              shift, and go to state 194
-    WRITE             shift, and go to state 195
-    WRITELN           shift, and go to state 196
-    SOMA              shift, and go to state 197
-    SUB               shift, and go to state 198
-    ABRE_PARENTESES   shift, and go to state 199
+    TAIL_OR_NOT       shift, and go to state 190
+    HEADER            shift, and go to state 191
+    TAIL_POP          shift, and go to state 192
+    READ              shift, and go to state 193
+    WRITE             shift, and go to state 194
+    WRITELN           shift, and go to state 195
+    SOMA              shift, and go to state 196
+    SUB               shift, and go to state 197
+    ABRE_PARENTESES   shift, and go to state 198
     FECHA_PARENTESES  shift, and go to state 301
+    CONSTANTE_NIL     shift, and go to state 199
     FLOAT_CONST       shift, and go to state 200
     INTEGER_CONST     shift, and go to state 201
     STRING_LITERAL    shift, and go to state 202
@@ -5631,16 +5629,16 @@ State 248
    54 exp_list: exp_list MAP • exp_list
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5659,16 +5657,16 @@ State 249
    53 exp_list: exp_list FILTER • exp_list
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5687,16 +5685,16 @@ State 250
    52 exp_list: exp_list CONSTRUTOR • exp_list
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5715,16 +5713,16 @@ State 251
    57 exp_aritmetica: exp_aritmetica SOMA • termo
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5741,16 +5739,16 @@ State 252
    58 exp_aritmetica: exp_aritmetica SUB • termo
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5767,16 +5765,16 @@ State 253
    60 termo: termo MULT • fator
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5792,16 +5790,16 @@ State 254
    61 termo: termo DIV • fator
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -5820,7 +5818,6 @@ State 255
     ID               reduce using rule 8 (declaracao_de_variavel)
     INT              reduce using rule 8 (declaracao_de_variavel)
     FLOAT            reduce using rule 8 (declaracao_de_variavel)
-    CONSTANTE_NIL    reduce using rule 8 (declaracao_de_variavel)
     TAIL_OR_NOT      reduce using rule 8 (declaracao_de_variavel)
     HEADER           reduce using rule 8 (declaracao_de_variavel)
     TAIL_POP         reduce using rule 8 (declaracao_de_variavel)
@@ -5836,6 +5833,7 @@ State 255
     ABRE_PARENTESES  reduce using rule 8 (declaracao_de_variavel)
     ABRE_CHAVES      reduce using rule 8 (declaracao_de_variavel)
     FECHA_CHAVES     reduce using rule 8 (declaracao_de_variavel)
+    CONSTANTE_NIL    reduce using rule 8 (declaracao_de_variavel)
     FLOAT_CONST      reduce using rule 8 (declaracao_de_variavel)
     INTEGER_CONST    reduce using rule 8 (declaracao_de_variavel)
     STRING_LITERAL   reduce using rule 8 (declaracao_de_variavel)
@@ -6112,16 +6110,16 @@ State 268
    75 func_call_exp: WRITE ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -6141,16 +6139,16 @@ State 269
    76 func_call_exp: WRITELN ABRE_PARENTESES • exp FECHA_PARENTESES
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -6240,17 +6238,17 @@ State 273
    73              | id ABRE_PARENTESES • FECHA_PARENTESES
 
     ID                shift, and go to state 189
-    CONSTANTE_NIL     shift, and go to state 190
-    TAIL_OR_NOT       shift, and go to state 191
-    HEADER            shift, and go to state 192
-    TAIL_POP          shift, and go to state 193
-    READ              shift, and go to state 194
-    WRITE             shift, and go to state 195
-    WRITELN           shift, and go to state 196
-    SOMA              shift, and go to state 197
-    SUB               shift, and go to state 198
-    ABRE_PARENTESES   shift, and go to state 199
+    TAIL_OR_NOT       shift, and go to state 190
+    HEADER            shift, and go to state 191
+    TAIL_POP          shift, and go to state 192
+    READ              shift, and go to state 193
+    WRITE             shift, and go to state 194
+    WRITELN           shift, and go to state 195
+    SOMA              shift, and go to state 196
+    SUB               shift, and go to state 197
+    ABRE_PARENTESES   shift, and go to state 198
     FECHA_PARENTESES  shift, and go to state 314
+    CONSTANTE_NIL     shift, and go to state 199
     FLOAT_CONST       shift, and go to state 200
     INTEGER_CONST     shift, and go to state 201
     STRING_LITERAL    shift, and go to state 202
@@ -6271,16 +6269,16 @@ State 274
    54 exp_list: exp_list MAP • exp_list
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6299,16 +6297,16 @@ State 275
    53 exp_list: exp_list FILTER • exp_list
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6327,16 +6325,16 @@ State 276
    52 exp_list: exp_list CONSTRUTOR • exp_list
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6355,16 +6353,16 @@ State 277
    57 exp_aritmetica: exp_aritmetica SOMA • termo
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6381,16 +6379,16 @@ State 278
    58 exp_aritmetica: exp_aritmetica SUB • termo
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6407,16 +6405,16 @@ State 279
    60 termo: termo MULT • fator
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6432,16 +6430,16 @@ State 280
    61 termo: termo DIV • fator
 
     ID               shift, and go to state 189
-    CONSTANTE_NIL    shift, and go to state 190
-    TAIL_OR_NOT      shift, and go to state 191
-    HEADER           shift, and go to state 192
-    TAIL_POP         shift, and go to state 193
-    READ             shift, and go to state 194
-    WRITE            shift, and go to state 195
-    WRITELN          shift, and go to state 196
-    SOMA             shift, and go to state 197
-    SUB              shift, and go to state 198
-    ABRE_PARENTESES  shift, and go to state 199
+    TAIL_OR_NOT      shift, and go to state 190
+    HEADER           shift, and go to state 191
+    TAIL_POP         shift, and go to state 192
+    READ             shift, and go to state 193
+    WRITE            shift, and go to state 194
+    WRITELN          shift, and go to state 195
+    SOMA             shift, and go to state 196
+    SUB              shift, and go to state 197
+    ABRE_PARENTESES  shift, and go to state 198
+    CONSTANTE_NIL    shift, and go to state 199
     FLOAT_CONST      shift, and go to state 200
     INTEGER_CONST    shift, and go to state 201
     STRING_LITERAL   shift, and go to state 202
@@ -6681,16 +6679,16 @@ State 290
    37                    | IF ABRE_PARENTESES • exp FECHA_PARENTESES bloco_de_comando ELSE bloco_de_comando
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -6710,16 +6708,16 @@ State 291
    38 comando_iterativo: FOR ABRE_PARENTESES • expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
 
     ID               shift, and go to state 32
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -6750,16 +6748,16 @@ State 293
    71 comando_de_atribuicao: id ATRIB • exp PONTO_VIRGULA
 
     ID               shift, and go to state 157
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -6782,7 +6780,6 @@ State 294
     ID               reduce using rule 23 (comandos)
     INT              reduce using rule 23 (comandos)
     FLOAT            reduce using rule 23 (comandos)
-    CONSTANTE_NIL    reduce using rule 23 (comandos)
     TAIL_OR_NOT      reduce using rule 23 (comandos)
     HEADER           reduce using rule 23 (comandos)
     TAIL_POP         reduce using rule 23 (comandos)
@@ -6798,6 +6795,7 @@ State 294
     ABRE_PARENTESES  reduce using rule 23 (comandos)
     ABRE_CHAVES      reduce using rule 23 (comandos)
     FECHA_CHAVES     reduce using rule 23 (comandos)
+    CONSTANTE_NIL    reduce using rule 23 (comandos)
     FLOAT_CONST      reduce using rule 23 (comandos)
     INTEGER_CONST    reduce using rule 23 (comandos)
     STRING_LITERAL   reduce using rule 23 (comandos)
@@ -6813,7 +6811,6 @@ State 295
     ID               reduce using rule 31 (comando_unico)
     INT              reduce using rule 31 (comando_unico)
     FLOAT            reduce using rule 31 (comando_unico)
-    CONSTANTE_NIL    reduce using rule 31 (comando_unico)
     TAIL_OR_NOT      reduce using rule 31 (comando_unico)
     HEADER           reduce using rule 31 (comando_unico)
     TAIL_POP         reduce using rule 31 (comando_unico)
@@ -6830,6 +6827,7 @@ State 295
     ABRE_PARENTESES  reduce using rule 31 (comando_unico)
     ABRE_CHAVES      reduce using rule 31 (comando_unico)
     FECHA_CHAVES     reduce using rule 31 (comando_unico)
+    CONSTANTE_NIL    reduce using rule 31 (comando_unico)
     FLOAT_CONST      reduce using rule 31 (comando_unico)
     INTEGER_CONST    reduce using rule 31 (comando_unico)
     STRING_LITERAL   reduce using rule 31 (comando_unico)
@@ -6840,16 +6838,16 @@ State 296
    39 expressao_for: id ATRIB • exp
 
     ID               shift, and go to state 158
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -7413,7 +7411,6 @@ State 323
     ID               reduce using rule 79 (chamada_de_retorno)
     INT              reduce using rule 79 (chamada_de_retorno)
     FLOAT            reduce using rule 79 (chamada_de_retorno)
-    CONSTANTE_NIL    reduce using rule 79 (chamada_de_retorno)
     TAIL_OR_NOT      reduce using rule 79 (chamada_de_retorno)
     HEADER           reduce using rule 79 (chamada_de_retorno)
     TAIL_POP         reduce using rule 79 (chamada_de_retorno)
@@ -7430,6 +7427,7 @@ State 323
     ABRE_PARENTESES  reduce using rule 79 (chamada_de_retorno)
     ABRE_CHAVES      reduce using rule 79 (chamada_de_retorno)
     FECHA_CHAVES     reduce using rule 79 (chamada_de_retorno)
+    CONSTANTE_NIL    reduce using rule 79 (chamada_de_retorno)
     FLOAT_CONST      reduce using rule 79 (chamada_de_retorno)
     INTEGER_CONST    reduce using rule 79 (chamada_de_retorno)
     STRING_LITERAL   reduce using rule 79 (chamada_de_retorno)
@@ -7478,7 +7476,6 @@ State 326
     ID               reduce using rule 8 (declaracao_de_variavel)
     INT              reduce using rule 8 (declaracao_de_variavel)
     FLOAT            reduce using rule 8 (declaracao_de_variavel)
-    CONSTANTE_NIL    reduce using rule 8 (declaracao_de_variavel)
     TAIL_OR_NOT      reduce using rule 8 (declaracao_de_variavel)
     HEADER           reduce using rule 8 (declaracao_de_variavel)
     TAIL_POP         reduce using rule 8 (declaracao_de_variavel)
@@ -7495,6 +7492,7 @@ State 326
     ABRE_PARENTESES  reduce using rule 8 (declaracao_de_variavel)
     ABRE_CHAVES      reduce using rule 8 (declaracao_de_variavel)
     FECHA_CHAVES     reduce using rule 8 (declaracao_de_variavel)
+    CONSTANTE_NIL    reduce using rule 8 (declaracao_de_variavel)
     FLOAT_CONST      reduce using rule 8 (declaracao_de_variavel)
     INTEGER_CONST    reduce using rule 8 (declaracao_de_variavel)
     STRING_LITERAL   reduce using rule 8 (declaracao_de_variavel)
@@ -7532,20 +7530,20 @@ State 328
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    RETURN           shift, and go to state 40
-    IF               shift, and go to state 41
-    FOR              shift, and go to state 42
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    RETURN           shift, and go to state 39
+    IF               shift, and go to state 40
+    FOR              shift, and go to state 41
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
     FECHA_CHAVES     shift, and go to state 341
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -7792,19 +7790,19 @@ State 338
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
     RETURN           shift, and go to state 218
     IF               shift, and go to state 219
     FOR              shift, and go to state 220
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -7839,16 +7837,16 @@ State 339
    38 comando_iterativo: FOR ABRE_PARENTESES expressao_for PONTO_VIRGULA • expressao_for PONTO_VIRGULA expressao_for FECHA_PARENTESES comando
 
     ID               shift, and go to state 32
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -7875,7 +7873,6 @@ State 340
     ID               reduce using rule 71 (comando_de_atribuicao)
     INT              reduce using rule 71 (comando_de_atribuicao)
     FLOAT            reduce using rule 71 (comando_de_atribuicao)
-    CONSTANTE_NIL    reduce using rule 71 (comando_de_atribuicao)
     TAIL_OR_NOT      reduce using rule 71 (comando_de_atribuicao)
     HEADER           reduce using rule 71 (comando_de_atribuicao)
     TAIL_POP         reduce using rule 71 (comando_de_atribuicao)
@@ -7892,6 +7889,7 @@ State 340
     ABRE_PARENTESES  reduce using rule 71 (comando_de_atribuicao)
     ABRE_CHAVES      reduce using rule 71 (comando_de_atribuicao)
     FECHA_CHAVES     reduce using rule 71 (comando_de_atribuicao)
+    CONSTANTE_NIL    reduce using rule 71 (comando_de_atribuicao)
     FLOAT_CONST      reduce using rule 71 (comando_de_atribuicao)
     INTEGER_CONST    reduce using rule 71 (comando_de_atribuicao)
     STRING_LITERAL   reduce using rule 71 (comando_de_atribuicao)
@@ -7905,7 +7903,6 @@ State 341
     ID               reduce using rule 25 (bloco_de_comando)
     INT              reduce using rule 25 (bloco_de_comando)
     FLOAT            reduce using rule 25 (bloco_de_comando)
-    CONSTANTE_NIL    reduce using rule 25 (bloco_de_comando)
     TAIL_OR_NOT      reduce using rule 25 (bloco_de_comando)
     HEADER           reduce using rule 25 (bloco_de_comando)
     TAIL_POP         reduce using rule 25 (bloco_de_comando)
@@ -7922,6 +7919,7 @@ State 341
     ABRE_PARENTESES  reduce using rule 25 (bloco_de_comando)
     ABRE_CHAVES      reduce using rule 25 (bloco_de_comando)
     FECHA_CHAVES     reduce using rule 25 (bloco_de_comando)
+    CONSTANTE_NIL    reduce using rule 25 (bloco_de_comando)
     FLOAT_CONST      reduce using rule 25 (bloco_de_comando)
     INTEGER_CONST    reduce using rule 25 (bloco_de_comando)
     STRING_LITERAL   reduce using rule 25 (bloco_de_comando)
@@ -7939,7 +7937,6 @@ State 342
     ID               reduce using rule 33 (comando_condicional)
     INT              reduce using rule 33 (comando_condicional)
     FLOAT            reduce using rule 33 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 33 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 33 (comando_condicional)
     HEADER           reduce using rule 33 (comando_condicional)
     TAIL_POP         reduce using rule 33 (comando_condicional)
@@ -7955,6 +7952,7 @@ State 342
     ABRE_PARENTESES  reduce using rule 33 (comando_condicional)
     ABRE_CHAVES      reduce using rule 33 (comando_condicional)
     FECHA_CHAVES     reduce using rule 33 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 33 (comando_condicional)
     FLOAT_CONST      reduce using rule 33 (comando_condicional)
     INTEGER_CONST    reduce using rule 33 (comando_condicional)
     STRING_LITERAL   reduce using rule 33 (comando_condicional)
@@ -7972,7 +7970,6 @@ State 343
     ID               reduce using rule 32 (comando_condicional)
     INT              reduce using rule 32 (comando_condicional)
     FLOAT            reduce using rule 32 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 32 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 32 (comando_condicional)
     HEADER           reduce using rule 32 (comando_condicional)
     TAIL_POP         reduce using rule 32 (comando_condicional)
@@ -7988,6 +7985,7 @@ State 343
     ABRE_PARENTESES  reduce using rule 32 (comando_condicional)
     ABRE_CHAVES      reduce using rule 32 (comando_condicional)
     FECHA_CHAVES     reduce using rule 32 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 32 (comando_condicional)
     FLOAT_CONST      reduce using rule 32 (comando_condicional)
     INTEGER_CONST    reduce using rule 32 (comando_condicional)
     STRING_LITERAL   reduce using rule 32 (comando_condicional)
@@ -8008,19 +8006,19 @@ State 345
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
     RETURN           shift, and go to state 218
     IF               shift, and go to state 219
     FOR              shift, and go to state 220
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -8058,19 +8056,19 @@ State 346
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
     RETURN           shift, and go to state 218
     IF               shift, and go to state 219
     FOR              shift, and go to state 220
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -8105,16 +8103,16 @@ State 347
    38 comando_iterativo: FOR ABRE_PARENTESES expressao_for PONTO_VIRGULA expressao_for PONTO_VIRGULA • expressao_for FECHA_PARENTESES comando
 
     ID               shift, and go to state 230
-    CONSTANTE_NIL    shift, and go to state 159
-    TAIL_OR_NOT      shift, and go to state 160
-    HEADER           shift, and go to state 161
-    TAIL_POP         shift, and go to state 162
-    READ             shift, and go to state 163
-    WRITE            shift, and go to state 164
-    WRITELN          shift, and go to state 165
-    SOMA             shift, and go to state 166
-    SUB              shift, and go to state 167
-    ABRE_PARENTESES  shift, and go to state 168
+    TAIL_OR_NOT      shift, and go to state 159
+    HEADER           shift, and go to state 160
+    TAIL_POP         shift, and go to state 161
+    READ             shift, and go to state 162
+    WRITE            shift, and go to state 163
+    WRITELN          shift, and go to state 164
+    SOMA             shift, and go to state 165
+    SUB              shift, and go to state 166
+    ABRE_PARENTESES  shift, and go to state 167
+    CONSTANTE_NIL    shift, and go to state 168
     FLOAT_CONST      shift, and go to state 169
     INTEGER_CONST    shift, and go to state 170
     STRING_LITERAL   shift, and go to state 171
@@ -8141,7 +8139,6 @@ State 348
     ID               reduce using rule 37 (comando_condicional)
     INT              reduce using rule 37 (comando_condicional)
     FLOAT            reduce using rule 37 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 37 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 37 (comando_condicional)
     HEADER           reduce using rule 37 (comando_condicional)
     TAIL_POP         reduce using rule 37 (comando_condicional)
@@ -8158,6 +8155,7 @@ State 348
     ABRE_PARENTESES  reduce using rule 37 (comando_condicional)
     ABRE_CHAVES      reduce using rule 37 (comando_condicional)
     FECHA_CHAVES     reduce using rule 37 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 37 (comando_condicional)
     FLOAT_CONST      reduce using rule 37 (comando_condicional)
     INTEGER_CONST    reduce using rule 37 (comando_condicional)
     STRING_LITERAL   reduce using rule 37 (comando_condicional)
@@ -8171,7 +8169,6 @@ State 349
     ID               reduce using rule 35 (comando_condicional)
     INT              reduce using rule 35 (comando_condicional)
     FLOAT            reduce using rule 35 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 35 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 35 (comando_condicional)
     HEADER           reduce using rule 35 (comando_condicional)
     TAIL_POP         reduce using rule 35 (comando_condicional)
@@ -8188,6 +8185,7 @@ State 349
     ABRE_PARENTESES  reduce using rule 35 (comando_condicional)
     ABRE_CHAVES      reduce using rule 35 (comando_condicional)
     FECHA_CHAVES     reduce using rule 35 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 35 (comando_condicional)
     FLOAT_CONST      reduce using rule 35 (comando_condicional)
     INTEGER_CONST    reduce using rule 35 (comando_condicional)
     STRING_LITERAL   reduce using rule 35 (comando_condicional)
@@ -8201,7 +8199,6 @@ State 350
     ID               reduce using rule 36 (comando_condicional)
     INT              reduce using rule 36 (comando_condicional)
     FLOAT            reduce using rule 36 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 36 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 36 (comando_condicional)
     HEADER           reduce using rule 36 (comando_condicional)
     TAIL_POP         reduce using rule 36 (comando_condicional)
@@ -8218,6 +8215,7 @@ State 350
     ABRE_PARENTESES  reduce using rule 36 (comando_condicional)
     ABRE_CHAVES      reduce using rule 36 (comando_condicional)
     FECHA_CHAVES     reduce using rule 36 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 36 (comando_condicional)
     FLOAT_CONST      reduce using rule 36 (comando_condicional)
     INTEGER_CONST    reduce using rule 36 (comando_condicional)
     STRING_LITERAL   reduce using rule 36 (comando_condicional)
@@ -8231,7 +8229,6 @@ State 351
     ID               reduce using rule 34 (comando_condicional)
     INT              reduce using rule 34 (comando_condicional)
     FLOAT            reduce using rule 34 (comando_condicional)
-    CONSTANTE_NIL    reduce using rule 34 (comando_condicional)
     TAIL_OR_NOT      reduce using rule 34 (comando_condicional)
     HEADER           reduce using rule 34 (comando_condicional)
     TAIL_POP         reduce using rule 34 (comando_condicional)
@@ -8248,6 +8245,7 @@ State 351
     ABRE_PARENTESES  reduce using rule 34 (comando_condicional)
     ABRE_CHAVES      reduce using rule 34 (comando_condicional)
     FECHA_CHAVES     reduce using rule 34 (comando_condicional)
+    CONSTANTE_NIL    reduce using rule 34 (comando_condicional)
     FLOAT_CONST      reduce using rule 34 (comando_condicional)
     INTEGER_CONST    reduce using rule 34 (comando_condicional)
     STRING_LITERAL   reduce using rule 34 (comando_condicional)
@@ -8268,19 +8266,19 @@ State 353
     ID               shift, and go to state 32
     INT              shift, and go to state 5
     FLOAT            shift, and go to state 6
-    CONSTANTE_NIL    shift, and go to state 33
-    TAIL_OR_NOT      shift, and go to state 34
-    HEADER           shift, and go to state 35
-    TAIL_POP         shift, and go to state 36
-    READ             shift, and go to state 37
-    WRITE            shift, and go to state 38
-    WRITELN          shift, and go to state 39
+    TAIL_OR_NOT      shift, and go to state 33
+    HEADER           shift, and go to state 34
+    TAIL_POP         shift, and go to state 35
+    READ             shift, and go to state 36
+    WRITE            shift, and go to state 37
+    WRITELN          shift, and go to state 38
     RETURN           shift, and go to state 218
     IF               shift, and go to state 219
     FOR              shift, and go to state 220
-    SOMA             shift, and go to state 43
-    SUB              shift, and go to state 44
-    ABRE_PARENTESES  shift, and go to state 45
+    SOMA             shift, and go to state 42
+    SUB              shift, and go to state 43
+    ABRE_PARENTESES  shift, and go to state 44
+    CONSTANTE_NIL    shift, and go to state 46
     FLOAT_CONST      shift, and go to state 47
     INTEGER_CONST    shift, and go to state 48
     STRING_LITERAL   shift, and go to state 49
@@ -8319,7 +8317,6 @@ State 354
     ID               reduce using rule 21 (comando)
     INT              reduce using rule 21 (comando)
     FLOAT            reduce using rule 21 (comando)
-    CONSTANTE_NIL    reduce using rule 21 (comando)
     TAIL_OR_NOT      reduce using rule 21 (comando)
     HEADER           reduce using rule 21 (comando)
     TAIL_POP         reduce using rule 21 (comando)
@@ -8336,6 +8333,7 @@ State 354
     ABRE_PARENTESES  reduce using rule 21 (comando)
     ABRE_CHAVES      reduce using rule 21 (comando)
     FECHA_CHAVES     reduce using rule 21 (comando)
+    CONSTANTE_NIL    reduce using rule 21 (comando)
     FLOAT_CONST      reduce using rule 21 (comando)
     INTEGER_CONST    reduce using rule 21 (comando)
     STRING_LITERAL   reduce using rule 21 (comando)
@@ -8349,7 +8347,6 @@ State 355
     ID               reduce using rule 38 (comando_iterativo)
     INT              reduce using rule 38 (comando_iterativo)
     FLOAT            reduce using rule 38 (comando_iterativo)
-    CONSTANTE_NIL    reduce using rule 38 (comando_iterativo)
     TAIL_OR_NOT      reduce using rule 38 (comando_iterativo)
     HEADER           reduce using rule 38 (comando_iterativo)
     TAIL_POP         reduce using rule 38 (comando_iterativo)
@@ -8366,6 +8363,7 @@ State 355
     ABRE_PARENTESES  reduce using rule 38 (comando_iterativo)
     ABRE_CHAVES      reduce using rule 38 (comando_iterativo)
     FECHA_CHAVES     reduce using rule 38 (comando_iterativo)
+    CONSTANTE_NIL    reduce using rule 38 (comando_iterativo)
     FLOAT_CONST      reduce using rule 38 (comando_iterativo)
     INTEGER_CONST    reduce using rule 38 (comando_iterativo)
     STRING_LITERAL   reduce using rule 38 (comando_iterativo)
@@ -8379,7 +8377,6 @@ State 356
     ID               reduce using rule 19 (comando)
     INT              reduce using rule 19 (comando)
     FLOAT            reduce using rule 19 (comando)
-    CONSTANTE_NIL    reduce using rule 19 (comando)
     TAIL_OR_NOT      reduce using rule 19 (comando)
     HEADER           reduce using rule 19 (comando)
     TAIL_POP         reduce using rule 19 (comando)
@@ -8396,6 +8393,7 @@ State 356
     ABRE_PARENTESES  reduce using rule 19 (comando)
     ABRE_CHAVES      reduce using rule 19 (comando)
     FECHA_CHAVES     reduce using rule 19 (comando)
+    CONSTANTE_NIL    reduce using rule 19 (comando)
     FLOAT_CONST      reduce using rule 19 (comando)
     INTEGER_CONST    reduce using rule 19 (comando)
     STRING_LITERAL   reduce using rule 19 (comando)
@@ -8409,7 +8407,6 @@ State 357
     ID               reduce using rule 20 (comando)
     INT              reduce using rule 20 (comando)
     FLOAT            reduce using rule 20 (comando)
-    CONSTANTE_NIL    reduce using rule 20 (comando)
     TAIL_OR_NOT      reduce using rule 20 (comando)
     HEADER           reduce using rule 20 (comando)
     TAIL_POP         reduce using rule 20 (comando)
@@ -8426,6 +8423,7 @@ State 357
     ABRE_PARENTESES  reduce using rule 20 (comando)
     ABRE_CHAVES      reduce using rule 20 (comando)
     FECHA_CHAVES     reduce using rule 20 (comando)
+    CONSTANTE_NIL    reduce using rule 20 (comando)
     FLOAT_CONST      reduce using rule 20 (comando)
     INTEGER_CONST    reduce using rule 20 (comando)
     STRING_LITERAL   reduce using rule 20 (comando)

@@ -1,1 +1,1 @@
-[PROGRAMA["INT"["main"]]["INT"["c"]]["FLOAT"["elem"]]["READ"["elem"]]["IF_ELSE"["EQ"["elem"]["INTEGER_CONST"]]["INT"["a"]]["WRITE"["STRING_LITERAL"]]]["READ"["elem"]]]
+[PROGRAMA["INT"["main"]]["INT"["a"]]["READ"["a"]]["WRITELN"["a"]]]

@@ -16,8 +16,6 @@
     #define GRN "\033[0;32m"
     #define reset "\033[0m"
 
-    int erros = 0;
-
 %}
 
 LETRA           [a-zA-Z]
@@ -250,16 +248,19 @@ COMENTARIO          \/\/.*
     /* Regras */
 {INTEGER}           {
     // printf("<INTEGER_CONST, %s>", yytext);
+    strcpy(nome_const_atual, yytext);
     coluna += yyleng;
     return INTEGER_CONST;
 }
 {FLOAT}           {
     // printf("<FLOAT_CONST, %s>", yytext);
+    strcpy(nome_const_atual, yytext);
     coluna += yyleng;
     return FLOAT_CONST;
 }
 {STRING_LITERAL}    {
     // printf("<STRING_LITERAL, %s>", yytext);
+    strcpy(nome_const_atual, yytext);
     coluna += yyleng;
     return STRING_LITERAL;
 }
@@ -282,7 +283,7 @@ COMENTARIO          \/\/.*
 }
 
     /* Reconhecer o resto como erro */
-.                   { fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; erros++; }
+.                   { fprintf(stderr, RED"\nERRO, Simbolo nao reconhecido, linha: %d, na coluna: %d\n"reset, yylineno, coluna); coluna += yyleng; contador_erro++; }
 
 
 %%

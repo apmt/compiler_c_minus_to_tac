@@ -1,6 +1,7 @@
 #define _DEFAULT_SOURCE
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
 #include "tradutor_utils.h"
 
 
@@ -9,7 +10,9 @@
 int coluna;
 int *linha;
 char nome_funcao_atual[64];
+char nome_const_atual[300];
 int num_parametros_chamada_func = 0;
+int contador_erro = 0;
 FILE *tac_output_file;
 
 // #### ESCOPO ####
@@ -106,12 +109,12 @@ void incrementa_tabela(char *nome)  {
     // END Incrementa lista de parametros da funcao
   }
 	else {
-        // errors++;
+    contador_erro++;
 	  printf(RED"ERRO, linha: %d, na coluna: %d, '%s' ja definida\n"reset, *linha, coluna, nome);
 	}
 }
 
-void verifica_contexto(char *nome) {
+t_simbolo *verifica_contexto(char *nome) {
   t_simbolo *aux;
   t_node_escopo *node_escopo_aux;
   int num_escopo_verificacao;
@@ -122,13 +125,18 @@ void verifica_contexto(char *nome) {
     for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
       if(strcmp(aux->nome, nome) == 0 && aux->escopo == num_escopo_verificacao) {
         foi_declarado = 1;
+        return aux;
       }
     }
   }
 
 	if (foi_declarado == 0) {
+    contador_erro++;
 	  printf(RED"ERRO, linha: %d, na coluna: %d, referencia nao definida para '%s'\n"reset, *linha, coluna, nome);
-	}
+    return (t_simbolo*)0;
+  }
+
+  return (t_simbolo*)0;
 }
 
 char* get_tipo_pelo_contexto(char *nome) {
@@ -222,6 +230,7 @@ t_node *novo_node(char *nome, int linha, int coluna) {
     strcpy(node->nome, nome);
     node->linha  = linha;
     node->coluna = coluna;
+    node->token = (t_simbolo *)0;
     //TODO
     if(tipo != NULL) {
       node->tipo = tipo;
@@ -307,6 +316,7 @@ void anota_ast(t_node *node_raiz_ptr, int profundidade) {
       tipo_1 = node_raiz_ptr->primeiro_filho->tipo;
       if(strcmp(tipo_1, "LIST (int)") == 0
           || strcmp(tipo_1, "LIST (float)") == 0) {
+            contador_erro++;
             printf(RED"ERRO, linha: %d, coluna: %d, operacao '%s' nao espera tipo 'LIST'\n"reset, *linha, coluna, node_raiz_ptr->nome);
       } else if(node_raiz_ptr->primeiro_filho->proximo_irmao == NULL) {
         if(strcmp(node_raiz_ptr->nome, "SOMA") == 0
@@ -324,6 +334,7 @@ void anota_ast(t_node *node_raiz_ptr, int profundidade) {
         tipo_2 = node_raiz_ptr->primeiro_filho->proximo_irmao->tipo;
         if(strcmp(tipo_2, "LIST (int)") == 0
           || strcmp(tipo_2, "LIST (float)") == 0) {
+            contador_erro++;
             printf(RED"ERRO, linha: %d, coluna: %d, operacao '%s' nao espera tipo 'LIST'\n"reset, *linha, coluna, node_raiz_ptr->nome);
         } else if(strcmp(tipo_1, "INT") == 0 && strcmp(tipo_2, "INT") == 0) {
           free(node_raiz_ptr->tipo);
@@ -374,6 +385,9 @@ void destroi_arvore(t_node *node_raiz_ptr) {
     destroi_arvore(aux);
   }
 
+  if(node_raiz_ptr->token != (t_simbolo*)0) {
+    node_raiz_ptr->token = (t_simbolo*)0;
+  }
   free(node_raiz_ptr->nome);
   free(node_raiz_ptr->tipo);
   free(node_raiz_ptr);
@@ -395,6 +409,7 @@ void existe_main() {
     }
   }
   if(existe == 0) {
+    contador_erro++;
     fprintf (stderr, RED"ERRO: referencia indefinida para `main'\n"reset);
   }
 }
@@ -404,6 +419,7 @@ void verifica_qnt_parametros_chamada_func(char *nome_funcao_chamada) {
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
     if(strcmp(aux->nome, nome_funcao_chamada) == 0){
       if(aux->contador_de_parametros != num_parametros_chamada_func) {
+        contador_erro++;
         printf(RED"ERRO, linha: %d, coluna: %d, quantidade incorreta de paramentros passados para a funcao '%s'\n"reset, *linha, coluna, nome_funcao_chamada);
       }
     }
@@ -412,6 +428,34 @@ void verifica_qnt_parametros_chamada_func(char *nome_funcao_chamada) {
 
 
 // #### GERADOR DE CODIGO INTERMEDIARIO ####
+
+void processa_codigo_ast(t_node *node_raiz_ptr) {
+  if(node_raiz_ptr == (t_node*)0) {
+    return;
+  }
+
+  t_node *aux, *proximo;
+  for (aux = node_raiz_ptr->primeiro_filho; aux != (t_node *)0; aux = proximo){
+    proximo = aux->proximo_irmao;
+    processa_codigo_ast(aux);
+  }
+
+  if(node_raiz_ptr->token != (t_simbolo*)0) {
+    printf(MAGENTA"%s "reset, node_raiz_ptr->nome);
+    printf(BLUE"%s "reset, node_raiz_ptr->token->nome);
+    printf(BLUE"%d "reset, node_raiz_ptr->token->escopo);
+    printf(BLUE"%s\n"reset, node_raiz_ptr->token->tipo);
+    if (strcmp(node_raiz_ptr->nome, "READ") == 0) {
+      if (strcmp(node_raiz_ptr->token->tipo, "int") == 0) {
+        fprintf(tac_output_file, "scani %s%d\n", node_raiz_ptr->token->nome, node_raiz_ptr->token->escopo);
+      } 
+    }
+  } else if (strcmp(node_raiz_ptr->nome, "WRITELN") == 0) {
+      if(node_raiz_ptr->primeiro_filho->token != (t_simbolo*)0) {
+        fprintf(tac_output_file, "println %s%d\n", node_raiz_ptr->primeiro_filho->token->nome, node_raiz_ptr->primeiro_filho->token->escopo);
+    }
+  }
+}
 
 void gera_codigo_intermediario() {
   t_simbolo* aux;
@@ -422,16 +466,13 @@ void gera_codigo_intermediario() {
   for (aux = tabela_de_simbolos; aux != (t_simbolo*)0; aux = (t_simbolo *)aux->proximo) {
     if(strcmp(aux->var_ou_func, "Variavel") == 0) {
       for(i = 0; i < (int)strlen(aux->tipo); i++) aux->tipo[i] = tolower(aux->tipo[i]);
-      fprintf(tac_output_file, "%s %s\n", aux->tipo, aux->nome);
+      fprintf(tac_output_file, "%s %s%d\n", aux->tipo, aux->nome, aux->escopo);
     }
   }
 
   fprintf(tac_output_file, ".code\n");
-
-  // TODO: funcoes
-
-  fprintf(tac_output_file, "main:\n");
-
-  // TODO: comandos
+  processa_codigo_ast(ast);
 
 }
+
+  

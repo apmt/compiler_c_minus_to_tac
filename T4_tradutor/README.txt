@@ -35,3 +35,5 @@ Troubleshoot:
         Instale com o comando:
         $ sudo apt-get install --reinstall binutils
         $ ld -v
+
+Extra: https://ironcreek.net/syntaxtree/ (copie e cole o conteúdo do arquivo "tree_output_file.txt" para esse site e veja a AST)

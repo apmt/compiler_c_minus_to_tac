@@ -1,1 +1,0 @@
-[PROGRAMA["INT"["main"]]["INT"["a"]]["READ"["a"]]["WRITELN"["a"]]]

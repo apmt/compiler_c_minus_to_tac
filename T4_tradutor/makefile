@@ -2,7 +2,7 @@ CFLAGS = -std=c18 -std=c99 -Wall -Wextra -Wpedantic -g
 CC = gcc-11
 
 all: lib/tradutor_utils.h src/tradutor_utils.c src/lexico.l src/sintatico.y
-	bison -v -W --defines=lib/sintatico.tab.h src/sintatico.y -o src/sintatico.tab.c
+	bison -v -W --defines=lib/sintatico.tab.h src/sintatico.y -o src/sintatico.tab.c -Wall
 	flex -o src/lex.yy.c src/lexico.l
 	${CC} ${CFLAGS} -I lib/ -Wall -o tradutor src/sintatico.tab.c src/lex.yy.c src/tradutor_utils.c -lfl
 

@@ -1,5 +1,4 @@
 .table
-float b1
 int a1
 
 .code
@@ -12,5 +11,3 @@ mov a1, $3
 println a1
 scani a1
 println a1
-scanf b1
-println b1

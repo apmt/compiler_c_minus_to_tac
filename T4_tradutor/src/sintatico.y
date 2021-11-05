@@ -430,6 +430,7 @@ fator:
 		token = verifica_contexto(nome_id_atual);
 		$$ = novo_node(nome_id_atual, yylineno, coluna);
 		$$->token = token;
+		sprintf($$->operando, "%s%d", token->nome, token->escopo);
 	}
 	| ABRE_PARENTESES exp FECHA_PARENTESES {
 		$$ = $2;
@@ -527,15 +528,19 @@ list:
 constante:
 	INTEGER_CONST {
 		$$ = novo_node("INTEGER_CONST", yylineno, coluna);
+		sprintf($$->operando, "%s", nome_const_atual);
 	}
 	| FLOAT_CONST {
 		$$ = novo_node("FLOAT_CONST", yylineno, coluna);
+		sprintf($$->operando, "%s", nome_const_atual);
 	}
 	| CONSTANTE_NIL {
 		$$ = novo_node("CONSTANTE_NIL", yylineno, coluna);
+		sprintf($$->operando, "%s", nome_const_atual);
 	}
 	| STRING_LITERAL {
 		$$ = novo_node("STRING_LITERAL", yylineno, coluna);
+		sprintf($$->operando, "%s", nome_const_atual);
 	}
 ;
 

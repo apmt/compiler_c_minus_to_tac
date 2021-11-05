@@ -1,10 +1,7 @@
-int main () {
-    float elem;
-    read(elem);
-
-    if(elem == 0) int a;
-    else write(" not zero\n");
-
-    int c;
-    read(elem);
+int main() {
+    float f;
+    f = 4.0 / 2.0 + 3.0 * 1.0 - 0.0;
+    writeln(f);
+    read(f);
+    writeln(f);
 }

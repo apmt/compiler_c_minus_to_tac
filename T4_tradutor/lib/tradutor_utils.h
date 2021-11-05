@@ -25,6 +25,7 @@ extern char nome_const_atual[300];
 extern int num_parametros_chamada_func;
 extern int contador_erro;
 extern FILE *tac_output_file;
+extern int numero_operando_atual;
 
 
 typedef struct t_constante {
@@ -77,6 +78,7 @@ typedef struct t_node {
     int linha;
     int coluna;
     char *tipo;
+    char operando[300];
     t_simbolo *token;
     struct t_node *primeiro_filho;
     struct t_node *proximo_irmao;

@@ -1,0 +1,1 @@
+[PROGRAMA["INT"["main"]]["INT"["a"]]["INT"["b"]]["IF"["INTEGER_CONST"]["ATRIB"["a"]["INTEGER_CONST"]]]["BLOCO"["ATRIB"["a"]["INTEGER_CONST"]]]["b"]]

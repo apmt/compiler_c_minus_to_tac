@@ -14,6 +14,7 @@ char nome_const_atual[300];
 int num_parametros_chamada_func = 0;
 int contador_erro = 0;
 FILE *tac_output_file;
+int numero_operando_atual = 0;
 
 // #### ESCOPO ####
 
@@ -441,19 +442,41 @@ void processa_codigo_ast(t_node *node_raiz_ptr) {
   }
 
   if(node_raiz_ptr->token != (t_simbolo*)0) {
-    printf(MAGENTA"%s "reset, node_raiz_ptr->nome);
-    printf(BLUE"%s "reset, node_raiz_ptr->token->nome);
-    printf(BLUE"%d "reset, node_raiz_ptr->token->escopo);
-    printf(BLUE"%s\n"reset, node_raiz_ptr->token->tipo);
     if (strcmp(node_raiz_ptr->nome, "READ") == 0) {
       if (strcmp(node_raiz_ptr->token->tipo, "int") == 0) {
         fprintf(tac_output_file, "scani %s%d\n", node_raiz_ptr->token->nome, node_raiz_ptr->token->escopo);
-      } 
-    }
+      } else {
+        fprintf(tac_output_file, "scanf %s%d\n", node_raiz_ptr->token->nome, node_raiz_ptr->token->escopo);
+      }
+    } else if(strcmp(node_raiz_ptr->nome, "ATRIB") == 0) {
+      fprintf(tac_output_file, "mov %s%d, %s\n", node_raiz_ptr->token->nome, node_raiz_ptr->token->escopo, node_raiz_ptr->primeiro_filho->proximo_irmao->operando);
+    } 
   } else if (strcmp(node_raiz_ptr->nome, "WRITELN") == 0) {
       if(node_raiz_ptr->primeiro_filho->token != (t_simbolo*)0) {
         fprintf(tac_output_file, "println %s%d\n", node_raiz_ptr->primeiro_filho->token->nome, node_raiz_ptr->primeiro_filho->token->escopo);
     }
+  } else if(strcmp(node_raiz_ptr->nome, "SOMA") == 0) {
+    sprintf(node_raiz_ptr->operando, "$%d", numero_operando_atual);
+    fprintf(tac_output_file, "add %s, %s, %s\n", node_raiz_ptr->operando, node_raiz_ptr->primeiro_filho->operando, node_raiz_ptr->primeiro_filho->proximo_irmao->operando);
+    numero_operando_atual++;
+  }
+   else if(strcmp(node_raiz_ptr->nome, "SUB") == 0) {
+    sprintf(node_raiz_ptr->operando, "$%d", numero_operando_atual);
+    fprintf(tac_output_file, "sub %s, %s, %s\n", node_raiz_ptr->operando, node_raiz_ptr->primeiro_filho->operando, node_raiz_ptr->primeiro_filho->proximo_irmao->operando);
+    numero_operando_atual++;
+  }
+   else if(strcmp(node_raiz_ptr->nome, "MULT") == 0) {
+    sprintf(node_raiz_ptr->operando, "$%d", numero_operando_atual);
+    fprintf(tac_output_file, "mul %s, %s, %s\n", node_raiz_ptr->operando, node_raiz_ptr->primeiro_filho->operando, node_raiz_ptr->primeiro_filho->proximo_irmao->operando);
+    numero_operando_atual++;
+  }
+   else if(strcmp(node_raiz_ptr->nome, "DIV") == 0) {
+    sprintf(node_raiz_ptr->operando, "$%d", numero_operando_atual);
+    fprintf(tac_output_file, "div %s, %s, %s\n", node_raiz_ptr->operando, node_raiz_ptr->primeiro_filho->operando, node_raiz_ptr->primeiro_filho->proximo_irmao->operando);
+    numero_operando_atual++;
+  }
+  else if(strcmp(node_raiz_ptr->nome, "declaracao_de_funcao")==0) {
+    // fprintf(tac_output_file, "%s:\n", node_raiz_ptr->primeiro_filho->primeiro_filho->nome);
   }
 }
 
@@ -470,7 +493,8 @@ void gera_codigo_intermediario() {
     }
   }
 
-  fprintf(tac_output_file, ".code\n");
+  fprintf(tac_output_file, "\n.code\n");
+  fprintf(tac_output_file, "main:\n");
   processa_codigo_ast(ast);
 
 }
